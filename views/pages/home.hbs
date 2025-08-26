@@ -1,0 +1,666 @@
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SGrowth - Demokratisasi Pelaporan Keberlanjutan untuk UMKM</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Clash+Display:wght@400;500;600;700&family=IRANYekanFN:wght@400;500;600;700&display=swap"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { theme: { extend: { colors: { 'lime-500': '#84cc16', 'orange-500': '#f97316', 'teal-700': '#0f766e', 'lime-200': '#d9f99d', 'gray-500': '#6b7280' } } } }
+    </script>
+  </head>
+  <body class="box-border overflow-x-hidden relative p-0 m-0 w-full bg-white">
+    <!-- Hero Section -->
+    <section class="box-border overflow-hidden relative p-0 m-0 w-full h-screen bg-lime-500 bg-opacity-50 min-h-[800px] rounded-[50px]">
+      <!-- Background Patterns -->
+      <div class="box-border absolute top-0 left-0 p-0 m-0 size-full z-[1]">
+        <svg
+          width="1056"
+          height="313"
+          viewBox="0 0 1056 313"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="hero-pattern"
+          style="position: absolute; top: -400px; left: 50px; width: 933px; height: 818px; transform: rotate(11.66deg); opacity: 0.6"
+        >
+          <g opacity="0.6">
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M576.252 -549.735C671.214 -528.503 771.75 -518.14 841.375 -454.655C923.384 -379.879 986.033 -281.54 974.338 -186.757C962.265 -88.9103 874.484 -21.5986 781.672 29.2079C686.883 81.0965 577.342 112.351 458.351 95.7007C324.612 76.9872 171.729 38.23 100.875 -66.0532C31.848 -167.648 92.3488 -281.403 133.061 -383.065C165.403 -463.826 214.178 -540.691 304.562 -574.681C386.703 -605.572 483.03 -570.579 576.252 -549.735Z"
+              stroke="white"
+            ></path>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M638.958 -587.588C764.154 -558.184 844.721 -449.236 907.32 -349.306C961.834 -262.282 978.328 -167.41 958.666 -77.2178C939.597 10.2542 895.278 97.5658 802.193 132.919C715.256 165.938 614.021 103.266 514.08 91.6353C381.736 76.2341 230.301 140.318 132.114 54.9406C31.6115 -32.4506 52.8436 -171.691 87.369 -279.408C118.425 -376.299 210.702 -436.588 306.884 -490.326C407.04 -546.285 513.58 -617.034 638.958 -587.588Z"
+              stroke="white"
+            ></path>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M660.747 -563.785C779.61 -558.559 909.884 -491.47 964.393 -396.054C1015.86 -305.958 933.881 -220.844 908.25 -130.537C886.107 -52.5201 895.325 37.3546 826.777 88.8141C748.816 147.34 636.155 186.964 528.571 154.49C424.49 123.073 392.888 14.0369 324.649 -62.752C248.145 -148.84 84.6939 -218.833 111.036 -315.358C137.691 -413.031 320.532 -373.986 422.112 -419.892C512.139 -460.578 553.483 -568.5 660.747 -563.785Z"
+              stroke="white"
+            ></path>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M605.663 -580.376C720.754 -559.649 815.054 -473.721 871.376 -382.44C921.859 -300.622 889.293 -215.195 884.835 -127.919C879.386 -21.2252 939.218 115.673 842.878 175.548C745.969 235.778 601.533 155.031 475.493 126.488C348.116 97.643 190.339 107.479 115.826 10.9023C41.5314 -85.3917 106.496 -199.77 147.414 -298.738C179.737 -376.918 242.092 -434.22 319.542 -481.821C405.119 -534.417 494.091 -600.47 605.663 -580.376Z"
+              stroke="white"
+            ></path>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M585.752 -541.405C674.113 -511.644 774.458 -510.709 838.105 -448.21C908.829 -378.761 927.753 -288.828 931.342 -202.043C936.03 -88.7044 956.447 42.0477 861.244 111.234C759.782 184.969 599.486 177.796 460.399 140.204C327.033 104.158 207.961 22.7003 139.278 -83.899C76.3506 -181.564 95.9407 -288.922 118.365 -390.643C139.89 -488.281 155.401 -607.641 262.343 -642.136C365.585 -675.438 474.501 -578.877 585.752 -541.405Z"
+              stroke="white"
+            ></path>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M571.359 -492.879C691.159 -468.915 851.923 -504.731 914.964 -410.88C978.69 -316.01 841.217 -233.046 811.348 -135.6C786.954 -56.0154 837.741 55.8594 758.623 99.17C679.34 142.571 570.704 70.4465 471.626 50.3696C365.773 28.9194 234.499 56.819 167.627 -20.589C100.453 -98.3468 171.633 -192.188 185.277 -281.097C199.55 -374.097 159.053 -495.505 248 -544.296C337.187 -593.219 459.794 -515.196 571.359 -492.879Z"
+              stroke="white"
+            ></path>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M582.32 -523.383C668.387 -499.334 735.967 -446.216 797.409 -385.974C873.434 -311.434 965.169 -237.024 969.985 -143.289C975.527 -35.4218 931.457 81.5753 823.663 125.015C719.571 166.963 595.101 90.3214 477.272 55.2686C373.239 24.3197 259.829 10.6991 187.692 -64.1796C108.838 -146.031 60.1144 -255.402 86.7289 -350.121C112.183 -440.71 217.256 -486.018 315.914 -520.51C398.292 -549.31 491.109 -548.868 582.32 -523.383Z"
+              stroke="white"
+            ></path>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M576.328 -539.58C677.863 -514.406 748.34 -435.683 810.008 -359.031C872.397 -281.483 927.05 -197.922 922.201 -109.669C916.831 -11.9417 883.588 96.1748 782.92 133.969C686.157 170.297 571.915 101.177 466.289 61.4954C384.223 30.6649 308.421 -5.68813 250.528 -66.0403C184.403 -134.974 115.729 -212.866 123.644 -295.706C131.916 -382.282 208.599 -443.459 290.822 -487.755C374.163 -532.653 473.542 -565.064 576.328 -539.58Z"
+              stroke="white"
+            ></path>
+          </g>
+        </svg>
+
+        <svg width="273" height="274" viewBox="0 0 273 274" fill="none" xmlns="http://www.w3.org/2000/svg" class="hero-circle" style="position: absolute; bottom: 200px; right: 300px; width: 273px; height: 274px; border-radius: 50%">
+          <ellipse cx="136.5" cy="137" rx="136.5" ry="137" fill="#FF9B2F"></ellipse>
+        </svg>
+      </div>
+
+      <!-- Hero Content -->
+      <div
+        class="box-border flex relative z-10 gap-16 justify-between items-center px-20 py-0 m-0 h-[calc(100%_-_200px)] max-md:flex-col max-md:gap-10 max-md:px-10 max-md:py-0 max-md:text-center max-sm:px-5 max-sm:py-0 max-sm:pt-10 max-sm:h-auto"
+      >
+        <div class="box-border flex-1 p-0 m-0 max-w-[600px]">
+          <div class="box-border px-6 py-2.5 m-0 mb-8 text-lg font-medium tracking-wide bg-white rounded-xl text-slate-800 inline-block">Keberlanjutan</div>
+          <h2 class="box-border p-0 m-0 mb-8 text-6xl font-bold text-white leading-[75px] max-md:text-5xl max-md:leading-[50px] max-sm:text-3xl max-sm:leading-10">Demokratisasi Pelaporan Keberlanjutan untuk UMKM</h2>
+          <p class="box-border p-0 m-0 mb-10 text-base font-medium tracking-wide leading-normal text-black max-sm:text-sm">APLIKASI BERBASIS AI & BLOCKCHAIN YANG MENYEDERHANAKAN PELAPORAN ESG DAN SERTIFIKASI KEBERLANJUTAN—KHUSUS UNTUK UMKM
+            INDONESIA.</p>
+          <button class="box-border inline-flex items-center px-8 py-5 m-0 bg-orange-500 rounded-xl transition-all cursor-pointer duration-[0.3s] ease-[ease] hover:bg-orange-600">
+            <span class="box-border p-0 m-0 text-base font-medium tracking-wide text-white">LOGIN</span>
+          </button>
+        </div>
+        <div class="box-border flex relative flex-1 justify-center items-center p-0 m-0">
+          <img src="https://api.builder.io/api/v1/image/assets/TEMP/7421e18eebdc34605d1ebdd25398daeb313a9fd4?width=1112" alt="" class="box-border p-0 m-0 w-full h-auto max-w-[556px]" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="box-border relative px-20 py-32 m-0 bg-white max-md:px-10 max-md:py-20 max-sm:px-5 max-sm:py-16">
+      <header class="box-border p-0 m-0 mb-20 text-center">
+        <h2 class="box-border p-0 m-0 mb-5 text-5xl font-bold tracking-tighter text-lime-500 leading-[62.4px] max-sm:text-4xl">Fitur Unggulan</h2>
+        <svg width="178" height="10" viewBox="0 0 178 10" fill="none" xmlns="http://www.w3.org/2000/svg" class="title-underline" style="margin: 0 auto 40px; width: 177px; height: 6px">
+          <path d="M0.500214 8.26175C49.034 0.172759 116.217 -0.501364 177.334 8.26175" stroke="#FD661F" stroke-width="2.24694"></path>
+        </svg>
+        <p class="box-border p-0 m-0 text-2xl leading-9 text-center text-gray-500">Pelaporan ESG Efektif</p>
+      </header>
+
+      <div class="box-border grid gap-8 p-0 m-0 mb-16 grid-cols-[repeat(4,1fr)] max-md:gap-5 max-md:grid-cols-[repeat(2,1fr)] max-sm:grid-cols-[1fr]">
+        <!-- Feature Card 1 -->
+        <article class="box-border overflow-hidden relative p-0 m-0 rounded-2xl transition-all duration-[0.3s] ease-[ease] h-[329px] hover:shadow-lg">
+          <div class="box-border absolute top-0 left-0 p-0 m-0 bg-white rounded-2xl size-full"></div>
+          <div class="box-border absolute left-2/4 p-0 m-0 -translate-x-2/4 h-[50px] top-[30px] w-[50px]">
+            <svg width="50" height="51" viewBox="0 0 50 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M25 50.8848C38.8071 50.8848 50 39.6919 50 25.8848C50 12.0776 38.8071 0.884766 25 0.884766C11.1929 0.884766 0 12.0776 0 25.8848C0 39.6919 11.1929 50.8848 25 50.8848Z" fill="#A3D3FF"></path>
+            </svg> 
+            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 13px; left: 13px; width: 24px; height: 24px">
+              <path
+                d="M20.71 7.92482C21.1 7.53482 21.1 6.88482 20.71 6.51482L18.37 4.17482C18 3.78482 17.35 3.78482 16.96 4.17482L15.12 6.00482L18.87 9.75482M3 18.1348V21.8848H6.75L17.81 10.8148L14.06 7.06482L3 18.1348Z"
+                fill="white"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="box-border absolute left-2/4 px-5 py-0 m-0 w-full text-3xl font-semibold leading-tight text-center text-teal-700 -translate-x-2/4 top-[95px]">Penilaian Otomatis & Panduan AI</h3>
+          <p class="box-border absolute left-2/4 p-0 m-0 text-lg font-medium leading-7 text-center text-gray-500 -translate-x-2/4 top-[170px] w-[260px]">membantu UMKM mengisi laporan keberlanjutan (GRI)</p>
+          <button class="box-border flex absolute left-2/4 items-center px-16 py-3 m-0 bg-white rounded-xl shadow-2xl transition-all -translate-x-2/4 cursor-pointer bottom-[30px] duration-[0.3s] ease-[ease] hover:shadow-xl">
+            <span class="box-border p-0 m-0 text-base font-medium text-teal-700">more</span>
+          </button>
+        </article>
+
+        <!-- Feature Card 2 -->
+        <article class="box-border overflow-hidden relative p-0 m-0 rounded-2xl transition-all duration-[0.3s] ease-[ease] h-[329px] hover:shadow-lg">
+          <div class="box-border absolute top-0 left-0 p-0 m-0 bg-white rounded-2xl size-full"></div>
+          <div class="box-border absolute left-2/4 p-0 m-0 -translate-x-2/4 h-[50px] top-[30px] w-[50px]">
+            <svg width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_195_1231)">
+                <path
+                  d="M25.0605 50.3745C38.8677 50.3745 50.0605 39.1816 50.0605 25.3745C50.0605 11.5674 38.8677 0.374512 25.0605 0.374512C11.2534 0.374512 0.0605469 11.5674 0.0605469 25.3745C0.0605469 39.1816 11.2534 50.3745 25.0605 50.3745Z"
+                  fill="#F1C9FF"
+                ></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_195_1231">
+                  <rect width="50" height="50" fill="white" transform="translate(0.0605469 0.374512)"></rect>
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+          <h3 class="box-border absolute left-2/4 px-5 py-0 m-0 w-full text-3xl font-semibold leading-tight text-center text-teal-700 -translate-x-2/4 top-[95px]">Verifikasi Data dengan Blockchain</h3>
+          <p class="box-border absolute left-2/4 p-0 m-0 text-lg font-medium leading-7 text-center text-gray-500 -translate-x-2/4 top-[170px] w-[260px]">langsung diverifikasi serta dicatat di blockchain</p>
+          <button class="box-border flex absolute left-2/4 items-center px-16 py-3 m-0 bg-white rounded-xl shadow-2xl transition-all -translate-x-2/4 cursor-pointer bottom-[30px] duration-[0.3s] ease-[ease] hover:shadow-xl">
+            <span class="box-border p-0 m-0 text-base font-medium text-teal-700">more</span>
+          </button>
+        </article>
+
+        <!-- Feature Card 3 -->
+        <article class="box-border overflow-hidden relative p-0 m-0 rounded-2xl transition-all duration-[0.3s] ease-[ease] h-[329px] hover:shadow-lg">
+          <div class="box-border absolute top-0 left-0 p-0 m-0 bg-white rounded-2xl shadow-2xl size-full"></div>
+          <div class="box-border absolute left-2/4 p-0 m-0 -translate-x-2/4 h-[50px] top-[30px] w-[50px]">
+            <svg width="50" height="51" viewBox="0 0 50 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M25 50.8848C38.8071 50.8848 50 39.6919 50 25.8848C50 12.0776 38.8071 0.884766 25 0.884766C11.1929 0.884766 0 12.0776 0 25.8848C0 39.6919 11.1929 50.8848 25 50.8848Z" fill="#FFB800"></path>
+            </svg>
+          </div>
+          <h3 class="box-border absolute left-2/4 px-5 py-0 m-0 w-full text-3xl font-semibold leading-tight text-center text-teal-700 -translate-x-2/4 top-[95px]">Sertifikat ESG Digital Otomatis</h3>
+          <p class="box-border absolute left-2/4 p-0 m-0 text-lg font-medium leading-7 text-center text-gray-500 -translate-x-2/4 top-[170px] w-[260px]">Hasil status ESG: Bronze, Silver, Gold</p>
+          <button class="box-border flex absolute left-2/4 items-center px-16 py-3 m-0 bg-white rounded-xl shadow-2xl transition-all -translate-x-2/4 cursor-pointer bottom-[30px] duration-[0.3s] ease-[ease] hover:shadow-xl">
+            <span class="box-border p-0 m-0 text-base font-medium text-teal-700">more</span>
+          </button>
+        </article>
+
+        <!-- Feature Card 4 -->
+        <article class="box-border overflow-hidden relative p-0 m-0 rounded-2xl transition-all duration-[0.3s] ease-[ease] h-[329px] hover:shadow-lg">
+          <div class="box-border absolute top-0 left-0 p-0 m-0 bg-white rounded-2xl size-full"></div>
+          <div class="box-border absolute left-2/4 p-0 m-0 -translate-x-2/4 h-[50px] top-[30px] w-[50px]">
+            <svg width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M25.179 50.8561C39.0091 50.8561 50.2206 39.6446 50.2206 25.8145C50.2206 11.9844 39.0091 0.772949 25.179 0.772949C11.3489 0.772949 0.137451 11.9844 0.137451 25.8145C0.137451 39.6446 11.3489 50.8561 25.179 50.8561Z"
+                fill="#CAC9FF"
+              ></path>
+            </svg>
+            <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 9px; left: 9px; width: 31px; height: 31px">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M22.6041 3.875C23.0052 3.875 23.4007 3.96837 23.7594 4.14773C24.1182 4.32708 24.4302 4.58749 24.6708 4.90833L28.1428 9.53767C28.3167 9.76623 28.4094 10.0462 28.4063 10.3333H28.4166V11.625C28.4167 12.8835 27.9574 14.0988 27.125 15.0427V24.5417C27.125 25.2268 26.8528 25.8839 26.3683 26.3684C25.8839 26.8528 25.2268 27.125 24.5416 27.125H6.45831C5.77317 27.125 5.11609 26.8528 4.63162 26.3684C4.14715 25.8839 3.87498 25.2268 3.87498 24.5417V15.0427C3.04253 14.0988 2.58323 12.8835 2.58331 11.625V10.3333H2.59365C2.59059 10.0462 2.68331 9.76623 2.85715 9.53767L6.32915 4.90833C6.56978 4.58749 6.8818 4.32708 7.24051 4.14773C7.59922 3.96837 7.99476 3.875 8.39581 3.875H22.6041ZM25.8333 11.625H20.6666C20.6636 12.2954 20.9213 12.9406 21.3853 13.4245C21.8493 13.9084 22.4831 14.1929 23.153 14.2181C23.8229 14.2432 24.4763 14.007 24.9753 13.5593C25.4742 13.1116 25.7796 12.4874 25.8269 11.8187L25.8333 11.625ZM18.0833 11.625H12.9166C12.9136 12.2954 13.1713 12.9406 13.6353 13.4245C14.0993 13.9084 14.7331 14.1929 15.403 14.2181C16.0729 14.2432 16.7263 14.007 17.2253 13.5593C17.7242 13.1116 18.0296 12.4874 18.0769 11.8187L18.0833 11.625ZM10.3333 11.625H5.16665C5.16365 12.2954 5.42135 12.9406 5.8853 13.4245C6.34926 13.9084 6.98314 14.1929 7.65303 14.2181C8.32291 14.2432 8.97635 14.007 9.47528 13.5593C9.97422 13.1116 10.2796 12.4874 10.3269 11.8187L10.3333 11.625Z"
+                fill="#263238"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="box-border absolute left-2/4 px-5 py-0 m-0 w-full text-3xl font-semibold leading-tight text-center text-teal-700 -translate-x-2/4 top-[95px]">Katalog UMKM Bersertifikat</h3>
+          <p class="box-border absolute left-2/4 p-0 m-0 text-lg font-medium leading-7 text-center text-gray-500 -translate-x-2/4 top-[170px] w-[260px]">meningkatkan peluang bisnis dan akses ke pembeli/tender/investor hijau.</p>
+          <button class="box-border flex absolute left-2/4 items-center px-16 py-3 m-0 bg-white rounded-xl shadow-2xl transition-all -translate-x-2/4 cursor-pointer bottom-[30px] duration-[0.3s] ease-[ease] hover:shadow-xl">
+            <span class="box-border p-0 m-0 text-base font-medium text-teal-700">more</span>
+          </button>
+        </article>
+      </div>
+
+      <div class="box-border flex justify-center p-0 m-0 mb-8">
+        <button class="box-border flex items-center px-10 py-3 m-0 bg-orange-500 rounded-xl shadow-2xl transition-all cursor-pointer duration-[0.3s] ease-[ease] hover:bg-orange-600">
+          <span class="box-border p-0 m-0 text-base font-medium text-white">Explore courses</span>
+        </button>
+      </div>
+      <div class="box-border flex justify-center items-center px-16 py-3 mx-auto my-0 bg-white rounded-xl border border-teal-700 border-solid shadow-2xl transition-all cursor-pointer duration-[0.3s] ease-[ease] w-fit hover:bg-teal-50">
+        <span class="box-border p-0 m-0 text-base font-medium text-teal-700 duration-[0.3s] ease-[ease] transition-[color]">view all</span>
+      </div>
+    </section>
+
+    <!-- GRI Section -->
+    <section class="box-border overflow-hidden relative p-20 mx-20 my-0 bg-orange-500 rounded-2xl max-md:px-10 max-md:py-16 max-md:mx-10 max-md:my-0 max-sm:px-5 max-sm:py-10 max-sm:mx-5 max-sm:my-0">
+      <div class="box-border absolute top-0 left-0 p-0 m-0 size-full z-[1]">
+        <svg width="1035" height="282" viewBox="0 0 1035 282" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 100px; left: 100px; width: 905px; height: 836px; transform: rotate(12.762deg); opacity: 0.2">
+          <g opacity="0.2">
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M592.202 175.5C683.897 200.594 781.588 214.082 846.39 284.198C922.717 366.785 978.938 474.359 962.711 576.391C945.959 681.721 856.794 752.359 763.55 805.068C668.32 858.899 559.723 890.121 444.322 869.424C314.617 846.16 167.226 800.825 103.291 686.647C41.0041 575.413 105.872 454.023 150.795 345.231C186.482 258.806 238.026 176.964 328.046 142.349C409.857 110.891 502.188 150.867 592.202 175.5Z"
+              stroke="white"
+            ></path>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M654.929 135.167C775.225 169.817 848.077 289.502 903.906 399.023C952.525 494.4 963.761 597.403 940.063 694.522C917.079 788.713 869.541 882.157 777.198 918.287C690.955 952.031 595.653 881.937 499.022 867.086C371.062 847.421 220.502 913.306 129.316 818.719C35.9791 721.901 63.6909 571.758 102.736 456.019C137.858 351.911 230.678 288.788 326.965 232.841C427.231 174.581 534.456 100.466 654.929 135.167Z"
+              stroke="white"
+            ></path>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M674.838 161.299C790.122 169.651 913.361 245.204 961.512 349.689C1006.98 448.349 922.967 538.589 893.471 635.726C867.99 719.645 872.393 817.106 803.147 871.233C724.392 932.794 612.863 973.113 509.925 935.531C410.339 899.174 385.147 780.47 322.704 695.829C252.7 600.938 97.3546 521.49 127.856 417.64C158.721 312.554 334.484 358.954 435.56 311.586C525.14 269.604 570.803 153.762 674.838 161.299Z"
+              stroke="white"
+            ></path>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M622.096 142.002C732.863 167.048 820.124 262.192 870.214 362.268C915.112 451.969 879.138 543.691 870.38 638.053C859.674 753.408 910.861 902.937 814.222 965.556C717.012 1028.55 580.778 937.871 459.769 904.118C337.477 870.006 183.686 877.071 116.19 770.85C48.892 664.941 117.811 542.618 162.587 436.43C197.957 352.546 261.446 291.941 339.109 242.178C424.922 187.194 514.714 117.721 622.096 142.002Z"
+              stroke="white"
+            ></path>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M600.82 183.883C685.248 218.087 782.794 221.376 841.526 290.437C906.789 367.177 920.635 464.901 919.726 558.872C918.54 681.595 931.768 823.515 835.67 896.203C733.253 973.672 577.719 962.272 444.353 918.445C316.473 876.42 204.798 785.591 143.402 668.706C87.1521 561.618 111.647 445.916 138.613 336.377C164.497 231.234 185.634 102.456 291.39 67.5643C393.488 33.8796 494.52 140.819 600.82 183.883Z"
+              stroke="white"
+            ></path>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M584.407 236.231C699.855 264.865 858.223 229.794 914.857 332.7C972.107 436.723 834.032 523.301 800.009 627.981C772.221 713.475 816.01 835.591 736.77 880.62C657.365 925.744 555.229 845.293 459.764 821.333C357.77 795.735 228.521 822.917 167.323 737.702C105.849 652.102 179.918 552.258 197.71 456.437C216.32 356.209 183.035 224.021 272.124 173.289C361.453 122.42 476.896 209.567 584.407 236.231Z"
+              stroke="white"
+            ></path>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M597.005 204.849C680.14 232.753 743.677 291.529 800.837 357.833C871.565 439.874 957.696 522.141 957.656 623.191C957.609 739.475 908.473 864.433 800.616 908.695C696.464 951.437 578.362 866.003 464.657 825.508C364.264 789.754 253.802 772.441 186.903 690.126C113.774 600.146 71.5743 481.235 102.47 379.86C132.019 282.904 237.303 236.567 335.751 201.727C417.954 172.636 508.902 175.277 597.005 204.849Z"
+              stroke="white"
+            ></path>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M591.696 186.19C689.48 215.698 754.252 302.34 810.534 386.543C867.475 471.731 916.563 563.237 907.362 658.453C897.173 763.892 859.263 879.916 759.135 918.442C662.891 955.474 554.935 878.207 453.894 832.935C375.39 797.76 303.277 756.763 249.853 690.253C188.831 614.284 125.776 528.581 137.694 439.282C150.149 345.955 228.062 281.624 310.524 235.654C394.108 189.059 492.706 156.318 591.696 186.19Z"
+              stroke="white"
+            ></path>
+          </g>
+        </svg>
+      </div>
+      <div class="box-border flex relative z-10 gap-16 items-center p-0 m-0 max-md:flex-col max-md:text-center">
+        <div class="box-border flex-1 p-0 m-0 max-w-[600px]">
+          <h2 class="box-border p-0 m-0 mb-8 text-8xl font-bold tracking-tighter text-white leading-[62.4px] max-sm:text-5xl">Apa itu GRI?</h2>
+          <p class="box-border p-0 m-0 mb-10 text-base font-bold tracking-tighter leading-5 text-white">standar internasional untuk pelaporan keberlanjutan. Dengan GRI, UMKM bisa melaporkan dampak lingkungan, sosial, dan tata kelola secara
+            jelas dan terukur agar mudah dipahami oleh investor dan mitra usaha.</p>
+          <div class="box-border flex flex-col gap-4 p-0 m-0">
+            <div class="box-border flex gap-4 items-center p-0 m-0">
+              <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0">
+                <path
+                  d="M16.73 18.8848L12.5 16.3348L8.27 18.8848L9.39 14.0748L5.66 10.8448L10.58 10.4248L12.5 5.88477L14.42 10.4148L19.34 10.8348L15.61 14.0648L16.73 18.8848ZM12.5 2.88477C6.97 2.88477 2.5 7.38477 2.5 12.8848C2.5 15.5369 3.55357 18.0805 5.42893 19.9558C6.35752 20.8844 7.45991 21.621 8.67317 22.1236C9.88642 22.6261 11.1868 22.8848 12.5 22.8848C15.1522 22.8848 17.6957 21.8312 19.5711 19.9558C21.4464 18.0805 22.5 15.5369 22.5 12.8848C22.5 11.5715 22.2413 10.2712 21.7388 9.05793C21.2362 7.84468 20.4997 6.74228 19.5711 5.8137C18.6425 4.88511 17.5401 4.14852 16.3268 3.64597C15.1136 3.14342 13.8132 2.88477 12.5 2.88477Z"
+                  fill="white"
+                ></path>
+              </svg>
+              <p class="box-border p-0 m-0 text-sm font-medium tracking-wide leading-4 text-white">sangat aman! Semua data yang diinput langsung diverifikasi oleh AI dan dicatat ke dalam sistem</p>
+            </div>
+            <div class="box-border flex gap-4 items-center p-0 m-0">
+              <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0">
+                <path
+                  d="M16.73 18.8848L12.5 16.3348L8.27 18.8848L9.39 14.0748L5.66 10.8448L10.58 10.4248L12.5 5.88477L14.42 10.4148L19.34 10.8348L15.61 14.0648L16.73 18.8848ZM12.5 2.88477C6.97 2.88477 2.5 7.38477 2.5 12.8848C2.5 15.5369 3.55357 18.0805 5.42893 19.9558C6.35752 20.8844 7.45991 21.621 8.67317 22.1236C9.88642 22.6261 11.1868 22.8848 12.5 22.8848C15.1522 22.8848 17.6957 21.8312 19.5711 19.9558C21.4464 18.0805 22.5 15.5369 22.5 12.8848C22.5 11.5715 22.2413 10.2712 21.7388 9.05793C21.2362 7.84468 20.4997 6.74228 19.5711 5.8137C18.6425 4.88511 17.5401 4.14852 16.3268 3.64597C15.1136 3.14342 13.8132 2.88477 12.5 2.88477Z"
+                  fill="white"
+                ></path>
+              </svg>
+              <p class="box-border p-0 m-0 text-sm font-medium tracking-wide leading-4 text-white">Cukup isi data dan dokumen yang diminta di aplikasi SGrowth.</p>
+            </div>
+          </div>
+        </div>
+        <div class="box-border flex-1 p-0 m-0">
+          <img src="https://api.builder.io/api/v1/image/assets/TEMP/8001e28ed4ad77306b6784b353a64b1291074501?width=1248" alt="" class="box-border p-0 m-0 w-full h-auto max-w-[624px]" />
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="box-border flex gap-24 items-center px-20 py-32 m-0 bg-white max-md:flex-col max-md:gap-16 max-md:px-10 max-md:py-20 max-sm:px-5 max-sm:py-16">
+      <div class="box-border flex-1 p-0 m-0">
+        <h2 class="box-border p-0 m-0 mb-16 text-5xl font-bold tracking-tighter text-teal-700 leading-[62.4px] max-sm:text-4xl">Cara Kerja</h2>
+        <div class="box-border flex flex-col gap-10 p-0 m-0">
+          <div class="box-border flex gap-8 items-center p-0 m-0 max-sm:flex-col max-sm:gap-5 max-sm:text-center">
+            <div class="box-border relative shrink-0 p-0 m-0 h-[60px] w-[60px]">
+              <svg width="149" height="149" viewBox="0 0 149 149" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 60px; height: 60px">
+                <g filter="url(#filter0_d_195_1280)">
+                  <circle cx="74.8" cy="59.8848" r="30" fill="#FBFBFB"></circle>
+                </g>
+                <defs>
+                  <filter id="filter0_d_195_1280" x="0.799988" y="0.884766" width="148" height="148" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                    <feOffset dy="15"></feOffset>
+                    <feGaussianBlur stdDeviation="22"></feGaussianBlur>
+                    <feColorMatrix type="matrix" values="0 0 0 0 0.0509804 0 0 0 0 0.0588235 0 0 0 0 0.109804 0 0 0 0.12 0"></feColorMatrix>
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_195_1280"></feBlend>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_195_1280" result="shape"></feBlend>
+                  </filter>
+                </defs>
+              </svg>
+              <span class="box-border absolute top-2/4 left-2/4 p-0 m-0 text-2xl font-medium tracking-wide text-black -translate-x-2/4 -translate-y-2/4">1</span>
+            </div>
+            <p class="box-border p-0 m-0 text-lg font-medium tracking-wide leading-8 text-gray-500 max-w-[443px]">Jawab pertanyaan sederhana (AI akan menyesuaikan indikator sesuai sektor)</p>
+          </div>
+          <div class="box-border flex gap-8 items-center p-0 m-0 max-sm:flex-col max-sm:gap-5 max-sm:text-center">
+            <div class="box-border relative shrink-0 p-0 m-0 h-[60px] w-[60px]">
+              <svg width="149" height="149" viewBox="0 0 149 149" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 60px; height: 60px">
+                <g filter="url(#filter0_d_199_3132)">
+                  <circle cx="74.8" cy="59.8848" r="30" fill="#FBFBFB"></circle>
+                </g>
+                <defs>
+                  <filter id="filter0_d_199_3132" x="0.799988" y="0.884766" width="148" height="148" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                    <feOffset dy="15"></feOffset>
+                    <feGaussianBlur stdDeviation="22"></feGaussianBlur>
+                    <feColorMatrix type="matrix" values="0 0 0 0 0.0509804 0 0 0 0 0.0588235 0 0 0 0 0.109804 0 0 0 0.12 0"></feColorMatrix>
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_199_3132"></feBlend>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_199_3132" result="shape"></feBlend>
+                  </filter>
+                </defs>
+              </svg>
+              <span class="box-border absolute top-2/4 left-2/4 p-0 m-0 text-2xl font-medium tracking-wide text-black -translate-x-2/4 -translate-y-2/4">2</span>
+            </div>
+            <p class="box-border p-0 m-0 text-lg font-medium tracking-wide leading-8 text-gray-500 max-w-[443px]">Upload dokumen atau foto (AI bantu analisis)</p>
+          </div>
+          <div class="box-border flex gap-8 items-center p-0 m-0 max-sm:flex-col max-sm:gap-5 max-sm:text-center">
+            <div class="box-border relative shrink-0 p-0 m-0 h-[60px] w-[60px]">
+              <svg width="149" height="149" viewBox="0 0 149 149" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 60px; height: 60px">
+                <g filter="url(#filter0_d_199_3136)">
+                  <circle cx="74.8" cy="59.8848" r="30" fill="#FBFBFB"></circle>
+                </g>
+                <defs>
+                  <filter id="filter0_d_199_3136" x="0.799988" y="0.884766" width="148" height="148" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                    <feOffset dy="15"></feOffset>
+                    <feGaussianBlur stdDeviation="22"></feGaussianBlur>
+                    <feColorMatrix type="matrix" values="0 0 0 0 0.0509804 0 0 0 0 0.0588235 0 0 0 0 0.109804 0 0 0 0.12 0"></feColorMatrix>
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_199_3136"></feBlend>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_199_3136" result="shape"></feBlend>
+                  </filter>
+                </defs>
+              </svg>
+              <span class="box-border absolute top-2/4 left-2/4 p-0 m-0 text-2xl font-medium tracking-wide text-black -translate-x-2/4 -translate-y-2/4">3</span>
+            </div>
+            <p class="box-border p-0 m-0 text-lg font-medium tracking-wide leading-8 text-gray-500 max-w-[443px]">Dapatkan skor ESG dan sertifikat digital</p>
+          </div>
+          <div class="box-border flex gap-8 items-center p-0 m-0 max-sm:flex-col max-sm:gap-5 max-sm:text-center">
+            <div class="box-border relative shrink-0 p-0 m-0 h-[60px] w-[60px]">
+              <svg width="149" height="149" viewBox="0 0 149 149" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 60px; height: 60px">
+                <g filter="url(#filter0_d_199_3140)">
+                  <circle cx="74.8" cy="59.8848" r="30" fill="#FBFBFB"></circle>
+                </g>
+                <defs>
+                  <filter id="filter0_d_199_3140" x="0.799988" y="0.884766" width="148" height="148" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                    <feOffset dy="15"></feOffset>
+                    <feGaussianBlur stdDeviation="22"></feGaussianBlur>
+                    <feColorMatrix type="matrix" values="0 0 0 0 0.0509804 0 0 0 0 0.0588235 0 0 0 0 0.109804 0 0 0 0.12 0"></feColorMatrix>
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_199_3140"></feBlend>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_199_3140" result="shape"></feBlend>
+                  </filter>
+                </defs>
+              </svg>
+              <span class="box-border absolute top-2/4 left-2/4 p-0 m-0 text-2xl font-medium tracking-wide text-black -translate-x-2/4 -translate-y-2/4">4</span>
+            </div>
+            <p class="box-border p-0 m-0 text-lg font-medium tracking-wide leading-8 text-gray-500 max-w-[443px]">Tingkatkan terus dengan saran dan reminder</p>
+          </div>
+        </div>
+      </div>
+      <div class="box-border flex flex-1 justify-center p-0 m-0">
+        <div class="box-border relative px-20 py-9 m-0 bg-lime-200 rounded-3xl">
+          <img src="https://api.builder.io/api/v1/image/assets/TEMP/8d1577c3d3e0bee4704f0c7d5c67d5e6dc65207d?width=883" alt="OBJECTS" class="box-border p-0 m-0 h-[344.6px] w-[441.4px]" />
+          <div class="box-border flex absolute gap-4 items-center p-0 m-0 bottom-[50px] right-[50px]">
+            <svg width="63" height="39" viewBox="0 0 63 39" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 62.419px; height: 37.687px">
+              <path
+                d="M54.5086 35.1876L54.5086 19.323C54.5086 19.323 42.2704 20.8834 31.7333 26.1086C21.1962 20.8834 8.95799 19.323 8.95799 19.323L8.95799 35.1876C5.36686 35.9914 2.46088 36.9608 0.499939 38.072C7.11518 35.9914 18.621 34.5965 31.7097 34.5965C44.7984 34.5965 56.3042 35.9678 62.9194 38.072C60.9821 36.9608 58.0998 35.9914 54.5086 35.1876Z"
+                fill="#0B7077"
+              ></path>
+              <path d="M12.2893 17.6206L12.2893 19.8667C16.6365 20.6942 24.5747 22.5384 31.7334 26.1085C23.2753 19.4648 12.2893 17.6206 12.2893 17.6206Z" fill="#0B7077"></path>
+              <path d="M51.201 17.6206C51.201 17.6206 40.2149 19.4648 31.7569 26.1085C38.9155 22.562 46.8538 20.6942 51.201 19.8667L51.201 17.6206Z" fill="#0B7077"></path>
+              <path d="M31.757 17.8335C31.3081 18.8265 30.623 19.7013 29.8197 20.387L31.7334 23.7206L33.6943 20.387C32.8674 19.7013 32.2059 18.8265 31.757 17.8335Z" fill="#0B7077"></path>
+              <path
+                d="M25.9451 15.351C27.2209 15.351 28.2841 14.3107 28.2841 13.0104C28.2841 11.7336 27.2445 10.6697 25.9451 10.6697C24.6693 10.6697 23.6061 11.71 23.6061 13.0104C23.6061 14.3107 24.6457 15.351 25.9451 15.351ZM25.1654 11.379C25.6616 11.379 26.0632 11.7809 26.0632 12.2774C26.0632 12.7739 25.6616 13.1759 25.1654 13.1759C24.6693 13.1759 24.2677 12.7739 24.2677 12.2774C24.2677 11.7809 24.6693 11.379 25.1654 11.379Z"
+                fill="#0B7077"
+              ></path>
+              <path
+                d="M35.2063 13.0104C35.2063 14.2871 36.2458 15.351 37.5216 15.351C38.7974 15.351 39.8606 14.3107 39.8606 13.0104C39.8606 11.7336 38.8211 10.6697 37.5216 10.6697C36.2695 10.6933 35.2063 11.7336 35.2063 13.0104ZM37.8051 12.2774C37.8051 12.7739 37.4035 13.1759 36.9074 13.1759C36.4112 13.1759 36.0096 12.7739 36.0096 12.2774C36.0096 11.7809 36.4112 11.379 36.9074 11.379C37.4035 11.379 37.8051 11.7809 37.8051 12.2774Z"
+                fill="#0B7077"
+              ></path>
+              <path
+                d="M21.4797 17.597C22.6374 18.7319 24.2203 19.4175 25.945 19.4175C28.4966 19.4175 30.7174 17.9044 31.757 15.7292C32.7729 17.9044 34.9937 19.4175 37.5689 19.4175C39.3172 19.4175 40.8766 18.7082 42.0342 17.597C42.5304 18.3063 42.9556 19.0629 43.31 19.8431C44.7512 19.2993 46.0742 18.8974 47.2319 18.5664C46.4759 17.0059 45.2946 15.611 43.8062 14.4288C43.9007 13.9796 43.9715 13.4831 43.9715 13.0102C43.9715 12.0645 43.7589 11.1661 43.3809 10.3385C42.932 9.01453 42.2468 7.78508 41.3727 6.69749L41.3254 0.384766L36.0805 2.84365C34.7102 2.3235 33.2454 2.06343 31.757 2.06343C30.2685 2.06343 28.8037 2.3235 27.4334 2.84365L22.1649 0.384766L22.1176 6.69749C21.2671 7.78508 20.5819 8.99088 20.1331 10.2913C19.755 11.1188 19.5188 12.0408 19.5188 13.0102C19.5188 13.5067 19.566 13.9796 19.6842 14.4288C18.1957 15.611 17.0381 17.0059 16.282 18.5664C17.4161 18.8974 18.7628 19.3229 20.2039 19.8431C20.5583 19.0629 20.9836 18.3063 21.4797 17.597ZM42.6012 13.0102C42.6012 15.8001 40.3332 18.0699 37.5453 18.0699C34.7575 18.0699 32.4894 15.8001 32.4894 13.0102C32.4894 10.2203 34.7575 7.95058 37.5453 7.95058C40.3332 7.97422 42.6012 10.244 42.6012 13.0102ZM31.7333 3.41109C34.9465 3.41109 37.8761 4.80604 39.8843 7.05214C39.1519 6.76842 38.3486 6.60292 37.5217 6.60292C34.9701 6.60292 32.7493 8.11608 31.7097 10.2913C30.6938 8.11608 28.473 6.60292 25.8978 6.60292C25.0709 6.60292 24.2676 6.76842 23.5588 7.05214C25.6143 4.80604 28.5202 3.41109 31.7333 3.41109ZM25.945 7.97423C28.7329 7.97423 31.0009 10.244 31.0009 13.0339C31.0009 15.8238 28.7329 18.0935 25.945 18.0935C23.1572 18.0935 20.8891 15.8238 20.8891 13.0339C20.8891 10.244 23.1572 7.97423 25.945 7.97423Z"
+                fill="#0B7077"
+              ></path>
+            </svg>
+            <svg width="63" height="39" viewBox="0 0 63 39" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 62.419px; height: 37.687px">
+              <path
+                d="M54.5086 35.1876L54.5086 19.323C54.5086 19.323 42.2704 20.8834 31.7333 26.1086C21.1962 20.8834 8.95799 19.323 8.95799 19.323L8.95799 35.1876C5.36686 35.9914 2.46088 36.9608 0.499939 38.072C7.11518 35.9914 18.621 34.5965 31.7097 34.5965C44.7984 34.5965 56.3042 35.9678 62.9194 38.072C60.9821 36.9608 58.0998 35.9914 54.5086 35.1876Z"
+                fill="#0B7077"
+              ></path>
+              <path d="M12.2893 17.6206L12.2893 19.8667C16.6365 20.6942 24.5747 22.5384 31.7334 26.1085C23.2753 19.4648 12.2893 17.6206 12.2893 17.6206Z" fill="#0B7077"></path>
+              <path d="M51.201 17.6206C51.201 17.6206 40.2149 19.4648 31.7569 26.1085C38.9155 22.562 46.8538 20.6942 51.201 19.8667L51.201 17.6206Z" fill="#0B7077"></path>
+              <path d="M31.757 17.8335C31.3081 18.8265 30.623 19.7013 29.8197 20.387L31.7334 23.7206L33.6943 20.387C32.8674 19.7013 32.2059 18.8265 31.757 17.8335Z" fill="#0B7077"></path>
+              <path
+                d="M25.9451 15.351C27.2209 15.351 28.2841 14.3107 28.2841 13.0104C28.2841 11.7336 27.2445 10.6697 25.9451 10.6697C24.6693 10.6697 23.6061 11.71 23.6061 13.0104C23.6061 14.3107 24.6457 15.351 25.9451 15.351ZM25.1654 11.379C25.6616 11.379 26.0632 11.7809 26.0632 12.2774C26.0632 12.7739 25.6616 13.1759 25.1654 13.1759C24.6693 13.1759 24.2677 12.7739 24.2677 12.2774C24.2677 11.7809 24.6693 11.379 25.1654 11.379Z"
+                fill="#0B7077"
+              ></path>
+              <path
+                d="M35.2063 13.0104C35.2063 14.2871 36.2458 15.351 37.5216 15.351C38.7974 15.351 39.8606 14.3107 39.8606 13.0104C39.8606 11.7336 38.8211 10.6697 37.5216 10.6697C36.2695 10.6933 35.2063 11.7336 35.2063 13.0104ZM37.8051 12.2774C37.8051 12.7739 37.4035 13.1759 36.9074 13.1759C36.4112 13.1759 36.0096 12.7739 36.0096 12.2774C36.0096 11.7809 36.4112 11.379 36.9074 11.379C37.4035 11.379 37.8051 11.7809 37.8051 12.2774Z"
+                fill="#0B7077"
+              ></path>
+              <path
+                d="M21.4797 17.597C22.6374 18.7319 24.2203 19.4175 25.945 19.4175C28.4966 19.4175 30.7174 17.9044 31.757 15.7292C32.7729 17.9044 34.9937 19.4175 37.5689 19.4175C39.3172 19.4175 40.8766 18.7082 42.0342 17.597C42.5304 18.3063 42.9556 19.0629 43.31 19.8431C44.7512 19.2993 46.0742 18.8974 47.2319 18.5664C46.4759 17.0059 45.2946 15.611 43.8062 14.4288C43.9007 13.9796 43.9715 13.4831 43.9715 13.0102C43.9715 12.0645 43.7589 11.1661 43.3809 10.3385C42.932 9.01453 42.2468 7.78508 41.3727 6.69749L41.3254 0.384766L36.0805 2.84365C34.7102 2.3235 33.2454 2.06343 31.757 2.06343C30.2685 2.06343 28.8037 2.3235 27.4334 2.84365L22.1649 0.384766L22.1176 6.69749C21.2671 7.78508 20.5819 8.99088 20.1331 10.2913C19.755 11.1188 19.5188 12.0408 19.5188 13.0102C19.5188 13.5067 19.566 13.9796 19.6842 14.4288C18.1957 15.611 17.0381 17.0059 16.282 18.5664C17.4161 18.8974 18.7628 19.3229 20.2039 19.8431C20.5583 19.0629 20.9836 18.3063 21.4797 17.597ZM42.6012 13.0102C42.6012 15.8001 40.3332 18.0699 37.5453 18.0699C34.7575 18.0699 32.4894 15.8001 32.4894 13.0102C32.4894 10.2203 34.7575 7.95058 37.5453 7.95058C40.3332 7.97422 42.6012 10.244 42.6012 13.0102ZM31.7333 3.41109C34.9465 3.41109 37.8761 4.80604 39.8843 7.05214C39.1519 6.76842 38.3486 6.60292 37.5217 6.60292C34.9701 6.60292 32.7493 8.11608 31.7097 10.2913C30.6938 8.11608 28.473 6.60292 25.8978 6.60292C25.0709 6.60292 24.2676 6.76842 23.5588 7.05214C25.6143 4.80604 28.5202 3.41109 31.7333 3.41109ZM25.945 7.97423C28.7329 7.97423 31.0009 10.244 31.0009 13.0339C31.0009 15.8238 28.7329 18.0935 25.945 18.0935C23.1572 18.0935 20.8891 15.8238 20.8891 13.0339C20.8891 10.244 23.1572 7.97423 25.945 7.97423Z"
+                fill="#0B7077"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scoring Section -->
+    <section class="box-border flex gap-24 items-end px-20 py-32 m-0 bg-white max-md:flex-col max-md:gap-16 max-md:px-10 max-md:py-20 max-sm:px-5 max-sm:py-16">
+      <div class="box-border flex-1 p-0 m-0">
+        <img src="https://api.builder.io/api/v1/image/assets/TEMP/2c818f08d5bef9f7ee339d3e4d52282b31cbb711?width=1069" alt="coding-workshop/pana" class="box-border p-0 m-0 h-[352px] w-[535px]" />
+      </div>
+      <div class="box-border flex-1 p-0 m-0">
+        <h2 class="box-border p-0 m-0 mb-16 text-5xl font-bold tracking-tighter text-orange-500 leading-[62.4px] max-sm:text-4xl">Skor dan Sertifikasi</h2>
+        <div class="box-border flex flex-col gap-8 p-0 m-0">
+          <div class="box-border flex gap-8 items-center p-0 m-0">
+            <div class="box-border relative shrink-0 p-0 m-0 h-[60px] w-[60px]">
+              <svg width="149" height="149" viewBox="0 0 149 149" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 60px; height: 60px; border-radius: 60px">
+                <g filter="url(#filter0_d_195_1845)">
+                  <circle cx="74.2881" cy="59.8848" r="30" fill="#FBFBFB"></circle>
+                </g>
+                <defs>
+                  <filter id="filter0_d_195_1845" x="0.288147" y="0.884766" width="148" height="148" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                    <feOffset dy="15"></feOffset>
+                    <feGaussianBlur stdDeviation="22"></feGaussianBlur>
+                    <feColorMatrix type="matrix" values="0 0 0 0 0.0509804 0 0 0 0 0.0588235 0 0 0 0 0.109804 0 0 0 0.12 0"></feColorMatrix>
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_195_1845"></feBlend>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_195_1845" result="shape"></feBlend>
+                  </filter>
+                </defs>
+              </svg>
+              <div class="box-border grid absolute gap-1 p-0 m-0 grid-cols-[1fr_1fr] h-[26px] left-[17px] top-[17px] w-[27px]">
+                <div class="box-border p-0 m-0 w-3 h-3 rounded-sm bg-yellow-400"></div>
+                <div class="box-border p-0 m-0 w-3 h-3 rounded-sm bg-yellow-400"></div>
+                <div class="box-border p-0 m-0 w-3 h-3 rounded-sm bg-yellow-400"></div>
+                <div class="box-border p-0 m-0 w-3 h-3 rounded-sm bg-yellow-400"></div>
+              </div>
+            </div>
+            <p class="box-border p-0 m-0 text-lg font-medium tracking-wide leading-8 text-gray-500 max-w-[443px]">Gold (85–100%): ESG siap audit, dipercaya eksternal</p>
+          </div>
+          <div class="box-border flex gap-8 items-center p-0 m-0">
+            <div class="box-border relative shrink-0 p-0 m-0 h-[60px] w-[60px]">
+              <svg width="149" height="149" viewBox="0 0 149 149" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 60px; height: 60px; border-radius: 60px">
+                <g filter="url(#filter0_d_195_1854)">
+                  <circle cx="74.2881" cy="59.8848" r="30" fill="#FBFBFB"></circle>
+                </g>
+                <defs>
+                  <filter id="filter0_d_195_1854" x="0.288147" y="0.884766" width="148" height="148" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                    <feOffset dy="15"></feOffset>
+                    <feGaussianBlur stdDeviation="22"></feGaussianBlur>
+                    <feColorMatrix type="matrix" values="0 0 0 0 0.0509804 0 0 0 0 0.0588235 0 0 0 0 0.109804 0 0 0 0.12 0"></feColorMatrix>
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_195_1854"></feBlend>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_195_1854" result="shape"></feBlend>
+                  </filter>
+                </defs>
+              </svg>
+              <div class="box-border absolute left-4 p-0 m-0 w-7 h-[26px] top-[17px]">
+                <div class="box-border absolute p-0 m-0 rounded-sm bg-gray-300 w-3 h-3 left-0 top-0"></div>
+                <div class="box-border absolute p-0 m-0 rounded-sm bg-gray-300 w-3 h-3 right-0 bottom-0"></div>
+              </div>
+            </div>
+            <p class="box-border p-0 m-0 text-lg font-medium tracking-wide leading-8 text-gray-500 max-w-[443px]">Silver (70–84%): Sudah baik, minor perbaikan</p>
+          </div>
+          <div class="box-border flex gap-8 items-center p-0 m-0">
+            <div class="box-border relative shrink-0 p-0 m-0 h-[60px] w-[60px]">
+              <svg width="149" height="149" viewBox="0 0 149 149" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 60px; height: 60px; border-radius: 60px">
+                <g filter="url(#filter0_d_195_1861)">
+                  <circle cx="74.2881" cy="59.8848" r="30" fill="#FBFBFB"></circle>
+                </g>
+                <defs>
+                  <filter id="filter0_d_195_1861" x="0.288147" y="0.884766" width="148" height="148" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                    <feOffset dy="15"></feOffset>
+                    <feGaussianBlur stdDeviation="22"></feGaussianBlur>
+                    <feColorMatrix type="matrix" values="0 0 0 0 0.0509804 0 0 0 0 0.0588235 0 0 0 0 0.109804 0 0 0 0.12 0"></feColorMatrix>
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_195_1861"></feBlend>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_195_1861" result="shape"></feBlend>
+                  </filter>
+                </defs>
+              </svg>
+              <svg width="31" height="27" viewBox="0 0 31 27" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 17px; left: 15px; width: 30px; height: 26px">
+                <g clip-path="url(#clip0_195_1862)">
+                  <path
+                    d="M4.78815 12.2598C6.44283 12.2598 7.78815 10.8023 7.78815 9.00977C7.78815 7.21719 6.44283 5.75977 4.78815 5.75977C3.13346 5.75977 1.78815 7.21719 1.78815 9.00977C1.78815 10.8023 3.13346 12.2598 4.78815 12.2598ZM25.7881 12.2598C27.4428 12.2598 28.7881 10.8023 28.7881 9.00977C28.7881 7.21719 27.4428 5.75977 25.7881 5.75977C24.1335 5.75977 22.7881 7.21719 22.7881 9.00977C22.7881 10.8023 24.1335 12.2598 25.7881 12.2598ZM27.2881 13.8848H24.2881C23.4631 13.8848 22.7178 14.2453 22.1741 14.8293C24.0631 15.9516 25.4038 17.9777 25.6944 20.3848H28.7881C29.6178 20.3848 30.2881 19.6586 30.2881 18.7598V17.1348C30.2881 15.3422 28.9428 13.8848 27.2881 13.8848ZM15.2881 13.8848C18.1897 13.8848 20.5381 11.3406 20.5381 8.19727C20.5381 5.05391 18.1897 2.50977 15.2881 2.50977C12.3866 2.50977 10.0381 5.05391 10.0381 8.19727C10.0381 11.3406 12.3866 13.8848 15.2881 13.8848ZM18.8881 15.5098H18.4991C17.5241 16.0176 16.4413 16.3223 15.2881 16.3223C14.135 16.3223 13.0569 16.0176 12.0772 15.5098H11.6881C8.7069 15.5098 6.28815 18.1301 6.28815 21.3598V22.8223C6.28815 24.168 7.29596 25.2598 8.53815 25.2598H22.0381C23.2803 25.2598 24.2881 24.168 24.2881 22.8223V21.3598C24.2881 18.1301 21.8694 15.5098 18.8881 15.5098ZM8.40221 14.8293C7.85846 14.2453 7.11315 13.8848 6.28815 13.8848H3.28815C1.63346 13.8848 0.288147 15.3422 0.288147 17.1348V18.7598C0.288147 19.6586 0.958459 20.3848 1.78815 20.3848H4.87721C5.17252 17.9777 6.51315 15.9516 8.40221 14.8293Z"
+                    fill="#0B7077"
+                  ></path>
+                </g>
+                <defs>
+                  <clipPath id="clip0_195_1862">
+                    <rect width="30" height="26" fill="white" transform="translate(0.288147 0.884766)"></rect>
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+            <p class="box-border p-0 m-0 text-lg font-medium tracking-wide leading-8 text-gray-500 max-w-[443px]">Bronze (50–69%): Perlu peningkatan</p>
+          </div>
+          <div class="box-border flex gap-8 items-center p-0 m-0">
+            <div class="box-border relative shrink-0 p-0 m-0 h-[60px] w-[60px]">
+              <svg width="149" height="149" viewBox="0 0 149 149" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 60px; height: 60px; border-radius: 60px">
+                <g filter="url(#filter0_d_199_3145)">
+                  <circle cx="74.2881" cy="59.8848" r="30" fill="#FBFBFB"></circle>
+                </g>
+                <defs>
+                  <filter id="filter0_d_199_3145" x="0.288147" y="0.884766" width="148" height="148" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                    <feOffset dy="15"></feOffset>
+                    <feGaussianBlur stdDeviation="22"></feGaussianBlur>
+                    <feColorMatrix type="matrix" values="0 0 0 0 0.0509804 0 0 0 0 0.0588235 0 0 0 0 0.109804 0 0 0 0.12 0"></feColorMatrix>
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_199_3145"></feBlend>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_199_3145" result="shape"></feBlend>
+                  </filter>
+                </defs>
+              </svg>
+              <svg width="31" height="27" viewBox="0 0 31 27" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 17px; left: 15px; width: 30px; height: 26px">
+                <g clip-path="url(#clip0_199_3146)">
+                  <path
+                    d="M4.78815 12.2598C6.44283 12.2598 7.78815 10.8023 7.78815 9.00977C7.78815 7.21719 6.44283 5.75977 4.78815 5.75977C3.13346 5.75977 1.78815 7.21719 1.78815 9.00977C1.78815 10.8023 3.13346 12.2598 4.78815 12.2598ZM25.7881 12.2598C27.4428 12.2598 28.7881 10.8023 28.7881 9.00977C28.7881 7.21719 27.4428 5.75977 25.7881 5.75977C24.1335 5.75977 22.7881 7.21719 22.7881 9.00977C22.7881 10.8023 24.1335 12.2598 25.7881 12.2598ZM27.2881 13.8848H24.2881C23.4631 13.8848 22.7178 14.2453 22.1741 14.8293C24.0631 15.9516 25.4038 17.9777 25.6944 20.3848H28.7881C29.6178 20.3848 30.2881 19.6586 30.2881 18.7598V17.1348C30.2881 15.3422 28.9428 13.8848 27.2881 13.8848ZM15.2881 13.8848C18.1897 13.8848 20.5381 11.3406 20.5381 8.19727C20.5381 5.05391 18.1897 2.50977 15.2881 2.50977C12.3866 2.50977 10.0381 5.05391 10.0381 8.19727C10.0381 11.3406 12.3866 13.8848 15.2881 13.8848ZM18.8881 15.5098H18.4991C17.5241 16.0176 16.4413 16.3223 15.2881 16.3223C14.135 16.3223 13.0569 16.0176 12.0772 15.5098H11.6881C8.7069 15.5098 6.28815 18.1301 6.28815 21.3598V22.8223C6.28815 24.168 7.29596 25.2598 8.53815 25.2598H22.0381C23.2803 25.2598 24.2881 24.168 24.2881 22.8223V21.3598C24.2881 18.1301 21.8694 15.5098 18.8881 15.5098ZM8.40221 14.8293C7.85846 14.2453 7.11315 13.8848 6.28815 13.8848H3.28815C1.63346 13.8848 0.288147 15.3422 0.288147 17.1348V18.7598C0.288147 19.6586 0.958459 20.3848 1.78815 20.3848H4.87721C5.17252 17.9777 6.51315 15.9516 8.40221 14.8293Z"
+                    fill="#0B7077"
+                  ></path>
+                </g>
+                <defs>
+                  <clipPath id="clip0_199_3146">
+                    <rect width="30" height="26" fill="white" transform="translate(0.288147 0.884766)"></rect>
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+            <p class="box-border p-0 m-0 text-lg font-medium tracking-wide leading-8 text-gray-500 max-w-[443px]">Basic (&lt;50%): ESG belum berjalan</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="box-border overflow-hidden relative p-0 m-0 h-[447px]">
+      <svg width="1440" height="447" viewBox="0 0 1440 447" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 0; left: -105px; width: 1920px; height: 447px">
+        <path d="M-105 59.7273C650.693 -16.4694 1071.61 -23.2761 1815 59.7273L1815 447.377H-105V59.7273Z" fill="#BAE39E"></path>
+      </svg>
+      <div class="box-border flex relative z-10 justify-between items-start px-72 pt-28 pb-20 m-0 h-full max-md:flex-col max-md:gap-10 max-md:px-10 max-md:pt-20 max-md:pb-16 max-md:text-center max-sm:px-5 max-sm:pt-16 max-sm:pb-10">
+        <div class="box-border flex flex-col gap-7 p-0 m-0">
+          <div class="box-border flex gap-0 items-center p-0 m-0">
+            <img src="https://api.builder.io/api/v1/image/assets/TEMP/f8ad5f0c4ddd7d913580851fc927c0adc20c93a6?width=92" alt="" class="box-border p-0 m-0 h-[88px] w-[46px]" />
+            <h2 class="box-border p-0 m-0 text-5xl font-bold text-black">growth</h2>
+          </div>
+          <div class="box-border flex flex-col gap-4 p-0 m-0">
+            <div class="box-border flex flex-col gap-1.5 p-0 m-0">
+              <div class="box-border flex gap-3 items-center p-0 m-0">
+                <svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M3.53162 0.936771C5.71648 -0.332726 8.40203 -0.310537 10.5664 0.994894C12.7095 2.32691 14.012 4.70418 13.9998 7.26144C13.95 9.80194 12.5533 12.19 10.8075 14.0361C9.79983 15.1064 8.67261 16.0528 7.44884 16.856C7.32281 16.9289 7.18475 16.9777 7.04148 17C6.9036 16.9941 6.76932 16.9534 6.65075 16.8814C4.78243 15.6746 3.14334 14.134 1.81233 12.334C0.698589 10.8314 0.0658357 9.01601 1.16173e-06 7.13442C-0.00144468 4.57225 1.34677 2.20627 3.53162 0.936771ZM4.79427 8.19478C5.1618 9.10083 6.02929 9.69184 6.99171 9.69184C7.62221 9.69637 8.2283 9.44382 8.67492 8.99047C9.12154 8.53712 9.37159 7.92063 9.36936 7.27838C9.37272 6.29803 8.79557 5.41231 7.90737 5.03477C7.01918 4.65723 5.99515 4.86234 5.31343 5.55434C4.6317 6.24634 4.42675 7.28872 4.79427 8.19478Z"
+                    fill="#0B7077"
+                  ></path>
+                </svg>
+                <span class="box-border p-0 m-0 text-sm font-bold leading-7 text-teal-700">Address:</span>
+              </div>
+              <p class="box-border p-0 m-0 text-sm font-medium leading-7 text-teal-700 w-[279px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit,</p>
+            </div>
+            <div class="box-border flex gap-3 items-center p-0 m-0">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0">
+                <path
+                  opacity="0.4"
+                  d="M14.4183 5.48976C13.9423 5.40182 13.5051 5.70561 13.4144 6.17029C13.3238 6.63497 13.6286 7.08866 14.0917 7.1796C15.4859 7.45141 16.5625 8.53067 16.8354 9.92971V9.93071C16.913 10.3334 17.2676 10.6262 17.6759 10.6262C17.7307 10.6262 17.7855 10.6212 17.8412 10.6112C18.3043 10.5183 18.6091 10.0656 18.5184 9.59994C18.1111 7.51037 16.5027 5.89648 14.4183 5.48976Z"
+                  fill="#0B7077"
+                ></path>
+                <path
+                  opacity="0.4"
+                  d="M14.3561 2.00793C14.133 1.97595 13.9089 2.04191 13.7306 2.18381C13.5474 2.32771 13.4329 2.53557 13.408 2.76841C13.3552 3.23908 13.6948 3.66479 14.1649 3.71776C17.4065 4.07951 19.9261 6.60477 20.2906 9.85654C20.3394 10.2922 20.7049 10.621 21.1411 10.621C21.174 10.621 21.2059 10.619 21.2387 10.615C21.4668 10.59 21.67 10.4771 21.8134 10.2972C21.9558 10.1174 22.0205 9.89351 21.9946 9.66467C21.5405 5.60746 18.4004 2.45862 14.3561 2.00793Z"
+                  fill="#0B7077"
+                ></path>
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M11.0317 12.9724C15.0208 16.9604 15.9258 12.3467 18.4656 14.8848C20.9143 17.3328 22.3216 17.8232 19.2192 20.9247C18.8306 21.237 16.3616 24.9943 7.6846 16.3197C-0.993478 7.644 2.76158 5.17244 3.07397 4.78395C6.18387 1.67385 6.66586 3.08938 9.11449 5.53733C11.6544 8.0765 7.04266 8.98441 11.0317 12.9724Z"
+                  fill="#0B7077"
+                ></path>
+              </svg>
+              <span class="box-border p-0 m-0 text-sm font-medium leading-7 text-teal-700">Tel :+9229341037</span>
+            </div>
+            <div class="box-border flex gap-3 items-center p-0 m-0">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0">
+                <path opacity="0.4" d="M21.9998 12C21.9998 17.524 17.5228 22 11.9998 22C6.47676 22 1.99976 17.524 1.99976 12C1.99976 6.478 6.47676 2 11.9998 2C17.5228 2 21.9998 6.478 21.9998 12Z" fill="#0B7077"></path>
+                <path
+                  d="M15.5735 15.8143C15.4425 15.8143 15.3105 15.7803 15.1895 15.7093L11.2635 13.3673C11.0375 13.2313 10.8985 12.9863 10.8985 12.7223V7.67529C10.8985 7.26129 11.2345 6.92529 11.6485 6.92529C12.0625 6.92529 12.3985 7.26129 12.3985 7.67529V12.2963L15.9585 14.4193C16.3135 14.6323 16.4305 15.0923 16.2185 15.4483C16.0775 15.6833 15.8285 15.8143 15.5735 15.8143Z"
+                  fill="#0B7077"
+                ></path>
+              </svg>
+              <span class="box-border p-0 m-0 text-sm font-medium leading-7 text-teal-700">Response hours: 8 to 20</span>
+            </div>
+            <div class="box-border flex gap-3 items-center p-0 m-0">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0">
+                <path
+                  opacity="0.4"
+                  d="M22 15.94C22 18.73 19.76 20.99 16.97 21H16.96H7.05C4.27 21 2 18.75 2 15.96V15.95C2 15.95 2.006 11.524 2.014 9.298C2.015 8.88 2.495 8.646 2.822 8.906C5.198 10.791 9.447 14.228 9.5 14.273C10.21 14.842 11.11 15.163 12.03 15.163C12.95 15.163 13.85 14.842 14.56 14.262C14.613 14.227 18.767 10.893 21.179 8.977C21.507 8.716 21.989 8.95 21.99 9.367C22 11.576 22 15.94 22 15.94Z"
+                  fill="#0B7077"
+                ></path>
+                <path
+                  d="M21.4761 5.67351C20.6101 4.04151 18.9061 2.99951 17.0301 2.99951H7.0501C5.1741 2.99951 3.4701 4.04151 2.6041 5.67351C2.4101 6.03851 2.5021 6.49351 2.8251 6.75151L10.2501 12.6905C10.7701 13.1105 11.4001 13.3195 12.0301 13.3195C12.0341 13.3195 12.0371 13.3195 12.0401 13.3195C12.0431 13.3195 12.0471 13.3195 12.0501 13.3195C12.6801 13.3195 13.3101 13.1105 13.8301 12.6905L21.2551 6.75151C21.5781 6.49351 21.6701 6.03851 21.4761 5.67351Z"
+                  fill="#0B7077"
+                ></path>
+              </svg>
+              <span class="box-border p-0 m-0 text-sm font-medium leading-7 text-teal-700">Email: info@onlearn.com</span>
+            </div>
+          </div>
+        </div>
+        <div class="box-border flex flex-col gap-5 items-center p-0 m-0">
+          <p class="box-border p-0 m-0 text-base text-center text-slate-900">Stay up to date with the latest courses</p>
+          <div class="box-border relative p-0 m-0 h-[74px] w-[425px] max-sm:w-full max-sm:max-w-[350px]">
+            <div class="box-border absolute top-0 left-0 p-0 m-0 bg-white rounded-2xl shadow-2xl size-full"></div>
+            <input type="email" placeholder="Email" class="box-border absolute p-0 m-0 text-base leading-8 text-teal-700 opacity-50 left-[22px] top-[23px] bg-transparent border-none outline-none" />
+            <button class="box-border flex absolute top-2.5 justify-center items-center px-12 py-3.5 m-0 w-32 bg-teal-700 rounded-3xl transition-all cursor-pointer duration-[0.3s] ease-[ease] h-[54px] right-[11px] hover:bg-teal-800">
+              <span class="box-border p-0 m-0 text-base font-medium text-white">Send</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

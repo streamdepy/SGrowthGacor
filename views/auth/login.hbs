@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Growth</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <main class="flex overflow-hidden flex-col items-center px-20 pt-20 pb-64 text-xl bg-white max-md:px-5 max-md:pb-24">
+        <div class="flex flex-col max-w-full w-[600px]">
+            <header class="flex gap-0 items-center self-center max-w-full text-8xl font-bold text-black whitespace-nowrap h-[194px] w-[450px] max-md:text-4xl">
+                <img
+                    src="https://api.builder.io/api/v1/image/assets/863c3774457247cf9941fba7937e9907/94785e9c07fee37f095b249f59aeba4255d32350?placeholderIfAbsent=true"
+                    alt="Growth Logo"
+                    class="object-contain shrink-0 self-stretch my-auto aspect-[0.52] w-[114px]"
+                />
+                <h1 class="self-stretch my-auto w-[422px] max-md:max-w-full max-md:text-4xl">
+                    growth
+                </h1>
+            </header>
+
+            <form class="flex flex-col w-full">
+                <div class="flex flex-col">
+                    <label for="email" class="self-start mt-32 font-medium text-gray-500 max-md:mt-10 max-md:ml-0.5">
+                        Email
+                    </label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Masukkan Email Usaha"
+                        class="px-10 py-5 mt-2 text-black rounded-3xl bg-gray-400 bg-opacity-40 max-md:px-5 max-md:max-w-full focus:outline-none focus:ring-2 focus:ring-orange-500"
+                        required
+                    />
+                </div>
+
+                <div class="flex flex-col">
+                    <label for="password" class="self-start mt-10 font-medium text-gray-500 max-md:ml-0.5">
+                        Password
+                    </label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Masukkan Password"
+                        class="px-10 py-5 mt-2 text-black rounded-3xl bg-gray-400 bg-opacity-40 max-md:px-5 max-md:max-w-full focus:outline-none focus:ring-2 focus:ring-orange-500"
+                        required
+                    />
+                </div>
+
+                <button
+                    type="submit"
+                    class="flex overflow-hidden gap-2.5 items-start self-end px-10 py-3 mt-10 text-base font-bold text-center text-white whitespace-nowrap bg-orange-500 rounded-xl shadow-2xl max-md:px-5 hover:bg-orange-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
+                >
+                    Login
+                </button>
+            </form>
+
+            <p class="self-start mt-6 text-lg text-black">
+                <span style="font-family: Raleway, -apple-system, Roboto, Helvetica, sans-serif; color: rgba(124, 131, 138, 1);">
+                    Belum Punya Akun?
+                </span>
+                <a
+                    href="#"
+                    style="font-family: Raleway, -apple-system, Roboto, Helvetica, sans-serif; color: rgba(249, 237, 50, 1);"
+                    class="hover:underline focus:outline-none focus:underline"
+                >
+                    Daftar
+                </a>
+            </p>
+        </div>
+    </main>
+</body>
+</html>
