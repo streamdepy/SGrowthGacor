@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar - Registration</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Outfit:wght@700&display=swap">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+        }
+        .font-outfit {
+            font-family: 'Outfit', sans-serif;
+        }
+        .background-pattern {
+            width: 933px;
+            height: 818px;
+            transform: rotate(11.66deg);
+            flex-shrink: 0;
+            opacity: 0.6;
+            position: absolute;
+            left: -406px;
+            top: 552px;
+        }
+        .blur-circle-green {
+            width: 582px;
+            height: 582px;
+            flex-shrink: 0;
+            border-radius: 582px;
+            opacity: 0.8;
+            background: #78c841;
+            filter: blur(184.1431884765625px);
+            position: absolute;
+            left: -126px;
+            top: -199px;
+        }
+        .blur-circle-orange {
+            width: 582px;
+            height: 582px;
+            flex-shrink: 0;
+            border-radius: 582px;
+            opacity: 0.8;
+            background: rgba(253, 102, 31, 0.49);
+            filter: blur(184.1431884765625px);
+            position: absolute;
+            left: 136px;
+            top: 597px;
+        }
+    </style>
+</head>
+<body class="overflow-hidden relative bg-lime-200 h-screen w-full max-md:h-auto max-md:min-h-screen">
+    <!-- Background decorative elements -->
+    <div class="background-pattern">
+        <svg width="649" height="472" viewBox="0 0 649 472" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g opacity="0.6">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M169.33 208.603C264.293 229.836 364.828 240.199 434.454 303.684C516.462 378.46 579.112 476.799 567.417 571.582C555.343 669.428 467.563 736.74 374.75 787.546C279.962 839.435 170.421 870.689 51.4296 854.039C-82.3093 835.326 -235.193 796.568 -306.046 692.285C-375.073 590.69 -314.573 476.936 -273.86 375.273C-241.519 294.513 -192.744 217.648 -102.359 183.657C-20.2185 152.767 76.1084 187.76 169.33 208.603Z" stroke="white"></path>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M232.037 170.751C357.232 200.155 437.8 309.103 500.398 409.033C554.912 496.057 571.407 590.928 551.745 681.121C532.675 768.593 488.356 855.904 395.271 891.258C308.335 924.276 207.1 861.604 107.159 849.974C-25.1851 834.573 -176.621 898.656 -274.807 813.279C-375.31 725.888 -354.078 586.647 -319.552 478.931C-288.497 382.039 -196.22 321.75 -100.038 268.012C0.118631 212.054 106.658 141.304 232.037 170.751Z" stroke="white"></path>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M253.826 194.554C372.689 199.779 502.962 266.868 557.471 362.285C608.941 452.381 526.96 537.495 501.329 627.801C479.186 705.818 488.404 795.693 419.856 847.153C341.894 905.678 229.234 945.302 121.649 912.828C17.5684 881.412 -14.0335 772.375 -82.2728 695.587C-158.776 609.498 -322.227 539.506 -295.886 442.981C-269.23 345.307 -86.3892 384.353 15.1911 338.446C105.218 297.761 146.562 189.839 253.826 194.554Z" stroke="white"></path>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M198.742 177.962C313.833 198.689 408.133 284.617 464.454 375.898C514.937 457.717 482.371 543.143 477.914 630.42C472.465 737.113 532.297 874.011 435.957 933.887C339.047 994.116 194.612 913.369 68.5714 884.827C-58.805 855.981 -216.582 865.817 -291.095 769.241C-365.39 672.947 -300.426 558.568 -259.508 459.601C-227.184 381.42 -164.83 324.118 -87.379 276.517C-1.8019 223.922 87.1695 157.868 198.742 177.962Z" stroke="white"></path>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M178.831 216.933C267.192 246.695 367.537 247.629 431.184 310.129C501.907 379.578 520.831 469.51 524.421 556.295C529.109 669.634 549.525 800.386 454.323 869.572C352.861 943.308 192.565 936.135 53.4777 898.543C-79.8882 862.497 -198.96 781.039 -267.644 674.44C-330.571 576.775 -310.981 469.417 -288.556 367.696C-267.031 270.058 -251.52 150.698 -144.579 116.202C-41.3366 82.9002 67.5793 179.462 178.831 216.933Z" stroke="white"></path>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M164.437 265.46C284.237 289.424 445.002 253.608 508.043 347.458C571.768 442.329 434.296 525.293 404.427 622.738C380.032 702.323 430.82 814.198 351.702 857.509C272.418 900.91 163.782 828.785 64.705 808.708C-41.1489 787.258 -172.423 815.158 -239.294 737.75C-306.468 659.992 -235.289 566.151 -221.644 477.241C-207.371 384.241 -247.868 262.834 -158.922 214.043C-69.7347 165.12 52.873 243.143 164.437 265.46Z" stroke="white"></path>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M175.399 234.956C261.466 259.004 329.045 312.122 390.487 372.364C466.512 446.904 558.248 521.314 563.064 615.049C568.606 722.916 524.535 839.914 416.741 883.353C312.65 925.301 188.18 848.66 70.351 813.607C-33.6826 782.658 -147.093 769.037 -219.229 694.159C-298.083 612.307 -346.807 502.937 -320.192 408.218C-294.738 317.628 -189.666 272.32 -91.0074 237.829C-8.62898 209.029 84.1871 209.47 175.399 234.956Z" stroke="white"></path>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M169.407 218.759C270.941 243.933 341.419 322.656 403.087 399.307C465.476 476.855 520.129 560.417 515.28 648.669C509.91 746.397 476.666 854.513 375.998 892.308C279.235 928.636 164.993 859.516 59.3677 819.834C-22.698 789.004 -98.5004 752.651 -156.393 692.298C-222.518 623.365 -291.193 545.472 -283.278 462.632C-275.006 376.057 -198.322 314.88 -116.1 270.584C-32.7579 225.686 66.6204 193.275 169.407 218.759Z" stroke="white"></path>
+            </g>
+        </svg>
+    </div>
+
+    <!-- Blur circles -->
+    <div class="blur-circle-green"></div>
+    <div class="blur-circle-orange"></div>
+
+    <!-- Phone mockup image -->
+    <img src="https://api.builder.io/api/v1/image/assets/TEMP/f5b10ab92987823a51e6117837832256d1c773b9?width=392"
+         alt="Phone mockup"
+         class="absolute shrink-0 aspect-[23/44] h-[375px] left-[212px] top-[210px] w-[196px] max-md:hidden">
+
+    <!-- Main content area -->
+    <main class="absolute top-0 shrink-0 h-[1024px] left-[730px] w-[791px] max-md:relative max-md:top-0 max-md:left-0 max-md:w-full">
+        <!-- White background panel -->
+        <div class="absolute top-0 left-0 shrink-0 bg-white rounded-3xl h-[760px] w-[991px] max-md:w-full"></div>
+
+        <!-- Content container -->
+        <div class="absolute top-32 shrink-0 h-[717px] left-[63px] w-[610px] max-md:left-[5%] max-md:max-w-[600px] max-md:top-[50px] max-md:w-[90%] max-sm:left-[2.5%] max-sm:top-[30px] max-sm:w-[95%]">
+
+            <!-- Logo and brand -->
+            <header class="flex absolute shrink-0 gap-0 items-center h-[135px] left-[3px] top-[-100px] w-[146px] max-md:relative max-md:top-0 max-md:left-0 max-md:mb-10">
+                <img src="https://api.builder.io/api/v1/image/assets/TEMP/271ead5e10553446658a22e01dc483cf47c76471?width=68"
+                     alt="Growth logo"
+                     class="relative shrink-0 aspect-[34/65] h-[65px] w-[34px]">
+                <h1 class="relative shrink-0 text-3xl font-bold text-black h-[29px] w-[117px] max-sm:text-3xl font-outfit">
+                    growth
+                </h1>
+            </header>
+
+            <!-- Page title -->
+            <h2 class="absolute top-0 text-2xl font-semibold text-black h-[31px] left-[291px] w-[77px] max-md:relative max-md:left-0 max-md:top-5 max-md:w-full max-md:text-center max-sm:text-2xl">
+                Daftar
+            </h2>
+
+            <!-- Registration form -->
+            <form class="absolute left-0 top-[87px] w-[460px] max-md:relative max-md:left-0 max-md:top-20 max-md:w-full max-sm:top-[70px]">
+
+            <!-- Company name and industry fields -->
+            <div class="flex gap-5 w-full max-md:flex-col max-md:gap-4">
+                <div class="relative h-[75px] w-[220px] max-md:w-full">
+                <label for="company-name" class="absolute top-0 left-0.5 text-base font-medium text-gray-500">
+                    Nama Perusahaan
+                </label>
+                <div class="absolute left-0 h-[48px] top-[24px] w-full">
+                    <input type="text" id="company-name" name="company-name" placeholder="Masukkan Nama Pe"
+                    class="absolute top-0 left-0 w-full h-full rounded-xl bg-gray-400 bg-opacity-40 px-4 text-base text-black placeholder-black placeholder-opacity-50 border-none outline-none">
+                </div>
+                </div>
+
+                <div class="relative h-[75px] w-[220px] max-md:w-full">
+                <label for="industry" class="absolute top-0 left-0.5 text-base font-medium text-gray-500">
+                    Bidang Industri
+                </label>
+                <div class="absolute left-0 h-[48px] top-[24px] w-full">
+                    <input type="text" id="industry" name="industry" placeholder="Masukkan Bidang Industri"
+                    class="absolute top-0 left-0 w-full h-full rounded-xl bg-gray-400 bg-opacity-40 px-4 text-base text-black placeholder-black placeholder-opacity-50 border-none outline-none">
+                </div>
+                </div>
+            </div>
+
+            <!-- NIB -->
+            <div class="relative mt-5 h-[75px] w-full">
+                <label for="nib" class="absolute top-0 left-0.5 text-base font-medium text-gray-500">
+                NIB/Nomor Usaha
+                </label>
+                <div class="absolute left-0 h-[48px] top-[24px] w-full">
+                <input type="text" id="nib" name="nib" placeholder="Masukkan NIB"
+                    class="absolute top-0 left-0 w-full h-full rounded-xl bg-gray-400 bg-opacity-40 px-4 text-base text-black placeholder-black placeholder-opacity-50 border-none outline-none">
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="relative mt-5 h-[75px] w-full">
+                <label for="email" class="absolute top-0 left-0.5 text-base font-medium text-gray-500">
+                Email
+                </label>
+                <div class="absolute left-0 h-[48px] top-[24px] w-full">
+                <input type="email" id="email" name="email" placeholder="Masukkan Email Usaha"
+                    class="absolute top-0 left-0 w-full h-full rounded-xl bg-gray-400 bg-opacity-40 px-4 text-base text-black placeholder-black placeholder-opacity-50 border-none outline-none">
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="relative mt-5 h-[75px] w-full">
+                <label for="password" class="absolute top-0 left-0.5 text-base font-medium text-gray-500">
+                Password
+                </label>
+                <div class="absolute left-0 h-[48px] top-[24px] w-full">
+                <input type="password" id="password" name="password" placeholder="Masukkan Password"
+                    class="absolute top-0 left-0 w-full h-full rounded-xl bg-gray-400 bg-opacity-40 px-4 text-base text-black placeholder-black placeholder-opacity-50 border-none outline-none">
+                </div>
+            </div>
+
+            <!-- Submit button -->
+            <div class="relative mt-8 flex justify-center">
+                <button type="submit"
+                class="px-6 py-2 bg-orange-500 rounded-lg shadow-md cursor-pointer hover:bg-orange-600 transition-colors">
+                <span class="text-sm font-bold text-white">Daftar</span>
+                </button>
+            </div>
+
+            <!-- Login link -->
+            <p class="relative mt-4 text-sm text-gray-500 text-center">
+                Already have an account?
+                <a href="#" class="text-yellow-400 hover:text-yellow-500 transition-colors">Log in</a>
+            </p>
+            </form>
+
+        </div>
+    </main>
+</body>
+</html>
