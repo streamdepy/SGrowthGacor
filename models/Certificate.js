@@ -1,20 +1,19 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
+const BusinessProfile = require("./BusinessProfile");
 
-const BlockchainHash = sequelize.define(
-  "BlockchainHash",
-  {
-    id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
-    certificate_id: { type: DataTypes.INTEGER, allowNull: false },
-    hash_value: { type: DataTypes.STRING(256), allowNull: false },
-    chain_name: { type: DataTypes.STRING(60), defaultValue: "Polygon" },
-    tx_hash: { type: DataTypes.STRING(120) },
-    recorded_at: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
-  },
-  {
-    tableName: "blockchain_hashes",
-    timestamps: false,
-  }
-);
+const Certificate = sequelize.define("Certificate", {
+  id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
+  business_id: { type: DataTypes.STRING, allowNull: false },
+  certificate_number: { type: DataTypes.STRING(80), unique: true },
+  certificate_url: { type: DataTypes.TEXT, allowNull: false },
+  issued_at: { type: DataTypes.DATE, defaultValue: DataTypes.NOW }
+}, {
+  tableName: "certificates",
+  timestamps: false
+});
 
-module.exports = BlockchainHash;
+BusinessProfile.hasMany(Certificate, { foreignKey: "business_id" });
+Certificate.belongsTo(BusinessProfile, { foreignKey: "business_id" });
+
+module.exports = Certificate;

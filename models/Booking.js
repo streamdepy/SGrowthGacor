@@ -5,7 +5,7 @@ const Booking = sequelize.define(
   "Booking",
   {
     id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
-    business_id: { type: DataTypes.INTEGER, allowNull: false },
+    business_id: { type: DataTypes.STRING, allowNull: false },
     auditor_id: { type: DataTypes.INTEGER, allowNull: false },
     status: {
       type: DataTypes.ENUM("pending", "confirmed", "rejected", "completed", "cancelled"),
