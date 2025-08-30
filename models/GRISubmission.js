@@ -1,21 +1,28 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, Model } = require("sequelize");
 const sequelize = require("../config/database");
-const BusinessProfile = require("./BusinessProfile");
 
-const GRISubmission = sequelize.define("GRISubmission", {
-  id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
-  gri_code: { type: DataTypes.STRING(50), allowNull: false },
-  section: { type: DataTypes.ENUM("general","economic","environmental","social"), allowNull: false },
-  input_data: { type: DataTypes.JSON },
-  period_start: { type: DataTypes.DATE },
-  period_end: { type: DataTypes.DATE },
-  created_at: { type: DataTypes.DATE, defaultValue: DataTypes.NOW }
-}, {
-  tableName: "gri_submissions",
-  timestamps: false
-});
+class GRISubmission extends Model {}
 
-BusinessProfile.hasMany(GRISubmission, { foreignKey: "business_id" });
-GRISubmission.belongsTo(BusinessProfile, { foreignKey: "business_id" });
+GRISubmission.init(
+  {
+    id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
+    business_id: { type: DataTypes.INTEGER, allowNull: false },
+    gri_code: { type: DataTypes.STRING(50), allowNull: false },
+    section: {
+      type: DataTypes.ENUM("general", "economic", "environmental", "social", "governance"),
+      allowNull: false,
+    },
+    input_data: { type: DataTypes.JSON },
+    period_start: { type: DataTypes.DATE },
+    period_end: { type: DataTypes.DATE },
+    created_at: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
+  },
+  {
+    sequelize,
+    modelName: "GRISubmission",
+    tableName: "gri_submissions",
+    timestamps: false,
+  }
+);
 
 module.exports = GRISubmission;

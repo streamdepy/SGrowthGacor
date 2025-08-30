@@ -1,3 +1,10 @@
+// AuthController
+
+// - login            
+// - ganti password   
+// - middlewareCheck  
+// - logout (opsional)
+
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { User } = require("../models");
@@ -26,13 +33,14 @@ exports.login = async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ where: { email } });
 
-    if (!user) return res.status(401).send("User not found");
+    if (!user) {return res.status(401).send("User not found");}
 
     const valid = await bcrypt.compare(password, user.password);
+    console.log(user.password + " ------ " + password + " ------ " + valid);
     if (!valid) return res.status(401).send("Invalid password");
 
     // JWT session
-    const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ id: user.id, role: user.role }, process.env.SECRET_KEY || 'supersecretkey', {
       expiresIn: "1d",
     });
 

@@ -1,237 +1,219 @@
 "use strict";
 
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up(queryInterface) {
     // USERS
-    await queryInterface.bulkInsert("users", [
-      {
-        id: 1,
-        name: "UMKM Test",
-        email: "umkm@test.com",
-        password: "hashed_password",
-        role: "umkm",
-        created_at: new Date()
-      },
-      {
-        id: 2,
-        name: "Auditor Test",
-        email: "auditor@test.com",
-        password: "hashed_password",
-        role: "auditor",
-        created_at: new Date()
-      },
-      {
-        id: 3,
-        name: "Admin Test",
-        email: "admin@test.com",
-        password: "hashed_password",
-        role: "admin",
-        created_at: new Date()
-      }
-    ]);
+    const users = await queryInterface.bulkInsert(
+      "users",
+      [
+        {
+          name: "UMKM Owner",
+          email: "umkm@example.com",
+          password: "hashedpassword1",
+          role: "umkm",
+          avatar_url: null,
+        },
+        {
+          name: "Auditor One",
+          email: "auditor@example.com",
+          password: "hashedpassword2",
+          role: "auditor",
+          avatar_url: null,
+        },
+        {
+          name: "Admin",
+          email: "admin@example.com",
+          password: "hashedpassword3",
+          role: "admin",
+          avatar_url: null,
+        },
+      ],
+      { returning: true }
+    );
 
     // BUSINESS PROFILES
-    await queryInterface.bulkInsert("business_profiles", [
-      {
-        id: 1,
-        user_id: 1,
-        business_name: "Warung Kopi Mantap",
-        business_scale: "small",
-        industry_category: "Food & Beverage",
-        location: "Padang",
-        created_at: new Date()
-      }
-    ]);
+    const businesses = await queryInterface.bulkInsert(
+      "business_profiles",
+      [
+        {
+          user_id: 1,
+          business_name: "Green Coffee Co.",
+          business_scale: "small",
+          industry_category: "Food & Beverage",
+          location: "Padang",
+          latitude: -0.9471,
+          longitude: 100.4172,
+        },
+      ],
+      { returning: true }
+    );
 
     // AUDITOR PROFILES
-    await queryInterface.bulkInsert("auditor_profiles", [
-      {
-        id: 1,
-        user_id: 2,
-        headline: "Sustainability Auditor",
-        bio: "Berpengalaman 5 tahun dalam ESG reporting",
-        years_experience: 5,
-        expertise_area: "Environmental",
-        hourly_rate: 500000,
-        currency: "IDR",
-        created_at: new Date()
-      }
-    ]);
+    const auditors = await queryInterface.bulkInsert(
+      "auditor_profiles",
+      [
+        {
+          user_id: 2,
+          headline: "Sustainability Consultant",
+          bio: "10+ years in ESG auditing",
+          years_experience: 10,
+          expertise_area: "Environmental, Social, Governance",
+          hourly_rate: 500000,
+          currency: "IDR",
+          cv_url: "http://example.com/cv.pdf",
+        },
+      ],
+      { returning: true }
+    );
 
     // AUDITOR PORTFOLIOS
     await queryInterface.bulkInsert("auditor_portfolios", [
       {
-        id: 1,
         auditor_id: 1,
-        title: "Audit ESG 2024",
-        description: "Audit perusahaan manufaktur terkait GRI reporting",
+        title: "ESG Certification Project",
+        description: "Audited 50 SMEs for ESG compliance",
         file_url: null,
-        link_url: "https://linkedin.com/testportfolio",
-        created_at: new Date()
-      }
+        link_url: "http://portfolio-link.com",
+      },
     ]);
 
     // GRI SUBMISSIONS
-    await queryInterface.bulkInsert("gri_submissions", [
-      {
-        id: 1,
-        business_id: 1,
-        gri_code: "GRI 302-1",
-        section: "environmental",
-        input_data: JSON.stringify({ energy_consumed: "1000 kWh" }),
-        period_start: new Date("2025-01-01"),
-        period_end: new Date("2025-06-30"),
-        created_at: new Date()
-      }
-    ]);
+    const submissions = await queryInterface.bulkInsert(
+      "gri_submissions",
+      [
+        {
+          business_id: 1,
+          section: "general",
+          input_data: JSON.stringify({ company_size: "50 employees", sector: "F&B" }),
+          period_start: "2025-01-01",
+          period_end: "2025-06-30",
+        },
+      ],
+      { returning: true }
+    );
 
     // SUPPORTING DOCUMENTS
     await queryInterface.bulkInsert("supporting_documents", [
       {
-        id: 1,
         submission_id: 1,
-        document_name: "Laporan Energi",
-        file_url: "https://example.com/docs/energi.pdf",
-        uploaded_at: new Date()
-      }
+        document_name: "Business License",
+        file_url: "http://example.com/license.pdf",
+      },
     ]);
 
     // VALIDATION RESULTS
     await queryInterface.bulkInsert("validation_results", [
       {
-        id: 1,
         submission_id: 1,
         validator_type: "ai",
-        validator_user_id: null,
-        validation_summary: "Data sesuai format",
+        validation_summary: "Submission looks valid",
         is_valid: true,
-        ai_feedback: "Bagus, data sudah valid",
-        validated_at: new Date()
-      }
+        ai_feedback: "Good compliance with ESG standards",
+      },
     ]);
 
     // ESG SCORES
     await queryInterface.bulkInsert("esg_scores", [
       {
-        id: 1,
         business_id: 1,
-        score_environment: 70.5,
-        score_social: 65.0,
-        score_economic: 80.0,
-        scored_at: new Date()
-      }
-    ]);
-
-    // CHAT LOGS
-    await queryInterface.bulkInsert("chat_logs", [
-      {
-        id: 1,
-        user_id: 1,
-        question: "Apa itu indikator GRI?",
-        response: "GRI adalah standar global untuk pelaporan keberlanjutan.",
-        created_at: new Date()
-      }
+        score_environment: 80.5,
+        score_social: 75.0,
+        score_economic: 85.0,
+        score_governance: 70.0,
+      },
     ]);
 
     // CERTIFICATES
     await queryInterface.bulkInsert("certificates", [
       {
-        id: 1,
         business_id: 1,
         certificate_number: "CERT-2025-001",
-        certificate_url: "https://example.com/certificates/sgrowth.pdf",
-        issued_at: new Date()
-      }
+        certificate_url: "http://example.com/cert.pdf",
+      },
     ]);
 
     // BLOCKCHAIN HASHES
     await queryInterface.bulkInsert("blockchain_hashes", [
       {
-        id: 1,
         certificate_id: 1,
-        hash_value: "0xabcdef1234567890",
+        hash_value: "0xABC123HASHVALUE",
         chain_name: "Polygon",
-        tx_hash: "0x12345abcde",
-        recorded_at: new Date()
-      }
+        tx_hash: "0xTRANSACTION123",
+      },
     ]);
 
     // BOOKINGS
     await queryInterface.bulkInsert("bookings", [
       {
-        id: 1,
         business_id: 1,
         auditor_id: 1,
         status: "confirmed",
-        purpose: "Konsultasi GRI",
-        scheduled_at: new Date("2025-08-20 10:00:00"),
-        duration_minutes: 60,
-        price: 750000,
+        purpose: "ESG Audit",
+        scheduled_at: "2025-09-01 10:00:00",
+        duration_minutes: 120,
+        price: 1000000,
         currency: "IDR",
-        notes: "Bahas indikator GRI 302-1",
-        created_at: new Date(),
-        updated_at: new Date()
-      }
+      },
     ]);
 
     // BOOKING MESSAGES
     await queryInterface.bulkInsert("booking_messages", [
       {
-        id: 1,
         booking_id: 1,
         sender_user_id: 1,
-        message: "Halo, apakah konsultasi bisa dilakukan online?",
-        sent_at: new Date()
+        message: "Hello, can we confirm the audit details?",
       },
       {
-        id: 2,
         booking_id: 1,
         sender_user_id: 2,
-        message: "Bisa, kita pakai Zoom ya.",
-        sent_at: new Date()
-      }
+        message: "Yes, the schedule is confirmed.",
+      },
     ]);
 
     // PAYMENTS
     await queryInterface.bulkInsert("payments", [
       {
-        id: 1,
         booking_id: 1,
-        amount: 750000,
+        amount: 1000000,
         currency: "IDR",
         method: "transfer",
         status: "paid",
-        provider: "Midtrans",
-        transaction_ref: "MID-2025-0001",
-        paid_at: new Date(),
-        created_at: new Date()
-      }
+        provider: "BCA",
+        transaction_ref: "TRX123456",
+        paid_at: "2025-08-20 12:00:00",
+      },
     ]);
 
     // COMMUNITY POSTS
     await queryInterface.bulkInsert("community_posts", [
       {
-        id: 1,
         author_user_id: 1,
-        title: "Selamat datang di Sgrowth!",
-        content: "Ini adalah postingan perdana di komunitas global kita.",
-        created_at: new Date()
-      }
+        title: "How to start ESG reporting?",
+        content: "Can someone share their experience with ESG indicators?",
+      },
     ]);
 
     // COMMUNITY COMMENTS
     await queryInterface.bulkInsert("community_comments", [
       {
-        id: 1,
         post_id: 1,
         author_user_id: 2,
-        content: "Mantap, mari kita bangun komunitas ini.",
-        created_at: new Date()
-      }
+        content: "You should start with General Information section first.",
+      },
+    ]);
+
+    // CHAT LOGS
+    await queryInterface.bulkInsert("chat_logs", [
+      {
+        user_id: 1,
+        question: "What is GRI?",
+        response: "GRI stands for Global Reporting Initiative, a framework for sustainability reporting.",
+      },
     ]);
   },
 
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface) {
+    await queryInterface.bulkDelete("chat_logs", null, {});
     await queryInterface.bulkDelete("community_comments", null, {});
     await queryInterface.bulkDelete("community_posts", null, {});
     await queryInterface.bulkDelete("payments", null, {});
@@ -239,7 +221,6 @@ module.exports = {
     await queryInterface.bulkDelete("bookings", null, {});
     await queryInterface.bulkDelete("blockchain_hashes", null, {});
     await queryInterface.bulkDelete("certificates", null, {});
-    await queryInterface.bulkDelete("chat_logs", null, {});
     await queryInterface.bulkDelete("esg_scores", null, {});
     await queryInterface.bulkDelete("validation_results", null, {});
     await queryInterface.bulkDelete("supporting_documents", null, {});
@@ -248,5 +229,5 @@ module.exports = {
     await queryInterface.bulkDelete("auditor_profiles", null, {});
     await queryInterface.bulkDelete("business_profiles", null, {});
     await queryInterface.bulkDelete("users", null, {});
-  }
+  },
 };

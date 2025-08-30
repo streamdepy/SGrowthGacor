@@ -18,10 +18,10 @@ app.engine("hbs", engine({
   extname: ".hbs",
   defaultLayout: "main",
   layoutsDir: path.join(__dirname, "views/layouts"),
-  partialsDir: path.join(__dirname, "views/partials")
 }));
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "views"));
+app.set("view options", { layout: "partials" });
 
 // routes
 const authRoutes = require("./routes/auth");
