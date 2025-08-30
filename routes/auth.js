@@ -13,7 +13,11 @@ router.get("/login", function (req, res, next) {
 router.post("/login", authController.login);
 
 router.get("/register", (req, res) => {
-  res.render("auth/register");
+  res.render("auth/register", {
+    title: "reg",
+    layout: "auth_login",
+  });
+  
 });
 
 router.post("/register", authController.register);
