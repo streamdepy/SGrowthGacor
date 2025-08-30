@@ -2,7 +2,12 @@ const express = require("express");
 const router = express.Router();
 const authController = require("../controllers/authController");
 
-router.get("/", (req, res) => res.render("pages/home"));
+router.get("/", function (req, res, next) {
+  res.render("pages/home", {
+    title: "Login",
+    layout: "partials",
+  });
+});
 router.get("/login", function (req, res, next) {
   res.render("auth/login", {
     title: "Login",
