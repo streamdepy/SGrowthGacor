@@ -5,7 +5,7 @@ const ESGScore = sequelize.define(
   "ESGScore",
   {
     id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
-    business_id: { type: DataTypes.INTEGER, allowNull: false },
+    business_id: { type: DataTypes.STRING, allowNull: false },
     score_environment: { type: DataTypes.DECIMAL(4, 2), defaultValue: 0.0 },
     score_social: { type: DataTypes.DECIMAL(4, 2), defaultValue: 0.0 },
     score_economic: { type: DataTypes.DECIMAL(4, 2), defaultValue: 0.0 },

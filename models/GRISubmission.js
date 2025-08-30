@@ -6,7 +6,7 @@ class GRISubmission extends Model {}
 GRISubmission.init(
   {
     id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
-    business_id: { type: DataTypes.INTEGER, allowNull: false },
+    business_id: { type: DataTypes.STRING, allowNull: false },
     gri_code: { type: DataTypes.STRING(50), allowNull: false },
     section: {
       type: DataTypes.ENUM("general", "economic", "environmental", "social", "governance"),

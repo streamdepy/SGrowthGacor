@@ -19,7 +19,9 @@ module.exports = {
 
     // BUSINESS PROFILES
     await queryInterface.createTable("business_profiles", {
-      id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
+      id: { type: Sequelize.STRING,
+        primaryKey: true,
+        allowNull: false, },
       user_id: { type: Sequelize.INTEGER, allowNull: false },
       business_name: { type: Sequelize.STRING(180), allowNull: false },
       business_scale: { type: Sequelize.ENUM("small", "medium"), allowNull: false },
@@ -81,7 +83,7 @@ module.exports = {
     // GRI SUBMISSIONS
     await queryInterface.createTable("gri_submissions", {
       id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
-      business_id: { type: Sequelize.INTEGER, allowNull: false },
+      business_id: { type: Sequelize.STRING, allowNull: false },
       section: {
         type: Sequelize.ENUM("general", "economic", "environmental", "social", "governance"),
         allowNull: false,
@@ -149,7 +151,7 @@ module.exports = {
     // ESG SCORES
     await queryInterface.createTable("esg_scores", {
       id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
-      business_id: { type: Sequelize.INTEGER, allowNull: false },
+      business_id: { type: Sequelize.STRING, allowNull: false },
       score_environment: { type: Sequelize.DECIMAL(4, 2), defaultValue: 0.0 },
       score_social: { type: Sequelize.DECIMAL(4, 2), defaultValue: 0.0 },
       score_economic: { type: Sequelize.DECIMAL(4, 2), defaultValue: 0.0 },
@@ -167,7 +169,7 @@ module.exports = {
     // CERTIFICATES
     await queryInterface.createTable("certificates", {
       id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
-      business_id: { type: Sequelize.INTEGER, allowNull: false },
+      business_id: { type: Sequelize.STRING, allowNull: false },
       certificate_number: { type: Sequelize.STRING(80), unique: true },
       certificate_url: { type: Sequelize.TEXT, allowNull: false },
       issued_at: { type: Sequelize.DATE, defaultValue: Sequelize.literal("CURRENT_TIMESTAMP") },
@@ -205,7 +207,7 @@ module.exports = {
     // BOOKINGS
     await queryInterface.createTable("bookings", {
       id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
-      business_id: { type: Sequelize.INTEGER, allowNull: false },
+      business_id: { type: Sequelize.STRING, allowNull: false },
       auditor_id: { type: Sequelize.INTEGER, allowNull: false },
       status: {
         type: Sequelize.ENUM("pending", "confirmed", "rejected", "completed", "cancelled"),
