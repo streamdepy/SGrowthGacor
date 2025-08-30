@@ -94,46 +94,12 @@
             </header>
 
             <!-- Page title -->
-            <h2 class="absolute top-0 text-2xl font-semibold text-black h-[31px] left-[291px] w-[77px] max-md:relative max-md:left-0 max-md:top-5 max-md:w-full max-md:text-center max-sm:text-2xl">
+            <h2 class="absolute top-0 text-2xl font-semibold text-black h-[31px] left-[391px] w-[77px] max-md:relative max-md:left-0 max-md:top-5 max-md:w-full max-md:text-center max-sm:text-2xl">
                 Daftar
             </h2>
 
             <!-- Registration form -->
-            <form class="absolute left-0 top-[87px] w-[460px] max-md:relative max-md:left-0 max-md:top-20 max-md:w-full max-sm:top-[70px]">
-
-            <!-- Company name and industry fields -->
-            <div class="flex gap-5 w-full max-md:flex-col max-md:gap-4">
-                <div class="relative h-[75px] w-[220px] max-md:w-full">
-                <label for="company-name" class="absolute top-0 left-0.5 text-base font-medium text-gray-500">
-                    Nama Perusahaan
-                </label>
-                <div class="absolute left-0 h-[48px] top-[24px] w-full">
-                    <input type="text" id="company-name" name="company-name" placeholder="Masukkan Nama Pe"
-                    class="absolute top-0 left-0 w-full h-full rounded-xl bg-gray-400 bg-opacity-40 px-4 text-base text-black placeholder-black placeholder-opacity-50 border-none outline-none">
-                </div>
-                </div>
-
-                <div class="relative h-[75px] w-[220px] max-md:w-full">
-                <label for="industry" class="absolute top-0 left-0.5 text-base font-medium text-gray-500">
-                    Bidang Industri
-                </label>
-                <div class="absolute left-0 h-[48px] top-[24px] w-full">
-                    <input type="text" id="industry" name="industry" placeholder="Masukkan Bidang Industri"
-                    class="absolute top-0 left-0 w-full h-full rounded-xl bg-gray-400 bg-opacity-40 px-4 text-base text-black placeholder-black placeholder-opacity-50 border-none outline-none">
-                </div>
-                </div>
-            </div>
-
-            <!-- NIB -->
-            <div class="relative mt-5 h-[75px] w-full">
-                <label for="nib" class="absolute top-0 left-0.5 text-base font-medium text-gray-500">
-                NIB/Nomor Usaha
-                </label>
-                <div class="absolute left-0 h-[48px] top-[24px] w-full">
-                <input type="text" id="nib" name="nib" placeholder="Masukkan NIB"
-                    class="absolute top-0 left-0 w-full h-full rounded-xl bg-gray-400 bg-opacity-40 px-4 text-base text-black placeholder-black placeholder-opacity-50 border-none outline-none">
-                </div>
-            </div>
+            <form class="absolute left-0 top-[37px] w-[860px] max-md:relative max-md:left-0 max-md:top-20 max-md:w-full max-sm:top-[70px]">
 
             <!-- Email -->
             <div class="relative mt-5 h-[75px] w-full">
@@ -143,6 +109,31 @@
                 <div class="absolute left-0 h-[48px] top-[24px] w-full">
                 <input type="email" id="email" name="email" placeholder="Masukkan Email Usaha"
                     class="absolute top-0 left-0 w-full h-full rounded-xl bg-gray-400 bg-opacity-40 px-4 text-base text-black placeholder-black placeholder-opacity-50 border-none outline-none">
+                </div>
+            </div>
+
+            <div class="relative mt-5 h-[75px] w-full">
+                <label for="pic-name" class="absolute top-0 left-0.5 text-base font-medium text-gray-500">
+                    Nama PIC
+                </label>
+                <div class="absolute left-0 h-[48px] top-[24px] w-full">
+                    <input type="text" id="industry" name="industry" placeholder="Masukkan Nama PIC"
+                    class="absolute top-0 left-0 w-full h-full rounded-xl bg-gray-400 bg-opacity-40 px-4 text-base text-black placeholder-black placeholder-opacity-50 border-none outline-none">
+                </div>
+            </div>
+
+            <!-- Role Select -->
+            <div class="relative mt-5 h-[75px] w-full">
+                <label for="role" class="absolute top-0 left-0.5 text-base font-medium text-gray-500">
+                Masuk Sebagai
+                </label>
+                <div class="absolute left-0 h-[48px] top-[24px] w-full">
+                <select id="role" name="role"
+                    class="absolute top-0 left-0 w-full h-full rounded-xl bg-gray-400 bg-opacity-40 px-4 text-base text-gray border-none outline-none">
+                    <option value="" disabled selected>Pilih Role</option>
+                    <option value="umkm">UMKM</option>
+                    <option value="auditor">Auditor</option>
+                </select>
                 </div>
             </div>
 
@@ -157,18 +148,21 @@
                 </div>
             </div>
 
+
+
+
             <!-- Submit button -->
-            <div class="relative mt-8 flex justify-center">
+            <div class="relative mt-8 flex justify-end">
                 <button type="submit"
-                class="px-6 py-2 bg-orange-500 rounded-lg shadow-md cursor-pointer hover:bg-orange-600 transition-colors">
-                <span class="text-sm font-bold text-white">Daftar</span>
+                class="px-6 py-2 bg-orange-500 rounded-xl shadow-md cursor-pointer hover:bg-orange-600 transition-colors">
+                <span class="text-lg font-bold text-white">Daftar</span>
                 </button>
             </div>
 
             <!-- Login link -->
-            <p class="relative mt-4 text-sm text-gray-500 text-center">
+            <p class="relative mt-4 text-sm text-gray-500 text-start">
                 Already have an account?
-                <a href="#" class="text-yellow-400 hover:text-yellow-500 transition-colors">Log in</a>
+                <a href="#" class="text-yellow-400 font-semibold hover:text-yellow-500 transition-colors">Log in</a>
             </p>
             </form>
 
