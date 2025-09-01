@@ -25,8 +25,10 @@ app.set("view options", { layout: "partials" });
 
 // routes
 const authRoutes = require("./routes/auth");
+const umkmRoutes = require("./routes/umkm");
 app.use("/", authRoutes);
 app.use("/auth", authRoutes);
+app.use("/umkm", umkmRoutes);
 
 // DB Sync
 sequelize.sync().then(() => {
