@@ -1,0 +1,409 @@
+<main class="flex flex-col items-end mt-10 ml-20 w-full max-w-[1211px] max-md:mt-10 max-md:max-w-full">
+    <h2 class="self-start text-3xl font-semibold text-neutral-900">GI ( General Information)</h2>
+
+<!-- General Business Information Section -->
+<section class="flex flex-col items-start py-14 pl-16 pr-16 mt-10 w-full bg-white rounded-2xl shadow-2xl max-w-[981px] max-md:pl-5 max-md:mt-10 max-md:mr-1.5 max-md:max-w-full">
+  <h3 class="text-3xl font-semibold text-center text-teal-700">Informasi Umum Usaha</h3>
+  <p class="mt-7 text-xl leading-none text-gray-500 max-md:max-w-full">
+    Lengkapi field yang diperlukan untuk melanjutkan ke step berikutnya
+  </p>
+
+  <!-- Organization Name and Activity Row -->
+  <div class="mt-14 mr-0 w-full max-md:mt-10 max-md:max-w-full">
+    <div class="flex gap-5 max-md:flex-col">
+      <!-- Organization Name -->
+      <div class="w-6/12 max-md:ml-0 max-md:w-full">
+        <div class="px-4 py-3">
+          <label class="block pb-2 text-base font-medium">Nama Perusahaan</label>
+          <input type="text" placeholder="Masukkan Nama Perusahaan"
+            class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+        </div>
+      </div>
+
+      <!-- Activity Tags -->
+      <div class="ml-5 w-6/12 max-md:ml-0 max-md:w-full">
+        <div class="mt-2 w-full font-medium whitespace-nowrap max-md:mt-6 max-md:max-w-full">
+          <label class="block pb-2 text-base min-h-[42px] text-neutral-900 max-md:max-w-full">Aktivitas</label>
+          <div class="flex gap-2 max-w-full text-sm leading-6 text-teal-700 w-[347px]">
+            <button class="flex overflow-hidden items-center px-4 py-1 bg-teal-700 min-h-[29px] rounded-[30px] text-neutral-50 activity-tag active" data-value="produksi">
+              Produksi
+            </button>
+            <button class="flex overflow-hidden items-center px-4 py-1 border border-gray-300 border-solid bg-slate-50 min-h-[29px] rounded-[30px] activity-tag" data-value="jasa">
+              Jasa
+            </button>
+            <button class="flex overflow-hidden items-center px-4 py-1 border border-gray-300 border-solid bg-slate-50 min-h-[29px] rounded-[30px] activity-tag" data-value="distribusi">
+              Distribusi
+            </button>
+            <button class="flex overflow-hidden items-center px-4 py-1 border border-gray-300 border-solid bg-slate-50 min-h-[29px] rounded-[30px] activity-tag" data-value="lainnya">
+              Lainnya
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Address, City, Province Row -->
+  <div class="self-stretch w-full max-md:mr-2.5 max-md:max-w-full">
+    <div class="flex max-md:flex-col">
+      <!-- Address -->
+      <div class="w-[52%] max-md:ml-0 max-md:w-full">
+        <div class="px-4 py-3">
+          <label class="block pb-2 text-base font-medium">Alamat</label>
+          <input type="text" placeholder="Masukkan Alamat"
+            class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+        </div>
+      </div>
+
+      <!-- City -->
+      <div class="ml-5 w-[24%] max-md:ml-0 max-md:w-full">
+        <div class="px-4 py-3">
+          <label class="block pb-2 text-base font-medium">Kota</label>
+          <input type="text" placeholder="Kota"
+            class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+        </div>
+      </div>
+
+      <!-- Province -->
+      <div class="ml-5 w-[24%] max-md:ml-0 max-md:w-full">
+        <div class="px-4 py-3">
+          <label class="block pb-2 text-base font-medium">Provinsi</label>
+          <input type="text" placeholder="Provinsi"
+            class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Business Entity Dropdown -->
+  <div class="flex flex-wrap gap-4 items-end px-4 py-3 text-base">
+    <div class="grow shrink min-w-40 w-[358px] max-md:max-w-full">
+      <label class="block pb-2 text-base font-medium">Badan Usaha</label>
+      <select
+        class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+        <option value="">Pilih</option>
+        <option>PT</option>
+        <option>CV</option>
+        <option>Koperasi</option>
+        <option>Perseorangan</option>
+      </select>
+    </div>
+  </div>
+</section>
+
+<!-- Market Activity Section -->
+<section class="py-14 pl-11 mt-14 max-w-full bg-white rounded-2xl shadow-2xl w-[981px] max-md:pl-5 max-md:mt-10 max-md:mr-1.5">
+  <div class="flex gap-5 max-md:flex-col">
+    <!-- Market Activity Tags -->
+    <div class="w-[41%] max-md:ml-0 max-md:w-full">
+      <div class="flex z-10 flex-col mr-0 max-md:mt-10 max-md:max-w-full">
+        <h3 class="self-start text-3xl font-semibold text-teal-700">Aktivitas Pasar</h3>
+        <div class="pl-6 mt-12 w-full font-medium whitespace-nowrap max-md:pl-5 max-md:mt-10 max-md:max-w-full">
+          <label class="block pb-2 text-base min-h-[42px] text-neutral-900 max-md:max-w-full">Aktivitas</label>
+          <div class="flex gap-3 max-w-full text-sm leading-6 w-[246px]">
+            <button class="flex overflow-hidden items-center px-4 py-1 bg-teal-700 min-h-[29px] rounded-[30px] text-neutral-50 market-tag active" data-value="lokal">
+              Lokal
+            </button>
+            <div class="flex gap-1 text-teal-700">
+              <button class="flex overflow-hidden items-center px-4 py-1 border border-gray-300 border-solid bg-slate-50 min-h-[29px] rounded-[30px] market-tag" data-value="domestik">
+                Domestik
+              </button>
+              <button class="flex overflow-hidden items-center px-4 py-1 border border-gray-300 border-solid bg-slate-50 min-h-[29px] rounded-[30px] market-tag" data-value="ekspor">
+                Ekspor
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Employee Count -->
+    <div class="ml-5 w-1/5 max-md:ml-0 max-md:w-full">
+      <div class="px-4 py-3 mt-12 max-md:mt-10">
+        <label class="block pb-2 text-base font-medium">Karyawan (org)</label>
+        <input type="number" placeholder="0"
+          class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+      </div>
+    </div>
+
+    <!-- Volume per Month -->
+    <div class="ml-5 w-1/5 max-md:ml-0 max-md:w-full">
+      <div class="px-4 py-3 mt-12 max-md:mt-10">
+        <label class="block pb-2 text-base font-medium">Volume/bulan</label>
+        <input type="text" placeholder="cth: 1000 unit"
+          class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+      </div>
+    </div>
+
+    <!-- Annual Revenue -->
+    <div class="ml-5 w-1/5 max-md:ml-0 max-md:w-full">
+      <div class="px-4 py-3 mt-12 max-md:mt-10">
+        <label class="block pb-2 text-base font-medium">Pendapatan/thn</label>
+        <input type="text" placeholder="cth: Rp 500 jt"
+          class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Scale & Employees Section -->
+<section class="flex flex-col py-14 pl-11 mt-14 w-full bg-white rounded-2xl shadow-2xl max-w-[981px] max-md:pl-5 max-md:mt-10 max-md:mr-1.5 max-md:max-w-full">
+  <h3 class="self-start text-3xl font-semibold text-teal-700">Skala & Karyawan</h3>
+  <div class="mt-5 w-full max-md:-mr-1.5 max-md:max-w-full">
+    <div class="flex gap-5 max-md:flex-col">
+      <!-- Permanent Workers -->
+      <div class="w-6/12 max-md:ml-0 max-md:w-full">
+        <div class="px-4 py-3">
+          <label class="block pb-2 text-base font-medium">Pekerja Tetap (org)</label>
+          <input type="number" placeholder="0"
+            class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+        </div>
+      </div>
+
+      <!-- Contract Workers -->
+      <div class="ml-5 w-6/12 max-md:ml-0 max-md:w-full">
+        <div class="px-4 py-3">
+          <label class="block pb-2 text-base font-medium">Pekerja Kontrak (org)</label>
+          <input type="number" placeholder="0"
+            class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Values & Responsibility Section -->
+<section class="flex flex-col px-20 pt-12 pb-8 mt-14 w-full bg-white rounded-2xl shadow-2xl max-w-[981px] max-md:px-5 max-md:mt-10 max-md:mr-1.5 max-md:max-w-full">
+  <h3 class="self-start text-3xl font-semibold text-teal-700">Nilai & Tanggung Jawab</h3>
+  <div class="mt-5 ml-6 max-md:max-w-full">
+    <div class="flex gap-5 max-md:flex-col">
+      <!-- Standards Tags -->
+      <div class="w-6/12 max-md:ml-0 max-md:w-full">
+        <div class="flex z-10 flex-col items-start self-stretch my-auto mr-0 w-full text-sm font-medium text-teal-700 max-md:mt-5 max-md:max-w-full">
+          <label class="self-stretch pb-2 text-base min-h-[42px] text-neutral-900 max-md:max-w-full">Standar Nilai</label>
+          <div class="flex gap-3 max-w-full leading-6 w-[263px]">
+            <button class="flex overflow-hidden items-center px-4 py-1 bg-teal-700 min-h-[29px] rounded-[30px] text-neutral-50 standard-tag active" data-value="iso19001">
+              ISO 19001
+            </button>
+            <button class="flex overflow-hidden items-center py-1 pr-3.5 pl-4 border border-gray-300 border-solid bg-slate-50 min-h-[29px] rounded-[30px] standard-tag" data-value="iso14001">
+              ISO 14001
+            </button>
+            <button class="flex overflow-hidden items-center px-4 py-1 whitespace-nowrap border border-gray-300 border-solid bg-slate-50 min-h-[29px] rounded-[30px] standard-tag" data-value="sni">
+              SNI
+            </button>
+          </div>
+          <div class="flex gap-5 justify-between mt-2 max-w-full leading-6 w-[181px]">
+            <button class="flex overflow-hidden items-center px-4 py-1 whitespace-nowrap border border-gray-300 border-solid bg-slate-50 min-h-[29px] rounded-[30px] standard-tag" data-value="k3">
+              K3
+            </button>
+            <button class="flex overflow-hidden items-center px-4 py-1 border border-gray-300 border-solid bg-slate-50 min-h-[29px] rounded-[30px] standard-tag" data-value="antikorupsi">
+              Anti Korupsi
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notes/SOP -->
+      <div class="ml-5 w-6/12 max-md:ml-0 max-md:w-full">
+        <div class="px-4 py-3">
+          <label class="block pb-2 text-base font-medium">Catatan/SOP</label>
+          <textarea placeholder="Tulis catatan/SOP"
+            class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition min-h-[64px] resize-none"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stakeholders Section -->
+<section class="flex flex-col px-20 pt-12 pb-8 mt-14 w-full bg-white rounded-2xl shadow-2xl max-w-[981px] max-md:px-5 max-md:mt-10 max-md:mr-1.5 max-md:max-w-full">
+  <h3 class="self-start text-3xl font-semibold text-teal-700">Pemangku Kepentingan</h3>
+  <div class="mt-5 ml-6 max-md:max-w-full">
+    <div class="flex gap-5 max-md:flex-col">
+      <!-- Stakeholder Tags -->
+      <div class="w-6/12 max-md:ml-0 max-md:w-full">
+        <div class="flex z-10 flex-col items-start self-stretch my-auto mr-0 w-full text-sm font-medium text-teal-700 max-md:mt-5 max-md:max-w-full">
+          <label class="self-stretch pb-2 text-base min-h-[42px] text-neutral-900 max-md:max-w-full">Pemangku Kepentingan</label>
+          <div class="flex gap-3 max-w-full leading-6 whitespace-nowrap w-[284px]">
+            <button class="flex overflow-hidden items-center py-1 pr-3.5 pl-4 bg-teal-700 min-h-[29px] rounded-[30px] text-neutral-50 stakeholder-tag active" data-value="pelanggan">
+              Pelanggan
+            </button>
+            <button class="flex overflow-hidden items-center px-4 py-1 border border-gray-300 border-solid bg-slate-50 min-h-[29px] rounded-[30px] stakeholder-tag" data-value="pemasok">
+              Pemasok
+            </button>
+            <button class="flex overflow-hidden items-center px-4 py-1 border border-gray-300 border-solid bg-slate-50 min-h-[29px] rounded-[30px] stakeholder-tag" data-value="pekerja">
+              Pekerja
+            </button>
+          </div>
+          <div class="flex gap-3 mt-2 max-w-full leading-6 whitespace-nowrap w-[212px]">
+            <button class="flex overflow-hidden items-center py-1 pr-3.5 pl-4 border border-gray-300 border-solid bg-slate-50 min-h-[29px] rounded-[30px] stakeholder-tag" data-value="komunitas">
+              Komunitas
+            </button>
+            <button class="flex overflow-hidden items-center px-4 py-1 border border-gray-300 border-solid bg-slate-50 min-h-[29px] rounded-[30px] stakeholder-tag" data-value="pemerintah">
+              Pemerintah
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Engagement Approach -->
+      <div class="ml-5 w-6/12 max-md:ml-0 max-md:w-full">
+        <div class="px-4 py-3">
+          <label class="block pb-2 text-base font-medium">Pendekatan Pelibatan</label>
+          <textarea placeholder="Jelaskan pendekatan pelibatan"
+            class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition min-h-[64px] resize-none"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Material Topics & Contact Section -->
+<section class="px-12 pt-12 pb-5 mt-14 w-full bg-white rounded-2xl shadow-2xl max-w-[981px] max-md:px-5 max-md:mt-10 max-md:mr-1.5 max-md:max-w-full">
+  <div class="flex gap-5 max-md:flex-col">
+    <!-- Material Topics -->
+    <div class="w-6/12 max-md:ml-0 max-md:w-full">
+      <div class="flex flex-col mr-0 max-md:mt-10 max-md:max-w-full">
+        <h3 class="self-start text-3xl font-semibold text-teal-700">Topik Material & Kontak</h3>
+        <div class="flex flex-col items-start pl-6 mt-10 w-full text-sm font-medium max-md:pl-5 max-md:max-w-full">
+          <label class="self-stretch pb-2 text-base min-h-[42px] text-neutral-900 max-md:max-w-full">Pemangku Kepentingan</label>
+          <div class="flex gap-3 max-w-full leading-6 w-[357px]">
+            <button class="flex overflow-hidden items-center py-1 pr-3 pl-4 bg-teal-700 min-h-[29px] rounded-[30px] text-neutral-50 topic-tag active" data-value="kualitas">
+              Kualitas Produk
+            </button>
+            <div class="flex gap-1 text-teal-700">
+              <button class="flex overflow-hidden items-center px-4 py-1 whitespace-nowrap border border-gray-300 border-solid bg-slate-50 min-h-[29px] rounded-[30px] topic-tag" data-value="harga">
+                Harga
+              </button>
+              <button class="flex overflow-hidden items-center py-1 pr-2 pl-4 border border-gray-300 border-solid bg-slate-50 min-h-[29px] rounded-[30px] topic-tag" data-value="lingkungan">
+                Dampak Lingkungan
+              </button>
+            </div>
+          </div>
+          <div class="flex gap-5 justify-between mt-2 max-w-full leading-6 text-teal-700 w-[300px]">
+            <button class="flex overflow-hidden items-center px-4 py-1 border border-gray-300 border-solid bg-slate-50 min-h-[29px] rounded-[30px] topic-tag" data-value="kesejahteraan">
+              Kesejahteraan Pekerja
+            </button>
+            <button class="flex overflow-hidden items-center px-4 py-1 whitespace-nowrap border border-gray-300 border-solid bg-slate-50 min-h-[29px] rounded-[30px]">
+              <img src="https://api.builder.io/api/v1/image/assets/TEMP/738986cd5dac6838d4c3866fbfc491581ce6e09d?placeholderIfAbsent=true&apiKey=ac04cd396e1f47f18955cd19640f183d" alt="Add Icon" class="object-contain shrink-0 self-stretch my-auto aspect-square w-[15px]">
+              <span class="self-stretch my-auto">Tambah</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Information -->
+    <div class="ml-5 w-6/12 max-md:ml-0 max-md:w-full">
+      <div class="mt-14 w-full max-md:mt-10 max-md:max-w-full">
+        <!-- PIC Field -->
+        <div class="px-4 py-2">
+          <label class="block pb-2 text-base font-medium">PIC</label>
+          <input type="text" placeholder="Nama PIC"
+            class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+        </div>
+
+        <!-- Phone and Email Row -->
+        <div class="z-10 mt-0 w-full max-md:mr-2.5 max-md:max-w-full">
+          <div class="flex gap-5 max-md:flex-col">
+            <!-- Phone -->
+            <div class="w-6/12 max-md:ml-0 max-md:w-full">
+              <div class="py-2 pr-1.5 pl-4">
+                <label class="block pb-2 text-base font-medium">Telepon</label>
+                <input type="tel" placeholder="08xxxxxxxxxx"
+                  class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="ml-5 w-6/12 max-md:ml-0 max-md:w-full">
+              <div class="py-2 pr-1.5 pl-4">
+                <label class="block pb-2 text-base font-medium">Email</label>
+                <input type="email" placeholder="email@contoh.com"
+                  class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Save Button -->
+<button class="flex overflow-hidden gap-2.5 items-start px-10 py-3 mt-10 mb-40 text-base font-medium text-center text-white whitespace-nowrap bg-orange-500 rounded-xl max-md:px-5 max-md:mt-10 hover:bg-orange-600 transition-colors">
+  Simpan
+</button>
+
+<script>
+  // Tag selection functionality (tetap)
+  function initializeTagSelection() {
+    const activityTags = document.querySelectorAll('.activity-tag');
+    activityTags.forEach(tag => {
+      tag.addEventListener('click', function() {
+        activityTags.forEach(t => {
+          t.classList.remove('bg-teal-700', 'text-neutral-50', 'active');
+          t.classList.add('border', 'border-gray-300', 'border-solid', 'bg-slate-50', 'text-teal-700');
+        });
+        this.classList.remove('border', 'border-gray-300', 'border-solid', 'bg-slate-50', 'text-teal-700');
+        this.classList.add('bg-teal-700', 'text-neutral-50', 'active');
+      });
+    });
+
+    const marketTags = document.querySelectorAll('.market-tag');
+    marketTags.forEach(tag => {
+      tag.addEventListener('click', function() {
+        marketTags.forEach(t => {
+          t.classList.remove('bg-teal-700', 'text-neutral-50', 'active');
+          t.classList.add('border', 'border-gray-300', 'border-solid', 'bg-slate-50', 'text-teal-700');
+        });
+        this.classList.remove('border', 'border-gray-300', 'border-solid', 'bg-slate-50', 'text-teal-700');
+        this.classList.add('bg-teal-700', 'text-neutral-50', 'active');
+      });
+    });
+
+    const standardTags = document.querySelectorAll('.standard-tag');
+    standardTags.forEach(tag => {
+      tag.addEventListener('click', function() {
+        if (this.classList.contains('active')) {
+          this.classList.remove('bg-teal-700', 'text-neutral-50', 'active');
+          this.classList.add('border', 'border-gray-300', 'border-solid', 'bg-slate-50', 'text-teal-700');
+        } else {
+          this.classList.remove('border', 'border-gray-300', 'border-solid', 'bg-slate-50', 'text-teal-700');
+          this.classList.add('bg-teal-700', 'text-neutral-50', 'active');
+        }
+      });
+    });
+
+    const stakeholderTags = document.querySelectorAll('.stakeholder-tag');
+    stakeholderTags.forEach(tag => {
+      tag.addEventListener('click', function() {
+        if (this.classList.contains('active')) {
+          this.classList.remove('bg-teal-700', 'text-neutral-50', 'active');
+          this.classList.add('border', 'border-gray-300', 'border-solid', 'bg-slate-50', 'text-teal-700');
+        } else {
+          this.classList.remove('border', 'border-gray-300', 'border-solid', 'bg-slate-50', 'text-teal-700');
+          this.classList.add('bg-teal-700', 'text-neutral-50', 'active');
+        }
+      });
+    });
+
+    const topicTags = document.querySelectorAll('.topic-tag');
+    topicTags.forEach(tag => {
+      tag.addEventListener('click', function() {
+        if (this.classList.contains('active')) {
+          this.classList.remove('bg-teal-700', 'text-neutral-50', 'active');
+          this.classList.add('border', 'border-gray-300', 'border-solid', 'bg-slate-50', 'text-teal-700');
+        } else {
+          this.classList.remove('border', 'border-gray-300', 'border-solid', 'bg-slate-50', 'text-teal-700');
+          this.classList.add('bg-teal-700', 'text-neutral-50', 'active');
+        }
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    initializeTagSelection();
+  });
+</script>

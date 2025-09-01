@@ -1,0 +1,126 @@
+        <main class="flex flex-col items-start self-center px-12 mt-16 w-full max-md:mt-10 max-md:max-w-full">
+            <h2 class="text-4xl font-semibold text-black max-md:max-w-full">
+                Pengisian GRI (
+                <span style="color: rgba(0, 0, 0, 1)">Global Reporting Initiative</span>
+                )
+            </h2>
+
+            <div class="flex overflow-hidden justify-end py-0.5 pr-2.5 pl-7 mt-5 max-w-full text-base font-medium text-center text-teal-700 bg-white rounded-md border border-teal-700 border-solid shadow-2xl w-[155px] max-md:pl-5">
+            <select class="text-base text-teal-700 bg-transparent border-none outline-none appearance-none cursor-pointer">
+                <option value="">Pilih</option>
+                <option value="ekonomi">GRI Ekonomi</option>
+                <option value="sosial">GRI Sosial</option>
+                <option value="lingkungan">GRI Lingkungan</option>
+            </select>
+                <img
+                    src="https://api.builder.io/api/v1/image/assets/TEMP/296985d52c1647b29d5a91e556a3f225489a9361?placeholderIfAbsent=true&apiKey=ac04cd396e1f47f18955cd19640f183d"
+                    alt="Dropdown Arrow"
+                    class="object-contain shrink-0 w-6 aspect-square"
+                />
+            </div>
+
+            <section class="self-stretch mt-10 max-md:max-w-full" data-el="div-1">
+                <div class="flex gap-5 max-md:flex-col">
+                    <article class="w-[33%] max-md:ml-0 max-md:w-full">
+                        <div class="flex flex-col items-center px-20 pt-9 pb-5 mx-auto w-full text-center bg-white rounded-2xl shadow-2xl max-md:px-5 max-md:mt-10">
+                            <img
+                                src="https://api.builder.io/api/v1/image/assets/TEMP/15d5e1ec965f0a760f7f9efd1ff73c90b5a802fd?placeholderIfAbsent=true&apiKey=ac04cd396e1f47f18955cd19640f183d"
+                                alt="GRI Economy Icon"
+                                class="object-contain max-w-full rounded-full aspect-[1.04] w-[170px]"
+                            />
+                            <h3 class="text-3xl font-semibold text-teal-700">
+                                GRI Economi
+                            </h3>
+                            <button class="flex overflow-hidden gap-2.5 items-start self-start px-10 py-3 mt-7 text-base font-medium text-white bg-orange-500 rounded-xl hover:bg-orange-600 transition-colors max-md:px-5">
+                                Mulai Sekarang
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="ml-5 w-[33%] max-md:ml-0 max-md:w-full">
+                        <div class="flex flex-col px-20 pt-8 pb-5 mx-auto w-full text-base font-medium text-center text-white bg-white rounded-2xl shadow-2xl max-md:px-5 max-md:mt-10">
+                            <img
+                                src="https://api.builder.io/api/v1/image/assets/TEMP/11944f7e945ab76cd741cbfe8b739301f56ce0af?width=372" 
+                                alt="GRI Environment Icon"
+                                class="object-contain self-center max-w-full aspect-[1.04] w-[170px]"
+                            />
+                            <h3 class="text-3xl font-semibold text-teal-700">
+                                GRI Social
+                            </h3>
+                            <button class="flex overflow-hidden gap-2.5 items-start self-start px-10 py-3 mt-9 bg-orange-500 rounded-xl hover:bg-orange-600 transition-colors max-md:px-5">
+                                Mulai Sekarang
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="ml-5 w-[33%] max-md:ml-0 max-md:w-full">
+                        <div class="flex flex-col px-20 pb-5 mx-auto w-full text-base font-medium text-center text-white bg-white rounded-2xl shadow-2xl max-md:px-5 max-md:mt-10">
+                            <img
+                                src="https://api.builder.io/api/v1/image/assets/TEMP/1c71a2a9be3de365531c3991c3339c7e3c083b53?width=462"
+                                alt="GRI Social Icon"
+                                class="object-contain w-full aspect-[1.01]"
+                            />
+                            <h3 class="text-2xl font-semibold text-teal-700">
+                                GRI Environment
+                            </h3>
+                            <button class="flex overflow-hidden gap-2.5 items-start self-start px-10 py-3 mt-8 ml-4 bg-orange-500 rounded-xl hover:bg-orange-600 transition-colors max-md:px-5 max-md:ml-2.5">
+                                Mulai Sekarang
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="ml-5 w-[33%] max-md:ml-0 max-md:w-full">
+                        <div class="flex flex-col px-20 pb-5 mx-auto w-full text-base font-medium text-center text-white bg-white rounded-2xl shadow-2xl max-md:px-5 max-md:mt-10">
+                            <img
+                                src="https://api.builder.io/api/v1/image/assets/TEMP/c44af07e3c930c7fea223a8eb981ce2b2a5a5a8c?width=462"
+                                alt="GRI Social Icon"
+                                class="object-contain w-full aspect-[1.01]"
+                            />
+                            <h3 class="text-2xl font-semibold text-teal-700">
+                                GRI Governance
+                            </h3>
+                            <button class="flex overflow-hidden gap-2.5 items-start self-start px-10 py-3 mt-8 ml-4 bg-orange-500 rounded-xl hover:bg-orange-600 transition-colors max-md:px-5 max-md:ml-2.5">
+                                Mulai Sekarang
+                            </button>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+    <script>
+        (() => {
+            const state = {};
+
+            let context = null;
+            let nodesToDestroy = [];
+            let pendingUpdate = false;
+
+            function destroyAnyNodes() {
+                // destroy current view template refs before rendering again
+                nodesToDestroy.forEach((el) => el.remove());
+                nodesToDestroy = [];
+            }
+
+            // Function to update data bindings and loops
+            // call update() when you mutate state and need the updates to reflect
+            // in the dom
+            function update() {
+                if (pendingUpdate === true) {
+                    return;
+                }
+                pendingUpdate = true;
+
+                document.querySelectorAll("[data-el='div-1']").forEach((el) => {
+                    el.setAttribute("space", 48);
+                });
+
+                destroyAnyNodes();
+
+                pendingUpdate = false;
+            }
+
+            // Update with initial state on first load
+            update();
+        })();
+    </script>
