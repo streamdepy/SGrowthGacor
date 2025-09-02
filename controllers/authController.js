@@ -1,8 +1,8 @@
 // AuthController
 
-// - login            
-// - ganti password   
-// - middlewareCheck  
+// - login
+// - ganti password
+// - middlewareCheck
 // - logout (opsional)
 
 const bcrypt = require("bcrypt");
@@ -33,19 +33,36 @@ exports.login = async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ where: { email } });
 
-    if (!user) {return res.status(401).send("User not found");}
+    if (!user) {
+      return res.status(401).send("User not found");
+    }
 
     const valid = await bcrypt.compare(password, user.password);
     console.log(user.password + " ------ " + password + " ------ " + valid);
     if (!valid) return res.status(401).send("Invalid password");
 
-    // JWT session
-    const token = jwt.sign({ id: user.id, role: user.role }, process.env.SECRET_KEY || 'supersecretkey', {
+    // 🔑 Buat JWT token dengan payload sesuai middlewareValidation
+    const payload = {
+      id: user.id,
+      email: user.email,
+      role: user.role,
+    };
+
+    const token = jwt.sign(payload, process.env.SECRET_KEY || "supersecretkey", {
       expiresIn: "1d",
     });
 
-    res.cookie("token", token, { httpOnly: true });
-    res.redirect("/dashboard");
+    // Simpan token di cookie
+    res.cookie("token", token, { httpOnly: true, secure: false });
+
+    // Redirect berdasarkan role (opsional)
+    if (user.role === "admin") {
+      res.redirect("/admin/dashboard");
+    } else if (user.role === "auditor") {
+      res.redirect("/auditor/dashboard");
+    } else {
+      res.redirect("/umkm/dashboard");
+    }
   } catch (error) {
     console.error(error);
     res.status(500).send("Login failed.");
