@@ -1,12 +1,10 @@
 const express = require("express");
 const router = express.Router();
+const { middlewareValidation, isAdmin, isUMKM } = require("../middlewares/authMiddleware");
+const { getDashboardUmkm } = require("../controllers/umkmController");
 
 
-router.get("/dashboard", function (req, res, next) {
-  res.render("umkm/dashboard", {
-    title: "dashboard",
-    layout: "umkm",
-  });
+router.get("/dashboard", middlewareValidation, isUMKM, getDashboardUmkm, function (req, res, next) {
 });
 
 router.get("/form-gi", function (req, res, next) {

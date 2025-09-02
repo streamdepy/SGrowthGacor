@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const authController = require("../controllers/authController");
+const { middlewareValidation, isAdmin } = require("../middlewares/authMiddleware");
 
 router.get("/", function (req, res, next) {
   res.render("pages/home", {
-    title: "Login",
-    layout: "partials",
+    title: "Landing Page", 
   });
 });
 router.get("/login", function (req, res, next) {

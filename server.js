@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const { engine } = require("express-handlebars");
 const path = require("path");
 const sequelize = require("./config/database");
+const cookieParser = require("cookie-parser");
 
 dotenv.config();
 const app = express();
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(cookieParser());
 
 // Handlebars setup
 app.engine("hbs", engine({
