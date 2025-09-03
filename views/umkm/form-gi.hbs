@@ -75,30 +75,36 @@
 <section class="flex flex-col items-start py-14 px-16 mt-10 w-full bg-white rounded-2xl shadow-2xl max-w-[981px] max-md:px-5 max-md:mt-10">
   <h3 class="text-3xl font-semibold text-teal-700">Informasi Industri & Produk</h3>
 
-<!-- Jenis Kegiatan/Industri Utama (Checklist) -->
+<!-- Jenis Kegiatan/Industri Utama (Single Choice - Radio Button) -->
 <div class="w-full mt-8">
   <label class="block pb-2 text-base font-medium">Jenis Kegiatan/Industri Utama</label>
   <div class="flex flex-col gap-2">
+
+    <!-- Radio options -->
     <label class="flex items-center gap-2 cursor-pointer">
-      <input type="checkbox" class="industry-tag" value="Manufaktur"> Manufaktur
+      <input type="radio" name="industri_utama" class="industry-tag" value="Manufaktur"> Manufaktur
     </label>
+
     <label class="flex items-center gap-2 cursor-pointer">
-      <input type="checkbox" class="industry-tag" value="Jasa"> Jasa
+      <input type="radio" name="industri_utama" class="industry-tag" value="Jasa"> Jasa
     </label>
+
     <label class="flex items-center gap-2 cursor-pointer">
-      <input type="checkbox" class="industry-tag" value="Perdagangan"> Perdagangan
+      <input type="radio" name="industri_utama" class="industry-tag" value="Perdagangan"> Perdagangan
     </label>
+
     <label class="flex items-center gap-2 cursor-pointer">
-      <input type="checkbox" class="industry-tag" value="Pertanian/Perikanan"> Pertanian/Perikanan
+      <input type="radio" name="industri_utama" class="industry-tag" value="Pertanian/Perikanan"> Pertanian/Perikanan
     </label>
+
     <label class="flex items-center gap-2 cursor-pointer">
-      <input type="checkbox" class="industry-tag" value="Teknologi"> Teknologi
+      <input type="radio" name="industri_utama" class="industry-tag" value="Teknologi"> Teknologi
     </label>
 
     <!-- Lainnya dengan input text -->
     <label class="flex flex-col gap-1 cursor-pointer">
       <div class="flex items-center gap-2">
-        <input type="checkbox" class="industry-tag" value="Lainnya"> Lainnya
+        <input type="radio" name="industri_utama" class="industry-tag" value="Lainnya" id="industry-other-radio"> Lainnya
       </div>
       <input
         type="text"
@@ -108,8 +114,27 @@
         class="w-full mt-1 px-3 py-2 rounded-lg border border-gray-300 text-teal-700 hidden"
       />
     </label>
+
   </div>
 </div>
+
+<script>
+  const otherRadio = document.getElementById('industry-other-radio');
+  const otherInput = document.getElementById('industry-other-input');
+
+  // Tampilkan input text hanya saat "Lainnya" dipilih
+  document.querySelectorAll('input[name="industri_utama"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      if (otherRadio.checked) {
+        otherInput.classList.remove('hidden');
+      } else {
+        otherInput.classList.add('hidden');
+        otherInput.value = ''; // bersihkan input jika tidak dipilih
+      }
+    });
+  });
+</script>
+
 
 <script>
   // Tampilkan input Lainnya jika dicentang
@@ -129,7 +154,7 @@
 
 
 <div class="w-full mt-6">
-  <label for="brands" class="block pb-2 text-base font-medium">Lokasi Operasional (Kota/Provinsi/Region)</label>
+  <label for="brands" class="block pb-2 text-base font-medium">Daftar Merek/Brand yang Dimiliki</label>
     <div class="flex gap-4 max-md:flex-col">
     <textarea
       id="brands"
@@ -513,8 +538,14 @@
     <!-- Baris 2: Email & Telepon + Unggah Dokumen -->
     <div class="flex gap-5 max-md:flex-col">
       <div class="w-6/12 max-md:w-full">
-        <label class="block pb-2 text-base font-medium">Email & Nomor Telepon</label>
-        <input type="text" placeholder="Email dan Nomor Telepon"
+        <label class="block pb-2 text-base font-medium">Email</label>
+        <input type="text" placeholder="Email"
+          class="w-full px-8 py-4 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+      </div>
+
+      <div class="w-6/12 max-md:w-full">
+        <label class="block pb-2 text-base font-medium">Nomor Telepon</label>
+        <input type="number" placeholder="Nomor Telepon"
           class="w-full px-8 py-4 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
       </div>
 
@@ -528,10 +559,13 @@
 </section>
 
 
-<!-- Save Button -->
-<button class="flex overflow-hidden gap-2.5 items-start px-10 py-3 mt-10 mb-40 text-base font-medium text-center text-white whitespace-nowrap bg-orange-500 rounded-xl max-md:px-5 max-md:mt-10 hover:bg-orange-600 transition-colors">
-  Simpan
-</button>
+<!-- Save Button Container -->
+<div class="w-full flex justify-end">
+  <button class="flex overflow-hidden gap-2.5 items-start px-10 py-3 mt-10 mb-40 text-base font-medium text-center text-white whitespace-nowrap bg-orange-500 rounded-xl max-md:px-5 max-md:mt-10 hover:bg-orange-600 transition-colors">
+    Simpan
+  </button>
+</div>
+
 
 </form>
 

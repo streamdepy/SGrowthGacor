@@ -11,6 +11,7 @@ router.get("/form-gi", function (req, res, next) {
   res.render("umkm/form-gi", {
     title: "Form GI",
     layout: "umkm",
+    currentPath: req.path
   });
 });
 
@@ -18,6 +19,7 @@ router.get("/form-gri", function (req, res, next) {
   res.render("umkm/form-gri", {
     title: "Form GRI",
     layout: "umkm",
+    currentPath: req.path
   });
 });
 
