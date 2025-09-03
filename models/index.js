@@ -86,6 +86,22 @@ if (db.Certificate && db.BlockchainHash) {
   db.BlockchainHash.belongsTo(db.Certificate, { foreignKey: "certificate_id" });
 }
 
+// BusinessProfile 1:N Shareholders
+db.BusinessProfile.hasMany(db.BusinessShareholder, { foreignKey: "business_id" });
+db.BusinessShareholder.belongsTo(db.BusinessProfile, { foreignKey: "business_id" });
+
+// db.BusinessProfile 1:N Departments
+db.BusinessProfile.hasMany(db.BusinessDepartment, { foreignKey: "business_id" });
+db.BusinessDepartment.belongsTo(db.BusinessProfile, { foreignKey: "business_id" });
+
+// db.BusinessProfile 1:N Certifications
+db.BusinessProfile.hasMany(db.BusinessCertification, { foreignKey: "business_id" });
+db.BusinessCertification.belongsTo(db.BusinessProfile, { foreignKey: "business_id" });
+
+// db.BusinessProfile 1:N Stakeholders
+db.BusinessProfile.hasMany(db.BusinessStakeholder, { foreignKey: "business_id" });
+db.BusinessStakeholder.belongsTo(db.BusinessProfile, { foreignKey: "business_id" });
+
 // ============================================ //
 
 db.sequelize = sequelize;
