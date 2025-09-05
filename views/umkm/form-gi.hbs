@@ -45,52 +45,54 @@
 
 <!-- Legal Form & Tahun Berdiri -->
 <!-- Legal Form & Tahun Berdiri -->
-<div class="flex gap-5 max-md:flex-col">
-  <!-- Legal Form -->
-  <div class="w-6/12 max-md:ml-0 max-md:w-full">
-    <div class="px-4 py-3">
-      <label for="legal_form" class="block pb-2 text-base font-medium">
-        Legal Form/Status Kepemilikan
-      </label>
-      <select
-        id="legal_form"
-        name="legal_form"
-        class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
-      >
-        <option value="">Pilih</option>
-        <option value="PT">PT (Perseroan Terbatas)</option>
-        <option value="CV">CV</option>
-        <option value="Koperasi">Koperasi</option>
-        <option value="UMKM">UMKM</option>
-        <option value="Yayasan">Yayasan</option>
-        <option value="lainnya">Lainnya</option>
-      </select>
+  <div class="mr-0 w-full max-md:mt-10 max-md:max-w-full">
+    <div class="flex gap-5 max-md:flex-col">
+      <!-- Legal Form -->
+      <div class="w-6/12 max-md:ml-0 max-md:w-full">
+        <div class="px-4 py-3">
+          <label for="legal_form" class="block pb-2 text-base font-medium">
+            Legal Form/Status Kepemilikan
+          </label>
+          <select
+            id="legal_form"
+            name="legal_form"
+            class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
+          >
+            <option value="">Pilih</option>
+            <option value="PT">PT (Perseroan Terbatas)</option>
+            <option value="CV">CV</option>
+            <option value="Koperasi">Koperasi</option>
+            <option value="UMKM">UMKM</option>
+            <option value="Yayasan">Yayasan</option>
+            <option value="lainnya">Lainnya</option>
+          </select>
 
-      <!-- Input tambahan jika pilih "Lainnya" -->
-      <input
-        type="text"
-        id="status-kepemilikan-lainnya"
-        name="status_kepemilikan_lainnya"
-        placeholder="Lainnya (sebutkan)"
-        class="w-full px-8 py-4 mt-3 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition hidden"
-      >
-    </div>
-  </div>
+          <!-- Input tambahan jika pilih "Lainnya" -->
+          <input
+            type="text"
+            id="status-kepemilikan-lainnya"
+            name="status_kepemilikan_lainnya"
+            placeholder="Lainnya (sebutkan)"
+            class="w-full px-8 py-4 mt-3 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition hidden"
+          >
+        </div>
+      </div>
 
   <!-- Tahun Berdiri -->
-  <div class="w-6/12 max-md:ml-0 max-md:w-full">
-    <div class="px-4 py-3">
-      <label for="established_year" class="block pb-2 text-base font-medium">
-        Tahun Berdiri
-      </label>
-      <input
-        type="date"
-        id="established_year"
-        name="established_year"
-        placeholder="Pilih tanggal"
-        class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
-      />
-    </div>
+      <div class="w-6/12 max-md:ml-0 max-md:w-full">
+        <div class="px-4 py-3">
+          <label for="established_year" class="block pb-2 text-base font-medium">
+            Tahun Berdiri
+          </label>
+          <input
+            type="date"
+            id="established_year"
+            name="established_year"
+            placeholder="Pilih tanggal"
+            class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
+          />
+        </div>
+  </div>
   </div>
 </div>
 
@@ -214,21 +216,21 @@
       type="text"
       id="headquarters"
       name="headquarters"
-      placeholder="Contoh: Bekasi, Jawa Barat"
+      placeholder="Contoh: Jl. Piai Tangah, Cupak Tangah, Kec. Pauh, Kota Padang, Sumatera Barat 25158"
       class="w-full px-8 py-4 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
     />
   </div>
 
   <!-- Lokasi Operasional -->
   <div class="w-full mt-6">
-    <label class="block pb-2 text-base font-medium">Lokasi Operasional (Kota/Provinsi/Region)</label>
+    <label class="block pb-2 text-base font-medium">Lokasi Operasional</label>
     <div class="flex gap-4 max-md:flex-col">
       <!-- Kota/Region (short text) -->
       <input
         type="text"
         id="city"
         name="city"
-        placeholder="Kota/Region (contoh: Padang)"
+        placeholder="Contoh: Jl. Piai Tangah, Cupak Tangah, Kec. Pauh, Kota Padang, Sumatera Barat 25158)"
         class="w-full px-8 py-4 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition max-md:w-full"
       />
 
@@ -573,99 +575,112 @@
 <section class="flex flex-col items-start py-14 px-16 mt-10 w-full bg-white rounded-2xl shadow-2xl max-w-[981px] max-md:px-5 max-md:mt-10 max-md:max-w-full">
   <h3 class="text-3xl font-semibold text-center text-teal-700">Pemangku Kepentingan (Stakeholders)</h3>
 
-<!-- Daftar Kelompok Pemangku Kepentingan (Vertikal) -->
-<div class="mt-10 w-full">
-  <label class="block pb-2 text-base font-medium">Daftar Kelompok Pemangku Kepentingan</label>
-  <div class="flex flex-col gap-4">
-
-    {{!-- Template setiap stakeholder --}}
-    <div class="flex items-center gap-4">
-      <label class="flex items-center gap-2 w-1/3">
-        <input type="checkbox" name="stakeholders[0][type]" value="Pelanggan" class="text-teal-700">
-        Pelanggan
-      </label>
-      <input type="text" name="stakeholders[0][relationship]" placeholder="Hubungan dengan pelanggan"
-        class="w-2/3 px-4 py-2 rounded-lg border border-gray-300">
-    </div>
-
-    <div class="flex items-center gap-4">
-      <label class="flex items-center gap-2 w-1/3">
-        <input type="checkbox" name="stakeholders[1][type]" value="Karyawan" class="text-teal-700">
-        Karyawan
-      </label>
-      <input type="text" name="stakeholders[1][relationship]" placeholder="Hubungan dengan karyawan"
-        class="w-2/3 px-4 py-2 rounded-lg border border-gray-300">
-    </div>
-
-    <div class="flex items-center gap-4">
-      <label class="flex items-center gap-2 w-1/3">
-        <input type="checkbox" name="stakeholders[2][type]" value="Pemasok" class="text-teal-700">
-        Pemasok
-      </label>
-      <input type="text" name="stakeholders[2][relationship]" placeholder="Hubungan dengan pemasok"
-        class="w-2/3 px-4 py-2 rounded-lg border border-gray-300">
-    </div>
-
-    <div class="flex items-center gap-4">
-      <label class="flex items-center gap-2 w-1/3">
-        <input type="checkbox" name="stakeholders[3][type]" value="Pemerintah/Regulator" class="text-teal-700">
-        Pemerintah/Regulator
-      </label>
-      <input type="text" name="stakeholders[3][relationship]" placeholder="Hubungan dengan pemerintah/regulator"
-        class="w-2/3 px-4 py-2 rounded-lg border border-gray-300">
-    </div>
-
-    <div class="flex items-center gap-4">
-      <label class="flex items-center gap-2 w-1/3">
-        <input type="checkbox" name="stakeholders[4][type]" value="Investor/Shareholder" class="text-teal-700">
-        Investor/Shareholder
-      </label>
-      <input type="text" name="stakeholders[4][relationship]" placeholder="Hubungan dengan investor/shareholder"
-        class="w-2/3 px-4 py-2 rounded-lg border border-gray-300">
-    </div>
-
-    <div class="flex items-center gap-4">
-      <label class="flex items-center gap-2 w-1/3">
-        <input type="checkbox" name="stakeholders[5][type]" value="Masyarakat Lokal" class="text-teal-700">
-        Masyarakat Lokal
-      </label>
-      <input type="text" name="stakeholders[5][relationship]" placeholder="Hubungan dengan masyarakat lokal"
-        class="w-2/3 px-4 py-2 rounded-lg border border-gray-300">
-    </div>
-
-    <div class="flex items-center gap-4">
-      <label class="flex items-center gap-2 w-1/3">
-        <input type="checkbox" name="stakeholders[6][type]" value="LSM/Komunitas" class="text-teal-700">
-        LSM/Komunitas
-      </label>
-      <input type="text" name="stakeholders[6][relationship]" placeholder="Hubungan dengan LSM/komunitas"
-        class="w-2/3 px-4 py-2 rounded-lg border border-gray-300">
-    </div>
-
-    {{!-- Lainnya --}}
-    <div class="flex items-center gap-4">
-      <label class="flex items-center gap-2 w-1/3">
-        <input type="checkbox" name="stakeholders[7][type]" value="Lainnya" class="text-teal-700">
-        Lainnya
-      </label>
-      <input type="text" name="stakeholders[7][stakeholder_other]" placeholder="Kelompok lainnya"
-        class="w-1/3 px-4 py-2 rounded-lg border border-gray-300">
-      <input type="text" name="stakeholders[7][relationship]" placeholder="Hubungan dengan stakeholder lain"
-        class="w-1/3 px-4 py-2 rounded-lg border border-gray-300">
-    </div>
-
-  </div>
-</div>
-
-
-  <!-- Hubungan dan Frekuensi Komunikasi dengan Stakeholder -->
+  <!-- Daftar Kelompok Pemangku Kepentingan (Vertikal) -->
   <div class="mt-10 w-full">
-    <label class="block pb-2 text-base font-medium">Hubungan dan Frekuensi Komunikasi dengan Stakeholder</label>
-    <textarea placeholder="Masukkan hubungan dan frekuensi komunikasi dengan masing-masing pemangku kepentingan"
-     id="business_id"
-      name="business_id"
-      class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"></textarea>
+    <label class="block pb-2 text-base font-medium">Daftar Kelompok Pemangku Kepentingan</label>
+    <div class="flex flex-col gap-4">
+
+      <!-- Row: Pelanggan -->
+      <div class="flex items-start gap-4" data-stakeholder-row>
+        <label class="flex items-center gap-2 w-1/3">
+          <input type="checkbox" name="stakeholders[0][type]" value="Pelanggan" class="text-teal-700">
+          Pelanggan
+        </label>
+        <div class="w-2/3">
+          <input type="text" name="stakeholders[0][relationship]" placeholder="Hubungan dengan pelanggan"
+            class="rel-input w-full px-4 py-2 rounded-lg border border-gray-300 hidden" disabled>
+        </div>
+      </div>
+
+      <!-- Row: Karyawan -->
+      <div class="flex items-start gap-4" data-stakeholder-row>
+        <label class="flex items-center gap-2 w-1/3">
+          <input type="checkbox" name="stakeholders[1][type]" value="Karyawan" class="text-teal-700">
+          Karyawan
+        </label>
+        <div class="w-2/3">
+          <input type="text" name="stakeholders[1][relationship]" placeholder="Hubungan dengan karyawan"
+            class="rel-input w-full px-4 py-2 rounded-lg border border-gray-300 hidden" disabled>
+        </div>
+      </div>
+
+      <!-- Row: Pemasok -->
+      <div class="flex items-start gap-4" data-stakeholder-row>
+        <label class="flex items-center gap-2 w-1/3">
+          <input type="checkbox" name="stakeholders[2][type]" value="Pemasok" class="text-teal-700">
+          Pemasok
+        </label>
+        <div class="w-2/3">
+          <input type="text" name="stakeholders[2][relationship]" placeholder="Hubungan dengan pemasok"
+            class="rel-input w-full px-4 py-2 rounded-lg border border-gray-300 hidden" disabled>
+        </div>
+      </div>
+
+      <!-- Row: Pemerintah/Regulator -->
+      <div class="flex items-start gap-4" data-stakeholder-row>
+        <label class="flex items-center gap-2 w-1/3">
+          <input type="checkbox" name="stakeholders[3][type]" value="Pemerintah/Regulator" class="text-teal-700">
+          Pemerintah/Regulator
+        </label>
+        <div class="w-2/3">
+          <input type="text" name="stakeholders[3][relationship]" placeholder="Hubungan dengan pemerintah/regulator"
+            class="rel-input w-full px-4 py-2 rounded-lg border border-gray-300 hidden" disabled>
+        </div>
+      </div>
+
+      <!-- Row: Investor/Shareholder -->
+      <div class="flex items-start gap-4" data-stakeholder-row>
+        <label class="flex items-center gap-2 w-1/3">
+          <input type="checkbox" name="stakeholders[4][type]" value="Investor/Shareholder" class="text-teal-700">
+          Investor/Shareholder
+        </label>
+        <div class="w-2/3">
+          <input type="text" name="stakeholders[4][relationship]" placeholder="Hubungan dengan investor/shareholder"
+            class="rel-input w-full px-4 py-2 rounded-lg border border-gray-300 hidden" disabled>
+        </div>
+      </div>
+
+      <!-- Row: Masyarakat Lokal -->
+      <div class="flex items-start gap-4" data-stakeholder-row>
+        <label class="flex items-center gap-2 w-1/3">
+          <input type="checkbox" name="stakeholders[5][type]" value="Masyarakat Lokal" class="text-teal-700">
+          Masyarakat Lokal
+        </label>
+        <div class="w-2/3">
+          <input type="text" name="stakeholders[5][relationship]" placeholder="Hubungan dengan masyarakat lokal"
+            class="rel-input w-full px-4 py-2 rounded-lg border border-gray-300 hidden" disabled>
+        </div>
+      </div>
+
+      <!-- Row: LSM/Komunitas -->
+      <div class="flex items-start gap-4" data-stakeholder-row>
+        <label class="flex items-center gap-2 w-1/3">
+          <input type="checkbox" name="stakeholders[6][type]" value="LSM/Komunitas" class="text-teal-700">
+          LSM/Komunitas
+        </label>
+        <div class="w-2/3">
+          <input type="text" name="stakeholders[6][relationship]" placeholder="Hubungan dengan LSM/komunitas"
+            class="rel-input w-full px-4 py-2 rounded-lg border border-gray-300 hidden" disabled>
+        </div>
+      </div>
+
+      <!-- Row: Lainnya -->
+      <div class="flex items-start gap-4" data-stakeholder-row>
+        <label class="flex items-center gap-2 w-1/3">
+          <input type="checkbox" name="stakeholders[7][type]" value="Lainnya" class="text-teal-700">
+          Lainnya
+        </label>
+        <div class="w-2/3 flex gap-4 max-md:flex-col">
+          <input type="text" name="stakeholders[7][stakeholder_other]" placeholder="Kelompok lainnya"
+            class="other-input w-1/2 px-4 py-2 rounded-lg border border-gray-300 hidden max-md:w-full" disabled>
+          <input type="text" name="stakeholders[7][relationship]" placeholder="Hubungan dengan stakeholder lain"
+            class="rel-input w-1/2 px-4 py-2 rounded-lg border border-gray-300 hidden max-md:w-full" disabled>
+        </div>
+      </div>
+
+    </div>
   </div>
+
 </section>
 
 
@@ -802,7 +817,155 @@
     });
   }
 
+  // ====== Tambahan: Dinamis baris Pemilik/Shareholder + Validasi total % ======
+  function initOwnershipSection() {
+    const container = document.getElementById('owners-container');
+    const addBtn = document.getElementById('add-owner-row');
+    const totalHint = document.getElementById('owners-total-hint');
+
+    // Kalau elemen2 tidak ada di halaman ini, cukup skip tanpa error
+    if (!container || !addBtn) return;
+
+    let ownerIndex = container.querySelectorAll('.owner-row').length || 0;
+
+    function updateTotalHint() {
+      const percentInputs = container.querySelectorAll('input[name^="owners"][name$="[percentage]"]');
+      let sum = 0;
+      percentInputs.forEach(inp => {
+        const v = parseFloat(inp.value);
+        if (!isNaN(v)) sum += v;
+      });
+      if (totalHint) {
+        totalHint.textContent = `Total persentase saat ini: ${sum.toFixed(2)}% (disarankan 100%).`;
+        const off = Math.abs(sum - 100) > 0.01;
+        totalHint.classList.toggle('text-red-600', off);
+        totalHint.classList.toggle('text-gray-500', !off);
+      }
+      return sum;
+    }
+
+    function attachInputListeners(scope) {
+      scope.querySelectorAll('input[name^="owners"][name$="[percentage]"]').forEach(inp => {
+        inp.addEventListener('input', updateTotalHint);
+      });
+    }
+
+    // Listener tombol tambah baris
+    addBtn.addEventListener('click', () => {
+      const row = document.createElement('div');
+      row.className = 'owner-row flex gap-5 max-md:flex-col';
+      row.setAttribute('data-index', ownerIndex);
+
+      row.innerHTML = `
+        <div class="w-8/12 max-md:w-full">
+          <label class="block pb-2 text-base font-medium">Pemilik/Shareholder</label>
+          <input
+            type="text"
+            name="owners[${ownerIndex}][name]"
+            placeholder="Nama pemilik/shareholder"
+            class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
+          />
+        </div>
+        <div class="w-4/12 max-md:w-full">
+          <label class="block pb-2 text-base font-medium">Kepemilikan (%)</label>
+          <div class="relative">
+            <input
+              type="number"
+              name="owners[${ownerIndex}][percentage]"
+              min="0" max="100" step="0.01"
+              placeholder="0 - 100"
+              class="w-full px-8 py-4 pr-12 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
+            />
+            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">%</span>
+          </div>
+        </div>
+        <div class="flex items-end max-md:w-full">
+          <button type="button" class="remove-owner-row px-4 py-3 rounded-xl border border-gray-300 text-gray-600 hover:bg-gray-50">
+            Hapus
+          </button>
+        </div>
+      `;
+
+      container.appendChild(row);
+      attachInputListeners(row);
+      updateTotalHint();
+      ownerIndex++;
+    });
+
+    // Delegasi aksi Hapus baris
+    container.addEventListener('click', (e) => {
+      const btn = e.target.closest('.remove-owner-row');
+      if (!btn) return;
+      const rows = container.querySelectorAll('.owner-row');
+      // jangan biarkan semua baris terhapus; minimal 1 baris
+      if (rows.length > 1) {
+        btn.closest('.owner-row').remove();
+        updateTotalHint();
+      }
+    });
+
+    // Pasang listener pada baris yang sudah ada saat load
+    attachInputListeners(container);
+    updateTotalHint();
+
+    // Validasi sebelum submit: konfirmasi bila total != 100
+    const form = document.querySelector('form[action="/umkm/form-gi"]') || container.closest('form');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        const sum = updateTotalHint();
+        if (Math.abs(sum - 100) > 0.01) {
+          const ok = confirm('Total persentase kepemilikan belum 100%. Tetap lanjutkan?');
+          if (!ok) e.preventDefault();
+        }
+      });
+    }
+  }
+
+  // ====== Tambahan: Stakeholders - tampilkan kolom hubungan hanya saat dicentang ======
+  function initStakeholderToggle() {
+    // Cari setiap baris stakeholder. Prefer data attribute, fallback cari pola umum.
+    const rows = document.querySelectorAll('[data-stakeholder-row]');
+    if (rows.length === 0) {
+      // fallback: tiap baris yang punya checkbox dan input text di dalamnya
+      document.querySelectorAll('section input[type="checkbox"][name^="stakeholders"]').forEach(cb => {
+        const row = cb.closest('.flex');
+        if (row) applyToggleLogic(row, cb);
+      });
+      return;
+    }
+
+    rows.forEach(row => {
+      const cb = row.querySelector('input[type="checkbox"][name^="stakeholders"]');
+      if (cb) applyToggleLogic(row, cb);
+    });
+
+    function applyToggleLogic(row, cb) {
+      // input yang akan dipakai: .rel-input dan .other-input bila ada
+      let toggleTargets = row.querySelectorAll('.rel-input, .other-input');
+      if (toggleTargets.length === 0) {
+        // fallback: semua text input di row kecuali checkbox
+        toggleTargets = row.querySelectorAll('input[type="text"]');
+      }
+
+      function sync() {
+        const on = cb.checked;
+        toggleTargets.forEach(inp => {
+          inp.classList.toggle('hidden', !on);
+          inp.disabled = !on;
+          if (!on) inp.value = inp.dataset.preserve ? inp.value : inp.value; // placeholder untuk logic tambahan bila ingin reset
+        });
+      }
+
+      cb.addEventListener('change', sync);
+      sync(); // set awal
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', function() {
     initializeTagSelection();
+    initOwnershipSection();     // fitur tambah/hapus & validasi kepemilikan
+    initStakeholderToggle();    // tampilkan kolom hubungan saat dicentang
   });
 </script>
+
+
