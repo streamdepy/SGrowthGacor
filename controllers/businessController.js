@@ -10,21 +10,16 @@ exports.cekformgi = async (req, res) => {
     });
     console.log(business);
 
-    // if(!business || business === null) {
-    //   res.render("umkm/form-gi", {
-    //     title: "Form GI",
-    //     layout: "umkm",
-    //     currentPath: req.path
-    //   });
-    // } else {
-    //   res.redirect("form-gri");
-    // }
+    if(!business || business === null) {
+      res.render("umkm/form-gi", {
+        title: "Form GI",
+        layout: "umkm",
+        currentPath: req.path
+      });
+    } else {
+      res.redirect("form-gri");
+    }
 
-    res.render("umkm/form-gi", {
-      title: "Form GI",
-      layout: "umkm",
-      currentPath: req.path,
-    });
   } catch (error) {
     console.error(error);
     res.status(500).send("Registration failed." + error);
