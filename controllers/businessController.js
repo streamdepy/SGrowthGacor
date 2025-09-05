@@ -14,12 +14,13 @@ exports.saveGeneralInformation = async (req, res) => {
       // Bagian Industri & Produk
       industry_type,
       headquarters,
-      city,
+      city, //ini operational
       province,
       products_offered,
 
       // Bagian Kepemilikan
       shareholders, // array [{name, ownership_percentage}]
+      ownership_percentage,
 
       // Pasar
       market_scope,
@@ -40,6 +41,7 @@ exports.saveGeneralInformation = async (req, res) => {
 
       // Stakeholders
       stakeholders, // array [{type, stakeholder_other, relationship}]
+      //relation stakeholdernya belum
 
       // Kontak
       pic_name,
@@ -49,37 +51,64 @@ exports.saveGeneralInformation = async (req, res) => {
       supporting_documents,
     } = req.body;
 
-    // 1. Insert / Update Business Profile
-    const business = await BusinessProfile.upsert(
-      {
-        id: business_id,
-        user_id: userId,
-        business_name,
-        established_year,
-        legal_form,
-        industry_type,
-        headquarters,
-        city,
-        province,
-        products_offered,
-        ownership_percentage: shareholders?.reduce((acc, s) => acc + Number(s.ownership_percentage || 0), 0),
-        market_scope,
-        target_market,
-        target_market_other,
-        total_employees_fulltime,
-        total_employees_parttime,
-        male_percentage,
-        female_percentage,
-        core_values,
-        ethics_principles,
-        pic_name,
-        pic_position,
-        pic_phone,
-        pic_email,
-        supporting_documents,
-      },
-      { transaction: t }
-    );
+    // --- Normalisasi shareholders ---
+let shareholderArray = [];
+if (Array.isArray(shareholders)) {
+  shareholderArray = shareholders;
+} else if (typeof shareholders === "string" && shareholders.trim() !== "") {
+  shareholderArray = [{ name: shareholders.trim(), ownership_percentage: ownership_percentage || 0 }];
+}
+
+const ownershipSum = shareholderArray.reduce(
+  (acc, s) => acc + Number(s.ownership_percentage || 0),
+  0
+);
+
+const marketScopeValue = Array.isArray(market_scope)
+  ? market_scope.join(", ")
+  : market_scope;
+
+const targetMarketValue = Array.isArray(target_market)
+  ? target_market.join(", ")
+  : target_market;
+
+
+// --- Normalisasi city & province ---
+const provinceValue = Array.isArray(province) ? province[0] : province;
+const cityValue = Array.isArray(city) ? city[0] : city;
+
+const business = await BusinessProfile.upsert(
+    {
+      id: business_id,
+      user_id: userId,
+      business_name,
+      established_year,
+      legal_form,
+      industry_type,
+      headquarters,
+      city: cityValue,
+      province: provinceValue,
+      products_offered,
+      ownership_percentage: ownershipSum,
+      market_scope: marketScopeValue,
+      target_market: targetMarketValue,
+      target_market_other,
+      total_employees_fulltime,
+      total_employees_parttime,
+      male_percentage,
+      female_percentage,
+      core_values,
+      ethics_principles,
+      pic_name,
+      pic_position,
+      pic_phone,
+      pic_email,
+      supporting_documents,
+    },
+    { transaction: t }
+  );
+  
+
 
     const businessId = business[0].id || business_id;
 
@@ -92,31 +121,55 @@ exports.saveGeneralInformation = async (req, res) => {
     }
 
     // 3. Departments
-    if (Array.isArray(departments)) {
+    if (Array.isArray(req.body.departments)) {
       await BusinessDepartment.destroy({ where: { business_id: businessId }, transaction: t });
-      for (const d of departments) {
-        await BusinessDepartment.create({ business_id: businessId, department_name: d.department_name, employee_count: d.employee_count }, { transaction: t });
+
+      for (const d of req.body.departments) {
+        if (d.employee_count && parseInt(d.employee_count) > 0) {
+          await BusinessDepartment.create(
+            {
+              business_id: businessId,
+              department_name: d.department_name,
+              employee_count: d.employee_count,
+            },
+            { transaction: t }
+          );
+        }
       }
     }
 
     // 4. Certifications
-    if (Array.isArray(certifications)) {
+    if (Array.isArray(req.body.certifications)) {
       await BusinessCertification.destroy({ where: { business_id: businessId }, transaction: t });
-      for (const cert of certifications) {
-        await BusinessCertification.create({ business_id: businessId, certification_name: cert }, { transaction: t });
+
+      let certs = [...req.body.certifications];
+
+      // Tambahkan jika "lainnya" diisi
+      if (req.body.cert_other && req.body.cert_other.trim() !== "") {
+        certs.push(req.body.cert_other.trim());
+      }
+
+      for (const cert of certs) {
+        await BusinessCertification.create(
+          {
+            business_id: businessId,
+            certification_name: cert,
+          },
+          { transaction: t }
+        );
       }
     }
 
     // 5. Stakeholders
-    if (Array.isArray(stakeholders)) {
+    if (Array.isArray(req.body.stakeholders)) {
       await BusinessStakeholder.destroy({ where: { business_id: businessId }, transaction: t });
-      for (const s of stakeholders) {
+      for (const s of req.body.stakeholders) {
         await BusinessStakeholder.create(
           {
             business_id: businessId,
             stakeholder_type: s.type,
-            stakeholder_other: s.stakeholder_other,
-            relationship: s.relationship,
+            stakeholder_other: s.stakeholder_other || null,
+            relationship: s.relationship || null,
           },
           { transaction: t }
         );
