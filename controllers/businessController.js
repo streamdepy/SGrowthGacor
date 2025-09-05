@@ -10,16 +10,21 @@ exports.cekformgi = async (req, res) => {
     });
     console.log(business);
 
-    if(!business || business === null) {
-      res.render("umkm/form-gi", {
-        title: "Form GI",
-        layout: "umkm",
-        currentPath: req.path
-      });
-    } else {
-      res.redirect("form-gri");
-    }
+    // if(!business || business === null) {
+    //   res.render("umkm/form-gi", {
+    //     title: "Form GI",
+    //     layout: "umkm",
+    //     currentPath: req.path
+    //   });
+    // } else {
+    //   res.redirect("form-gri");
+    // }
 
+    res.render("umkm/form-gi", {
+      title: "Form GI",
+      layout: "umkm",
+      currentPath: req.path,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).send("Registration failed." + error);
@@ -78,71 +83,81 @@ exports.saveGeneralInformation = async (req, res) => {
     } = req.body;
 
     // --- Normalisasi shareholders ---
-let shareholderArray = [];
-if (Array.isArray(shareholders)) {
-  shareholderArray = shareholders;
-} else if (typeof shareholders === "string" && shareholders.trim() !== "") {
-  shareholderArray = [{ name: shareholders.trim(), ownership_percentage: ownership_percentage || 0 }];
-}
+    let shareholderArray = [];
+    if (Array.isArray(shareholders)) {
+      shareholderArray = shareholders; // sudah bentuk [{ name, ownership_percentage }]
+    } else {
+      shareholderArray = [];
+    }
 
-const ownershipSum = shareholderArray.reduce(
-  (acc, s) => acc + Number(s.ownership_percentage || 0),
-  0
-);
+    // Total ownership sum
+    const ownershipSum = shareholderArray.reduce((acc, s) => acc + Number(s.ownership_percentage || 0), 0);
 
-const marketScopeValue = Array.isArray(market_scope)
-  ? market_scope.join(", ")
-  : market_scope;
+    let marketScopeValue = null;
+    if (Array.isArray(req.body.market_scope)) {
+      marketScopeValue = req.body.market_scope.join(", ");
+    } else if (typeof req.body.market_scope === "string") {
+      marketScopeValue = req.body.market_scope;
+    }
 
-const targetMarketValue = Array.isArray(target_market)
-  ? target_market.join(", ")
-  : target_market;
+    // Target Market
+    let targetMarketValue = null;
+    if (Array.isArray(req.body.target_market)) {
+      targetMarketValue = req.body.target_market.join(", ");
+    } else if (typeof req.body.target_market === "string") {
+      targetMarketValue = req.body.target_market;
+    }
 
+    const targetMarketOther = req.body.target_market_other?.trim() || null;
+    // --- Normalisasi city & province ---
+    const provinceValue = Array.isArray(province) ? province[0] : province;
+    const cityValue = Array.isArray(city) ? city[0] : city;
 
-// --- Normalisasi city & province ---
-const provinceValue = Array.isArray(province) ? province[0] : province;
-const cityValue = Array.isArray(city) ? city[0] : city;
-
-const business = await BusinessProfile.upsert(
-    {
-      id: business_id,
-      user_id: userId,
-      business_name,
-      established_year,
-      legal_form,
-      industry_type,
-      headquarters,
-      city: cityValue,
-      province: provinceValue,
-      products_offered,
-      ownership_percentage: ownershipSum,
-      market_scope: marketScopeValue,
-      target_market: targetMarketValue,
-      target_market_other,
-      total_employees_fulltime,
-      total_employees_parttime,
-      male_percentage,
-      female_percentage,
-      core_values,
-      ethics_principles,
-      pic_name,
-      pic_position,
-      pic_phone,
-      pic_email,
-      supporting_documents,
-    },
-    { transaction: t }
-  );
-  
-
+    const business = await BusinessProfile.upsert(
+      {
+        id: business_id,
+        user_id: userId,
+        business_name,
+        established_year,
+        legal_form,
+        industry_type,
+        headquarters,
+        city: cityValue,
+        province: provinceValue,
+        products_offered,
+        ownership_percentage: ownershipSum,
+        market_scope: marketScopeValue,
+        target_market: targetMarketValue,
+        target_market_other: targetMarketOther,
+        total_employees_fulltime,
+        total_employees_parttime,
+        male_percentage,
+        female_percentage,
+        core_values,
+        ethics_principles,
+        pic_name,
+        pic_position,
+        pic_phone,
+        pic_email,
+        supporting_documents,
+      },
+      { transaction: t }
+    );
 
     const businessId = business[0].id || business_id;
 
     // 2. Shareholders
-    if (Array.isArray(shareholders)) {
-      await BusinessShareholder.destroy({ where: { business_id: businessId }, transaction: t });
-      for (const sh of shareholders) {
-        await BusinessShareholder.create({ business_id: businessId, shareholder_name: sh.name, ownership_percentage: sh.ownership_percentage }, { transaction: t });
+    if (shareholderArray.length > 0) {
+      await BusinessShareholder.destroy({ where: { business_id: business_id }, transaction: t });
+      for (const sh of shareholderArray) {
+        await BusinessShareholder.create(
+          {
+            business_id: business_id,
+            shareholder_name: sh.name,
+            ownership_percentage: sh.ownership_percentage,
+          },
+          { transaction: t }
+        );
       }
     }
 
