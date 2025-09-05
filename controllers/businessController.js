@@ -8,16 +8,17 @@ exports.cekformgi = async (req, res) => {
     const business = await BusinessProfile.findOne({
       where: { user_id: user.id },
     });
+    console.log(business);
 
-    if(!business) {
+    if(!business || business === null) {
       res.render("umkm/form-gi", {
         title: "Form GI",
         layout: "umkm",
         currentPath: req.path
       });
+    } else {
+      res.redirect("form-gri");
     }
-    
-    res.redirect("form-gri");
 
   } catch (error) {
     console.error(error);

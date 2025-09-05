@@ -3,73 +3,102 @@
 
 <form action="/umkm/form-gi" method="POST">
 <!-- General Business Information Section -->
-<section class="flex flex-col items-start py-14 pl-16 pr-16 mt-10 w-full bg-white rounded-2xl shadow-2xl max-w-[981px] max-md:pl-5 max-md:mt-10 max-md:mr-1.5 max-md:max-w-full">
+<section class="flex flex-col items-start py-14 pl-16 pr-16 mt-10 w-full bg-white rounded-2xl shadow-2xl max-w-[981px] max-md:pl-5 max-md:mt-10 max-md:max-w-full">
   <h3 class="text-3xl font-semibold text-center text-teal-700">Informasi Umum Usaha</h3>
   <p class="mt-7 text-xl leading-none text-gray-500 max-md:max-w-full">
     Lengkapi field yang diperlukan untuk melanjutkan ke step berikutnya
   </p>
 
-  <!-- Organization Name and Activity Row -->
+  <!-- Organization Name + Business License Row -->
   <div class="mt-14 mr-0 w-full max-md:mt-10 max-md:max-w-full">
     <div class="flex gap-5 max-md:flex-col">
-      <!-- Organization Name -->
+      <!-- Nama Perusahaan -->
       <div class="w-6/12 max-md:ml-0 max-md:w-full">
         <div class="px-4 py-3">
-          <label class="block pb-2 text-base font-medium">Nama Perusahaan</label>
-          <input type="text" type="business_name" id="business_name" name="business_name" placeholder="Masukkan Nama Perusahaan"
-            class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+          <label for="business_name" class="block pb-2 text-base font-medium">Nama Perusahaan</label>
+          <input 
+            type="text"
+            id="business_name"
+            name="business_name"
+            placeholder="Masukkan Nama Perusahaan"
+            class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
+          >
         </div>
       </div>
 
-    <!-- Tahun Berdiri (kalender) -->
-    <div class="ml-5 w-6/12 max-md:ml-0 max-md:w-full">
-      <div class="px-4 py-3">
-        <label for="tahun-berdiri" class="block pb-2 text-base font-medium">Tahun Berdiri</label>
-        <input
-          type="date"
-          id="established_year"
-          name="established_year"
-          placeholder="Pilih tanggal"
-          class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
-        />
+      <!-- Nomor Izin Usaha -->
+      <div class="w-6/12 max-md:ml-0 max-md:w-full">
+        <div class="px-4 py-3">
+          <label for="business_license" class="block pb-2 text-base font-medium">Nomor Izin Usaha</label>
+          <input 
+            type="text"
+            id="business_license"
+            name="business_license"
+            placeholder="Masukkan Nomor Izin Usaha"
+            class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
+          >
+        </div>
       </div>
-    </div>
-
     </div>
   </div>
 
-<!-- Legal Form / Status Kepemilikan -->
-<div class="flex flex-wrap gap-4 items-end px-4 py-3 text-base">
-  <div class="grow shrink min-w-40 w-[358px] max-md:max-w-full">
-    <label for="status-kepemilikan" class="block pb-2 text-base font-medium">
-      Legal Form/Status Kepemilikan
-    </label>
-    <select
-      id="legal_form"
-      name="legal_form"
-      class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
-    >
-      <option value="">Pilih</option>
-      <option value="PT">PT (Perseroan Terbatas)</option>
-      <option value="CV">CV</option>
-      <option value="Koperasi">Koperasi</option>
-      <option value="UMKM">UMKM</option>
-      <option value="Yayasan">Yayasan</option>
-      <option value="lainnya">Lainnya</option>
-    </select>
 
-    <!-- Muncul hanya saat pilih "Lainnya" -->
-    <input
-      type="text"
-      id="status-kepemilikan-lainnya"
-      name="status_kepemilikan_lainnya"
-      placeholder="Lainnya (sebutkan)"
-      class="w-full px-8 py-4 mt-3 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition hidden"
-    />
+<!-- Legal Form & Tahun Berdiri -->
+<!-- Legal Form & Tahun Berdiri -->
+<div class="flex gap-5 max-md:flex-col">
+  <!-- Legal Form -->
+  <div class="w-6/12 max-md:ml-0 max-md:w-full">
+    <div class="px-4 py-3">
+      <label for="legal_form" class="block pb-2 text-base font-medium">
+        Legal Form/Status Kepemilikan
+      </label>
+      <select
+        id="legal_form"
+        name="legal_form"
+        class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
+      >
+        <option value="">Pilih</option>
+        <option value="PT">PT (Perseroan Terbatas)</option>
+        <option value="CV">CV</option>
+        <option value="Koperasi">Koperasi</option>
+        <option value="UMKM">UMKM</option>
+        <option value="Yayasan">Yayasan</option>
+        <option value="lainnya">Lainnya</option>
+      </select>
+
+      <!-- Input tambahan jika pilih "Lainnya" -->
+      <input
+        type="text"
+        id="status-kepemilikan-lainnya"
+        name="status_kepemilikan_lainnya"
+        placeholder="Lainnya (sebutkan)"
+        class="w-full px-8 py-4 mt-3 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition hidden"
+      >
+    </div>
+  </div>
+
+  <!-- Tahun Berdiri -->
+  <div class="w-6/12 max-md:ml-0 max-md:w-full">
+    <div class="px-4 py-3">
+      <label for="established_year" class="block pb-2 text-base font-medium">
+        Tahun Berdiri
+      </label>
+      <input
+        type="date"
+        id="established_year"
+        name="established_year"
+        placeholder="Pilih tanggal"
+        class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
+      />
+    </div>
   </div>
 </div>
 
+
+
+
 </section>
+
 
 <!-- Informasi Industri & Produk -->
 <section class="flex flex-col items-start py-14 px-16 mt-10 w-full bg-white rounded-2xl shadow-2xl max-w-[981px] max-md:px-5 max-md:mt-10">
