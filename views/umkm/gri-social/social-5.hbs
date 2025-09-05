@@ -1,0 +1,273 @@
+<main class="flex flex-col ml-48 self-center mb-16 mt-16 w-full max-w-[1256px] max-md:mt-10 max-md:max-w-full">
+    <header class="flex gap-3.5 self-start">
+        <img
+            src="https://api.builder.io/api/v1/image/assets/TEMP/07073f8526333ac3749a4d99615ea0579a831ebe?placeholderIfAbsent=true&apiKey=ac04cd396e1f47f18955cd19640f183d"
+            alt="GRI Economic icon"
+            class="object-contain shrink-0 my-auto rounded-full aspect-[1.04] w-[58px]"
+        />
+        <div class="flex flex-col">
+            <h2 class="text-4xl font-semibold text-black">
+                GRI Social
+            </h2>
+            <p class="self-center text-xl font-medium leading-none text-center text-gray-500">
+                Social Performance
+            </p>
+        </div>
+    </header>
+
+<!-- GRI 403-10: Penyakit Akibat Kerja -->
+<section class="flex flex-col items-start py-14 px-16 mt-10 w-full bg-white rounded-2xl shadow-2xl max-w-[981px] max-md:px-5 max-md:mt-10">
+  <h3 class="text-3xl font-semibold text-teal-700">Catatan & Konteks</h3>
+  <p class="mt-3 text-gray-500">Tuliskan tantangan dan rencana perbaikan terkait penerapan K3.</p>
+
+  <!-- Tantangan dalam penerapan K3 -->
+  <div class="w-full mt-8">
+    <label for="k3_challenges" class="block pb-2 text-base font-medium">Tantangan dalam penerapan K3</label>
+    <textarea id="k3_challenges" name="k3_challenges" rows="5"
+      placeholder="Jelaskan tantangan yang dihadapi dalam penerapan K3…"
+      class="w-full px-8 py-4 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition resize-y"></textarea>
+  </div>
+
+  <!-- Rencana perbaikan sistem K3 ke depan -->
+  <div class="w-full mt-8">
+    <label for="k3_improvements" class="block pb-2 text-base font-medium">Rencana perbaikan sistem K3 ke depan</label>
+    <textarea id="k3_improvements" name="k3_improvements" rows="5"
+      placeholder="Tuliskan rencana perbaikan atau penguatan sistem K3 untuk ke depan…"
+      class="w-full px-8 py-4 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition resize-y"></textarea>
+  </div>
+
+  <!-- Buttons pojok kanan kotak putih -->
+  <div class="flex justify-end gap-4 mt-10 w-full">
+    <button type="button" onclick="window.history.back()"
+      class="px-8 py-2 text-base font-medium text-center text-teal-700 border-teal-700 border border-solid whitespace-nowrap bg-white rounded-xl hover:bg-teal-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors">
+      Sebelumnya
+    </button>
+    <button type="submit"
+      class="px-8 py-2 text-base font-medium text-center text-white whitespace-nowrap bg-lime-500 rounded-xl hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-offset-2 transition-colors">
+      Simpan
+    </button>
+  </div>
+</section>
+
+<script>
+  // Helper
+  function toggleEl(el, show, disable = true) {
+    if (!el) return;
+    el.classList.toggle('hidden', !show);
+    if (disable) el.disabled = !show;
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // ====== Toggle detail OD Ya/Tidak ======
+    const odReport  = document.getElementById('od_report');
+    const odDetails = document.getElementById('od_details');
+
+    function syncOdReport() {
+      const yes = odReport && odReport.value === 'ya';
+      toggleEl(odDetails, yes, false);
+      if (odDetails) {
+        odDetails.querySelectorAll('input, select, textarea').forEach(el => {
+          el.disabled = !yes;
+        });
+      }
+    }
+    if (odReport) {
+      odReport.addEventListener('change', syncOdReport);
+      syncOdReport();
+    }
+
+    // ====== Dinamis list OD ======
+    const list = document.getElementById('od_list');
+    const add  = document.getElementById('od_add_item');
+    const tpl  = document.getElementById('od_item_tpl');
+
+    if (!list || !add || !tpl) return;
+
+    // Re-index name fields
+    function reindexOd() {
+      const items = list.querySelectorAll('.od-item');
+      items.forEach((item, idx) => {
+        item.querySelectorAll('input, select, textarea').forEach(el => {
+          if (el.classList.contains('od-cases'))         el.name = `od[${idx}][cases]`;
+          else if (el.classList.contains('od-disease'))  el.name = `od[${idx}][disease]`;
+          else if (el.classList.contains('od-disease-other')) el.name = `od[${idx}][disease_other]`;
+          else if (el.classList.contains('od-unit'))     el.name = `od[${idx}][unit]`;
+          else if (el.classList.contains('od-unit-other'))    el.name = `od[${idx}][unit_other]`;
+          else if (el.classList.contains('od-actions'))  el.name = `od[${idx}][actions]`;
+        });
+
+        const rm = item.querySelector('.od-remove');
+        if (rm) rm.classList.toggle('hidden', items.length <= 1);
+      });
+    }
+
+    function attachOtherHandlers(item) {
+      const diseaseSel  = item.querySelector('.od-disease');
+      const diseaseOther= item.querySelector('.od-disease-other');
+      const unitSel     = item.querySelector('.od-unit');
+      const unitOther   = item.querySelector('.od-unit-other');
+
+      function sync(selectEl, otherEl) {
+        const isOther = selectEl && selectEl.value === 'lainnya';
+        toggleEl(otherEl, isOther);
+        if (!isOther && otherEl) otherEl.value = '';
+      }
+
+      if (diseaseSel) {
+        diseaseSel.addEventListener('change', () => sync(diseaseSel, diseaseOther));
+        sync(diseaseSel, diseaseOther);
+      }
+      if (unitSel) {
+        unitSel.addEventListener('change', () => sync(unitSel, unitOther));
+        sync(unitSel, unitOther);
+      }
+    }
+
+    function attachRemove(item) {
+      const btn = item.querySelector('.od-remove');
+      if (!btn) return;
+      btn.addEventListener('click', () => {
+        const items = list.querySelectorAll('.od-item');
+        if (items.length > 1) {
+          item.remove();
+          reindexOd();
+        }
+      });
+    }
+
+    // Item awal
+    const first = list.querySelector('.od-item');
+    if (first) {
+      attachOtherHandlers(first);
+      attachRemove(first);
+    }
+    reindexOd();
+
+    // Tambah
+    add.addEventListener('click', () => {
+      const clone = tpl.content.firstElementChild.cloneNode(true);
+      list.appendChild(clone);
+      attachOtherHandlers(clone);
+      attachRemove(clone);
+      reindexOd();
+    });
+  });
+</script>
+
+
+
+
+</main>
+
+<script>
+  // Helper: show/hide element + (opsional) disable
+  function toggleEl(el, show, disable = true) {
+    if (!el) return;
+    el.classList.toggle('hidden', !show);
+    if (disable) el.disabled = !show;
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // ====== Toggle detail K3 saat Ya/Tidak ======
+    const incidentSel = document.getElementById('k3_incident');
+    const detailsBox  = document.getElementById('k3_details');
+
+    function syncIncident() {
+      const yes = incidentSel && incidentSel.value === 'ya';
+      toggleEl(detailsBox, yes, false);
+      // enable/disable semua field di dalam details
+      if (detailsBox) {
+        detailsBox.querySelectorAll('input, select, textarea').forEach(el => {
+          el.disabled = !yes;
+        });
+      }
+    }
+
+    if (incidentSel) {
+      incidentSel.addEventListener('change', syncIncident);
+      syncIncident();
+    }
+
+    // ====== Dinamis: daftar insiden K3 ======
+    const list   = document.getElementById('k3_list');
+    const addBtn = document.getElementById('k3_add_item');
+    const tpl    = document.getElementById('k3_item_tpl');
+
+    if (!list || !addBtn || !tpl) return; // kalau elemen belum ada, hentikan
+
+    // Re-index name attribute semua field dalam setiap item
+    function reindex() {
+      const items = list.querySelectorAll('.k3-item');
+      items.forEach((item, idx) => {
+        item.querySelectorAll('input, select, textarea').forEach(el => {
+          if (el.classList.contains('k3-injuries'))        el.name = `k3[${idx}][injuries]`;
+          else if (el.classList.contains('k3-fatalities')) el.name = `k3[${idx}][fatalities]`;
+          else if (el.classList.contains('k3-type'))       el.name = `k3[${idx}][type]`;
+          else if (el.classList.contains('k3-type-other')) el.name = `k3[${idx}][type_other]`;
+          else if (el.classList.contains('k3-location'))   el.name = `k3[${idx}][location]`;
+          else if (el.classList.contains('k3-location-other')) el.name = `k3[${idx}][location_other]`;
+          else if (el.classList.contains('k3-cause'))      el.name = `k3[${idx}][cause]`;
+          else if (el.classList.contains('k3-cause-other'))el.name = `k3[${idx}][cause_other]`;
+          else if (el.classList.contains('k3-lost'))       el.name = `k3[${idx}][lost_workdays]`;
+          else if (el.classList.contains('k3-actions'))    el.name = `k3[${idx}][actions]`;
+        });
+
+        // Tombol hapus hanya muncul jika item > 1
+        const rm = item.querySelector('.k3-remove');
+        if (rm) rm.classList.toggle('hidden', items.length <= 1);
+      });
+    }
+
+    // Tanggapi opsi "Lainnya" pada select untuk 1 item
+    function attachOtherHandlers(item) {
+      const typeSel   = item.querySelector('.k3-type');
+      const typeOther = item.querySelector('.k3-type-other');
+      const locSel    = item.querySelector('.k3-location');
+      const locOther  = item.querySelector('.k3-location-other');
+      const causeSel  = item.querySelector('.k3-cause');
+      const causeOther= item.querySelector('.k3-cause-other');
+
+      function sync(selectEl, otherEl) {
+        const on = selectEl && selectEl.value === 'lainnya';
+        toggleEl(otherEl, on);
+        if (!on && otherEl) otherEl.value = '';
+      }
+
+      if (typeSel)  { typeSel.addEventListener('change', () => sync(typeSel, typeOther));   sync(typeSel, typeOther); }
+      if (locSel)   { locSel.addEventListener('change',  () => sync(locSel,  locOther));    sync(locSel,  locOther); }
+      if (causeSel) { causeSel.addEventListener('change',() => sync(causeSel, causeOther)); sync(causeSel, causeOther); }
+    }
+
+    // Tautkan tombol hapus pada 1 item
+    function attachRemove(item) {
+      const btn = item.querySelector('.k3-remove');
+      if (!btn) return;
+      btn.addEventListener('click', () => {
+        const items = list.querySelectorAll('.k3-item');
+        if (items.length > 1) {
+          item.remove();
+          reindex();
+        }
+      });
+    }
+
+    // Item awal (sudah ada di HTML)
+    const firstItem = list.querySelector('.k3-item');
+    if (firstItem) {
+      attachOtherHandlers(firstItem);
+      attachRemove(firstItem);
+    }
+    reindex();
+
+    // Tambah item baru dari template
+    addBtn.addEventListener('click', () => {
+      const clone = tpl.content.firstElementChild.cloneNode(true);
+      list.appendChild(clone);
+      attachOtherHandlers(clone);
+      attachRemove(clone);
+      reindex();
+    });
+  });
+</script>
+
+

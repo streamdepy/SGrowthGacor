@@ -53,6 +53,53 @@ router.get("/gri-4", function (req, res, next) {
   });
 });
 
+router.get("/social-1", function (req, res, next) {
+  res.render("umkm/gri-social/social-1", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path
+  });
+});
+
+router.get("/social-2", function (req, res, next) {
+  res.render("umkm/gri-social/social-2", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path
+  });
+});
+
+router.get("/social-3", function (req, res, next) {
+  res.render("umkm/gri-social/social-3", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path
+  });
+});
+
+router.get("/social-4", function (req, res, next) {
+  res.render("umkm/gri-social/social-4", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path
+  });
+});
+
+router.get("/social-5", function (req, res, next) {
+  res.render("umkm/gri-social/social-5", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path
+  });
+});
+
+router.get("/social-6", function (req, res, next) {
+  res.render("umkm/gri-social/social-6", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path
+  });
+});
 module.exports = router;
 
 /*
