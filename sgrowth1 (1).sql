@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2025 at 11:46 AM
+-- Generation Time: Sep 05, 2025 at 01:35 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -117,9 +117,9 @@ CREATE TABLE `business_certifications` (
 --
 
 INSERT INTO `business_certifications` (`id`, `business_id`, `certification_name`) VALUES
-(1, 'kebaca ga ya', 'ISO 9001'),
-(2, 'kebaca ga ya', 'ISO 14001'),
-(3, 'kebaca ga ya', 'ISO 45001');
+(1, '', 'ISO 9001'),
+(2, '', 'ISO 14001'),
+(3, '', 'ISO 45001');
 
 -- --------------------------------------------------------
 
@@ -139,10 +139,10 @@ CREATE TABLE `business_departments` (
 --
 
 INSERT INTO `business_departments` (`id`, `business_id`, `department_name`, `employee_count`) VALUES
-(1, 'kebaca ga ya', 'HR', 2),
-(2, 'kebaca ga ya', 'Marketing', 3),
-(3, 'kebaca ga ya', 'IT', 4),
-(4, 'kebaca ga ya', 'Finance', 3);
+(1, '', 'HR', 2),
+(2, '', 'Marketing', 3),
+(3, '', 'IT', 4),
+(4, '', 'Finance', 3);
 
 -- --------------------------------------------------------
 
@@ -162,8 +162,8 @@ CREATE TABLE `business_profiles` (
   `province` varchar(100) DEFAULT NULL,
   `products_offered` text DEFAULT NULL,
   `ownership_percentage` decimal(5,2) DEFAULT NULL,
-  `market_scope` enum('Lokal','Nasional','Regional (ASEAN)','Global') DEFAULT NULL,
-  `target_market` enum('B2B','B2C','Pemerintah','Lainnya') DEFAULT NULL,
+  `market_scope` varchar(255) DEFAULT NULL,
+  `target_market` varchar(255) DEFAULT NULL,
   `target_market_other` varchar(255) DEFAULT NULL,
   `total_employees_fulltime` int(11) DEFAULT NULL,
   `total_employees_parttime` int(11) DEFAULT NULL,
@@ -184,7 +184,7 @@ CREATE TABLE `business_profiles` (
 --
 
 INSERT INTO `business_profiles` (`id`, `user_id`, `business_name`, `established_year`, `legal_form`, `industry_type`, `headquarters`, `city`, `province`, `products_offered`, `ownership_percentage`, `market_scope`, `target_market`, `target_market_other`, `total_employees_fulltime`, `total_employees_parttime`, `male_percentage`, `female_percentage`, `core_values`, `ethics_principles`, `pic_name`, `pic_position`, `pic_phone`, `pic_email`, `supporting_documents`, `created_at`) VALUES
-('kebaca ga ya', 1, 'Universitas Andalas', '2025', 'PT', 'Teknologi', 'jauh', 'padang', 'Sumatera Barat', 'Banyakk', 20.00, '', '', NULL, 12, 8, 39.00, 60.00, 'tetap jadi orang baik', 'mahall', 'agif', 'ceo', '081298076037', 'malghifari2096@gmail.com', 'Gemini_Generated_Image_sefxt0sefxt0sefx.png', '2025-09-04 07:33:07');
+('', 1, 'Universitas Andalas', '2025', 'CV', 'Teknologi', 'jauh', 'padang', 'Sumatera Barat', 'banyakk', 100.00, 'nasional, global', 'b2b, b2c', NULL, 12, 7, 40.00, 60.00, 'tetap jadi orang baik', 'mahal king', 'agif', 'ceo', '081298076037', 'malghifari2096@gmail.com', 'Gemini_Generated_Image_sefxt0sefxt0sefx.png', '2025-09-05 11:34:59');
 
 -- --------------------------------------------------------
 
@@ -198,6 +198,15 @@ CREATE TABLE `business_shareholders` (
   `shareholder_name` varchar(180) NOT NULL,
   `ownership_percentage` decimal(5,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `business_shareholders`
+--
+
+INSERT INTO `business_shareholders` (`id`, `business_id`, `shareholder_name`, `ownership_percentage`) VALUES
+(16, '', 'alghifari', 60.00),
+(17, '', 'jokowi', 30.00),
+(18, '', 'badang', 10.00);
 
 -- --------------------------------------------------------
 
@@ -218,14 +227,14 @@ CREATE TABLE `business_stakeholders` (
 --
 
 INSERT INTO `business_stakeholders` (`id`, `business_id`, `stakeholder_type`, `stakeholder_other`, `relationship`) VALUES
-(1, 'kebaca ga ya', 'Pelanggan', NULL, NULL),
-(2, 'kebaca ga ya', 'Karyawan', NULL, NULL),
-(3, 'kebaca ga ya', 'Pemasok', NULL, NULL),
-(4, 'kebaca ga ya', NULL, NULL, NULL),
-(5, 'kebaca ga ya', 'Investor/Shareholder', NULL, NULL),
-(6, 'kebaca ga ya', NULL, NULL, NULL),
-(7, 'kebaca ga ya', NULL, NULL, NULL),
-(8, 'kebaca ga ya', NULL, NULL, NULL);
+(49, '', 'Pelanggan', NULL, 'pembelinya'),
+(50, '', 'Karyawan', NULL, 'staff nya'),
+(51, '', 'Pemasok', NULL, NULL),
+(52, '', NULL, NULL, NULL),
+(53, '', 'Investor/Shareholder', NULL, 'tuan'),
+(54, '', NULL, NULL, NULL),
+(55, '', NULL, NULL, NULL),
+(56, '', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -577,13 +586,13 @@ ALTER TABLE `business_departments`
 -- AUTO_INCREMENT for table `business_shareholders`
 --
 ALTER TABLE `business_shareholders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `business_stakeholders`
 --
 ALTER TABLE `business_stakeholders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `certificates`
