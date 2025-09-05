@@ -8,12 +8,7 @@ const businessController = require("../controllers/businessController");
 router.get("/dashboard", middlewareValidation, isUMKM, getDashboardUmkm, function (req, res, next) {
 });
 
-router.get("/form-gi", function (req, res, next) {
-  res.render("umkm/form-gi", {
-    title: "Form GI",
-    layout: "umkm",
-    currentPath: req.path
-  });
+router.get("/form-gi", middlewareValidation, businessController.cekformgi,function (req, res, next) {
 });
 
 router.post("/form-gi", middlewareValidation, businessController.saveGeneralInformation);
