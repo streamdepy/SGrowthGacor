@@ -82,29 +82,29 @@
 
     <!-- Radio options -->
     <label class="flex items-center gap-2 cursor-pointer">
-      <input type="radio" name="industri_utama" class="industry-tag" value="Manufaktur"> Manufaktur
+      <input type="radio" name="industry_type" class="industry_type" value="Manufaktur"> Manufaktur
     </label>
 
     <label class="flex items-center gap-2 cursor-pointer">
-      <input type="radio" name="industri_utama" class="industry-tag" value="Jasa"> Jasa
+      <input type="radio" name="industry_type" class="industry_type" value="Jasa"> Jasa
     </label>
 
     <label class="flex items-center gap-2 cursor-pointer">
-      <input type="radio" name="industri_utama" class="industry-tag" value="Perdagangan"> Perdagangan
+      <input type="radio" name="industry_type" class="industry_type" value="Perdagangan"> Perdagangan
     </label>
 
     <label class="flex items-center gap-2 cursor-pointer">
-      <input type="radio" name="industri_utama" class="industry-tag" value="Pertanian/Perikanan"> Pertanian/Perikanan
+      <input type="radio" name="industry_type" class="industry_type" value="Pertanian/Perikanan"> Pertanian/Perikanan
     </label>
 
     <label class="flex items-center gap-2 cursor-pointer">
-      <input type="radio" name="industri_utama" class="industry-tag" value="Teknologi"> Teknologi
+      <input type="radio" name="industry_type" class="industry_type" value="Teknologi"> Teknologi
     </label>
 
     <!-- Lainnya dengan input text -->
     <label class="flex flex-col gap-1 cursor-pointer">
       <div class="flex items-center gap-2">
-        <input type="radio" name="industri_utama" class="industry-tag" value="Lainnya" id="industry-other-radio"> Lainnya
+        <input type="radio" name="industry_type" class="industry_type" value="Lainnya" id="industry-other-radio"> Lainnya
       </div>
       <input
         type="text"
@@ -154,7 +154,7 @@
 
 
 <div class="w-full mt-6">
-  <label for="brands" class="block pb-2 text-base font-medium">Daftar Merek/Brand yang Dimiliki</label>
+  {{!-- <label for="brands" class="block pb-2 text-base font-medium">Daftar Merek/Brand yang Dimiliki</label>
     <div class="flex gap-4 max-md:flex-col">
     <textarea
       id="brands"
@@ -162,14 +162,14 @@
       rows="4"
       placeholder="Contoh: Brand A, Brand B, Brand C…"
       class="w-full px-8 py-4 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition resize-y"
-    ></textarea>
+    ></textarea> --}}
 
       <!-- Provinsi (dropdown) -->
       <div class="w-1/2 max-md:w-full">
       <label for="produk" class="block pb-2 text-base font-medium">Produk/Jasa yang Ditawarkan</label>
         <textarea
-          id="produk"
-          name="produk"
+          id="products_offered"
+          name="products_offered"
           rows="4"
           placeholder="Jelaskan singkat produk/jasa utama yang ditawarkan…"
           class="w-full px-8 py-4 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition resize-y"
@@ -183,8 +183,8 @@
     <label for="hq" class="block pb-2 text-base font-medium">Lokasi Kantor Pusat (Headquarters)</label>
     <input
       type="text"
-      id="hq"
-      name="lokasi_kantor_pusat"
+      id="headquarters"
+      name="headquarters"
       placeholder="Contoh: Bekasi, Jawa Barat"
       class="w-full px-8 py-4 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
     />
@@ -197,8 +197,8 @@
       <!-- Kota/Region (short text) -->
       <input
         type="text"
-        id="operasional-kota"
-        name="lokasi_operasional_kota"
+        id="city"
+        name="city"
         placeholder="Kota/Region (contoh: Padang)"
         class="w-full px-8 py-4 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition max-md:w-full"
       />
@@ -206,8 +206,8 @@
       <!-- Provinsi (dropdown) -->
       <div class="w-1/2 max-md:w-full">
         <select
-          id="operasional-provinsi"
-          name="lokasi_operasional_provinsi"
+          id="province"
+          name="province"
           class="w-full px-8 py-4 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
         >
           <option value="">Pilih Provinsi</option>
@@ -222,8 +222,8 @@
         <!-- Input provinsi lainnya (muncul jika pilih Lainnya) -->
         <input
           type="text"
-          id="operasional-provinsi-lainnya"
-          name="lokasi_operasional_provinsi_lainnya"
+          id="province"
+          name="province"
           placeholder="Provinsi lainnya"
           class="w-full px-8 py-4 mt-3 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition hidden"
         />
@@ -243,8 +243,8 @@
         <label for="pemilik-utama" class="block pb-2 text-base font-medium">Pemilik/Shareholders Utama</label>
         <input
           type="text"
-          id="pemilik-utama"
-          name="pemilik_utama"
+          id="shareholders"
+          name="shareholders"
           placeholder="Contoh: PT Abadi Sejahtera, John Doe"
           class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
         />
@@ -272,8 +272,8 @@
         <div class="relative">
           <input
             type="number"
-            id="persentase-kepemilikan"
-            name="persentase_kepemilikan"
+            id="ownership_percentage"
+            name="ownership_percentage"
             min="0" max="100" step="0.01"
             placeholder="0 - 100"
             class="w-full px-8 py-4 pr-12 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
@@ -297,16 +297,16 @@
       <label class="block pb-2 text-base font-medium">Wilayah Operasi</label>
       <div class="flex flex-col gap-2">
         <label class="flex items-center gap-2 cursor-pointer">
-          <input type="checkbox" class="region-tag" value="lokal"> Lokal
+          <input type="checkbox" name="market_scope" class="market_scope" class="region-tag" value="lokal"> Lokal
         </label>
         <label class="flex items-center gap-2 cursor-pointer">
-          <input type="checkbox" class="region-tag" value="nasional"> Nasional
+          <input type="checkbox" name="market_scope" class="market_scope" class="region-tag" value="nasional"> Nasional
         </label>
         <label class="flex items-center gap-2 cursor-pointer">
-          <input type="checkbox" class="region-tag" value="regional"> Regional (ASEAN)
+          <input type="checkbox" name="market_scope" class="market_scope" class="region-tag" value="regional"> Regional (ASEAN)
         </label>
         <label class="flex items-center gap-2 cursor-pointer">
-          <input type="checkbox" class="region-tag" value="global"> Global
+          <input type="checkbox" name="market_scope" class="market_scope" class="region-tag" value="global"> Global
         </label>
       </div>
     </div>
@@ -316,18 +316,18 @@
       <label class="block pb-2 text-base font-medium">Target Market</label>
       <div class="flex flex-col gap-2">
         <label class="flex items-center gap-2 cursor-pointer">
-          <input type="checkbox" class="target-tag" value="b2b"> B2B
+          <input type="checkbox" name="target_market" class="target_market" value="b2b"> B2B
         </label>
         <label class="flex items-center gap-2 cursor-pointer">
-          <input type="checkbox" class="target-tag" value="b2c"> B2C
+          <input type="checkbox" name="target_market" class="target_market" value="b2c"> B2C
         </label>
         <label class="flex items-center gap-2 cursor-pointer">
-          <input type="checkbox" class="target-tag" value="pemerintah"> Pemerintah
+          <input type="checkbox" name="target_market" class="target_market" value="pemerintah"> Pemerintah
         </label>
         <!-- Lainnya dengan input text -->
         <label class="flex flex-col gap-1 cursor-pointer">
           <div class="flex items-center gap-2">
-            <input type="checkbox" class="target-tag" value="lainnya"> Lainnya
+            <input type="checkbox" name="target_market_other" class="target_market_other" value="lainnya"> Lainnya
           </div>
           <input type="text" class="w-full mt-1 px-3 py-2 rounded-lg border border-gray-300 text-teal-700" placeholder="Sebutkan">
         </label>
@@ -349,14 +349,19 @@
       <!-- Total Karyawan (Full-Time) -->
       <div class="w-6/12 max-md:w-full">
         <label class="block pb-2 text-base font-medium">Total Jumlah Karyawan (Full-Time)</label>
-        <input type="number" placeholder="Masukkan Jumlah Karyawan Full-Time"
+        <input type="number" placeholder="Masukkan Jumlah Karyawan Full-Time" 
+          id="total_employees_fulltime"
+          name="total_employees_fulltime"
           class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
       </div>
 
       <!-- Total Pekerja Paruh Waktu/Outsourcing -->
       <div class="w-6/12 max-md:w-full">
         <label class="block pb-2 text-base font-medium">Total Jumlah Pekerja Paruh Waktu/Outsourcing</label>
-        <input type="number" placeholder="Masukkan Jumlah Pekerja Paruh Waktu"
+        <input type="number" 
+          id="total_employees_parttime"
+          name="total_employees_parttime" 
+          placeholder="Masukkan Jumlah Pekerja Paruh Waktu"
           class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
       </div>
     </div>
@@ -369,6 +374,8 @@
       <div class="w-6/12 max-md:w-full">
         <label class="block pb-2 text-base font-medium">% Laki-laki</label>
         <input type="number" placeholder="Masukkan Persentase Laki-laki"
+          id="male_percentage"
+          name="male_percentage"
           class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
       </div>
 
@@ -376,6 +383,8 @@
       <div class="w-6/12 max-md:w-full">
         <label class="block pb-2 text-base font-medium">% Perempuan</label>
         <input type="number" placeholder="Masukkan Persentase Perempuan"
+          id="female_percentage"
+          name="female_percentage"
           class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
       </div>
     </div>
@@ -383,42 +392,55 @@
 
   <!-- Jumlah Karyawan per Departemen (Table) -->
   <div class="mt-10 w-full">
-    <h4 class="text-2xl font-semibold text-teal-700">Jumlah Karyawan per Departemen</h4>
-    <table class="w-full mt-4 table-auto border-separate border-spacing-2">
-      <thead>
-        <tr class="bg-teal-700 text-white">
-          <th class="px-4 py-2">Departemen</th>
-          <th class="px-4 py-2">Jumlah Karyawan</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="border px-4 py-2">HR</td>
-          <td class="border px-4 py-2">
-            <input type="number" class="w-full px-4 py-2 rounded-lg border border-gray-300" placeholder="Jumlah Karyawan HR">
-          </td>
-        </tr>
-        <tr>
-          <td class="border px-4 py-2">Marketing</td>
-          <td class="border px-4 py-2">
-            <input type="number" class="w-full px-4 py-2 rounded-lg border border-gray-300" placeholder="Jumlah Karyawan Marketing">
-          </td>
-        </tr>
-        <tr>
-          <td class="border px-4 py-2">IT</td>
-          <td class="border px-4 py-2">
-            <input type="number" class="w-full px-4 py-2 rounded-lg border border-gray-300" placeholder="Jumlah Karyawan IT">
-          </td>
-        </tr>
-        <tr>
-          <td class="border px-4 py-2">Finance</td>
-          <td class="border px-4 py-2">
-            <input type="number" class="w-full px-4 py-2 rounded-lg border border-gray-300" placeholder="Jumlah Karyawan Finance">
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <h4 class="text-2xl font-semibold text-teal-700">Jumlah Karyawan per Departemen</h4>
+  <table class="w-full mt-4 table-auto border-separate border-spacing-2">
+    <thead>
+      <tr class="bg-teal-700 text-white">
+        <th class="px-4 py-2">Departemen</th>
+        <th class="px-4 py-2">Jumlah Karyawan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="border px-4 py-2">
+          <input type="hidden" name="departments[0][department_name]" value="HR">
+          HR
+        </td>
+        <td class="border px-4 py-2">
+          <input type="number" name="departments[0][employee_count]" class="w-full px-4 py-2 rounded-lg border border-gray-300" placeholder="Jumlah Karyawan HR">
+        </td>
+      </tr>
+      <tr>
+        <td class="border px-4 py-2">
+          <input type="hidden" name="departments[1][department_name]" value="Marketing">
+          Marketing
+        </td>
+        <td class="border px-4 py-2">
+          <input type="number" name="departments[1][employee_count]" class="w-full px-4 py-2 rounded-lg border border-gray-300" placeholder="Jumlah Karyawan Marketing">
+        </td>
+      </tr>
+      <tr>
+        <td class="border px-4 py-2">
+          <input type="hidden" name="departments[2][department_name]" value="IT">
+          IT
+        </td>
+        <td class="border px-4 py-2">
+          <input type="number" name="departments[2][employee_count]" class="w-full px-4 py-2 rounded-lg border border-gray-300" placeholder="Jumlah Karyawan IT">
+        </td>
+      </tr>
+      <tr>
+        <td class="border px-4 py-2">
+          <input type="hidden" name="departments[3][department_name]" value="Finance">
+          Finance
+        </td>
+        <td class="border px-4 py-2">
+          <input type="number" name="departments[3][employee_count]" class="w-full px-4 py-2 rounded-lg border border-gray-300" placeholder="Jumlah Karyawan Finance">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 
 </section>
 
@@ -430,6 +452,8 @@
   <div class="mt-10 w-full">
     <label class="block pb-2 text-base font-medium">Core Values Perusahaan</label>
     <textarea placeholder="Masukkan Core Values Perusahaan"
+      id="core_values"
+      name="core_values"
       class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"></textarea>
   </div>
 
@@ -437,31 +461,54 @@
   <div class="mt-10 w-full">
     <label class="block pb-2 text-base font-medium">Prinsip atau Kode Etik yang Diterapkan</label>
     <textarea placeholder="Masukkan Prinsip atau Kode Etik yang Diterapkan"
+      id="ethics_principles"
+      name="ethics_principles"
       class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"></textarea>
   </div>
 
   <!-- Sertifikasi/Standar yang Dimiliki -->
   <div class="mt-10 w-full">
-    <label class="block pb-2 text-base font-medium">Sertifikasi/Standar yang Dimiliki</label>
-    <div class="flex gap-4 max-md:flex-col">
-      <label class="flex items-center gap-2">
-        <input type="checkbox" class="text-teal-700"> ISO 9001 (Quality Management)
-      </label>
-      <label class="flex items-center gap-2">
-        <input type="checkbox" class="text-teal-700"> ISO 14001 (Environmental Management)
-      </label>
-      <label class="flex items-center gap-2">
-        <input type="checkbox" class="text-teal-700"> ISO 45001 (Occupational Health and Safety)
-      </label>
-      <div class="flex items-center gap-2 max-md:mt-2">
-        <label class="flex items-center gap-2">
-          <input type="checkbox" class="text-teal-700"> Lainnya: 
-          <input type="text" placeholder="Sertifikasi lainnya"
-            class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
-        </label>
-      </div>
+  <label class="block pb-2 text-base font-medium">Sertifikasi/Standar yang Dimiliki</label>
+  <div class="flex flex-wrap gap-4 max-md:flex-col">
+
+    <!-- Checkbox group -->
+    <label class="flex items-center gap-2">
+      <input type="checkbox" name="certifications[]" value="ISO 9001" class="text-teal-700">
+      ISO 9001 (Quality Management)
+    </label>
+
+    <label class="flex items-center gap-2">
+      <input type="checkbox" name="certifications[]" value="ISO 14001" class="text-teal-700">
+      ISO 14001 (Environmental Management)
+    </label>
+
+    <label class="flex items-center gap-2">
+      <input type="checkbox" name="certifications[]" value="ISO 45001" class="text-teal-700">
+      ISO 45001 (Occupational Health and Safety)
+    </label>
+
+    <!-- Lainnya -->
+    <div class="flex items-center gap-2">
+      <input type="checkbox" id="cert-other-checkbox" class="text-teal-700">
+      <label for="cert-other-checkbox">Lainnya:</label>
+      <input
+        type="text"
+        id="cert-other-input"
+        name="cert_other"
+        placeholder="Sertifikasi lainnya"
+        class="w-full px-4 py-2 rounded-lg border border-gray-300 text-black placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition hidden"
+      />
     </div>
   </div>
+</div>
+
+<script>
+  // JS kecil supaya input text muncul kalau "lainnya" dicentang
+  document.getElementById('cert-other-checkbox').addEventListener('change', function () {
+    document.getElementById('cert-other-input').classList.toggle('hidden', !this.checked);
+  });
+</script>
+
 </section>
 
 <!-- Pemangku Kepentingan (Stakeholders) Section -->
@@ -472,42 +519,93 @@
 <div class="mt-10 w-full">
   <label class="block pb-2 text-base font-medium">Daftar Kelompok Pemangku Kepentingan</label>
   <div class="flex flex-col gap-4">
-    <label class="flex items-center gap-2">
-      <input type="checkbox" class="text-teal-700"> Pelanggan
-    </label>
-    <label class="flex items-center gap-2">
-      <input type="checkbox" class="text-teal-700"> Karyawan
-    </label>
-    <label class="flex items-center gap-2">
-      <input type="checkbox" class="text-teal-700"> Pemasok
-    </label>
-    <label class="flex items-center gap-2">
-      <input type="checkbox" class="text-teal-700"> Pemerintah/Regulator
-    </label>
-    <label class="flex items-center gap-2">
-      <input type="checkbox" class="text-teal-700"> Investor/Shareholder
-    </label>
-    <label class="flex items-center gap-2">
-      <input type="checkbox" class="text-teal-700"> Masyarakat Lokal
-    </label>
-    <label class="flex items-center gap-2">
-      <input type="checkbox" class="text-teal-700"> LSM/Komunitas
-    </label>
-    <!-- Lainnya -->
-    <label class="flex flex-col gap-2">
-      <div class="flex items-center gap-2">
-        <input type="checkbox" class="text-teal-700"> Lainnya:
-      </div>
-      <input type="text" placeholder="Kelompok Pemangku Kepentingan lainnya"
-        class="w-full px-8 py-4 mt-0 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
-    </label>
+
+    {{!-- Template setiap stakeholder --}}
+    <div class="flex items-center gap-4">
+      <label class="flex items-center gap-2 w-1/3">
+        <input type="checkbox" name="stakeholders[0][type]" value="Pelanggan" class="text-teal-700">
+        Pelanggan
+      </label>
+      <input type="text" name="stakeholders[0][relationship]" placeholder="Hubungan dengan pelanggan"
+        class="w-2/3 px-4 py-2 rounded-lg border border-gray-300">
+    </div>
+
+    <div class="flex items-center gap-4">
+      <label class="flex items-center gap-2 w-1/3">
+        <input type="checkbox" name="stakeholders[1][type]" value="Karyawan" class="text-teal-700">
+        Karyawan
+      </label>
+      <input type="text" name="stakeholders[1][relationship]" placeholder="Hubungan dengan karyawan"
+        class="w-2/3 px-4 py-2 rounded-lg border border-gray-300">
+    </div>
+
+    <div class="flex items-center gap-4">
+      <label class="flex items-center gap-2 w-1/3">
+        <input type="checkbox" name="stakeholders[2][type]" value="Pemasok" class="text-teal-700">
+        Pemasok
+      </label>
+      <input type="text" name="stakeholders[2][relationship]" placeholder="Hubungan dengan pemasok"
+        class="w-2/3 px-4 py-2 rounded-lg border border-gray-300">
+    </div>
+
+    <div class="flex items-center gap-4">
+      <label class="flex items-center gap-2 w-1/3">
+        <input type="checkbox" name="stakeholders[3][type]" value="Pemerintah/Regulator" class="text-teal-700">
+        Pemerintah/Regulator
+      </label>
+      <input type="text" name="stakeholders[3][relationship]" placeholder="Hubungan dengan pemerintah/regulator"
+        class="w-2/3 px-4 py-2 rounded-lg border border-gray-300">
+    </div>
+
+    <div class="flex items-center gap-4">
+      <label class="flex items-center gap-2 w-1/3">
+        <input type="checkbox" name="stakeholders[4][type]" value="Investor/Shareholder" class="text-teal-700">
+        Investor/Shareholder
+      </label>
+      <input type="text" name="stakeholders[4][relationship]" placeholder="Hubungan dengan investor/shareholder"
+        class="w-2/3 px-4 py-2 rounded-lg border border-gray-300">
+    </div>
+
+    <div class="flex items-center gap-4">
+      <label class="flex items-center gap-2 w-1/3">
+        <input type="checkbox" name="stakeholders[5][type]" value="Masyarakat Lokal" class="text-teal-700">
+        Masyarakat Lokal
+      </label>
+      <input type="text" name="stakeholders[5][relationship]" placeholder="Hubungan dengan masyarakat lokal"
+        class="w-2/3 px-4 py-2 rounded-lg border border-gray-300">
+    </div>
+
+    <div class="flex items-center gap-4">
+      <label class="flex items-center gap-2 w-1/3">
+        <input type="checkbox" name="stakeholders[6][type]" value="LSM/Komunitas" class="text-teal-700">
+        LSM/Komunitas
+      </label>
+      <input type="text" name="stakeholders[6][relationship]" placeholder="Hubungan dengan LSM/komunitas"
+        class="w-2/3 px-4 py-2 rounded-lg border border-gray-300">
+    </div>
+
+    {{!-- Lainnya --}}
+    <div class="flex items-center gap-4">
+      <label class="flex items-center gap-2 w-1/3">
+        <input type="checkbox" name="stakeholders[7][type]" value="Lainnya" class="text-teal-700">
+        Lainnya
+      </label>
+      <input type="text" name="stakeholders[7][stakeholder_other]" placeholder="Kelompok lainnya"
+        class="w-1/3 px-4 py-2 rounded-lg border border-gray-300">
+      <input type="text" name="stakeholders[7][relationship]" placeholder="Hubungan dengan stakeholder lain"
+        class="w-1/3 px-4 py-2 rounded-lg border border-gray-300">
+    </div>
+
   </div>
 </div>
+
 
   <!-- Hubungan dan Frekuensi Komunikasi dengan Stakeholder -->
   <div class="mt-10 w-full">
     <label class="block pb-2 text-base font-medium">Hubungan dan Frekuensi Komunikasi dengan Stakeholder</label>
     <textarea placeholder="Masukkan hubungan dan frekuensi komunikasi dengan masing-masing pemangku kepentingan"
+     id="business_id"
+      name="business_id"
       class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"></textarea>
   </div>
 </section>
@@ -525,12 +623,16 @@
       <div class="w-6/12 max-md:w-full">
         <label class="block pb-2 text-base font-medium">Nama Kontak Utama</label>
         <input type="text" placeholder="Nama Kontak Utama"
+        id="pic_name"
+      name="pic_name"
           class="w-full px-8 py-4 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
       </div>
 
       <div class="w-6/12 max-md:w-full">
         <label class="block pb-2 text-base font-medium">Posisi/Jabatan</label>
         <input type="text" placeholder="Posisi atau Jabatan"
+        id="pic_position"
+      name="pic_position"
           class="w-full px-8 py-4 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
       </div>
     </div>
@@ -540,18 +642,24 @@
       <div class="w-6/12 max-md:w-full">
         <label class="block pb-2 text-base font-medium">Email</label>
         <input type="text" placeholder="Email"
+        id="pic_email"
+      name="pic_email"
           class="w-full px-8 py-4 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
       </div>
 
       <div class="w-6/12 max-md:w-full">
         <label class="block pb-2 text-base font-medium">Nomor Telepon</label>
         <input type="number" placeholder="Nomor Telepon"
+        id="pic_phone"
+      name="pic_phone"
           class="w-full px-8 py-4 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
       </div>
 
       <div class="w-6/12 max-md:w-full">
         <label class="block pb-2 text-base font-medium">Unggah Dokumen Pendukung (opsional)</label>
         <input type="file"
+        id="supporting_documents"
+      name="supporting_documents"
           class="w-full px-4 py-3 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
       </div>
     </div>

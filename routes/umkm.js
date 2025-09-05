@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { middlewareValidation, isAdmin, isUMKM } = require("../middlewares/authMiddleware");
 const { getDashboardUmkm } = require("../controllers/umkmController");
+const businessController = require("../controllers/businessController");
 
 
 router.get("/dashboard", middlewareValidation, isUMKM, getDashboardUmkm, function (req, res, next) {
@@ -14,6 +15,8 @@ router.get("/form-gi", function (req, res, next) {
     currentPath: req.path
   });
 });
+
+router.post("/form-gi", middlewareValidation, businessController.saveGeneralInformation);
 
 router.get("/form-gri", function (req, res, next) {
   res.render("umkm/form-gri", {
