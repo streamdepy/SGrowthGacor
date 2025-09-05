@@ -27,7 +27,7 @@ router.get("/form-gri", function (req, res, next) {
 });
 
 router.get("/gri-1", function (req, res, next) {
-  res.render("umkm/gri-1", {
+  res.render("umkm/gri-economic/gri-1", {
     title: "Form GRI",
     layout: "umkm",
     currentPath: req.path
@@ -35,7 +35,7 @@ router.get("/gri-1", function (req, res, next) {
 });
 
 router.get("/gri-2", function (req, res, next) {
-  res.render("umkm/gri-2", {
+  res.render("umkm/gri-economic/gri-2", {
     title: "Form GRI",
     layout: "umkm",
     currentPath: req.path
@@ -43,7 +43,7 @@ router.get("/gri-2", function (req, res, next) {
 });
 
 router.get("/gri-3", function (req, res, next) {
-  res.render("umkm/gri-3", {
+  res.render("umkm/gri-economic/gri-3", {
     title: "Form GRI",
     layout: "umkm",
     currentPath: req.path
@@ -51,7 +51,7 @@ router.get("/gri-3", function (req, res, next) {
 });
 
 router.get("/gri-4", function (req, res, next) {
-  res.render("umkm/gri-4", {
+  res.render("umkm/gri-economic/gri-4", {
     title: "Form GRI",
     layout: "umkm",
     currentPath: req.path
