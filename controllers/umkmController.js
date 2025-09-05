@@ -22,21 +22,22 @@ const getDashboardUmkm = async (req, res, next) => {
     }
 
     // Cari ESG Score secara manual
-    const esgScores = await EsgScore.findAll({
-      where: { business_id: business.id },
-    });
+    // const esgScores = await EsgScore.findAll({
+    //   where: { business_id: business.id },
+    // });
 
-    if (!esgScores || esgScores.length === 0) {
-      console.warn(`⚠️ ESG Score kosong untuk business_id: ${business.id}`);
-    }
+    // if (!esgScores || esgScores.length === 0) {
+    //   console.warn(`⚠️ ESG Score kosong untuk business_id: ${business.id}`);
+    // }
 
+    console.log(user.name)
     // Kirim ke view
     res.render("umkm/dashboard", {
       title: "Dashboard UMKM",
-      layout: "/layouts/umkm.hbs",
+      layout: "umkm.hbs",
       user,
       business,
-      esgScores,
+      // esgScores,
     });
 
   } catch (error) {

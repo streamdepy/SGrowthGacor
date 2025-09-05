@@ -1,5 +1,30 @@
 const { BusinessProfile, BusinessShareholder, BusinessDepartment, BusinessCertification, BusinessStakeholder } = require("../models");
 
+exports.cekformgi = async (req, res) => {
+  try {
+    const user = req.user;
+
+    // Cari profil bisnis berdasarkan user_id
+    const business = await BusinessProfile.findOne({
+      where: { user_id: user.id },
+    });
+
+    if(!business) {
+      res.render("umkm/form-gi", {
+        title: "Form GI",
+        layout: "umkm",
+        currentPath: req.path
+      });
+    }
+    
+    res.redirect("form-gri");
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Registration failed." + error);
+  }
+};
+
 exports.saveGeneralInformation = async (req, res) => {
   const t = await BusinessProfile.sequelize.transaction(); // pakai transaksi biar aman
   try {
