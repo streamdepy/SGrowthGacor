@@ -1,120 +1,104 @@
 <main class="flex flex-col ml-48 self-center mb-16 mt-16 w-full max-w-[1256px] max-md:mt-10 max-md:max-w-full">
-    <header class="flex gap-3.5 self-start">
-        <img
-            src="https://api.builder.io/api/v1/image/assets/TEMP/a2c214fc5ad90d019c67cc350eaa8b5e4005560c?placeholderIfAbsent=true&apiKey=ac04cd396e1f47f18955cd19640f183d"
-            alt="GRI Economic icon"
-            class="object-contain shrink-0 my-auto rounded-full aspect-[1.04] w-[58px]"
-        />
-        <div class="flex flex-col">
-            <h2 class="text-4xl font-semibold text-black">
-                GRI Economic
-            </h2>
-            <p class="self-center text-xl font-medium leading-none text-center text-gray-500">
-                Economic Performance
-            </p>
-        </div>
-    </header>
+  <header class="flex gap-3.5 self-start">
+    <img
+      src="https://api.builder.io/api/v1/image/assets/TEMP/a2c214fc5ad90d019c67cc350eaa8b5e4005560c?placeholderIfAbsent=true&apiKey=ac04cd396e1f47f18955cd19640f183d"
+      alt="GRI Economic icon"
+      class="object-contain shrink-0 my-auto rounded-full aspect-[1.04] w-[58px]"
+    />
+    <div class="flex flex-col">
+      <h2 class="text-4xl font-semibold text-black">
+        GRI Economic
+      </h2>
+      <p class="self-center text-xl font-medium leading-none text-center text-gray-500">
+        Economic Performance
+      </p>
+    </div>
+  </header>
 
-    <section class="flex flex-col items-start self-end px-20 py-14 mt-16 w-full bg-white rounded-2xl shadow-2xl max-w-[1168px] max-md:px-5 max-md:mt-10 max-md:max-w-full">
-        <h3 class="text-3xl font-semibold text-center text-teal-700">
-            Informasi Umum Usaha
-        </h3>
-        <p class="mt-6 text-xl leading-none text-gray-500 max-md:max-w-full">
-            Lengkapi field yang diperlukan untuk melanjutkan ke step berikutnya
-        </p>
+  <section class="flex flex-col items-start self-end px-20 py-14 mt-16 w-full bg-white rounded-2xl shadow-2xl max-w-[1168px] max-md:px-5 max-md:mt-10 max-md:max-w-full">
+    <h3 class="text-3xl font-semibold text-center text-teal-700">
+      Informasi Umum Usaha
+    </h3>
+    <p class="mt-6 text-xl leading-none text-gray-500 max-md:max-w-full">
+      Lengkapi field yang diperlukan untuk melanjutkan ke step berikutnya
+    </p>
 
-        <form class="z-10 mt-14 max-w-full w-[1700px] max-md:mt-10">
-            <div class="flex gap-5 max-md:flex-col">
-                <!-- Left side input fields -->
-                <div class="w-[69%] max-md:ml-0 max-md:w-full">
-                    <div class="w-full text-base max-md:mt-10 max-md:max-w-full">
-                        <!-- Organization Name and Responsible Person -->
-                        <div class="flex z-10 flex-wrap gap-4 items-center px-4 py-3 min-h-[110px] max-md:mr-1">
-                            <div class="flex-1 shrink self-stretch my-auto w-full basis-0 min-w-40 max-md:max-w-full">
-                                <label class="block pb-2 w-full font-medium text-neutral-900 max-md:max-w-full">
-                                    Nama Unit/Departemen
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="Masukkan Nama Unit"
-                                    class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
-                                />
-                            </div>
-                            <div class="flex-1 shrink self-stretch my-auto w-full basis-0 min-w-40 max-md:max-w-full">
-                                <label class="block pb-2 w-full font-medium text-neutral-900 max-md:max-w-full">
-                                    Nama Penanggung Jawab
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="Masukkan Nama Penanggung Jawab"
-                                    class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
-                                />
-                            </div>
-                        </div>
+    <form action="/umkm/gri-1" method="POST" class="z-10 mt-14 max-w-full w-[1700px] max-md:mt-10">
+      <div class="flex gap-5 max-md:flex-col">
+        <!-- Left side input fields -->
+        <div class="w-[69%] max-md:ml-0 max-md:w-full">
+          <div class="w-full text-base max-md:mt-10 max-md:max-w-full">
+            <!-- Organization Name and Responsible Person -->
+            <div class="flex z-10 flex-wrap gap-4 items-center px-4 py-3 min-h-[110px] max-md:mr-1">
+              <div class="flex-1 shrink self-stretch my-auto w-full basis-0 min-w-40 max-md:max-w-full">
+                <label class="block pb-2 w-full font-medium text-neutral-900 max-md:max-w-full">
+                  Nama Unit/Departemen
+                </label>
+                <input
+                  type="text"
+                  id="unit_name"
+                  name="unit_name"
+                  placeholder="Masukkan Nama Unit"
+                  class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
+                />
+              </div>
+              <div class="flex-1 shrink self-stretch my-auto w-full basis-0 min-w-40 max-md:max-w-full">
+                <label class="block pb-2 w-full font-medium text-neutral-900 max-md:max-w-full">
+                  Nama Penanggung Jawab
+                </label>
+                <input
+                id="responsible_person"
+                name="responsible_person"
+                  type="text"
+                  placeholder="Masukkan Nama Penanggung Jawab"
+                  class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
+                />
+              </div>
+            </div>
 
-                        <!-- Period of Report (Dropdown) -->
-                        <div class="flex flex-wrap gap-4 items-end px-4 py-3 min-h-[110px]">
-                            <div class="grow shrink min-w-40 w-[358px] max-md:max-w-full">
-                                <label class="block pb-2 w-full font-medium text-neutral-900 max-md:max-w-full">
-                                    Periode Pelaporan
-                                </label>
-                                <div class="relative">
-                                    <select class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
-                                        <option value="">Pilih Periode</option>
-                                        <option value="jan-mar">Januari–Maret 2025</option>
-                                        <option value="apr-jun">April–Juni 2025</option>
-                                        <option value="jul-sep">Juli–September 2025</option>
-                                        <option value="oct-dec">Oktober–Desember 2025</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+            <!-- Period of Report (Dropdown) -->
+            <div class="flex flex-wrap gap-4 items-end px-4 py-3 min-h-[110px]">
+              <div class="grow shrink min-w-40 w-[358px] max-md:max-w-full">
+                <label class="block pb-2 w-full font-medium text-neutral-900 max-md:max-w-full">
+                  Periode Pelaporan
+                </label>
+                <div class="relative">
+                  <select
+                    id="reporting_period"
+                    name="reporting_period"
+                    class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
+                  >
+                    <option value="">Pilih Periode</option>
+                    <option value="jan-mar">Januari-Maret 2025</option>
+                    <option value="apr-jun">April-Juni 2025</option>
+                    <option value="jul-sep">Juli-September 2025</option>
+                    <option value="oct-dec">Oktober-Desember 2025</option>
+                  </select>
                 </div>
+              </div>
             </div>
 
-            <!-- Submit Button -->
-            <div class="flex justify-end mt-7">
-                <button
-                    type="submit"
-                    class="px-8 py-2 text-base font-medium text-center text-white whitespace-nowrap bg-lime-500 rounded-xl hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-offset-2 transition-colors"
-                >
-                    Submit
-                </button>
-            </div>
-        </form>
-    </section>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="flex justify-end mt-7">
+        <button
+          type="submit"
+          class="px-8 py-2 text-base font-medium text-center text-white whitespace-nowrap bg-lime-500 rounded-xl hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-offset-2 transition-colors"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </section>
 </main>
 
 <script>
-    // Form validation and interaction
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.querySelector('form');
-        const submitButton = document.querySelector('button[type="submit"]');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Basic form validation
-            const namaUnit = document.querySelector('input[type="text"]').value;
-            const periodeLaporan = document.querySelector('select').value;
-            const namaPenanggungJawab = document.querySelector('input[type="text"]').value;
-
-            if (!namaUnit || !periodeLaporan || !namaPenanggungJawab) {
-                alert('Mohon lengkapi semua field yang diperlukan');
-                return;
-            }
-
-            // Simulate form submission
-            submitButton.textContent = 'Memproses...';
-            submitButton.disabled = true;
-
-            setTimeout(() => {
-                alert('Form berhasil disubmit!');
-                submitButton.textContent = 'Lanjut';
-                submitButton.disabled = false;
-            }, 2000);
-        });
+  // Form validation and interaction document.addEventListener('DOMContentLoaded', function() { const form = document.querySelector('form'); const submitButton = document.querySelector('button[type="submit"]');
+  form.addEventListener('submit', function(e) { e.preventDefault(); // Basic form validation const namaUnit = document.querySelector('input[type="text"]').value; const periodeLaporan = document.querySelector('select').value; const
+  namaPenanggungJawab = document.querySelector('input[type="text"]').value; if (!namaUnit || !periodeLaporan || !namaPenanggungJawab) { alert('Mohon lengkapi semua field yang diperlukan'); return; } // Simulate form submission
+  submitButton.textContent = 'Memproses...'; submitButton.disabled = true; setTimeout(() => { alert('Form berhasil disubmit!'); submitButton.textContent = 'Lanjut'; submitButton.disabled = false; }, 2000); });
 
 </script>
