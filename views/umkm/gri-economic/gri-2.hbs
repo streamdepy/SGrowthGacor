@@ -20,30 +20,32 @@
       Bagian 2: Data Pendapatan dan Pengeluaran
     </h3>
     <p class="mt-6 text-xl leading-none text-gray-500 max-md:max-w-full">
-      Lengkapi data berikut untuk laporan pendapatan dan pengeluaran.
+      Lengkapi data berikut untuk laporan pendapatan dan pengeluaran {{reporting_period}}.
     </p>
 
     <form action="/umkm/gri-2" method="POST" class="z-10 mt-14 max-w-full w-[1057px] max-md:mt-10">
       <input type="hidden" name="gri_id" value="{{gri_id}}" />
       <!-- Pendapatan Section -->
       <div class="w-full text-base max-md:mt-10 max-md:max-w-full">
-        <h4 class="text-2xl font-semibold text-teal-700">
-          A. Pendapatan
-        </h4>
+  <h4 class="text-2xl font-semibold text-teal-700">
+    A. Pendapatan
+  </h4>
 
-        <div class="flex gap-4 items-center px-4 py-3 mt-6">
-          <label class="block pb-2 w-full font-medium text-neutral-900 max-md:max-w-full">
-            Total pendapatan/revenue selama periode ini
-          </label>
-          <input
-            type="number"
-            id="revenue"
-            name="revenue"
-            placeholder="Masukkan jumlah pendapatan"
-            class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
-          />
-        </div>
-      </div>
+  <div class="flex gap-4 items-center px-4 py-3 mt-6">
+    <label for="revenue" class="block pb-2 w-full font-medium text-neutral-900 max-md:max-w-full">
+      Total pendapatan/revenue selama periode ini
+    </label>
+    <input
+      type="number"
+      id="revenue"
+      name="revenue"
+      value="{{#if record}}{{record.revenue}}{{/if}}"
+      placeholder="Masukkan jumlah pendapatan"
+      class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
+    />
+  </div>
+</div>
+
 
       <!-- Pengeluaran Section -->
       <div class="w-full text-base max-md:mt-10 max-md:max-w-full">
@@ -61,6 +63,7 @@
               type="number"
               id="general_admin_expenses"
               name="general_admin_expenses"
+              value="{{#if record}}{{record.general_admin_expenses}}{{/if}}"
               placeholder="Masukkan jumlah biaya umum"
               class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
             />
@@ -73,6 +76,7 @@
               type="text"
               id="general_admin_notes"
               name="general_admin_notes"
+              value="{{#if record}}{{record.general_admin_notes}}{{/if}}"
               placeholder="Keterangan"
               class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
             />
@@ -89,6 +93,7 @@
               type="number"
               id="salary_expenses"
               name="salary_expenses"
+              value="{{#if record}}{{record.salary_expenses}}{{/if}}"
               placeholder="Masukkan jumlah gaji dan upah"
               class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
             />
@@ -101,6 +106,7 @@
               type="text"
               id="salary_employee_notes"
               name="salary_employee_notes"
+              value="{{#if record}}{{record.salary_employee_notes}}{{/if}}"
               placeholder="Keterangan"
               class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
             />
@@ -117,6 +123,7 @@
               type="number"
               id="transport_expenses"
               name="transport_expenses"
+              value="{{#if record}}{{record.transport_expenses}}{{/if}}"
               placeholder="Masukkan jumlah biaya transportasi"
               class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
             />
@@ -129,6 +136,7 @@
               type="text"
               id="transport_notes"
               name="transport_notes"
+              value="{{#if record}}{{record.transport_notes}}{{/if}}"
               placeholder="Keterangan"
               class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
             />
@@ -145,6 +153,7 @@
               type="number"
               id="fuel_expenses"
               name="fuel_expenses"
+              value="{{#if record}}{{record.fuel_expenses}}{{/if}}"
               placeholder="Masukkan biaya bahan bakar"
               class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
             />
@@ -154,6 +163,7 @@
               type="number"
               id="electricity_expenses"
               name="electricity_expenses"
+              value="{{#if record}}{{record.electricity_expenses}}{{/if}}"
               placeholder="Masukkan biaya listrik"
               class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
             />
@@ -171,6 +181,7 @@
               type="number"
               id="internet_expenses"
               name="internet_expenses"
+              value="{{#if record}}{{record.internet_expenses}}{{/if}}"
               placeholder="Masukkan biaya internet"
               class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
             />
@@ -184,6 +195,7 @@
               type="number"
               id="telephone_expenses"
               name="telephone_expenses"
+              value="{{#if record}}{{record.telephone_expenses}}{{/if}}"
               placeholder="Masukkan biaya telepon"
               class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
             />
@@ -197,6 +209,7 @@
               type="number"
               id="water_expenses"
               name="water_expenses"
+              value="{{#if record}}{{record.water_expenses}}{{/if}}"
               placeholder="Masukkan biaya air"
               class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
             />
@@ -213,6 +226,7 @@
               type="number"
               id="other_operating_expenses"
               name="other_operating_expenses"
+              value="{{#if record}}{{record.other_operating_expenses}}{{/if}}"
               placeholder="Masukkan jumlah biaya operasional lainnya"
               class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
             />
@@ -225,6 +239,7 @@
               type="text"
               id="other_operating_notes"
               name="other_operating_notes"
+              value="{{#if record}}{{record.other_operating_notes}}{{/if}}"
               placeholder="Masukkan deskripsi"
               class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
             />
@@ -241,6 +256,7 @@
               type="number"
               id="non_operating_expenses"
               name="non_operating_expenses"
+              value="{{#if record}}{{record.non_operating_expenses}}{{/if}}"
               placeholder="Masukkan biaya non-operasional"
               class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
             />
@@ -253,6 +269,7 @@
               type="text"
               id="non_operating_notes"
               name="non_operating_notes"
+              value="{{#if record}}{{record.non_operating_notes}}{{/if}}"
               placeholder="Masukkan deskripsi"
               class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
             />
