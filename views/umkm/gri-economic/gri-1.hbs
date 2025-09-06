@@ -58,7 +58,7 @@
             <!-- Periode Pelaporan -->
             <div class="flex flex-wrap gap-4 items-start px-4 py-3">
             <div class="grow shrink min-w-40 w-[220px]">
-                <label for="reporting_period" name="reporting_period" class="block pb-2 font-medium text-neutral-900">Periode Pelaporan</label>
+                <label for="reporting_period" class="block pb-2 font-medium text-neutral-900">Periode Pelaporan</label>
                 <select id="reporting_period" name="reporting_period"
                 class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
                 <option value="">Pilih</option>
@@ -76,15 +76,6 @@
                 </select>
             </div>
 
-            <!-- Triwulan untuk Tahun terpilih (mode: Tahun) -->
-            <div id="year_quarter_wrap" class="grow shrink min-w-40 w-[260px] hidden">
-                <label for="period_year_quarter" class="block pb-2 font-medium text-neutral-900">Pilih Triwulan (Tahun terpilih)</label>
-                <select id="period_year_quarter"
-                class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
-                <!-- filled by JS -->
-                </select>
-            </div>
-
             <!-- Triwulan tahun berjalan (mode: Triwulan) -->
             <div id="quarter_wrap" class="grow shrink min-w-40 w-[260px] hidden">
                 <label for="period_quarter" class="block pb-2 font-medium text-neutral-900">Pilih Triwulan (Tahun Berjalan)</label>
@@ -94,6 +85,7 @@
                 </select>
             </div>
             </div>
+
 
 
           </div>
@@ -115,37 +107,42 @@
 <script>
   function toggle(el, show){ if(!el) return; el.classList.toggle('hidden', !show); }
 
+  // Isi dropdown tahun: 3 tahun ke belakang; kalau belum 31 Des, tahun berjalan tidak ditampilkan
   function fillYears(sel){
     const now=new Date(); const thisYear=now.getFullYear();
     const isDec31=(now.getMonth()===11 && now.getDate()===31);
     sel.innerHTML='<option value="">Pilih Tahun</option>';
-    const start = isDec31 ? thisYear : thisYear-1; // sembunyikan tahun berjalan jika belum akhir tahun
-    for(let i=0;i<3;i++){ const y=start-i; const o=document.createElement('option'); o.value=String(y); o.textContent=y; sel.appendChild(o); }
+    const start = isDec31 ? thisYear : thisYear-1;
+    for(let i=0;i<3;i++){
+      const y=start-i;
+      const o=document.createElement('option');
+      o.value=String(y);
+      o.textContent=y;
+      sel.appendChild(o);
+    }
   }
 
-  function fillQuartersForYear(sel, year){
-    const labels={1:'Triwulan 1 (Jan–Mar)',2:'Triwulan 2 (Apr–Jun)',3:'Triwulan 3 (Jul–Sep)',4:'Triwulan 4 (Okt–Des)'};
-    sel.innerHTML='<option value="">Pilih Triwulan</option>';
-    for(let q=1;q<=4;q++){ const o=document.createElement('option'); o.value=`${year}-Q${q}`; o.textContent=`${labels[q]} ${year}`; sel.appendChild(o); }
-  }
-
+  // Isi triwulan tahun berjalan (hanya sampai triwulan terakhir yang sudah berjalan)
   function fillCurrentYearQuarters(sel){
-    const now=new Date(); const y=now.getFullYear(); const m=now.getMonth(); // 0..11
+    const now=new Date(); const y=now.getFullYear(); const m=now.getMonth();
     const isDec31=(m===11 && now.getDate()===31);
     let maxQ=Math.floor(m/3)+1; if(isDec31) maxQ=4; if(maxQ>4) maxQ=4;
     const labels={1:'Triwulan 1 (Jan–Mar)',2:'Triwulan 2 (Apr–Jun)',3:'Triwulan 3 (Jul–Sep)',4:'Triwulan 4 (Okt–Des)'};
     sel.innerHTML='<option value="">Pilih Triwulan</option>';
-    for(let q=1;q<=maxQ;q++){ const o=document.createElement('option'); o.value=`${y}-Q${q}`; o.textContent=`${labels[q]} ${y}`; sel.appendChild(o); }
+    for(let q=1;q<=maxQ;q++){
+      const o=document.createElement('option');
+      o.value=`${y}-Q${q}`;
+      o.textContent=`${labels[q]} ${y}`;
+      sel.appendChild(o);
+    }
   }
 
   document.addEventListener('DOMContentLoaded', function(){
-    const form   = document.getElementById('eco-form');
+    const form   = document.getElementById('eco-form');       // pastikan id form ini ada
     const mode   = document.getElementById('reporting_period');
 
     const yearWrap  = document.getElementById('year_wrap');
     const yearSel   = document.getElementById('period_year');
-    const yqWrap    = document.getElementById('year_quarter_wrap');
-    const yqSel     = document.getElementById('period_year_quarter');
 
     const qWrap     = document.getElementById('quarter_wrap');
     const qSel      = document.getElementById('period_quarter');
@@ -157,15 +154,12 @@
     function syncMode(){
       if(mode.value==='tahun'){
         toggle(yearWrap, true);
-        toggle(yqWrap, !!yearSel.value); // tampilkan triwulan tahun terpilih setelah pilih tahun
         toggle(qWrap, false);
       } else if(mode.value==='triwulan'){
         toggle(yearWrap, false);
-        toggle(yqWrap, false);
         toggle(qWrap, true);
       } else {
         toggle(yearWrap, false);
-        toggle(yqWrap, false);
         toggle(qWrap, false);
       }
     }
@@ -173,37 +167,26 @@
     mode.addEventListener('change', syncMode);
     syncMode();
 
-    // saat memilih tahun, tampilkan dropdown triwulan untuk tahun tsb
-    yearSel.addEventListener('change', function(){
-      if(yearSel.value){
-        fillQuartersForYear(yqSel, yearSel.value);
-        toggle(yqWrap, true);
-      } else {
-        toggle(yqWrap, false);
-        yqSel.innerHTML = '<option value="">Pilih Triwulan</option>';
-      }
-    });
-
     // contoh validasi submit ringkas
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      const unit = document.getElementById('unit_name')?.value.trim();
-      const pic  = document.getElementById('pic_name')?.value.trim();
+    if (form){
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
 
-      if(!unit || !pic || !mode.value) { alert('Mohon lengkapi data dan pilih Periode Pelaporan.'); return; }
+        if(!mode.value){ alert('Pilih Periode Pelaporan.'); return; }
 
-      let period='';
-      if(mode.value==='tahun'){
-        if(!yearSel.value){ alert('Pilih Tahun.'); return; }
-        if(!yqSel.value){ alert('Pilih Triwulan untuk tahun terpilih.'); return; }
-        period = `Tahun ${yearSel.value}, ${yqSel.value.split('-')[1]}`;
-      } else {
-        if(!qSel.value){ alert('Pilih Triwulan tahun berjalan.'); return; }
-        period = `Triwulan ${qSel.value}`;
-      }
+        let period='';
+        if(mode.value==='tahun'){
+          if(!yearSel.value){ alert('Pilih Tahun.'); return; }
+          period = `Tahun ${yearSel.value}`;
+        } else {
+          if(!qSel.value){ alert('Pilih Triwulan tahun berjalan.'); return; }
+          period = `Triwulan ${qSel.value}`;
+        }
 
-      alert(`OK! Periode: ${period}`);
-    });
+        alert(`OK! Periode: ${period}`);
+      });
+    }
   });
 </script>
+
 
