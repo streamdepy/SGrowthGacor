@@ -1,5 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const { GRIEconomic } = require("../models");
+
+
 const { middlewareValidation, isAdmin, isUMKM } = require("../middlewares/authMiddleware");
 const { getDashboardUmkm } = require("../controllers/umkmController");
 const businessController = require("../controllers/businessController");
@@ -35,15 +38,28 @@ router.post("/gri-2", middlewareValidation, grieconomicController.saveFinanceDat
 router.post("/gri-3", middlewareValidation, grieconomicController.saveNotes);
 
 
-router.get("/gri-2", function (req, res, next) {
-  res.render("umkm/gri-economic/gri-2", {
-    title: "Form GRI",
-    layout: "umkm",
-    currentPath: req.path,
-    gri_id: req.query.gri_id,          // 🔥 ambil dari query
-    reporting_period: req.query.period // 🔥 oper juga periode
-  });
+router.get("/gri-2", async function (req, res, next) {
+  try {
+    const { gri_id } = req.query;
+
+    // Cari record GRI Economic
+    const record = await GRIEconomic.findByPk(gri_id);
+
+    res.render("umkm/gri-economic/gri-2", {
+      record: record ? record.get({ plain: true }) : null,
+      title: "Form GRI",
+      layout: "umkm",
+      currentPath: req.path,
+      gri_id,
+      reporting_period: req.query.period,
+      editMode: req.query.edit === "true" // 🔥 data lama untuk pre-fill form
+    });
+  } catch (err) {
+    console.error("🔥 Error load gri-2:", err);
+    res.status(500).send("Gagal load form");
+  }
 });
+
 
 
 router.get("/gri-3", function (req, res, next) {
