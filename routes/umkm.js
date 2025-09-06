@@ -195,6 +195,14 @@ router.get("/gov-5", function (req, res, next) {
     currentPath: req.path
   });
 });
+
+router.get("/form-gri_nc", function (req, res, next) {
+  res.render("umkm/form-gri_nc", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path
+  });
+});
 module.exports = router;
 
 /*

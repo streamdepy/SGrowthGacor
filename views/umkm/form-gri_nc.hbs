@@ -1,0 +1,328 @@
+        <main class="flex flex-col items-start self-center px-12 mt-16 w-full max-md:mt-10 max-md:max-w-full">
+            <h2 class="text-4xl font-semibold text-black max-md:max-w-full">
+                Pengisian GRI (
+                <span style="color: rgba(0, 0, 0, 1)">Global Reporting Initiative</span>
+                )
+            </h2>
+
+            <div class="flex overflow-hidden justify-end py-0.5 pr-2.5 pl-7 mt-5 max-w-full text-base font-medium text-center text-teal-700 bg-white rounded-md border border-teal-700 border-solid shadow-2xl w-[155px] max-md:pl-5">
+            <select class="text-base text-teal-700 bg-transparent border-none outline-none appearance-none cursor-pointer">
+                <option value="">Pilih</option>
+                <option value="ekonomi">GRI Ekonomi</option>
+                <option value="sosial">GRI Sosial</option>
+                <option value="lingkungan">GRI Lingkungan</option>
+            </select>
+                <img
+                    src="https://api.builder.io/api/v1/image/assets/TEMP/296985d52c1647b29d5a91e556a3f225489a9361?placeholderIfAbsent=true&apiKey=ac04cd396e1f47f18955cd19640f183d"
+                    alt="Dropdown Arrow"
+                    class="object-contain shrink-0 w-6 aspect-square"
+                />
+            </div>
+
+            <section class="self-stretch mt-10 mb-10 max-md:max-w-full" data-el="div-1">
+                <div class="flex gap-5 max-md:flex-col">
+                    <!-- ====== Kartu GRI Economi (DITAMBAH data-gri dan kontainer status) ====== -->
+                    <article class="w-[33%] max-md:ml-0 max-md:w-full">
+                    <div class="flex flex-col items-center px-20 pt-9 pb-5 mx-auto w-full text-center bg-white rounded-2xl shadow-2xl max-md:px-5 max-md:mt-10" data-gri="economy">
+                        <img
+                        src="https://api.builder.io/api/v1/image/assets/TEMP/15d5e1ec965f0a760f7f9efd1ff73c90b5a802fd?placeholderIfAbsent=true&apiKey=ac04cd396e1f47f18955cd19640f183d"
+                        alt="GRI Economy Icon"
+                        class="object-contain max-w-full rounded-full aspect-[1.04] w-[170px]"
+                        />
+                        <h3 class="text-3xl font-semibold text-teal-700">GRI Economi</h3>
+
+                        <!-- Tombol mulai (akan di-hide oleh JS kalau sudah ada progres) -->
+                        <a href="/gri/economy#start"
+                        class="eco-start flex overflow-hidden gap-2.5 items-start self-start px-10 py-3 mt-7 text-base font-medium text-white bg-orange-500 rounded-xl hover:bg-orange-600 transition-colors max-md:px-5">
+                        Mulai Sekarang
+                        </a>
+
+                        <!-- Panel status (di dalam kartu Economy) -->
+                        <div class="eco-status w-full mt-5 text-left hidden">
+                        <div class="rounded-xl border border-gray-200 bg-slate-50 p-4">
+                            <div class="flex items-center justify-between">
+                            <div class="text-sm font-semibold text-gray-800">Ringkasan Isian GRI Economi</div>
+                            <span class="eco-complete hidden text-xs px-2 py-1 rounded-lg bg-green-100 text-green-700">Lengkap ✓</span>
+                            </div>
+
+                            <!-- field kosong (merah) -->
+                            <div class="eco-missing mt-3 space-y-3"></div>
+
+                            <!-- garis -->
+                            <div class="my-4 h-px bg-gray-200"></div>
+
+                            <!-- collapsible checklist -->
+                            <details class="eco-checklist-wrap">
+                            <summary class="cursor-pointer text-sm font-semibold text-teal-700 hover:underline">
+                                Lihat Checklist
+                            </summary>
+                            <ul class="eco-checklist list-disc pl-5 space-y-1 mt-2"></ul>
+                            </details>
+                        </div>
+                        </div>
+
+                    </div>
+                    </article>
+
+
+                    <article class="ml-5 w-[33%] max-md:ml-0 max-md:w-full">
+                        <div class="flex flex-col px-20 pt-8 pb-5 mx-auto w-full text-base font-medium text-center text-white bg-white rounded-2xl shadow-2xl max-md:px-5 max-md:mt-10">
+                            <img
+                                src="https://api.builder.io/api/v1/image/assets/TEMP/11944f7e945ab76cd741cbfe8b739301f56ce0af?width=372" 
+                                alt="GRI Environment Icon"
+                                class="object-contain self-center max-w-full aspect-[1.04] w-[170px]"
+                            />
+                            <h3 class="text-3xl font-semibold text-teal-700">
+                                GRI Social
+                            </h3>
+                            <button class="flex overflow-hidden gap-2.5 items-start self-start px-10 py-3 mt-9 bg-orange-500 rounded-xl hover:bg-orange-600 transition-colors max-md:px-5">
+                                Mulai Sekarang
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="ml-5 w-[33%] max-md:ml-0 max-md:w-full">
+                        <div class="flex flex-col px-20 pb-5 mx-auto w-full text-base font-medium text-center text-white bg-white rounded-2xl shadow-2xl max-md:px-5 max-md:mt-10">
+                            <img
+                                src="https://api.builder.io/api/v1/image/assets/TEMP/1c71a2a9be3de365531c3991c3339c7e3c083b53?width=462"
+                                alt="GRI Social Icon"
+                                class="object-contain w-full aspect-[1.01]"
+                            />
+                            <h3 class="text-2xl font-semibold text-teal-700">
+                                GRI Environment
+                            </h3>
+                            <button class="flex overflow-hidden gap-2.5 items-start self-start px-8 py-3 mt-8 ml-4 bg-orange-500 rounded-xl hover:bg-orange-600 transition-colors max-md:px-5 max-md:ml-2.5">
+                                Mulai Sekarang
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="ml-5 w-[33%] max-md:ml-0 max-md:w-full">
+                        <div class="flex flex-col px-20 pb-5 mx-auto w-full text-base font-medium text-center text-white bg-white rounded-2xl shadow-2xl max-md:px-5 max-md:mt-10">
+                            <img
+                                src="https://api.builder.io/api/v1/image/assets/TEMP/c44af07e3c930c7fea223a8eb981ce2b2a5a5a8c?width=462"
+                                alt="GRI Social Icon"
+                                class="object-contain w-full aspect-[1.01]"
+                            />
+                            <h3 class="text-2xl font-semibold text-teal-700">
+                                GRI Governance
+                            </h3>
+                            <button class="flex overflow-hidden gap-2.5 items-start self-start px-8 py-3 mt-8 ml-4 bg-orange-500 rounded-xl hover:bg-orange-600 transition-colors max-md:px-5 max-md:ml-2.5">
+                                Mulai Sekarang
+                            </button>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+<script>
+/**
+ * ===========================================
+ *   STATUS KARTU – GRI ECONOMY (DASHBOARD)
+ * ===========================================
+ *
+ * Simpan progres ke localStorage key 'griEconomyProgress' saat user isi form Economy.
+ * Struktur contoh (opsional/ilustrasi):
+ *
+ * {
+ *   basic:  { unit_name: "Unit A", period: "Q1 2025 / Jan–Mar 2025", pic: "Budi" },
+ *   revenue:{ total: 150000000 },
+ *   expenses: {
+ *     ga_total: 20000000,
+ *     salary_total: 50000000,
+ *     salary_employees: 25,
+ *     transport_total: 8000000,
+ *     fuel_total: 6000000,
+ *     electricity_total: 12000000,
+ *     internet: 1000000,
+ *     telephone: 700000,
+ *     water: 500000,
+ *     other_total: 0,
+ *     nonop_total: 0
+ *   },
+ *   notes: { unusual_answer:"tidak", unusual_text:"", adjust_answer:"tidak", adjust_text:"" }
+ * }
+ */
+
+(function(){
+  // ====== Konfigurasi field wajib (label + anchor tujuan) ======
+  const REQUIRED = [
+    // Bagian 1
+    { path:'basic.unit_name',      label:'Bagian 1 – Nama Unit/Departemen',               href:'/gri/economy#basic' },
+    { path:'basic.period',         label:'Bagian 1 – Periode Pelaporan',                  href:'/gri/economy#basic' },
+    { path:'basic.pic',            label:'Bagian 1 – Penanggung Jawab Pelaporan',        href:'/gri/economy#basic' },
+    // Bagian 2A – Pendapatan
+    { path:'revenue.total',        label:'Bagian 2A – Total Pendapatan',                  href:'/gri/economy#revenue' },
+    // Bagian 2B – Pengeluaran (wajib)
+    { path:'expenses.ga_total',           label:'Bagian 2B.1 – G&A (total)',                  href:'/gri/economy#exp-ga' },
+    { path:'expenses.salary_total',       label:'Bagian 2B.2 – Salary (total)',               href:'/gri/economy#exp-salary' },
+    { path:'expenses.salary_employees',   label:'Bagian 2B.2 – Jumlah karyawan digaji',       href:'/gri/economy#exp-salary' },
+    { path:'expenses.transport_total',    label:'Bagian 2B.3 – Transportasi (total)',         href:'/gri/economy#exp-transport' },
+    { path:'expenses.fuel_total',         label:'Bagian 2B.4 – Bahan Bakar (total)',          href:'/gri/economy#exp-fuel-electric' },
+    { path:'expenses.electricity_total',  label:'Bagian 2B.4 – Listrik (total)',              href:'/gri/economy#exp-fuel-electric' },
+    { path:'expenses.internet',           label:'Bagian 2B.5 – Internet',                     href:'/gri/economy#exp-itw' },
+    { path:'expenses.telephone',          label:'Bagian 2B.5 – Telepon',                      href:'/gri/economy#exp-itw' },
+    { path:'expenses.water',              label:'Bagian 2B.5 – Air',                          href:'/gri/economy#exp-itw' },
+    { path:'expenses.other_total',        label:'Bagian 2B.6 – Operasional Lainnya (total)',  href:'/gri/economy#exp-other' },
+    { path:'expenses.nonop_total',        label:'Bagian 2B.7 – Non-Operasional (total)',      href:'/gri/economy#exp-nonop' },
+  ];
+
+  // Checklist (urutan rapi untuk panel bawah)
+  const CHECKLIST = [
+    { path:'basic.unit_name',      label:'Nama Unit/Departemen' },
+    { path:'basic.period',         label:'Periode Pelaporan' },
+    { path:'basic.pic',            label:'Penanggung Jawab Pelaporan' },
+    { path:'revenue.total',        label:'Total Pendapatan' },
+    { path:'expenses.ga_total',           label:'G&A (total)' },
+    { path:'expenses.salary_total',       label:'Salary (total)' },
+    { path:'expenses.salary_employees',   label:'Jumlah karyawan digaji' },
+    { path:'expenses.transport_total',    label:'Transportasi (total)' },
+    { path:'expenses.fuel_total',         label:'Bahan Bakar (total)' },
+    { path:'expenses.electricity_total',  label:'Listrik (total)' },
+    { path:'expenses.internet',           label:'Internet' },
+    { path:'expenses.telephone',          label:'Telepon' },
+    { path:'expenses.water',              label:'Air' },
+    { path:'expenses.other_total',        label:'Operasional Lainnya (total)' },
+    { path:'expenses.nonop_total',        label:'Non-Operasional (total)' },
+  ];
+
+  // ====== Utils ======
+  function get(obj, path){
+    return path.split('.').reduce((a,k)=>(a && a[k] !== undefined ? a[k] : undefined), obj);
+  }
+  function isFilled(val){
+    if (typeof val === 'number') return true;            // angka 0 valid
+    if (typeof val === 'string') return val.trim().length > 0;
+    if (typeof val === 'boolean') return true;
+    return false;
+  }
+  function el(cls, html){
+    const d = document.createElement('div');
+    d.className = cls;
+    d.innerHTML = html;
+    return d;
+  }
+
+  function loadProgress(){
+    try {
+      const raw = localStorage.getItem('griEconomyProgress');
+      return raw ? JSON.parse(raw) : null;
+    } catch(e){
+      console.warn('griEconomyProgress parse error:', e);
+      return null;
+    }
+  }
+
+  function renderEconomyCard(){
+    const card = document.querySelector('[data-gri="economy"]');
+    if (!card) return;
+
+    const btnStart  = card.querySelector('.eco-start');
+    const statusBox = card.querySelector('.eco-status');
+    const missingBox= card.querySelector('.eco-missing');
+    const checklist = card.querySelector('.eco-checklist');
+    const complete  = card.querySelector('.eco-complete');
+
+
+    const data = loadProgress();
+
+    // belum ada progres -> tombol tetap, panel status disembunyikan
+    if (!data){
+      btnStart?.classList.remove('hidden');
+      statusBox?.classList.add('hidden');
+      return;
+    }
+
+    // ada progres -> sembunyikan tombol, tampilkan status
+    btnStart?.classList.add('hidden');
+    statusBox?.classList.remove('hidden');
+
+    // hitung yang kurang
+    const missing = [];
+    REQUIRED.forEach(f=>{
+      const v = get(data, f.path);
+      if (!isFilled(v)) missing.push(f);
+    });
+
+    // render missing (merah)
+    missingBox.innerHTML = '';
+    if (missing.length === 0){
+      complete.classList.remove('hidden');
+      missingBox.appendChild(
+        el('text-sm text-green-700 bg-green-50 border border-green-200 px-3 py-2 rounded-lg',
+           'Semua field wajib sudah lengkap. Mantap! ✓')
+      );
+    } else {
+      complete.classList.add('hidden');
+      missing.forEach(row=>{
+        const item = document.createElement('div');
+        item.className = 'flex items-center justify-between gap-3 border border-red-300 bg-red-50 text-red-700 rounded-lg px-3 py-2';
+        const label = document.createElement('div');
+        label.className = 'text-sm';
+        label.textContent = row.label;
+
+        const go = document.createElement('a');
+        go.href = row.href; // arahkan ke halaman/anchor form terkait
+        go.className = 'shrink-0 text-xs px-3 py-1 rounded-md bg-red-600 text-white hover:bg-red-700 transition';
+        go.textContent = 'Isi sekarang';
+
+        item.appendChild(label);
+        item.appendChild(go);
+        missingBox.appendChild(item);
+      });
+    }
+
+    // render checklist
+    checklist.innerHTML = '';
+    CHECKLIST.forEach(c=>{
+      const v = get(data, c.path);
+      const filled = isFilled(v);
+      const li = document.createElement('li');
+      li.className = 'flex items-center gap-2';
+      li.innerHTML = filled
+        ? `<span class="text-green-600 font-bold">✓</span><span class="text-sm text-gray-700">${c.label}</span>`
+        : `<span class="text-red-600 font-bold">✗</span><span class="text-sm text-gray-700">${c.label}</span>`;
+      checklist.appendChild(li);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', renderEconomyCard);
+
+  // ====== (OPSIONAL) Seed demo – hapus komentar untuk uji cepat ======
+
+  localStorage.setItem('griEconomyProgress', JSON.stringify({
+    basic: { unit_name: "Unit Produksi A", period: "Jan–Mar 2025", pic: "Budi" },
+    revenue: { total: 0 },
+    expenses: {
+      ga_total: null,            // <— sengaja kosong biar muncul merah
+      salary_total: 50000000,
+      salary_employees: 25,
+      transport_total: 8000000,
+      fuel_total: 6000000,
+      electricity_total: 12000000,
+      internet: 1000000,
+      telephone: 700000,
+      water: 500000,
+      other_total: 0,
+      nonop_total: 0
+    },
+    notes: { unusual_answer:"tidak", adjust_answer:"tidak" }
+  }));
+  
+  // render checklist
+checklist.innerHTML = '';
+CHECKLIST.forEach(c=>{
+  const v = get(data, c.path);
+  const filled = isFilled(v);
+  const li = document.createElement('li');
+  li.className = 'flex items-center gap-2';
+  li.innerHTML = filled
+    ? `<span class="text-green-600 font-bold">✓</span><span class="text-sm text-gray-700">${c.label}</span>`
+    : `<span class="text-red-600 font-bold">✗</span><span class="text-sm text-gray-700">${c.label}</span>`;
+  checklist.appendChild(li);
+});
+
+})();
+</script>
+

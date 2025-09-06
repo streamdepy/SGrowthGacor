@@ -1,27 +1,27 @@
 <main class="flex flex-col ml-48 self-center mb-16 mt-16 w-full max-w-[1256px] max-md:mt-10 max-md:max-w-full">
   <header class="flex gap-3.5 self-start">
     <img
-      src="https://api.builder.io/api/v1/image/assets/TEMP/1c71a2a9be3de365531c3991c3339c7e3c083b53?width=462"
+      src="https://api.builder.io/api/v1/image/assets/TEMP/c44af07e3c930c7fea223a8eb981ce2b2a5a5a8c?width=462"
       alt="GRI Environment icon"
-      class="object-contain shrink-0 my-auto rounded-full aspect-[1.04] w-[58px]"
+      class="object-contain shrink-0 my-auto rounded-full aspect-[1.04] w-[78px]"
     />
     <div class="flex flex-col">
-      <h2 class="text-4xl font-semibold text-black">GRI Environment</h2>
-      <p class="self-center text-xl font-medium leading-none text-center text-gray-500">
-        Environmental Performance
+      <h2 class="text-4xl font-semibold text-black">GRI Governance</h2>
+      <p class="text-xl font-medium leading-none text-gray-500">
+        Governance Performance
       </p>
     </div>
   </header>
 
-  <section class="flex flex-col items-start px-20 py-14 mt-16 w-full bg-white rounded-2xl shadow-2xl max-w-[1168px] max-md:px-5 max-md:mt-10">
+  <section class="flex flex-col items-start px-20 py-14 mt-4 w-full bg-white rounded-2xl shadow-2xl max-w-[1168px] max-md:px-5 max-md:mt-10">
     <h3 class="text-3xl font-semibold text-center text-teal-700">
-      Informasi Dasar Pelaporan Emisi
+      Informasi Dasar
     </h3>
     <p class="mt-6 text-xl leading-none text-gray-500 max-md:max-w-full">
       Lengkapi field yang diperlukan untuk melanjutkan ke step berikutnya
     </p>
 
-    <form id="env-basic-form" class="z-10 mt-14 max-w-full w-[1000px] max-md:mt-10">
+    <form id="gov-basic-form" class="z-10 mt-14 max-w-full w-[1000px] max-md:mt-10">
       <!-- Row 1: Nama Entitas + Periode Pelaporan -->
       <div class="flex gap-5 max-md:flex-col">
         <!-- Nama entitas -->
@@ -42,11 +42,10 @@
         <label class="block pb-2 text-base font-medium">Periode pelaporan</label>
 
         <!-- Row FLEX supaya sejajar -->
-        <div class="flex flex-wrap items-end gap-3">
+        <div class="flex flex-wrap items-end gap-3 mt-2">
             <!-- Mode -->
             <div class="min-w-[180px]">
-            <label for="period_mode_env" class="block text-sm text-gray-600">Mode</label>
-            <select id="period_mode_env"
+            <select id="period_mode_gov"
                 class="w-full px-4 py-3 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition" required>
                 <option value="">Pilih</option>
                 <option value="tahun">Tahun</option>
@@ -55,25 +54,15 @@
             </div>
 
             <!-- Tahun (muncul saat pilih "Tahun") -->
-            <div id="year_wrap_env" class="min-w-[180px] hidden">
-            <label for="period_year_env" class="block text-sm text-gray-600">Tahun</label>
-            <select id="period_year_env"
-                class="w-full px-4 py-3 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
-            </select>
-            </div>
-
-            <!-- Triwulan untuk tahun terpilih -->
-            <div id="year_quarter_wrap_env" class="min-w-[220px] hidden">
-            <label for="period_year_quarter_env" class="block text-sm text-gray-600">Triwulan (thn terpilih)</label>
-            <select id="period_year_quarter_env"
+            <div id="year_wrap_gov" class="min-w-[180px] hidden">
+            <select id="period_year_gov"
                 class="w-full px-4 py-3 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
             </select>
             </div>
 
             <!-- Triwulan tahun berjalan (muncul saat pilih "Triwulan") -->
-            <div id="quarter_wrap_env" class="min-w-[220px] hidden">
-            <label for="period_quarter_env" class="block text-sm text-gray-600">Triwulan (thn berjalan)</label>
-            <select id="period_quarter_env"
+            <div id="quarter_wrap_gov" class="min-w-[220px] hidden">
+            <select id="period_quarter_gov"
                 class="w-full px-4 py-3 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
             </select>
             </div>
@@ -149,17 +138,6 @@
     }
   }
 
-  function fillQuartersForYear(sel, year) {
-    const labels = {1:'Triwulan 1 (Jan–Mar)', 2:'Triwulan 2 (Apr–Jun)', 3:'Triwulan 3 (Jul–Sep)', 4:'Triwulan 4 (Okt–Des)'};
-    sel.innerHTML = '<option value="">Pilih Triwulan</option>';
-    for (let q = 1; q <= 4; q++) {
-      const o = document.createElement('option');
-      o.value = `${year}-Q${q}`;
-      o.textContent = `${labels[q]} ${year}`;
-      sel.appendChild(o);
-    }
-  }
-
   function fillCurrentYearQuarters(sel) {
     const now = new Date();
     const y = now.getFullYear();
@@ -169,7 +147,10 @@
     if (isDec31) maxQ = 4;
     if (maxQ > 4) maxQ = 4;
 
-    const labels = {1:'Triwulan 1 (Jan–Mar)', 2:'Triwulan 2 (Apr–Jun)', 3:'Triwulan 3 (Jul–Sep)', 4:'Triwulan 4 (Okt–Des)'};
+    const labels = {
+      1:'Triwulan 1 (Jan–Mar)', 2:'Triwulan 2 (Apr–Jun)',
+      3:'Triwulan 3 (Jul–Sep)', 4:'Triwulan 4 (Okt–Des)'
+    };
     sel.innerHTML = '<option value="">Pilih Triwulan</option>';
     for (let q = 1; q <= maxQ; q++) {
       const o = document.createElement('option');
@@ -180,17 +161,15 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('env-basic-form');
-    const submitButton = form.querySelector('button[type="submit"]');
+    const form = document.getElementById('gov-basic-form'); // pastikan id ini sesuai
+    const submitButton = form?.querySelector('button[type="submit"]');
 
     /* ===== Periode Pelaporan (Tahun / Triwulan) ===== */
-    const modeSel  = document.getElementById('period_mode_env');
-    const yearWrap = document.getElementById('year_wrap_env');
-    const yearSel  = document.getElementById('period_year_env');
-    const yqWrap   = document.getElementById('year_quarter_wrap_env');
-    const yqSel    = document.getElementById('period_year_quarter_env');
-    const qWrap    = document.getElementById('quarter_wrap_env');
-    const qSel     = document.getElementById('period_quarter_env');
+    const modeSel  = document.getElementById('period_mode_gov');
+    const yearWrap = document.getElementById('year_wrap_gov');
+    const yearSel  = document.getElementById('period_year_gov');
+    const qWrap    = document.getElementById('quarter_wrap_gov');
+    const qSel     = document.getElementById('period_quarter_gov');
 
     fillYears(yearSel);
     fillCurrentYearQuarters(qSel);
@@ -198,98 +177,48 @@
     function syncMode() {
       if (modeSel.value === 'tahun') {
         toggleEl(yearWrap, true);
-        toggleEl(yqWrap, !!yearSel.value);
         toggleEl(qWrap, false);
       } else if (modeSel.value === 'triwulan') {
         toggleEl(yearWrap, false);
-        toggleEl(yqWrap, false);
         toggleEl(qWrap, true);
       } else {
         toggleEl(yearWrap, false);
-        toggleEl(yqWrap, false);
         toggleEl(qWrap, false);
       }
     }
     modeSel.addEventListener('change', syncMode);
     syncMode();
 
-    yearSel.addEventListener('change', function () {
-      if (yearSel.value) {
-        fillQuartersForYear(yqSel, yearSel.value);
-        toggleEl(yqWrap, true);
-      } else {
-        yqSel.innerHTML = '<option value="">Pilih Triwulan</option>';
-        toggleEl(yqWrap, false);
-      }
-    });
+    /* ===== Submit & Validasi (opsional) ===== */
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
 
-    /* ===== Toggle "Lainnya" untuk Lokasi & Metode Emisi ===== */
-    const locSel   = document.getElementById('operation_location');
-    const locOther = document.getElementById('operation_location_other');
-    const methodSel   = document.getElementById('emission_method');
-    const methodOther = document.getElementById('emission_method_other');
+        if (!modeSel.value) { alert('Pilih mode Periode Pelaporan (Tahun/Triwulan).'); return; }
+        if (modeSel.value === 'tahun') {
+          if (!yearSel.value) { alert('Pilih Tahun.'); return; }
+        } else { // triwulan tahun berjalan
+          if (!qSel.value) { alert('Pilih Triwulan tahun berjalan.'); return; }
+        }
 
-    function syncLocOther()   { toggleEl(locOther,   locSel.value === 'lainnya', true); }
-    function syncMethodOther(){ toggleEl(methodOther,methodSel.value === 'lainnya', true); }
+        // Simulasi submit
+        submitButton.textContent = 'Memproses...';
+        submitButton.disabled = true;
 
-    locSel.addEventListener('change', syncLocOther);
-    methodSel.addEventListener('change', syncMethodOther);
-    syncLocOther();
-    syncMethodOther();
+        const payload = {
+          period_mode: modeSel.value,
+          period_value: modeSel.value === 'tahun'
+            ? { year: yearSel.value }
+            : { quarter: qSel.value }
+        };
+        console.log('Payload submit:', payload);
 
-    /* ===== Submit & Validasi ===== */
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      const entityName = document.getElementById('entity_name').value.trim();
-      if (!entityName) { alert('Mohon isi nama entitas / unit bisnis.'); return; }
-
-      // Validasi periode
-      if (!modeSel.value) {
-        alert('Pilih mode Periode Pelaporan (Tahun/Triwulan).');
-        return;
-      }
-      if (modeSel.value === 'tahun') {
-        if (!yearSel.value) { alert('Pilih Tahun.'); return; }
-        if (!yqSel.value)  { alert('Pilih Triwulan untuk tahun terpilih.'); return; }
-      } else { // triwulan tahun berjalan
-        if (!qSel.value) { alert('Pilih Triwulan tahun berjalan.'); return; }
-      }
-
-      // Validasi lokasi & metode
-      if (!locSel.value) { alert('Pilih lokasi operasional.'); return; }
-      if (locSel.value === 'lainnya' && !locOther.value.trim()) {
-        alert('Mohon isi lokasi operasional lainnya.');
-        return;
-      }
-      if (!methodSel.value) { alert('Pilih metode perhitungan emisi.'); return; }
-      if (methodSel.value === 'lainnya' && !methodOther.value.trim()) {
-        alert('Mohon isi metode perhitungan emisi lainnya.');
-        return;
-      }
-
-      // Simulasikan submit
-      submitButton.textContent = 'Memproses...';
-      submitButton.disabled = true;
-
-      // Contoh payload (opsional untuk dev)
-      const payload = {
-        entity_name: entityName,
-        period_mode: modeSel.value,
-        period_value:
-          modeSel.value === 'tahun'
-            ? { year: yearSel.value, quarter: yqSel.value } // ex: {year:"2024", quarter:"2024-Q3"}
-            : { quarter: qSel.value },                      // ex: {quarter:"2025-Q2"}
-        location: locSel.value === 'lainnya' ? locOther.value.trim() : locSel.value,
-        method:   methodSel.value === 'lainnya' ? methodOther.value.trim() : methodSel.value
-      };
-      console.log('Payload submit:', payload);
-
-      setTimeout(() => {
-        alert('Form berhasil disubmit!');
-        submitButton.textContent = 'Submit';
-        submitButton.disabled = false;
-      }, 1000);
-    });
+        setTimeout(() => {
+          alert('Form berhasil disubmit!');
+          submitButton.textContent = 'Submit';
+          submitButton.disabled = false;
+        }, 1000);
+      });
+    }
   });
 </script>
