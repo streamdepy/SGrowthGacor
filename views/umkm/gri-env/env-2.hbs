@@ -1,0 +1,302 @@
+<main class="flex flex-col ml-48 self-center mb-16 mt-16 w-full max-w-[1256px] max-md:mt-10 max-md:max-w-full">
+  <header class="flex gap-3.5 self-start">
+    <img
+      src="https://api.builder.io/api/v1/image/assets/TEMP/1c71a2a9be3de365531c3991c3339c7e3c083b53?width=462"
+      alt="GRI Environment icon"
+      class="object-contain shrink-0 my-auto rounded-full aspect-[1.04] w-[58px]"
+    />
+    <div class="flex flex-col">
+      <h2 class="text-4xl font-semibold text-black">GRI Environment</h2>
+      <p class="self-center text-xl font-medium leading-none text-center text-gray-500">
+        Environmental Performance
+      </p>
+    </div>
+  </header>
+
+<!-- Scope 1 (Langsung) -->
+<section class="flex flex-col items-start py-14 px-16 mt-10 w-full bg-white rounded-2xl shadow-2xl max-w-[981px] max-md:px-5">
+  <h3 class="text-3xl font-semibold text-teal-700">Emisi Scope 1 (Langsung)</h3>
+  <p class="mt-3 text-gray-500">Isi data emisi langsung (Scope 1) untuk periode pelaporan ini.</p>
+
+  <!-- Q1: Ada Scope 1? -->
+  <div class="w-full mt-8">
+    <label for="scope1_has" class="block pb-2 text-base font-medium">Apakah perusahaan memiliki sumber emisi langsung (Scope 1)?</label>
+    <select id="scope1_has" name="scope1_has"
+      class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+      <option value="">Pilih</option>
+      <option value="ya">Ya</option>
+      <option value="tidak">Tidak</option>
+    </select>
+  </div>
+
+  <!-- Detail Scope 1 (tampil hanya jika Ya) -->
+  <div id="scope1_details" class="w-full mt-6 hidden">
+    <!-- Daftar entri scope 1 -->
+    <div id="scope1_list" class="space-y-8">
+      <!-- Item #0 (awalan) -->
+      <div class="s1-item border border-gray-200 rounded-2xl p-4">
+        <!-- Total emisi -->
+        <div class="w-full">
+          <label class="block pb-2 text-base font-medium">Total emisi Scope 1 (tCO₂e)</label>
+          <input type="number" min="0" step="0.0001" name="s1[0][total]" placeholder="0"
+            class="s1-total w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+        </div>
+
+        <!-- Sumber emisi utama -->
+        <div class="w-full mt-6">
+          <label class="block pb-2 text-base font-medium">Jenis sumber emisi utama</label>
+          <select name="s1[0][source]" class="s1-source w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+            <option value="">Pilih</option>
+            <option>Kendaraan Operasional</option>
+            <option>Boiler</option>
+            <option>Generator</option>
+            <option>Proses Industri</option>
+            <option value="lainnya">Lainnya</option>
+          </select>
+          <input type="text" name="s1[0][source_other]" placeholder="Sebutkan sumber lainnya"
+            class="s1-source-other w-full px-4 py-3 mt-3 rounded-lg border border-gray-300 bg-slate-50 hidden">
+        </div>
+
+        <!-- Inisiatif pengurangan -->
+        <div class="flex gap-5 mt-6 max-md:flex-col">
+          <!-- Ada inisiatif? -->
+          <div class="w-6/12 max-md:w-full">
+            <label class="block pb-2 text-base font-medium">Apakah ada inisiatif pengurangan Scope 1?</label>
+            <select name="s1[0][has_reduction]" class="s1-has-reduction w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+              <option value="">Pilih</option>
+              <option value="ya">Ya</option>
+              <option value="tidak">Tidak</option>
+            </select>
+          </div>
+
+          <!-- Emisi yang dikurangi (tampil kalau Ya) -->
+          <div class="w-6/12 max-md:w-full">
+            <label class="block pb-2 text-base font-medium">Jika ya, berapa emisi yang berhasil dikurangi (tCO₂e)?</label>
+            <input type="number" min="0" step="0.0001" name="s1[0][reduced]" placeholder="0"
+              class="s1-reduced w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition hidden" disabled>
+          </div>
+        </div>
+
+        <!-- Jenis inisiatif (tampil kalau Ya) -->
+        <div class="w-full mt-6">
+          <label class="block pb-2 text-base font-medium">Jenis inisiatif reduksi</label>
+          <select name="s1[0][reduction_type]"
+            class="s1-reduction-type w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition hidden" disabled>
+            <option value="">Pilih</option>
+            <option>Efisiensi Energi</option>
+            <option>Penggantian Mesin</option>
+            <option>Offset Karbon</option>
+            <option value="lainnya">Lainnya</option>
+          </select>
+          <input type="text" name="s1[0][reduction_type_other]" placeholder="Sebutkan jenis inisiatif lainnya"
+            class="s1-reduction-type-other w-full px-4 py-3 mt-3 rounded-lg border border-gray-300 bg-slate-50 hidden" disabled>
+        </div>
+
+        <!-- Tombol hapus item -->
+        <div class="mt-4 flex justify-end">
+          <button type="button" class="s1-remove hidden px-4 py-2 rounded-xl border border-gray-300 text-gray-700 hover:bg-gray-50 transition">
+            Hapus entri
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tombol Tambah item -->
+    <div class="mt-6 flex justify-end">
+      <button type="button" id="scope1_add_item"
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-teal-700 text-sm font-medium transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
+        </svg>
+        Tambah
+      </button>
+    </div>
+    
+  </div>
+  <!-- Buttons pojok kanan kotak putih -->
+  <div class="flex justify-end gap-4 mt-10 w-full">
+    <button type="button" onclick="window.history.back()"
+      class="px-8 py-2 text-base font-medium text-center text-teal-700 border-teal-700 border border-solid whitespace-nowrap bg-white rounded-xl hover:bg-teal-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors">
+      Sebelumnya
+    </button>
+    <button type="submit"
+      class="px-8 py-2 text-base font-medium text-center text-white whitespace-nowrap bg-lime-500 rounded-xl hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-offset-2 transition-colors">
+      Simpan
+    </button>
+  </div>
+</section>
+
+<!-- Template item Scope 1 -->
+<template id="scope1_item_tpl">
+  <div class="s1-item border border-gray-200 rounded-2xl p-4">
+    <div class="w-full">
+      <label class="block pb-2 text-base font-medium">Total emisi Scope 1 (tCO₂e)</label>
+      <input type="number" min="0" step="0.0001" name=""
+        placeholder="0"
+        class="s1-total w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+    </div>
+
+    <div class="w-full mt-6">
+      <label class="block pb-2 text-base font-medium">Jenis sumber emisi utama</label>
+      <select name="" class="s1-source w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+        <option value="">Pilih</option>
+        <option>Kendaraan Operasional</option>
+        <option>Boiler</option>
+        <option>Generator</option>
+        <option>Proses Industri</option>
+        <option value="lainnya">Lainnya</option>
+      </select>
+      <input type="text" name="" placeholder="Sebutkan sumber lainnya"
+        class="s1-source-other w-full px-4 py-3 mt-3 rounded-lg border border-gray-300 bg-slate-50 hidden">
+    </div>
+
+    <div class="flex gap-5 mt-6 max-md:flex-col">
+      <div class="w-6/12 max-md:w-full">
+        <label class="block pb-2 text-base font-medium">Apakah ada inisiatif pengurangan Scope 1?</label>
+        <select name="" class="s1-has-reduction w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+          <option value="">Pilih</option>
+          <option value="ya">Ya</option>
+          <option value="tidak">Tidak</option>
+        </select>
+      </div>
+      <div class="w-6/12 max-md:w-full">
+        <label class="block pb-2 text-base font-medium">Jika ya, berapa emisi yang berhasil dikurangi (tCO₂e)?</label>
+        <input type="number" min="0" step="0.0001" name=""
+          placeholder="0"
+          class="s1-reduced w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition hidden" disabled>
+      </div>
+    </div>
+
+    <div class="w-full mt-6">
+      <label class="block pb-2 text-base font-medium">Jenis inisiatif reduksi</label>
+      <select name=""
+        class="s1-reduction-type w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition hidden" disabled>
+        <option value="">Pilih</option>
+        <option>Efisiensi Energi</option>
+        <option>Penggantian Mesin</option>
+        <option>Offset Karbon</option>
+        <option value="lainnya">Lainnya</option>
+      </select>
+      <input type="text" name="" placeholder="Sebutkan jenis inisiatif lainnya"
+        class="s1-reduction-type-other w-full px-4 py-3 mt-3 rounded-lg border border-gray-300 bg-slate-50 hidden" disabled>
+    </div>
+
+    <div class="mt-4 flex justify-end">
+      <button type="button" class="s1-remove px-4 py-2 rounded-xl border border-gray-300 text-gray-700 hover:bg-gray-50 transition">
+        Hapus entri
+      </button>
+    </div>
+  </div>
+</template>
+
+</main>
+
+<script>
+  // Helper (pakai kalau belum ada)
+  function toggleEl(el, show, disable = true) {
+    if (!el) return;
+    el.classList.toggle('hidden', !show);
+    if (disable) el.disabled = !show;
+    if (!show && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA')) el.value = '';
+    if (!show && el.tagName === 'SELECT') el.value = '';
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const hasSel   = document.getElementById('scope1_has');
+    const details  = document.getElementById('scope1_details');
+    const list     = document.getElementById('scope1_list');
+    const addBtn   = document.getElementById('scope1_add_item');
+    const tpl      = document.getElementById('scope1_item_tpl');
+
+    function syncHas() {
+      const yes = hasSel && hasSel.value === 'ya';
+      toggleEl(details, yes, false);
+      if (details) {
+        details.querySelectorAll('input, select, textarea, button').forEach(el => {
+          // tombol add tetap aktif saat ya; nonaktifkan saat tidak
+          if (el.id === 'scope1_add_item') { el.disabled = !yes; return; }
+          el.disabled = !yes;
+        });
+      }
+    }
+
+    if (hasSel) {
+      hasSel.addEventListener('change', syncHas);
+      syncHas();
+    }
+
+    if (!list || !addBtn || !tpl) return;
+
+    function reindex() {
+      const items = list.querySelectorAll('.s1-item');
+      items.forEach((item, idx) => {
+        item.querySelectorAll('input, select, textarea').forEach(el => {
+          if (el.classList.contains('s1-total'))               el.name = `s1[${idx}][total]`;
+          else if (el.classList.contains('s1-source'))         el.name = `s1[${idx}][source]`;
+          else if (el.classList.contains('s1-source-other'))   el.name = `s1[${idx}][source_other]`;
+          else if (el.classList.contains('s1-has-reduction'))  el.name = `s1[${idx}][has_reduction]`;
+          else if (el.classList.contains('s1-reduced'))        el.name = `s1[${idx}][reduced]`;
+          else if (el.classList.contains('s1-reduction-type')) el.name = `s1[${idx}][reduction_type]`;
+          else if (el.classList.contains('s1-reduction-type-other')) el.name = `s1[${idx}][reduction_type_other]`;
+        });
+
+        const rm = item.querySelector('.s1-remove');
+        if (rm) rm.classList.toggle('hidden', items.length <= 1);
+      });
+    }
+
+    function attachLogic(item) {
+      const srcSel   = item.querySelector('.s1-source');
+      const srcOther = item.querySelector('.s1-source-other');
+      const hasRed   = item.querySelector('.s1-has-reduction');
+      const reduced  = item.querySelector('.s1-reduced');
+      const redType  = item.querySelector('.s1-reduction-type');
+      const redOther = item.querySelector('.s1-reduction-type-other');
+
+      function syncSource() {
+        const isOther = srcSel && srcSel.value === 'lainnya';
+        toggleEl(srcOther, isOther);
+      }
+      function syncReduction() {
+        const yes = hasRed && hasRed.value === 'ya';
+        toggleEl(reduced, yes);
+        toggleEl(redType, yes);
+        if (!yes) toggleEl(redOther, false); // sekaligus sembunyikan "lainnya" jika sebelumnya aktif
+      }
+      function syncRedType() {
+        const isOther = redType && redType.value === 'lainnya';
+        toggleEl(redOther, isOther);
+      }
+
+      if (srcSel)  { srcSel.addEventListener('change', syncSource);  syncSource(); }
+      if (hasRed)  { hasRed.addEventListener('change', syncReduction); syncReduction(); }
+      if (redType) { redType.addEventListener('change', syncRedType); syncRedType(); }
+
+      // Hapus item
+      const rmBtn = item.querySelector('.s1-remove');
+      if (rmBtn) {
+        rmBtn.addEventListener('click', () => {
+          const items = list.querySelectorAll('.s1-item');
+          if (items.length > 1) {
+            item.remove();
+            reindex();
+          }
+        });
+      }
+    }
+
+    // item awal
+    const first = list.querySelector('.s1-item');
+    if (first) attachLogic(first);
+    reindex();
+
+    // tombol tambah
+    addBtn.addEventListener('click', () => {
+      const clone = tpl.content.firstElementChild.cloneNode(true);
+      list.appendChild(clone);
+      attachLogic(clone);
+      reindex();
+    });
+  });
+</script>
