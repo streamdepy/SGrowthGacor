@@ -71,7 +71,7 @@ exports.saveFinanceData = async (req, res) => {
   try {
     const userId = req.user.id; // dari middleware auth
     const {
-      gri_id, // id dari record GRIEconomic yang mau diupdate (harus dikirim hidden di form Bagian 2)
+      gri_id, // id record GRIEconomic yang akan diupdate
       revenue,
       general_admin_expenses,
       general_admin_notes,
@@ -92,13 +92,13 @@ exports.saveFinanceData = async (req, res) => {
 
     console.log("📥 saveFinanceData req.body:", req.body);
 
-    // 1. Cek apakah business profile user ada
+    // 1. Pastikan business profile ada
     const business = await BusinessProfile.findOne({ where: { user_id: userId } });
     if (!business) {
       return res.status(400).json({ error: "Business profile not found for this user" });
     }
 
-    // 2. Cari record GRIEconomic berdasarkan id
+    // 2. Cari record GRIEconomic sesuai id & business
     const griRecord = await GRIEconomic.findOne({
       where: { id: gri_id, business_id: business.id },
     });
@@ -107,7 +107,7 @@ exports.saveFinanceData = async (req, res) => {
       return res.status(404).json({ error: "GRI Economic record not found for update" });
     }
 
-    // 3. Update record
+    // 3. Update data
     await griRecord.update({
       revenue,
       general_admin_expenses,
@@ -127,29 +127,53 @@ exports.saveFinanceData = async (req, res) => {
       non_operating_notes,
     });
 
-    res.status(200).json({ message: "Finance data updated successfully", data: griRecord });
+    // 4. Redirect ke Bagian 3 sambil kirim id & periode
+    res.redirect(
+      `/umkm/gri-3?gri_id=${griRecord.id}&period=${encodeURIComponent(griRecord.reporting_period)}&edit=true`
+    );
   } catch (error) {
     console.error("🔥 Error saving Finance Data:", error);
     res.status(500).json({ error: "Failed to save Finance Data" });
   }
 };
 
-
 exports.saveNotes = async (req, res) => {
   try {
-    const { id, unusual_expenses_flag, unusual_expenses_notes, accounting_adjustment_flag, accounting_adjustment_notes } = req.body;
+    const userId = req.user.id;
+    const {
+      gri_id,
+      unusual_expenses_flag,
+      unusual_expenses_notes,
+      accounting_adjustment_flag,
+      accounting_adjustment_notes,
+    } = req.body;
 
-    const record = await GRIEconomic.findByPk(id);
-    if (!record) return res.status(404).json({ error: "Record not found" });
+    if (!gri_id) {
+      console.error("❌ gri_id tidak ditemukan di req.body:", req.body);
+      return res.status(400).json({ error: "gri_id wajib dikirim dari form" });
+    }
 
-    await record.update({
+    const griRecord = await GRIEconomic.findOne({
+      where: { id: gri_id },
+      include: [{ model: BusinessProfile, where: { user_id: userId } }],
+    });
+
+    if (!griRecord) {
+      return res.status(404).json({ error: "GRI Economic record not found" });
+    }
+
+    await griRecord.update({
       unusual_expenses_flag,
       unusual_expenses_notes,
       accounting_adjustment_flag,
       accounting_adjustment_notes,
     });
 
-    res.status(200).json({ message: "Notes saved", data: record });
+    res.redirect(
+      `/umkm/gri-4?gri_id=${griRecord.id}&period=${encodeURIComponent(
+        griRecord.reporting_period
+      )}&edit=true`
+    );
   } catch (error) {
     console.error("🔥 Error saving Notes:", error);
     res.status(500).json({ error: "Failed to save Notes" });
