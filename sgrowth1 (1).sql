@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2025 at 01:35 PM
+-- Generation Time: Sep 06, 2025 at 11:31 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -117,9 +117,9 @@ CREATE TABLE `business_certifications` (
 --
 
 INSERT INTO `business_certifications` (`id`, `business_id`, `certification_name`) VALUES
-(1, '', 'ISO 9001'),
-(2, '', 'ISO 14001'),
-(3, '', 'ISO 45001');
+(1, 'TES123YA', 'ISO 9001'),
+(2, 'TES123YA', 'ISO 14001'),
+(3, 'TES123YA', 'ISO 45001');
 
 -- --------------------------------------------------------
 
@@ -139,10 +139,10 @@ CREATE TABLE `business_departments` (
 --
 
 INSERT INTO `business_departments` (`id`, `business_id`, `department_name`, `employee_count`) VALUES
-(1, '', 'HR', 2),
-(2, '', 'Marketing', 3),
-(3, '', 'IT', 4),
-(4, '', 'Finance', 3);
+(1, 'TES123YA', 'HR', 2),
+(2, 'TES123YA', 'Marketing', 3),
+(3, 'TES123YA', 'IT', 4),
+(4, 'TES123YA', 'Finance', 3);
 
 -- --------------------------------------------------------
 
@@ -184,7 +184,7 @@ CREATE TABLE `business_profiles` (
 --
 
 INSERT INTO `business_profiles` (`id`, `user_id`, `business_name`, `established_year`, `legal_form`, `industry_type`, `headquarters`, `city`, `province`, `products_offered`, `ownership_percentage`, `market_scope`, `target_market`, `target_market_other`, `total_employees_fulltime`, `total_employees_parttime`, `male_percentage`, `female_percentage`, `core_values`, `ethics_principles`, `pic_name`, `pic_position`, `pic_phone`, `pic_email`, `supporting_documents`, `created_at`) VALUES
-('', 1, 'Universitas Andalas', '2025', 'CV', 'Teknologi', 'jauh', 'padang', 'Sumatera Barat', 'banyakk', 100.00, 'nasional, global', 'b2b, b2c', NULL, 12, 7, 40.00, 60.00, 'tetap jadi orang baik', 'mahal king', 'agif', 'ceo', '081298076037', 'malghifari2096@gmail.com', 'Gemini_Generated_Image_sefxt0sefxt0sefx.png', '2025-09-05 11:34:59');
+('TES123YA', 1, 'Universitas Andalas', '2025', 'CV', 'Teknologi', 'jauh', 'padang', 'Sumatera Barat', 'Banyakk', 99.99, 'nasional, global', 'b2b, b2c', NULL, 12, 3, 40.00, 57.00, 'tetap jadi orang baik', 'mahall king', 'agif', 'ceo', '081298076037', 'malghifari2096@gmail.com', 'Gemini_Generated_Image_sefxt0sefxt0sefx.png', '2025-09-05 11:49:08');
 
 -- --------------------------------------------------------
 
@@ -204,9 +204,9 @@ CREATE TABLE `business_shareholders` (
 --
 
 INSERT INTO `business_shareholders` (`id`, `business_id`, `shareholder_name`, `ownership_percentage`) VALUES
-(16, '', 'alghifari', 60.00),
-(17, '', 'jokowi', 30.00),
-(18, '', 'badang', 10.00);
+(19, 'TES123YA', 'alghifari', 60.00),
+(20, 'TES123YA', 'jokowi', 30.00),
+(21, 'TES123YA', 'badang', 9.99);
 
 -- --------------------------------------------------------
 
@@ -227,14 +227,10 @@ CREATE TABLE `business_stakeholders` (
 --
 
 INSERT INTO `business_stakeholders` (`id`, `business_id`, `stakeholder_type`, `stakeholder_other`, `relationship`) VALUES
-(49, '', 'Pelanggan', NULL, 'pembelinya'),
-(50, '', 'Karyawan', NULL, 'staff nya'),
-(51, '', 'Pemasok', NULL, NULL),
-(52, '', NULL, NULL, NULL),
-(53, '', 'Investor/Shareholder', NULL, 'tuan'),
-(54, '', NULL, NULL, NULL),
-(55, '', NULL, NULL, NULL),
-(56, '', NULL, NULL, NULL);
+(57, 'TES123YA', 'Pelanggan', NULL, 'pembelinya'),
+(58, 'TES123YA', 'Karyawan', NULL, 'staff nya'),
+(59, 'TES123YA', 'Pemasok', NULL, NULL),
+(60, 'TES123YA', 'Investor/Shareholder', NULL, 'tuan');
 
 -- --------------------------------------------------------
 
@@ -304,6 +300,42 @@ CREATE TABLE `esg_scores` (
   `score_social` decimal(5,2) DEFAULT NULL,
   `score_economic` decimal(5,2) DEFAULT NULL,
   `score_governance` decimal(5,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gri_economics`
+--
+
+CREATE TABLE `gri_economics` (
+  `id` int(11) NOT NULL,
+  `business_id` varchar(255) NOT NULL,
+  `unit_name` varchar(150) NOT NULL,
+  `reporting_period` varchar(100) NOT NULL,
+  `responsible_person` varchar(150) NOT NULL,
+  `revenue` decimal(15,2) DEFAULT 0.00,
+  `general_admin_expenses` decimal(15,2) DEFAULT 0.00,
+  `general_admin_notes` text DEFAULT NULL,
+  `salary_expenses` decimal(15,2) DEFAULT 0.00,
+  `salary_employee_notes` text DEFAULT NULL,
+  `transport_expenses` decimal(15,2) DEFAULT 0.00,
+  `transport_notes` text DEFAULT NULL,
+  `fuel_expenses` decimal(15,2) DEFAULT 0.00,
+  `electricity_expenses` decimal(15,2) DEFAULT 0.00,
+  `internet_expenses` decimal(15,2) DEFAULT 0.00,
+  `telephone_expenses` decimal(15,2) DEFAULT 0.00,
+  `water_expenses` decimal(15,2) DEFAULT 0.00,
+  `other_operating_expenses` decimal(15,2) DEFAULT 0.00,
+  `other_operating_notes` text DEFAULT NULL,
+  `non_operating_expenses` decimal(15,2) DEFAULT 0.00,
+  `non_operating_notes` text DEFAULT NULL,
+  `unusual_expenses_flag` tinyint(1) DEFAULT 0,
+  `unusual_expenses_notes` text DEFAULT NULL,
+  `accounting_adjustment_flag` tinyint(1) DEFAULT 0,
+  `accounting_adjustment_notes` text DEFAULT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -502,6 +534,13 @@ ALTER TABLE `esg_scores`
   ADD KEY `business_id` (`business_id`);
 
 --
+-- Indexes for table `gri_economics`
+--
+ALTER TABLE `gri_economics`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_gri_economics_business` (`business_id`);
+
+--
 -- Indexes for table `gri_submissions`
 --
 ALTER TABLE `gri_submissions`
@@ -586,13 +625,13 @@ ALTER TABLE `business_departments`
 -- AUTO_INCREMENT for table `business_shareholders`
 --
 ALTER TABLE `business_shareholders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `business_stakeholders`
 --
 ALTER TABLE `business_stakeholders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `certificates`
@@ -623,6 +662,12 @@ ALTER TABLE `community_posts`
 --
 ALTER TABLE `esg_scores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `gri_economics`
+--
+ALTER TABLE `gri_economics`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `gri_submissions`
@@ -750,6 +795,12 @@ ALTER TABLE `community_posts`
 --
 ALTER TABLE `esg_scores`
   ADD CONSTRAINT `esg_scores_ibfk_1` FOREIGN KEY (`business_id`) REFERENCES `business_profiles` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `gri_economics`
+--
+ALTER TABLE `gri_economics`
+  ADD CONSTRAINT `fk_gri_economics_business` FOREIGN KEY (`business_id`) REFERENCES `business_profiles` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `gri_submissions`
