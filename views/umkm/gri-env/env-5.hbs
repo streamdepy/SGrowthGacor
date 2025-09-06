@@ -1,0 +1,216 @@
+<main class="flex flex-col ml-48 self-center mb-16 mt-16 w-full max-w-[1256px] max-md:mt-10 max-md:max-w-full">
+  <header class="flex gap-3.5 self-start">
+    <img
+      src="https://api.builder.io/api/v1/image/assets/TEMP/1c71a2a9be3de365531c3991c3339c7e3c083b53?width=462"
+      alt="GRI Environment icon"
+      class="object-contain shrink-0 my-auto rounded-full aspect-[1.04] w-[58px]"
+    />
+    <div class="flex flex-col">
+      <h2 class="text-4xl font-semibold text-black">GRI Environment</h2>
+      <p class="self-center text-xl font-medium leading-none text-center text-gray-500">
+        Environmental Performance
+      </p>
+    </div>
+  </header>
+
+  <!-- Intensitas Emisi -->
+  <section class="flex flex-col items-start py-14 px-16 mt-10 w-full bg-white rounded-2xl shadow-2xl max-w-[981px] max-md:px-5">
+    <h3 class="text-3xl font-semibold text-teal-700">Intensitas Emisi</h3>
+    <p class="mt-3 text-gray-500">Isi indikator intensitas dan data perhitungan secara manual.</p>
+
+    <!-- Daftar intensitas -->
+    <div id="intensity_list" class="w-full mt-8 space-y-8">
+      <!-- Item #0 (awalan) -->
+      <div class="intensity-item border border-gray-200 rounded-2xl p-4">
+        <!-- Jenis indikator -->
+        <label class="block pb-2 text-base font-medium">Jenis indikator intensitas yang digunakan</label>
+        <select name="intensity[0][indicator]"
+          class="intensity-indicator w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+          <option value="">Pilih indikator</option>
+          <option value="per_unit">tCO₂e per unit produk</option>
+          <option value="per_omzet">tCO₂e per Rp omzet</option>
+          <option value="per_luas">tCO₂e per m² gedung</option>
+          <option value="lainnya">Lainnya</option>
+        </select>
+        <input type="text" name="intensity[0][indicator_other]"
+          placeholder="Sebutkan indikator lain"
+          class="intensity-indicator-other w-full px-8 py-4 mt-3 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 hidden" disabled />
+
+        <!-- Total emisi + output -->
+        <div class="flex gap-5 mt-6 max-md:flex-col">
+          <div class="w-6/12 max-md:w-full">
+            <label class="block pb-2 text-base font-medium">Total emisi (Scope 1+2) per indikator</label>
+            <input type="number" min="0" step="0.0001" name="intensity[0][total]"
+              placeholder="Masukkan nilai (tCO₂e)"
+              class="intensity-total w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50" />
+          </div>
+          <div class="w-6/12 max-md:w-full">
+            <label class="block pb-2 text-base font-medium">Jumlah output bisnis terkait</label>
+            <input type="number" min="0" step="0.0001" name="intensity[0][output]"
+              placeholder="Masukkan jumlah output"
+              class="intensity-output w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50" />
+          </div>
+        </div>
+
+        <!-- Catatan -->
+        <div class="w-full mt-6">
+          <label class="block pb-2 text-base font-medium">Catatan metode perhitungan</label>
+          <textarea name="intensity[0][notes]" rows="4"
+            placeholder="Tuliskan asumsi, sumber faktor emisi, batasan sistem, dll."
+            class="intensity-notes w-full px-8 py-4 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 resize-y"></textarea>
+        </div>
+
+        <!-- Tombol hapus -->
+        <div class="mt-4 flex justify-end">
+          <button type="button"
+            class="intensity-remove hidden px-4 py-2 rounded-xl border border-gray-300 text-gray-700 hover:bg-gray-50 transition">
+            Hapus
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tombol Tambah item -->
+    <div class="mt-6 flex justify-end">
+      <button type="button" id="intensity_add_item"
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-teal-700 text-sm font-medium transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
+        </svg>
+        Tambah
+      </button>
+    </div>
+
+    <!-- Buttons pojok kanan kotak putih -->
+    <div class="flex justify-end gap-4 mt-10 w-full">
+      <button type="button" onclick="window.history.back()"
+        class="px-8 py-2 text-base font-medium text-center text-teal-700 border-teal-700 border border-solid whitespace-nowrap bg-white rounded-xl hover:bg-teal-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors">
+        Sebelumnya
+      </button>
+      <button type="submit"
+        class="px-8 py-2 text-base font-medium text-center text-white whitespace-nowrap bg-lime-500 rounded-xl hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-offset-2 transition-colors">
+        Simpan
+      </button>
+    </div>
+  </section>
+
+  <!-- Template item Intensitas -->
+  <template id="intensity_item_tpl">
+    <div class="intensity-item border border-gray-200 rounded-2xl p-4">
+      <label class="block pb-2 text-base font-medium">Jenis indikator intensitas yang digunakan</label>
+      <select name=""
+        class="intensity-indicator w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+        <option value="">Pilih indikator</option>
+        <option value="per_unit">tCO₂e per unit produk</option>
+        <option value="per_omzet">tCO₂e per Rp omzet</option>
+        <option value="per_luas">tCO₂e per m² gedung</option>
+        <option value="lainnya">Lainnya</option>
+      </select>
+      <input type="text" name="" placeholder="Sebutkan indikator lain"
+        class="intensity-indicator-other w-full px-8 py-4 mt-3 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 hidden" disabled />
+
+      <div class="flex gap-5 mt-6 max-md:flex-col">
+        <div class="w-6/12 max-md:w-full">
+          <label class="block pb-2 text-base font-medium">Total emisi (Scope 1+2) per indikator</label>
+          <input type="number" min="0" step="0.0001" name=""
+            placeholder="Masukkan nilai (tCO₂e)"
+            class="intensity-total w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50" />
+        </div>
+        <div class="w-6/12 max-md:w-full">
+          <label class="block pb-2 text-base font-medium">Jumlah output bisnis terkait</label>
+          <input type="number" min="0" step="0.0001" name=""
+            placeholder="Masukkan jumlah output"
+            class="intensity-output w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50" />
+        </div>
+      </div>
+
+      <div class="w-full mt-6">
+        <label class="block pb-2 text-base font-medium">Catatan metode perhitungan</label>
+        <textarea rows="4" name=""
+          placeholder="Tuliskan asumsi, sumber faktor emisi, batasan sistem, dll."
+          class="intensity-notes w-full px-8 py-4 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 resize-y"></textarea>
+      </div>
+
+      <div class="mt-4 flex justify-end">
+        <button type="button"
+          class="intensity-remove px-4 py-2 rounded-xl border border-gray-300 text-gray-700 hover:bg-gray-50 transition">
+          Hapus
+        </button>
+      </div>
+    </div>
+  </template>
+</main>
+
+<script>
+  // Helper show/hide + (opsional) disable
+  function toggleEl(el, show, disable = true) {
+    if (!el) return;
+    el.classList.toggle('hidden', !show);
+    if (disable) el.disabled = !show;
+    if (!show && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA')) el.value = '';
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const list  = document.getElementById('intensity_list');
+    const add   = document.getElementById('intensity_add_item');
+    const tpl   = document.getElementById('intensity_item_tpl');
+
+    if (!list || !add || !tpl) return;
+
+    function reindex() {
+      const items = list.querySelectorAll('.intensity-item');
+      items.forEach((item, idx) => {
+        item.querySelectorAll('input, select, textarea').forEach(el => {
+          if (el.classList.contains('intensity-indicator'))       el.name = `intensity[${idx}][indicator]`;
+          else if (el.classList.contains('intensity-indicator-other')) el.name = `intensity[${idx}][indicator_other]`;
+          else if (el.classList.contains('intensity-total'))      el.name = `intensity[${idx}][total]`;
+          else if (el.classList.contains('intensity-output'))     el.name = `intensity[${idx}][output]`;
+          else if (el.classList.contains('intensity-notes'))      el.name = `intensity[${idx}][notes]`;
+        });
+
+        const rm = item.querySelector('.intensity-remove');
+        if (rm) rm.classList.toggle('hidden', items.length <= 1);
+      });
+    }
+
+    function attachHandlers(item) {
+      const sel   = item.querySelector('.intensity-indicator');
+      const other = item.querySelector('.intensity-indicator-other');
+
+      function syncOther() {
+        const isOther = sel && sel.value === 'lainnya';
+        toggleEl(other, isOther);
+      }
+
+      if (sel) {
+        sel.addEventListener('change', syncOther);
+        syncOther();
+      }
+
+      const rm = item.querySelector('.intensity-remove');
+      if (rm) {
+        rm.addEventListener('click', () => {
+          const items = list.querySelectorAll('.intensity-item');
+          if (items.length > 1) {
+            item.remove();
+            reindex();
+          }
+        });
+      }
+    }
+
+    // Inisialisasi item pertama
+    const first = list.querySelector('.intensity-item');
+    if (first) attachHandlers(first);
+    reindex();
+
+    // Tambah item baru
+    add.addEventListener('click', () => {
+      const clone = tpl.content.firstElementChild.cloneNode(true);
+      list.appendChild(clone);
+      attachHandlers(clone);
+      reindex();
+    });
+  });
+</script>

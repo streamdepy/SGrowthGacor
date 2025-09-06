@@ -107,6 +107,54 @@ router.get("/social-6", function (req, res, next) {
     currentPath: req.path
   });
 });
+
+router.get("/env-1", function (req, res, next) {
+  res.render("umkm/gri-env/env-1", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path
+  });
+});
+
+router.get("/env-2", function (req, res, next) {
+  res.render("umkm/gri-env/env-2", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path
+  });
+});
+
+router.get("/env-3", function (req, res, next) {
+  res.render("umkm/gri-env/env-3", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path
+  });
+});
+
+router.get("/env-4", function (req, res, next) {
+  res.render("umkm/gri-env/env-4", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path
+  });
+});
+
+router.get("/env-5", function (req, res, next) {
+  res.render("umkm/gri-env/env-5", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path
+  });
+});
+
+router.get("/env-6", function (req, res, next) {
+  res.render("umkm/gri-env/env-6", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path
+  });
+});
 module.exports = router;
 
 /*
