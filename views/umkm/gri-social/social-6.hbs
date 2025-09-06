@@ -1,0 +1,170 @@
+<main class="flex flex-col items-start self-center ml-48 mt-16 w-full max-w-[1168px] max-md:mt-10 max-md:max-w-full">
+    <header class="flex gap-3.5 self-start">
+        <img
+            src="https://api.builder.io/api/v1/image/assets/TEMP/07073f8526333ac3749a4d99615ea0579a831ebe?placeholderIfAbsent=true&apiKey=ac04cd396e1f47f18955cd19640f183d"
+            alt="GRI Economic icon"
+            class="object-contain shrink-0 my-auto rounded-full aspect-[1.04] w-[58px]"
+        />
+        <div class="flex flex-col">
+            <h2 class="text-4xl font-semibold text-black">
+                GRI Social
+            </h2>
+            <p class="self-center text-xl font-medium leading-none text-center text-gray-500">
+                Social Performance
+            </p>
+        </div>
+    </header>
+
+    <section class="self-stretch pt-12 pb-20 pl-16 mb-16 mt-10 bg-white rounded-2xl shadow-2xl max-md:pl-5 max-md:max-w-full">
+        <div class="flex gap-10 max-md:flex-col w-full">
+            <!-- ===== Aside: Tambahan Komputasi Otomatis ===== -->
+            <aside class="w-[81%] max-md:ml-0 max-md:w-full">
+                <div class="flex flex-col items-start text-xl font-semibold leading-none text-gray-500 max-md:mt-10">
+                    <h2 class="self-stretch text-3xl text-teal-700">
+                        Ringkasan Otomatis
+                    </h2>
+
+                    <!-- Row: LTIFR & Persentase Karyawan Terlatih -->
+                    <div class="mt-6 flex gap-10 max-md:flex-col">
+                        <!-- LTIFR -->
+                        <div class="flex flex-col items-start">
+                            <div class="font-medium text-gray-500">Lost Time Injury Frequency Rate (LTIFR)</div>
+                            <div class="mt-3 text-4xl leading-none text-teal-700">
+                                <span id="ltifr_val">-</span>
+                            </div>
+                            <p class="mt-2 text-sm leading-6 text-gray-500 pr-4">
+                                Rumus: <span class="font-medium">LTIFR = (Jumlah cedera kerja × 1.000.000) ÷ (Total jam kerja)</span>
+                            </p>
+                        </div>
+
+                        <!-- Persentase Pelatihan -->
+                        <div class="flex flex-col items-start">
+                            <div class="font-medium text-gray-500">Persentase karyawan terlatih</div>
+                            <div class="mt-3 text-4xl leading-none text-teal-700">
+                                <span id="train_pct_val">-</span><span class="text-2xl">%</span>
+                            </div>
+                            <p class="mt-2 text-sm leading-6 text-gray-500 pr-4">
+                                Rumus: <span class="font-medium">Persentase = (Jumlah karyawan terlatih ÷ Total karyawan) × 100%</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Hint opsional untuk sumber data -->
+                    <div class="mt-6 text-xs text-gray-400 leading-5">
+                        * Nilai di atas akan terisi otomatis jika data K3 & pelatihan tersedia di halaman sebelumnya.
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Buttons pojok kanan kotak putih -->
+        <div class="flex justify-end gap-4 mt-10 w-full pr-8 md:pr-12 lg:pr-16">
+        <button type="button" onclick="window.history.back()"
+            class="px-8 py-2 text-base font-medium text-center text-teal-700 border-teal-700 border border-solid whitespace-nowrap bg-white rounded-xl hover:bg-teal-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors">
+            Sebelumnya
+        </button>
+        <button type="submit"
+            class="px-8 py-2 text-base font-medium text-center text-white whitespace-nowrap bg-lime-500 rounded-xl hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-offset-2 transition-colors">
+            Simpan
+        </button>
+        </div>
+
+    </section>
+</main>
+<script>
+  // Util format angka
+  function fmt(n, dec = 2) {
+    if (n === null || isNaN(n)) return '-';
+    return Number(n).toLocaleString('id-ID', { maximumFractionDigits: dec, minimumFractionDigits: dec });
+  }
+
+  // Cari & jumlahkan angka dari input dengan selector tertentu
+  function sumValues(selector) {
+    let total = 0;
+    document.querySelectorAll(selector).forEach(el => {
+      const v = parseFloat(el.value);
+      if (!isNaN(v)) total += v;
+    });
+    return total;
+  }
+
+  function computeLTIFR() {
+    // Jumlah cedera diambil dari semua item K3 (class .k3-injuries)
+    const totalInjuries = sumValues('.k3-injuries');
+
+    // Total jam kerja: kalau kamu punya input khusus, beri id="work_hours".
+    // Jika tidak ada, kita coba cari input name yang umum dipakai.
+    let hoursEl = document.querySelector('#work_hours, #total_work_hours, input[name="work_hours"], input[name="total_work_hours"]');
+    const totalHours = hoursEl ? parseFloat(hoursEl.value) : NaN;
+
+    const target = document.getElementById('ltifr_val');
+    if (!target) return;
+
+    if (!isNaN(totalInjuries) && !isNaN(totalHours) && totalHours > 0) {
+      const ltifr = (totalInjuries * 1_000_000) / totalHours;
+      target.textContent = fmt(ltifr, 2);
+    } else {
+      target.textContent = '-';
+    }
+  }
+
+  function computeTrainingPct() {
+    // Dari section pelatihan: gunakan class .train-attended & .train-required di setiap item
+    const attended = sumValues('.train-attended');
+    const required = sumValues('.train-required');
+
+    const target = document.getElementById('train_pct_val');
+    if (!target) return;
+
+    if (!isNaN(attended) && !isNaN(required) && required > 0) {
+      const pct = (attended / required) * 100;
+      target.textContent = fmt(pct, 2);
+    } else {
+      target.textContent = '-';
+    }
+  }
+
+  function bindRecalc() {
+    // Recalc saat input berubah
+    const k3Inputs = document.querySelectorAll('.k3-injuries, #work_hours, #total_work_hours, input[name="work_hours"], input[name="total_work_hours"]');
+    k3Inputs.forEach(el => el.addEventListener('input', computeLTIFR));
+
+    const trainInputs = document.querySelectorAll('.train-attended, .train-required');
+    trainInputs.forEach(el => el.addEventListener('input', computeTrainingPct));
+
+    // Jika ada tombol tambah item dinamis, re-bind setelah penambahan
+    const k3Add = document.getElementById('k3_add_item');
+    if (k3Add) {
+      k3Add.addEventListener('click', () => {
+        // tunda sedikit agar elemen baru masuk DOM
+        setTimeout(() => {
+          document.querySelectorAll('.k3-injuries').forEach(el => {
+            el.removeEventListener?.('input', computeLTIFR);
+            el.addEventListener('input', computeLTIFR);
+          });
+          computeLTIFR();
+        }, 0);
+      });
+    }
+
+    const trainAdd = document.getElementById('train_add_item');
+    if (trainAdd) {
+      trainAdd.addEventListener('click', () => {
+        setTimeout(() => {
+          document.querySelectorAll('.train-attended, .train-required').forEach(el => {
+            el.removeEventListener?.('input', computeTrainingPct);
+            el.addEventListener('input', computeTrainingPct);
+          });
+          computeTrainingPct();
+        }, 0);
+      });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    bindRecalc();
+    computeLTIFR();
+    computeTrainingPct();
+  });
+</script>
+

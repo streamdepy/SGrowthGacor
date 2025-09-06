@@ -1,0 +1,285 @@
+<main class="flex flex-col ml-48 self-center mb-16 mt-16 w-full max-w-[1256px] max-md:mt-10 max-md:max-w-full">
+    <header class="flex gap-3.5 self-start">
+        <img
+            src="https://api.builder.io/api/v1/image/assets/TEMP/07073f8526333ac3749a4d99615ea0579a831ebe?placeholderIfAbsent=true&apiKey=ac04cd396e1f47f18955cd19640f183d"
+            alt="GRI Economic icon"
+            class="object-contain shrink-0 my-auto rounded-full aspect-[1.04] w-[58px]"
+        />
+        <div class="flex flex-col">
+            <h2 class="text-4xl font-semibold text-black">
+                GRI Social
+            </h2>
+            <p class="self-center text-xl font-medium leading-none text-center text-gray-500">
+                Social Performance
+            </p>
+        </div>
+    </header>
+
+<!-- Pelatihan Kesehatan & Keselamatan (ASEDG-S4.2) -->
+<section class="flex flex-col items-start py-14 px-16 mt-10 w-full bg-white rounded-2xl shadow-2xl max-w-[981px] max-md:px-5 max-md:mt-10">
+  <h3 class="text-3xl font-semibold text-teal-700">Pelatihan Kesehatan & Keselamatan (ASEDG-S4.2)</h3>
+  <p class="mt-3 text-gray-500">Isi data pelatihan K3 pada periode pelaporan ini.</p>
+
+  <!-- Ada pelatihan? -->
+  <div class="w-full mt-8">
+    <label class="block pb-2 text-base font-medium">Apakah ada pelatihan K3 pada periode ini?</label>
+    <select id="train_has" name="train_has"
+      class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+      <option value="">Pilih</option>
+      <option value="ya">Ya</option>
+      <option value="tidak">Tidak</option>
+    </select>
+  </div>
+
+  <!-- Detail (muncul jika Ya) -->
+  <div id="train_details" class="w-full mt-6 hidden">
+    <div id="train_list" class="space-y-8">
+      <!-- Entri pelatihan pertama -->
+      <div class="train-item border border-gray-200 rounded-2xl p-4">
+        <div class="flex gap-5 max-md:flex-col">
+          <div class="w-6/12 max-md:w-full">
+            <label class="block pb-2 text-base font-medium">Jumlah karyawan mengikuti</label>
+            <input type="number" min="0" class="train-attended w-full px-8 py-4 mt-2 border rounded-2xl bg-slate-50">
+          </div>
+          <div class="w-6/12 max-md:w-full">
+            <label class="block pb-2 text-base font-medium">Total karyawan seharusnya</label>
+            <input type="number" min="0" class="train-required w-full px-8 py-4 mt-2 border rounded-2xl bg-slate-50">
+          </div>
+        </div>
+
+        <!-- Persentase -->
+        <div class="w-full mt-6">
+          <label class="block pb-2 text-base font-medium">Persentase karyawan terlatih (otomatis)</label>
+          <div class="relative">
+            <input type="text" readonly class="train-percent w-full px-8 py-4 pr-16 mt-2 border rounded-2xl bg-gray-50" placeholder="0%">
+            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">%</span>
+          </div>
+        </div>
+
+        <!-- Jenis & Frekuensi -->
+        <div class="flex gap-5 mt-6 max-md:flex-col">
+          <div class="w-6/12 max-md:w-full">
+            <label class="block pb-2 text-base font-medium">Jenis pelatihan</label>
+            <select class="train-type w-full px-8 py-4 mt-2 border rounded-2xl bg-slate-50">
+              <option value="">Pilih</option>
+              <option>Dasar K3</option>
+              <option>Tanggap Darurat</option>
+              <option>Penanganan Bahan Berbahaya</option>
+              <option>Ergonomi</option>
+              <option value="lainnya">Lainnya</option>
+            </select>
+            <input type="text" class="train-type-other w-full px-4 py-3 mt-3 border rounded-lg bg-slate-50 hidden" placeholder="Sebutkan jenis lain">
+          </div>
+
+          <div class="w-6/12 max-md:w-full">
+            <label class="block pb-2 text-base font-medium">Frekuensi pelatihan</label>
+            <select class="train-freq w-full px-8 py-4 mt-2 border rounded-2xl bg-slate-50">
+              <option value="">Pilih</option>
+              <option>Bulanan</option>
+              <option>Triwulanan</option>
+              <option>Tahunan</option>
+              <option value="lainnya">Lainnya</option>
+            </select>
+            <input type="text" class="train-freq-other w-full px-4 py-3 mt-3 border rounded-lg bg-slate-50 hidden" placeholder="Sebutkan frekuensi lain">
+          </div>
+        </div>
+
+        <!-- Bukti -->
+        <div class="w-full mt-6">
+          <label class="block pb-2 text-base font-medium">Bukti dokumentasi (opsional)</label>
+          <div class="flex gap-5 max-md:flex-col">
+            <div class="w-6/12 max-md:w-full">
+              <input type="file" class="train-proof-file w-full px-4 py-3 border rounded-2xl bg-slate-50">
+            </div>
+            <div class="w-6/12 max-md:w-full">
+              <input type="url" class="train-proof-link w-full px-8 py-4 border rounded-2xl bg-slate-50" placeholder="Atau tautan dokumen">
+            </div>
+          </div>
+        </div>
+
+        <!-- Tombol hapus -->
+        <div class="mt-4 flex justify-end">
+          <button type="button" class="train-remove hidden px-4 py-2 border rounded-xl text-gray-700 hover:bg-gray-50">Hapus pelatihan</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tombol tambah -->
+    <div class="mt-6 flex justify-end">
+      <button type="button" id="train_add_item"
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-teal-700 text-sm font-medium transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
+        </svg>
+        Tambah
+      </button>
+    </div>
+  </div>
+
+    <!-- Buttons pojok kanan kotak putih -->
+  <div class="flex justify-end gap-4 mt-10 w-full">
+    <button type="button" onclick="window.history.back()"
+      class="px-8 py-2 text-base font-medium text-center text-teal-700 border-teal-700 border border-solid whitespace-nowrap bg-white rounded-xl hover:bg-teal-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors">
+      Sebelumnya
+    </button>
+    <button type="submit"
+      class="px-8 py-2 text-base font-medium text-center text-white whitespace-nowrap bg-lime-500 rounded-xl hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-offset-2 transition-colors">
+      Simpan
+    </button>
+  </div>
+</section>
+
+<!-- Template item pelatihan -->
+<template id="train_item_tpl">
+  <div class="train-item border border-gray-200 rounded-2xl p-4">
+    <div class="flex gap-5 max-md:flex-col">
+      <div class="w-6/12 max-md:w-full">
+        <label class="block pb-2 text-base font-medium">Jumlah karyawan mengikuti</label>
+        <input type="number" min="0" class="train-attended w-full px-8 py-4 mt-2 border rounded-2xl bg-slate-50">
+      </div>
+      <div class="w-6/12 max-md:w-full">
+        <label class="block pb-2 text-base font-medium">Total karyawan seharusnya</label>
+        <input type="number" min="0" class="train-required w-full px-8 py-4 mt-2 border rounded-2xl bg-slate-50">
+      </div>
+    </div>
+
+    <!-- Persentase -->
+    <div class="w-full mt-6">
+      <label class="block pb-2 text-base font-medium">Persentase karyawan terlatih (otomatis)</label>
+      <div class="relative">
+        <input type="text" readonly class="train-percent w-full px-8 py-4 pr-16 mt-2 border rounded-2xl bg-gray-50" placeholder="0%">
+        <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">%</span>
+      </div>
+    </div>
+
+    <!-- Jenis & Frekuensi -->
+    <div class="flex gap-5 mt-6 max-md:flex-col">
+      <div class="w-6/12 max-md:w-full">
+        <label class="block pb-2 text-base font-medium">Jenis pelatihan</label>
+        <select class="train-type w-full px-8 py-4 mt-2 border rounded-2xl bg-slate-50">
+          <option value="">Pilih</option>
+          <option>Dasar K3</option>
+          <option>Tanggap Darurat</option>
+          <option>Penanganan Bahan Berbahaya</option>
+          <option>Ergonomi</option>
+          <option value="lainnya">Lainnya</option>
+        </select>
+        <input type="text" class="train-type-other w-full px-4 py-3 mt-3 border rounded-lg bg-slate-50 hidden" placeholder="Sebutkan jenis lain">
+      </div>
+
+      <div class="w-6/12 max-md:w-full">
+        <label class="block pb-2 text-base font-medium">Frekuensi pelatihan</label>
+        <select class="train-freq w-full px-8 py-4 mt-2 border rounded-2xl bg-slate-50">
+          <option value="">Pilih</option>
+          <option>Bulanan</option>
+          <option>Triwulanan</option>
+          <option>Tahunan</option>
+          <option value="lainnya">Lainnya</option>
+        </select>
+        <input type="text" class="train-freq-other w-full px-4 py-3 mt-3 border rounded-lg bg-slate-50 hidden" placeholder="Sebutkan frekuensi lain">
+      </div>
+    </div>
+
+    <!-- Bukti -->
+    <div class="w-full mt-6">
+      <label class="block pb-2 text-base font-medium">Bukti dokumentasi (opsional)</label>
+      <div class="flex gap-5 max-md:flex-col">
+        <div class="w-6/12 max-md:w-full">
+          <input type="file" class="train-proof-file w-full px-4 py-3 border rounded-2xl bg-slate-50">
+        </div>
+        <div class="w-6/12 max-md:w-full">
+          <input type="url" class="train-proof-link w-full px-8 py-4 border rounded-2xl bg-slate-50" placeholder="Atau tautan dokumen">
+        </div>
+      </div>
+    </div>
+
+    <!-- Tombol hapus -->
+    <div class="mt-4 flex justify-end">
+      <button type="button" class="train-remove px-4 py-2 border rounded-xl text-gray-700 hover:bg-gray-50">Hapus pelatihan</button>
+    </div>
+  </div>
+</template>
+
+
+
+
+
+
+
+
+
+
+
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const hasSel = document.getElementById('train_has');
+  const box    = document.getElementById('train_details');
+  const list   = document.getElementById('train_list');
+  const addBtn = document.getElementById('train_add_item');
+  const tpl    = document.getElementById('train_item_tpl');
+
+  function toggleEl(el, show) {
+    if (!el) return;
+    el.classList.toggle('hidden', !show);
+  }
+
+  function syncHas() {
+    const yes = hasSel && hasSel.value === 'ya';
+    toggleEl(box, yes);
+    if (box) box.querySelectorAll('input,select,textarea').forEach(el => { el.disabled = !yes; });
+  }
+
+  function recompute(item) {
+    const att = parseFloat(item.querySelector('.train-attended')?.value || '0');
+    const req = parseFloat(item.querySelector('.train-required')?.value || '0');
+    const pct = req > 0 ? (att / req) * 100 : 0;
+    item.querySelector('.train-percent').value = pct.toFixed(2);
+  }
+
+  function attachHandlers(item) {
+    const attended = item.querySelector('.train-attended');
+    const required = item.querySelector('.train-required');
+    if (attended) attended.addEventListener('input', () => recompute(item));
+    if (required) required.addEventListener('input', () => recompute(item));
+
+    const typeSel = item.querySelector('.train-type');
+    const typeOther = item.querySelector('.train-type-other');
+    if (typeSel) typeSel.addEventListener('change', () => toggleEl(typeOther, typeSel.value === 'lainnya'));
+
+    const freqSel = item.querySelector('.train-freq');
+    const freqOther = item.querySelector('.train-freq-other');
+    if (freqSel) freqSel.addEventListener('change', () => toggleEl(freqOther, freqSel.value === 'lainnya'));
+
+    const removeBtn = item.querySelector('.train-remove');
+    if (removeBtn) {
+      removeBtn.addEventListener('click', () => {
+        if (list.querySelectorAll('.train-item').length > 1) item.remove();
+      });
+    }
+    recompute(item);
+  }
+
+  if (hasSel) {
+    hasSel.addEventListener('change', syncHas);
+    syncHas();
+  }
+
+  const firstItem = list.querySelector('.train-item');
+  if (firstItem) attachHandlers(firstItem);
+
+  if (addBtn) {
+    addBtn.addEventListener('click', () => {
+      const clone = tpl.content.firstElementChild.cloneNode(true);
+      list.appendChild(clone);
+      attachHandlers(clone);
+      const removeBtn = clone.querySelector('.train-remove');
+      if (removeBtn) removeBtn.classList.remove('hidden');
+    });
+  }
+});
+</script>
+
+
+

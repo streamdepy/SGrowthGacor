@@ -1,0 +1,350 @@
+<main class="flex flex-col ml-48 self-center mb-16 mt-16 w-full max-w-[1256px] max-md:mt-10 max-md:max-w-full">
+    <header class="flex gap-3.5 self-start">
+        <img
+            src="https://api.builder.io/api/v1/image/assets/TEMP/07073f8526333ac3749a4d99615ea0579a831ebe?placeholderIfAbsent=true&apiKey=ac04cd396e1f47f18955cd19640f183d"
+            alt="GRI Economic icon"
+            class="object-contain shrink-0 my-auto rounded-full aspect-[1.04] w-[58px]"
+        />
+        <div class="flex flex-col">
+            <h2 class="text-4xl font-semibold text-black">
+                GRI Social
+            </h2>
+            <p class="self-center text-xl font-medium leading-none text-center text-gray-500">
+                Social Performance
+            </p>
+        </div>
+    </header>
+
+<!-- K3: Keselamatan & Kesehatan Kerja -->
+<section class="flex flex-col items-start py-14 px-16 mt-10 w-full bg-white rounded-2xl shadow-2xl max-w-[981px] max-md:px-5 max-md:mt-10">
+  <h3 class="text-3xl font-semibold text-teal-700">Keselamatan & Kesehatan Kerja (K3)</h3>
+  <p class="mt-3 text-gray-500">Isi data kecelakaan kerja untuk periode pelaporan ini.</p>
+
+  <!-- Q1: Ada insiden? -->
+  <div class="w-full mt-8">
+    <label for="k3_incident" class="block pb-2 text-base font-medium">Apakah ada insiden kecelakaan kerja dalam periode ini?</label>
+    <select id="k3_incident" name="k3_incident"
+      class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+      <option value="">Pilih</option>
+      <option value="ya">Ya</option>
+      <option value="tidak">Tidak</option>
+    </select>
+  </div>
+
+  <!-- Detail K3 (tampil hanya jika Ya) -->
+    <div id="k3_details" class="w-full mt-6 hidden">
+    <!-- Daftar insiden -->
+    <div id="k3_list" class="space-y-8">
+        <!-- Item insiden #0 -->
+        <div class="k3-item border border-gray-200 rounded-2xl p-4">
+        <!-- Row: Angka-angka -->
+        <div class="flex gap-5 max-md:flex-col">
+            <div class="w-6/12 max-md:w-full">
+            <label class="block pb-2 text-base font-medium">Jumlah total cedera kerja (injuries)</label>
+            <input type="number" min="0" name="k3[0][injuries]" placeholder="0"
+                class="k3-injuries w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+            </div>
+            <div class="w-6/12 max-md:w-full">
+            <label class="block pb-2 text-base font-medium">Jumlah kecelakaan fatal (fatalities)</label>
+            <input type="number" min="0" name="k3[0][fatalities]" placeholder="0"
+                class="k3-fatalities w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+            </div>
+        </div>
+
+        <!-- Row: Jenis, Lokasi, Penyebab -->
+        <div class="flex gap-5 mt-6 max-md:flex-col">
+            <!-- Jenis -->
+            <div class="w-4/12 max-md:w-full">
+            <label class="block pb-2 text-base font-medium">Jenis kecelakaan utama</label>
+            <select name="k3[0][type]" class="k3-type w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+                <option value="">Pilih</option>
+                <option>Terjatuh</option>
+                <option>Tertimpa</option>
+                <option>Tersengat</option>
+                <option>Paparan bahan kimia</option>
+                <option value="lainnya">Lainnya</option>
+            </select>
+            <input type="text" name="k3[0][type_other]" placeholder="Sebutkan jenis lainnya"
+                class="k3-type-other w-full px-4 py-3 mt-3 rounded-lg border border-gray-300 bg-slate-50 hidden">
+            </div>
+
+            <!-- Lokasi -->
+            <div class="w-4/12 max-md:w-full">
+            <label class="block pb-2 text-base font-medium">Lokasi kejadian</label>
+            <select name="k3[0][location]" class="k3-location w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+                <option value="">Pilih</option>
+                <option>Pabrik</option>
+                <option>Gudang</option>
+                <option>Lapangan</option>
+                <option>Kantor</option>
+                <option value="lainnya">Lainnya</option>
+            </select>
+            <input type="text" name="k3[0][location_other]" placeholder="Sebutkan lokasi lainnya"
+                class="k3-location-other w-full px-4 py-3 mt-3 rounded-lg border border-gray-300 bg-slate-50 hidden">
+            </div>
+
+            <!-- Penyebab -->
+            <div class="w-4/12 max-md:w-full">
+            <label class="block pb-2 text-base font-medium">Penyebab utama kecelakaan</label>
+            <select name="k3[0][cause]" class="k3-cause w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+                <option value="">Pilih</option>
+                <option>Human error</option>
+                <option>Kegagalan alat</option>
+                <option>Kurangnya SOP</option>
+                <option value="lainnya">Lainnya</option>
+            </select>
+            <input type="text" name="k3[0][cause_other]" placeholder="Sebutkan penyebab lainnya"
+                class="k3-cause-other w-full px-4 py-3 mt-3 rounded-lg border border-gray-300 bg-slate-50 hidden">
+            </div>
+        </div>
+
+        <!-- Row: Lost workdays -->
+        <div class="w-full mt-6">
+            <label class="block pb-2 text-base font-medium">Hari kerja yang hilang (lost workdays) akibat kecelakaan</label>
+            <input type="number" min="0" name="k3[0][lost_workdays]" placeholder="0"
+            class="k3-lost w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+        </div>
+
+        <!-- Row: Tindakan -->
+        <div class="w-full mt-6">
+            <label class="block pb-2 text-base font-medium">Tindakan korektif dan preventif yang dilakukan</label>
+            <textarea name="k3[0][actions]" rows="5" placeholder="Jelaskan tindakan korektif & preventif…"
+            class="k3-actions w-full px-8 py-4 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition resize-y"></textarea>
+        </div>
+
+        <!-- Tombol hapus untuk item tambahan -->
+        <div class="mt-4 flex justify-end">
+            <button type="button" class="k3-remove hidden px-4 py-2 rounded-xl border border-gray-300 text-gray-700 hover:bg-gray-50 transition">
+            Hapus insiden
+            </button>
+        </div>
+        </div>
+    </div>
+
+    <!-- Tombol Tambah item -->
+    <div class="mt-6 flex justify-end">
+        <button type="button" id="k3_add_item"
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-teal-700 text-sm font-medium transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
+        </svg>
+        Tambah
+        </button>
+    </div>
+    </div>
+
+   <!-- Button Section (pojok kanan kotak putih) -->
+  <div class="flex justify-end gap-4 mt-10 w-full">
+    <!-- Previous Button -->
+    <button
+      type="button"
+      onclick="window.history.back()"
+      class="px-8 py-2 text-base font-medium text-center text-teal-700 border-teal-700 border border-solid whitespace-nowrap bg-white rounded-xl hover:bg-teal-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors"
+    >
+      Sebelumnya
+    </button>
+
+    <!-- Submit Button -->
+    <button
+      type="submit"
+      class="px-8 py-2 text-base font-medium text-center text-white whitespace-nowrap bg-lime-500 rounded-xl hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-offset-2 transition-colors"
+    >
+      Simpan
+    </button>
+  </div> 
+</section>
+
+<template id="k3_item_tpl">
+  <div class="k3-item border border-gray-200 rounded-2xl p-4">
+    <div class="flex gap-5 max-md:flex-col">
+      <div class="w-6/12 max-md:w-full">
+        <label class="block pb-2 text-base font-medium">Jumlah total cedera kerja (injuries)</label>
+        <input type="number" min="0" name="" placeholder="0"
+          class="k3-injuries w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+      </div>
+      <div class="w-6/12 max-md:w-full">
+        <label class="block pb-2 text-base font-medium">Jumlah kecelakaan fatal (fatalities)</label>
+        <input type="number" min="0" name="" placeholder="0"
+          class="k3-fatalities w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+      </div>
+    </div>
+
+    <div class="flex gap-5 mt-6 max-md:flex-col">
+      <div class="w-4/12 max-md:w-full">
+        <label class="block pb-2 text-base font-medium">Jenis kecelakaan utama</label>
+        <select name="" class="k3-type w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+          <option value="">Pilih</option>
+          <option>Terjatuh</option>
+          <option>Tertimpa</option>
+          <option>Tersengat</option>
+          <option>Paparan bahan kimia</option>
+          <option value="lainnya">Lainnya</option>
+        </select>
+        <input type="text" name="" placeholder="Sebutkan jenis lainnya"
+          class="k3-type-other w-full px-4 py-3 mt-3 rounded-lg border border-gray-300 bg-slate-50 hidden">
+      </div>
+
+      <div class="w-4/12 max-md:w-full">
+        <label class="block pb-2 text-base font-medium">Lokasi kejadian</label>
+        <select name="" class="k3-location w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+          <option value="">Pilih</option>
+          <option>Pabrik</option>
+          <option>Gudang</option>
+          <option>Lapangan</option>
+          <option>Kantor</option>
+          <option value="lainnya">Lainnya</option>
+        </select>
+        <input type="text" name="" placeholder="Sebutkan lokasi lainnya"
+          class="k3-location-other w-full px-4 py-3 mt-3 rounded-lg border border-gray-300 bg-slate-50 hidden">
+      </div>
+
+      <div class="w-4/12 max-md:w-full">
+        <label class="block pb-2 text-base font-medium">Penyebab utama kecelakaan</label>
+        <select name="" class="k3-cause w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+          <option value="">Pilih</option>
+          <option>Human error</option>
+          <option>Kegagalan alat</option>
+          <option>Kurangnya SOP</option>
+          <option value="lainnya">Lainnya</option>
+        </select>
+        <input type="text" name="" placeholder="Sebutkan penyebab lainnya"
+          class="k3-cause-other w-full px-4 py-3 mt-3 rounded-lg border border-gray-300 bg-slate-50 hidden">
+      </div>
+    </div>
+
+    <div class="w-full mt-6">
+      <label class="block pb-2 text-base font-medium">Hari kerja yang hilang (lost workdays) akibat kecelakaan</label>
+      <input type="number" min="0" name="" placeholder="0"
+        class="k3-lost w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+    </div>
+
+    <div class="w-full mt-6">
+      <label class="block pb-2 text-base font-medium">Tindakan korektif dan preventif yang dilakukan</label>
+      <textarea rows="5" name="" placeholder="Jelaskan tindakan korektif & preventif…"
+        class="k3-actions w-full px-8 py-4 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition resize-y"></textarea>
+    </div>
+
+    <div class="mt-4 flex justify-end">
+      <button type="button" class="k3-remove px-4 py-2 rounded-xl border border-gray-300 text-gray-700 hover:bg-gray-50 transition">
+        Hapus insiden
+      </button>
+    </div>
+  </div>
+</template>
+
+
+</main>
+
+<script>
+  // Helper: show/hide element + (opsional) disable
+  function toggleEl(el, show, disable = true) {
+    if (!el) return;
+    el.classList.toggle('hidden', !show);
+    if (disable) el.disabled = !show;
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // ====== Toggle detail K3 saat Ya/Tidak ======
+    const incidentSel = document.getElementById('k3_incident');
+    const detailsBox  = document.getElementById('k3_details');
+
+    function syncIncident() {
+      const yes = incidentSel && incidentSel.value === 'ya';
+      toggleEl(detailsBox, yes, false);
+      // enable/disable semua field di dalam details
+      if (detailsBox) {
+        detailsBox.querySelectorAll('input, select, textarea').forEach(el => {
+          el.disabled = !yes;
+        });
+      }
+    }
+
+    if (incidentSel) {
+      incidentSel.addEventListener('change', syncIncident);
+      syncIncident();
+    }
+
+    // ====== Dinamis: daftar insiden K3 ======
+    const list   = document.getElementById('k3_list');
+    const addBtn = document.getElementById('k3_add_item');
+    const tpl    = document.getElementById('k3_item_tpl');
+
+    if (!list || !addBtn || !tpl) return; // kalau elemen belum ada, hentikan
+
+    // Re-index name attribute semua field dalam setiap item
+    function reindex() {
+      const items = list.querySelectorAll('.k3-item');
+      items.forEach((item, idx) => {
+        item.querySelectorAll('input, select, textarea').forEach(el => {
+          if (el.classList.contains('k3-injuries'))        el.name = `k3[${idx}][injuries]`;
+          else if (el.classList.contains('k3-fatalities')) el.name = `k3[${idx}][fatalities]`;
+          else if (el.classList.contains('k3-type'))       el.name = `k3[${idx}][type]`;
+          else if (el.classList.contains('k3-type-other')) el.name = `k3[${idx}][type_other]`;
+          else if (el.classList.contains('k3-location'))   el.name = `k3[${idx}][location]`;
+          else if (el.classList.contains('k3-location-other')) el.name = `k3[${idx}][location_other]`;
+          else if (el.classList.contains('k3-cause'))      el.name = `k3[${idx}][cause]`;
+          else if (el.classList.contains('k3-cause-other'))el.name = `k3[${idx}][cause_other]`;
+          else if (el.classList.contains('k3-lost'))       el.name = `k3[${idx}][lost_workdays]`;
+          else if (el.classList.contains('k3-actions'))    el.name = `k3[${idx}][actions]`;
+        });
+
+        // Tombol hapus hanya muncul jika item > 1
+        const rm = item.querySelector('.k3-remove');
+        if (rm) rm.classList.toggle('hidden', items.length <= 1);
+      });
+    }
+
+    // Tanggapi opsi "Lainnya" pada select untuk 1 item
+    function attachOtherHandlers(item) {
+      const typeSel   = item.querySelector('.k3-type');
+      const typeOther = item.querySelector('.k3-type-other');
+      const locSel    = item.querySelector('.k3-location');
+      const locOther  = item.querySelector('.k3-location-other');
+      const causeSel  = item.querySelector('.k3-cause');
+      const causeOther= item.querySelector('.k3-cause-other');
+
+      function sync(selectEl, otherEl) {
+        const on = selectEl && selectEl.value === 'lainnya';
+        toggleEl(otherEl, on);
+        if (!on && otherEl) otherEl.value = '';
+      }
+
+      if (typeSel)  { typeSel.addEventListener('change', () => sync(typeSel, typeOther));   sync(typeSel, typeOther); }
+      if (locSel)   { locSel.addEventListener('change',  () => sync(locSel,  locOther));    sync(locSel,  locOther); }
+      if (causeSel) { causeSel.addEventListener('change',() => sync(causeSel, causeOther)); sync(causeSel, causeOther); }
+    }
+
+    // Tautkan tombol hapus pada 1 item
+    function attachRemove(item) {
+      const btn = item.querySelector('.k3-remove');
+      if (!btn) return;
+      btn.addEventListener('click', () => {
+        const items = list.querySelectorAll('.k3-item');
+        if (items.length > 1) {
+          item.remove();
+          reindex();
+        }
+      });
+    }
+
+    // Item awal (sudah ada di HTML)
+    const firstItem = list.querySelector('.k3-item');
+    if (firstItem) {
+      attachOtherHandlers(firstItem);
+      attachRemove(firstItem);
+    }
+    reindex();
+
+    // Tambah item baru dari template
+    addBtn.addEventListener('click', () => {
+      const clone = tpl.content.firstElementChild.cloneNode(true);
+      list.appendChild(clone);
+      attachOtherHandlers(clone);
+      attachRemove(clone);
+      reindex();
+    });
+  });
+</script>
+
+
