@@ -11,28 +11,53 @@ exports.saveBasicInfo = async (req, res) => {
       return res.status(400).json({ error: "Business profile not found for this user" });
     }
 
-    const { unit_name, reporting_period, responsible_person } = req.body;
+    const {
+      unit_name,
+      responsible_person,
+      reporting_period,
+      period_year,
+      period_year_quarter,
+      period_quarter
+    } = req.body;
 
-    // Debug log buat ngecek isi request
     console.log("📥 saveBasicInfo req.body:", req.body);
 
     if (!unit_name || !reporting_period || !responsible_person) {
       return res.status(400).json({ error: "Semua field wajib diisi" });
     }
 
+    // 🔹 Gabungkan reporting_period sesuai pilihan
+    let reporting_period_full = "";
+    if (reporting_period === "tahun") {
+      // contoh: Tahun 2025
+      reporting_period_full = `Tahun ${period_year}`;
+      if (period_year_quarter) {
+        reporting_period_full += ` - Triwulan ${period_year_quarter}`;
+      }
+    } else if (reporting_period === "triwulan") {
+      // contoh: Triwulan 2 (2025)
+      reporting_period_full = `Triwulan ${period_quarter}`;
+    } else {
+      reporting_period_full = reporting_period; // fallback
+    }
+
+    // 🔹 Simpan ke DB
     const record = await GRIEconomic.create({
-      business_id: business.id, // ambil dari business profile user
+      business_id: business.id,
       unit_name,
-      reporting_period,
+      reporting_period: reporting_period_full, // disimpan dalam 1 kolom
       responsible_person,
     });
 
-    res.redirect(`gri-2?gri_id=${record.id}`);
+    // 🔹 Redirect ke halaman berikut dengan gri_id + periode
+    res.redirect(`/gri-2?gri_id=${record.id}&period=${encodeURIComponent(reporting_period_full)}`);
+
   } catch (error) {
     console.error("🔥 Error saving Basic Info:", error);
     res.status(500).json({ error: "Failed to save Basic Info" });
   }
 };
+
 
 exports.saveFinanceData = async (req, res) => {
   try {
