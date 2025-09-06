@@ -3,6 +3,7 @@ const router = express.Router();
 const { middlewareValidation, isAdmin, isUMKM } = require("../middlewares/authMiddleware");
 const { getDashboardUmkm } = require("../controllers/umkmController");
 const businessController = require("../controllers/businessController");
+const grieconomicController = require("../controllers/grieconomicController");
 
 
 router.get("/dashboard", middlewareValidation, isUMKM, getDashboardUmkm, function (req, res, next) {
@@ -29,11 +30,17 @@ router.get("/gri-1", function (req, res, next) {
   });
 });
 
+router.post("/gri-1", middlewareValidation, grieconomicController.saveBasicInfo);
+router.post("/gri-2", middlewareValidation, grieconomicController.saveFinanceData);
+router.post("/gri-3", middlewareValidation, grieconomicController.saveNotes);
+
+
 router.get("/gri-2", function (req, res, next) {
   res.render("umkm/gri-economic/gri-2", {
     title: "Form GRI",
     layout: "umkm",
-    currentPath: req.path
+    currentPath: req.path,
+    gri_id: req.query.gri_id
   });
 });
 
