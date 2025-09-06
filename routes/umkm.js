@@ -40,9 +40,11 @@ router.get("/gri-2", function (req, res, next) {
     title: "Form GRI",
     layout: "umkm",
     currentPath: req.path,
-    gri_id: req.query.gri_id
+    gri_id: req.query.gri_id,          // 🔥 ambil dari query
+    reporting_period: req.query.period // 🔥 oper juga periode
   });
 });
+
 
 router.get("/gri-3", function (req, res, next) {
   res.render("umkm/gri-economic/gri-3", {
