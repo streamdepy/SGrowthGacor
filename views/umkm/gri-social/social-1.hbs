@@ -1,192 +1,115 @@
 <main class="flex flex-col ml-48 self-center mb-16 mt-16 w-full max-w-[1256px] max-md:mt-10 max-md:max-w-full">
-    <header class="flex gap-3.5 self-start">
-        <img
-            src="https://api.builder.io/api/v1/image/assets/TEMP/07073f8526333ac3749a4d99615ea0579a831ebe?placeholderIfAbsent=true&apiKey=ac04cd396e1f47f18955cd19640f183d"
-            alt="GRI Economic icon"
-            class="object-contain shrink-0 my-auto rounded-full aspect-[1.04] w-[58px]"
-        />
-        <div class="flex flex-col">
-            <h2 class="text-4xl font-semibold text-black">
-                GRI Social
-            </h2>
-            <p class="self-center text-xl font-medium leading-none text-center text-gray-500">
-                Social Performance
-            </p>
+  <header class="flex gap-3.5 self-start">
+    <img
+      src="https://api.builder.io/api/v1/image/assets/TEMP/07073f8526333ac3749a4d99615ea0579a831ebe?placeholderIfAbsent=true&apiKey=ac04cd396e1f47f18955cd19640f183d"
+      alt="GRI Economic icon"
+      class="object-contain shrink-0 my-auto rounded-full aspect-[1.04] w-[58px]"
+    />
+    <div class="flex flex-col">
+      <h2 class="text-4xl font-semibold text-black">
+        GRI Social
+      </h2>
+      <p class="self-center text-xl font-medium leading-none text-center text-gray-500">
+        Social Performance
+      </p>
+    </div>
+  </header>
+
+  <section class="flex flex-col items-start self-end px-20 py-14 mt-16 w-full bg-white rounded-2xl shadow-2xl max-w-[1168px] max-md:px-5 max-md:mt-10 max-md:max-w-full">
+    <h3 class="text-3xl font-semibold text-center text-teal-700">
+      Informasi Umum Usaha
+    </h3>
+    <p class="mt-6 text-xl leading-none text-gray-500 max-md:max-w-full">
+      Lengkapi field yang diperlukan untuk melanjutkan ke step berikutnya
+    </p>
+
+    <form action="/umkm/social-1" method="POST" class="z-10 mt-14 max-w-full w-[1700px] max-md:mt-10">
+      <div class="flex gap-5 max-md:flex-col">
+        <!-- Left side input fields -->
+        <div class="w-[89%] max-md:ml-0 max-md:w-full">
+          <div class="w-full text-base max-md:mt-10 max-md:max-w-full">
+            <!-- Organization Name and Responsible Person -->
+            <div class="flex z-10 flex-wrap gap-4 items-center px-4 py-3 min-h-[110px] max-md:mr-1">
+              <div class="flex-1 shrink self-stretch my-auto w-full basis-0 min-w-40 max-md:max-w-full">
+                <label class="block pb-2 w-full font-medium text-neutral-900 max-md:max-w-full">
+                  Nama entitas / unit bisnis
+                </label>
+                <input
+                  type="text"
+                  id="unit_name"
+                  name="unit_name"
+                  placeholder="Masukkan Nama entitas / unit bisnis"
+                  class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
+                />
+              </div>
+              <div class="flex-1 shrink self-stretch my-auto w-full basis-0 min-w-40 max-md:max-w-full">
+                <label class="block pb-2 w-full font-medium text-neutral-900 max-md:max-w-full">
+                  Lokasi operasional
+                </label>
+                <input
+                  type="text"
+                  placeholder="Contoh: Jl. Piai Tangah, Cupak Tangah, Kec. Pauh, Kota Padang, Sumatera Barat 25158"
+                  class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
+                />
+              </div>
+            </div>
+
+            <!-- Periode Pelaporan -->
+            <div class="flex flex-wrap gap-4 items-start px-4 py-3">
+              <div class="grow shrink min-w-40 w-[220px]">
+                <label for="period_mode" class="block pb-2 font-medium text-neutral-900">Periode Pelaporan</label>
+                <select id="period_mode" class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+                  <option value="">Pilih</option>
+                  <option value="tahun">Tahun</option>
+                  <option value="triwulan">Triwulan</option>
+                </select>
+              </div>
+
+              <!-- Tahun (muncul jika mode: Tahun) -->
+              <div id="year_wrap" class="grow shrink min-w-40 w-[200px] hidden">
+                <label for="period_year" class="block pb-2 font-medium text-neutral-900">Pilih Tahun</label>
+                <select id="period_year" class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+                  <!-- diisi via JS -->
+                </select>
+              </div>
+
+              <!-- Triwulan tahun berjalan (muncul jika mode: Triwulan) -->
+              <div id="quarter_wrap" class="grow shrink min-w-40 w-[260px] hidden">
+                <label for="period_quarter" class="block pb-2 font-medium text-neutral-900">Pilih Triwulan (Tahun Berjalan)</label>
+                <select id="period_quarter" class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+                  <!-- diisi via JS -->
+                </select>
+              </div>
+            </div>
+
+          </div>
         </div>
-    </header>
+      </div>
 
-    <section class="flex flex-col items-start self-end px-20 py-14 mt-16 w-full bg-white rounded-2xl shadow-2xl max-w-[1168px] max-md:px-5 max-md:mt-10 max-md:max-w-full">
-        <h3 class="text-3xl font-semibold text-center text-teal-700">
-            Informasi Umum Usaha
-        </h3>
-        <p class="mt-6 text-xl leading-none text-gray-500 max-md:max-w-full">
-            Lengkapi field yang diperlukan untuk melanjutkan ke step berikutnya
-        </p>
-
-        <form class="z-10 mt-14 max-w-full w-[1700px] max-md:mt-10">
-            <div class="flex gap-5 max-md:flex-col">
-                <!-- Left side input fields -->
-                <div class="w-[89%] max-md:ml-0 max-md:w-full">
-                    <div class="w-full text-base max-md:mt-10 max-md:max-w-full">
-                        <!-- Organization Name and Responsible Person -->
-                        <div class="flex z-10 flex-wrap gap-4 items-center px-4 py-3 min-h-[110px] max-md:mr-1">
-                            <div class="flex-1 shrink self-stretch my-auto w-full basis-0 min-w-40 max-md:max-w-full">
-                                <label class="block pb-2 w-full font-medium text-neutral-900 max-md:max-w-full">
-                                    Nama entitas / unit bisnis
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="Masukkan Nama entitas / unit bisnis"
-                                    class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
-                                />
-                            </div>
-                            <div class="flex-1 shrink self-stretch my-auto w-full basis-0 min-w-40 max-md:max-w-full">
-                                <label class="block pb-2 w-full font-medium text-neutral-900 max-md:max-w-full">
-                                    Lokasi operasional
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="Contoh: Jl. Piai Tangah, Cupak Tangah, Kec. Pauh, Kota Padang, Sumatera Barat 25158"
-                                    class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
-                                />
-                            </div>
-                        </div>
-
-                        <!-- Periode Pelaporan -->
-                        <div class="flex flex-wrap gap-4 items-start px-4 py-3">
-                        <div class="grow shrink min-w-40 w-[220px]">
-                            <label for="period_mode" class="block pb-2 font-medium text-neutral-900">Periode Pelaporan</label>
-                            <select id="period_mode"
-                            class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
-                            <option value="">Pilih</option>
-                            <option value="tahun">Tahun</option>
-                            <option value="triwulan">Triwulan</option>
-                            </select>
-                        </div>
-
-                        <!-- Tahun (muncul jika mode: Tahun) -->
-                        <div id="year_wrap" class="grow shrink min-w-40 w-[200px] hidden">
-                            <label for="period_year" class="block pb-2 font-medium text-neutral-900">Pilih Tahun</label>
-                            <select id="period_year"
-                            class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
-                            <!-- diisi via JS -->
-                            </select>
-                        </div>
-
-                        <!-- Triwulan tahun berjalan (muncul jika mode: Triwulan) -->
-                        <div id="quarter_wrap" class="grow shrink min-w-40 w-[260px] hidden">
-                            <label for="period_quarter" class="block pb-2 font-medium text-neutral-900">Pilih Triwulan (Tahun Berjalan)</label>
-                            <select id="period_quarter"
-                            class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
-                            <!-- diisi via JS -->
-                            </select>
-                        </div>
-                        </div>
-
-
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- Submit Button -->
-            <div class="flex justify-end mt-7">
-                <button
-                    type="submit"
-                    class="px-8 py-2 text-base font-medium text-center text-white whitespace-nowrap bg-lime-500 rounded-xl hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-offset-2 transition-colors"
-                >
-                    Submit
-                </button>
-            </div>
-        </form>
-    </section>
+      <!-- Submit Button -->
+      <div class="flex justify-end mt-7">
+        <button
+          type="submit"
+          class="px-8 py-2 text-base font-medium text-center text-white whitespace-nowrap bg-lime-500 rounded-xl hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-offset-2 transition-colors"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </section>
 </main>
 
 <script>
-  // ===== Helpers =====
-  function toggle(el, show){ if(!el) return; el.classList.toggle('hidden', !show); }
-
-  function fillYears(sel){
-    const now=new Date(); const thisYear=now.getFullYear();
-    const isDec31=(now.getMonth()===11 && now.getDate()===31);
-    sel.innerHTML='<option value="">Pilih Tahun</option>';
-    const start = isDec31 ? thisYear : thisYear - 1; // exclude tahun berjalan jika belum 31 Des
-    for(let i=0;i<3;i++){
-      const y=start-i;
-      const o=document.createElement('option');
-      o.value=String(y); o.textContent=y;
-      sel.appendChild(o);
-    }
-  }
-
-  function fillCurrentYearQuarters(sel){
-    const now=new Date(); const y=now.getFullYear(); const m=now.getMonth(); // 0..11
-    const isDec31=(m===11 && now.getDate()===31);
-    let maxQ=Math.floor(m/3)+1; if(isDec31) maxQ=4; if(maxQ>4) maxQ=4;
-    const labels={1:'Triwulan 1 (Jan–Mar)',2:'Triwulan 2 (Apr–Jun)',3:'Triwulan 3 (Jul–Sep)',4:'Triwulan 4 (Okt–Des)'};
-    sel.innerHTML='<option value="">Pilih Triwulan</option>';
-    for(let q=1;q<=maxQ;q++){
-      const o=document.createElement('option');
-      o.value=`${y}-Q${q}`;
-      o.textContent=`${labels[q]} ${y}`;
-      sel.appendChild(o);
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('form');
-
-    // elemen periode
-    const modeSel  = document.getElementById('period_mode');
-    const yearWrap = document.getElementById('year_wrap');
-    const yearSel  = document.getElementById('period_year');
-    const qWrap    = document.getElementById('quarter_wrap');
-    const qSel     = document.getElementById('period_quarter');
-
-    // init data
-    fillYears(yearSel);
-    fillCurrentYearQuarters(qSel);
-
-    function syncMode(){
-      if(modeSel.value==='tahun'){
-        toggle(yearWrap, true);
-        toggle(qWrap, false);
-      } else if(modeSel.value==='triwulan'){
-        toggle(yearWrap, false);
-        toggle(qWrap, true);
-      } else {
-        toggle(yearWrap, false);
-        toggle(qWrap, false);
-      }
-    }
-
-    modeSel.addEventListener('change', syncMode);
-    syncMode();
-
-    // ===== Validasi submit ringkas (opsional, sesuaikan jika perlu) =====
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-
-      if(!modeSel.value){
-        alert('Pilih mode Periode Pelaporan (Tahun/Triwulan).');
-        return;
-      }
-
-      if(modeSel.value==='tahun'){
-        if(!yearSel.value){ alert('Pilih Tahun.'); return; }
-        // kirim nilai: yearSel.value (YYYY)
-      } else { // triwulan tahun berjalan
-        if(!qSel.value){ alert('Pilih Triwulan tahun berjalan.'); return; }
-        // kirim nilai: qSel.value (format: YYYY-Qn)
-      }
-
-      const btn = form.querySelector('button[type="submit"]');
-      if(btn){
-        btn.textContent='Memproses...'; btn.disabled=true;
-        setTimeout(()=>{ alert('Form berhasil disubmit!'); btn.textContent='Lanjut'; btn.disabled=false; }, 1000);
-      }
-    });
-  });
+  // ===== Helpers ===== function toggle(el, show){ if(!el) return; el.classList.toggle('hidden', !show); } function fillYears(sel){ const now=new Date(); const thisYear=now.getFullYear(); const isDec31=(now.getMonth()===11 &&
+  now.getDate()===31); sel.innerHTML='<option value="">Pilih Tahun</option>'; const start = isDec31 ? thisYear : thisYear - 1; // exclude tahun berjalan jika belum 31 Des for(let i=0;i<3;i++){ const y=start-i; const
+  o=document.createElement('option'); o.value=String(y); o.textContent=y; sel.appendChild(o); } } function fillCurrentYearQuarters(sel){ const now=new Date(); const y=now.getFullYear(); const m=now.getMonth(); // 0..11 const isDec31=(m===11
+  && now.getDate()===31); let maxQ=Math.floor(m/3)+1; if(isDec31) maxQ=4; if(maxQ>4) maxQ=4; const labels={1:'Triwulan 1 (Jan–Mar)',2:'Triwulan 2 (Apr–Jun)',3:'Triwulan 3 (Jul–Sep)',4:'Triwulan 4 (Okt–Des)'}; sel.innerHTML='<option
+  value="">Pilih Triwulan</option>'; for(let q=1;q<=maxQ;q++){ const o=document.createElement('option'); o.value=`${y}-Q${q}`; o.textContent=`${labels[q]} ${y}`; sel.appendChild(o); } } document.addEventListener('DOMContentLoaded',
+  function() { const form = document.querySelector('form'); // elemen periode const modeSel = document.getElementById('period_mode'); const yearWrap = document.getElementById('year_wrap'); const yearSel =
+  document.getElementById('period_year'); const qWrap = document.getElementById('quarter_wrap'); const qSel = document.getElementById('period_quarter'); // init data fillYears(yearSel); fillCurrentYearQuarters(qSel); function syncMode(){
+  if(modeSel.value==='tahun'){ toggle(yearWrap, true); toggle(qWrap, false); } else if(modeSel.value==='triwulan'){ toggle(yearWrap, false); toggle(qWrap, true); } else { toggle(yearWrap, false); toggle(qWrap, false); } }
+  modeSel.addEventListener('change', syncMode); syncMode(); // ===== Validasi submit ringkas (opsional, sesuaikan jika perlu) ===== form.addEventListener('submit', function(e){ e.preventDefault(); if(!modeSel.value){ alert('Pilih mode
+  Periode Pelaporan (Tahun/Triwulan).'); return; } if(modeSel.value==='tahun'){ if(!yearSel.value){ alert('Pilih Tahun.'); return; } // kirim nilai: yearSel.value (YYYY) } else { // triwulan tahun berjalan if(!qSel.value){ alert('Pilih
+  Triwulan tahun berjalan.'); return; } // kirim nilai: qSel.value (format: YYYY-Qn) } const btn = form.querySelector('button[type="submit"]'); if(btn){ btn.textContent='Memproses...'; btn.disabled=true; setTimeout(()=>{ alert('Form
+  berhasil disubmit!'); btn.textContent='Lanjut'; btn.disabled=false; }, 1000); } }); });
 </script>
-
-
