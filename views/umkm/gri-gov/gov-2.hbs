@@ -1,0 +1,131 @@
+<main class="flex flex-col ml-48 self-center mb-16 mt-16 w-full max-w-[1256px] max-md:mt-10 max-md:max-w-full">
+  <header class="flex gap-3.5 self-start">
+    <img
+      src="https://api.builder.io/api/v1/image/assets/TEMP/c44af07e3c930c7fea223a8eb981ce2b2a5a5a8c?width=462"
+      alt="GRI Environment icon"
+      class="object-contain shrink-0 my-auto rounded-full aspect-[1.04] w-[78px]"
+    />
+    <div class="flex flex-col">
+      <h2 class="text-4xl font-semibold text-black">GRI Governance</h2>
+      <p class="text-xl font-medium leading-none text-gray-500">
+        Governance Performance
+      </p>
+    </div>
+  </header>
+
+  <!-- Daftar Kebijakan Perusahaan (ASEDG-G2.1 / GRI 2-23) -->
+  <section class="flex flex-col items-start py-14 px-16 mt-10 w-full bg-white rounded-2xl shadow-2xl max-w-[981px] max-md:px-5">
+    <h3 class="text-3xl font-semibold text-teal-700">Daftar Kebijakan Perusahaan (ASEDG-G2.1 / GRI 2-23)</h3>
+    <p class="mt-3 text-gray-500">Tujuan: Mengidentifikasi kebijakan yang sudah dimiliki perusahaan.</p>
+
+    <div class="w-full mt-8 space-y-6">
+      <!-- Dropdowns kebijakan -->
+      <div class="grid grid-cols-2 gap-5 max-md:grid-cols-1">
+        <div>
+          <label class="block pb-2 text-base font-medium">Code of Conduct (Kode Etik)</label>
+          <select class="w-full px-8 py-4 rounded-2xl border border-gray-300 bg-slate-50">
+            <option value="">Pilih</option>
+            <option>Ya</option>
+            <option>Tidak</option>
+            <option>Sedang disusun</option>
+          </select>
+        </div>
+        <div>
+          <label class="block pb-2 text-base font-medium">Anti-Corruption Policy</label>
+          <select class="w-full px-8 py-4 rounded-2xl border border-gray-300 bg-slate-50">
+            <option value="">Pilih</option>
+            <option>Ya</option>
+            <option>Tidak</option>
+            <option>Sedang disusun</option>
+          </select>
+        </div>
+        <div>
+          <label class="block pb-2 text-base font-medium">Whistleblowing Policy</label>
+          <select class="w-full px-8 py-4 rounded-2xl border border-gray-300 bg-slate-50">
+            <option value="">Pilih</option>
+            <option>Ya</option>
+            <option>Tidak</option>
+            <option>Sedang disusun</option>
+          </select>
+        </div>
+        <div>
+          <label class="block pb-2 text-base font-medium">Health and Safety Policy (K3)</label>
+          <select class="w-full px-8 py-4 rounded-2xl border border-gray-300 bg-slate-50">
+            <option value="">Pilih</option>
+            <option>Ya</option>
+            <option>Tidak</option>
+            <option>Sedang disusun</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Kebijakan lain -->
+      <div>
+        <label class="block pb-2 text-base font-medium">Kebijakan lain terkait keberlanjutan</label>
+        <textarea rows="4" placeholder="Contoh: Diversity, Data Privacy, Human Rights"
+          class="w-full px-8 py-4 rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none"></textarea>
+      </div>
+
+      <!-- Tahun update -->
+      <div>
+        <label class="block pb-2 text-base font-medium">Tahun penerapan / pembaruan terakhir kebijakan</label>
+        <input type="number" placeholder="Misal: 2022"
+          class="w-full px-8 py-4 rounded-2xl border border-gray-300 bg-slate-50 outline-none">
+      </div>
+
+      <!-- Upload / Link (disamakan gaya seperti contoh bukti dokumentasi) -->
+      <div class="w-full mt-6">
+        <label class="block pb-2 text-base font-medium">Link atau dokumen kebijakan (opsional)</label>
+        <div class="flex gap-5 max-md:flex-col">
+          <div class="w-6/12 max-md:w-full">
+            <input type="file" class="w-full px-4 py-3 border rounded-2xl bg-slate-50">
+          </div>
+          <div class="w-6/12 max-md:w-full">
+            <input type="url" placeholder="Atau tautan dokumen" class="w-full px-8 py-4 border rounded-2xl bg-slate-50">
+          </div>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex justify-end gap-4 mt-8 w-full">
+        <button type="button"
+          onclick="window.history.back()"
+          class="px-8 py-2 text-base font-medium text-center text-teal-700 border border-teal-700 bg-white rounded-xl hover:bg-teal-700 hover:text-white transition">
+          Sebelumnya
+        </button>
+        <button type="submit"
+          class="px-8 py-2 text-base font-medium text-center text-white bg-lime-500 rounded-xl hover:bg-lime-600 transition">
+          Simpan
+        </button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // opsional: kecilkan risiko typo tahun & highlight input link/file kalau terisi
+  document.addEventListener('DOMContentLoaded', () => {
+    const year = document.querySelector('.policy-year');
+    if (year) {
+      year.addEventListener('input', () => {
+        const v = parseInt(year.value, 10);
+        year.classList.toggle('ring-2', isNaN(v) || v < 1900 || v > 2100);
+        year.classList.toggle('ring-red-500', isNaN(v) || v < 1900 || v > 2100);
+      });
+    }
+
+    const link = document.querySelector('input[name="policy[link]"]');
+    const file = document.querySelector('input[name="policy[file]"]');
+    [link, file].forEach(el => {
+      if (!el) return;
+      el.addEventListener('input', () => {
+        el.classList.toggle('border-teal-500', !!el.value);
+      });
+      el.addEventListener('change', () => {
+        // untuk file input
+        el.classList.toggle('border-teal-500', !!el.files?.length);
+      });
+    });
+  });
+</script>
