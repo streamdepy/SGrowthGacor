@@ -215,7 +215,7 @@ exports.saveGeneralInformation = async (req, res) => {
     // Commit transaksi
     await t.commit();
 
-    res.status(200).json({ message: "General Information saved successfully", business_id: businessId });
+    res.redirect("umkm/form-gri")
   } catch (error) {
     await t.rollback();
     console.error("Error saving General Information:", error);
