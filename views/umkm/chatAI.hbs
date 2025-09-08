@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat AI – ESG Laporan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 text-slate-900">
+
+  <main class="max-w-6xl mx-auto px-6 py-10">
+
+    <!-- Header -->
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-4xl font-bold">Chat AI – Laporan ESG</h1>
+      <p class="text-slate-500 mt-1">Economic, Environmental, Social, and Governance – Chat Support</p>
+    </header>
+
+    <!-- Chat Interface Section -->
+    <section class="w-full bg-white rounded-2xl shadow-2xl">
+      <div class="flex flex-col h-[500px]">
+        <!-- Chat Header -->
+        <header class="px-6 py-3 bg-teal-500 text-white rounded-t-2xl">
+          <div class="flex justify-between items-center">
+            <h2 class="text-xl font-semibold">Layanan Chat AI</h2>
+          </div>
+        </header>
+
+        <!-- Chat Messages Area -->
+        <div class="overflow-auto p-4 space-y-4 flex-grow">
+          <!-- AI Message -->
+          <div class="flex items-start">
+            <div class="bg-teal-100 text-teal-900 rounded-lg p-4 max-w-xs">
+              <p class="text-sm">Halo! Ada yang bisa saya bantu dengan laporan ESG?</p>
+            </div>
+          </div>
+
+          <!-- User Message -->
+          <div class="flex justify-end">
+            <div class="bg-orange-100 text-orange-900 rounded-lg p-4 max-w-xs">
+              <p class="text-sm">Saya ingin mengetahui lebih lanjut mengenai skor ESG di bagian Governance.</p>
+            </div>
+          </div>
+
+          <!-- AI Reply -->
+          <div class="flex items-start">
+            <div class="bg-teal-100 text-teal-900 rounded-lg p-4 max-w-xs">
+              <p class="text-sm">Skor Governance Anda adalah 85%, yang menunjukkan komitmen tinggi terhadap struktur tata kelola perusahaan yang baik.</p>
+            </div>
+          </div>
+
+          <!-- User Message -->
+          <div class="flex justify-end">
+            <div class="bg-orange-100 text-orange-900 rounded-lg p-4 max-w-xs">
+              <p class="text-sm">Bagaimana dengan bagian Sosial? Apakah ada ruang untuk perbaikan?</p>
+            </div>
+          </div>
+
+          <!-- AI Reply -->
+          <div class="flex items-start">
+            <div class="bg-teal-100 text-teal-900 rounded-lg p-4 max-w-xs">
+              <p class="text-sm">Skor Sosial Anda adalah 78%. Anda dapat meningkatkan dengan lebih fokus pada manajemen hak asasi manusia dan pelatihan K3 di perusahaan.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Message Input Area -->
+        <div class="flex gap-3 items-center px-6 py-4 bg-gray-100 rounded-b-2xl">
+          <input
+            type="text"
+            placeholder="Tulis pesan Anda..."
+            class="flex-1 p-3 text-sm bg-white rounded-lg border border-slate-300 outline-none"
+                />
+        <button
+        class="px-6 py-3 bg-teal-500 text-white rounded-full hover:bg-teal-600 transition-colors"
+        aria-label="Send message"
+        >
+        <!-- Ikon Panah ke Kanan dalam Lingkaran -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-6 h-6">
+            <path d="M10 17l5-5-5-5v10z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="white"/>
+        </svg>
+        </button>
+
+
+
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
