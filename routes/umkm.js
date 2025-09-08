@@ -25,6 +25,14 @@ router.get("/form-gri", function (req, res, next) {
   });
 });
 
+router.get("/form-gri_nc", function (req, res, next) {
+  res.render("umkm/form-gri_nc", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path
+  });
+});
+
 router.get("/gri-1", function (req, res, next) {
   res.render("umkm/gri-economic/gri-1", {
     title: "Form GRI",
@@ -214,13 +222,31 @@ router.get("/gov-5", function (req, res, next) {
   });
 });
 
-router.get("/form-gri_nc", function (req, res, next) {
-  res.render("umkm/form-gri_nc", {
+router.get("/laporan", function (req, res, next) {
+  res.render("umkm/laporan", {
     title: "Form GRI",
     layout: "umkm",
     currentPath: req.path
   });
 });
+
+router.get("/lap", function (req, res, next) {
+  res.render("umkm/lap", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path
+  });
+});
+
+
+router.get("/chatAI", function (req, res, next) {
+  res.render("umkm/chatAI", {
+    title: "Chat AI",
+    layout: "umkm",
+    currentPath: req.path
+  });
+});
+
 module.exports = router;
 
 /*
