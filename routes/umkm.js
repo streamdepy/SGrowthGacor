@@ -7,6 +7,7 @@ const { getDashboardUmkm } = require("../controllers/umkmController");
 const businessController = require("../controllers/businessController");
 const grieconomicController = require("../controllers/grieconomicController");
 const grisocialController = require("../controllers/grisocialController");
+const environmentController = require("../controllers/environmentController");
 
 router.get("/dashboard", middlewareValidation, isUMKM, getDashboardUmkm, function (req, res, next) {});
 
@@ -302,6 +303,8 @@ router.get("/env-1", function (req, res, next) {
     currentPath: req.path,
   });
 });
+
+router.post("/environment-basic", environmentController.saveEnvironmentBasicInfo);
 
 router.get("/env-2", function (req, res, next) {
   res.render("umkm/gri-env/env-2", {
