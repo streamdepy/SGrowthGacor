@@ -7,6 +7,7 @@ const { getDashboardUmkm } = require("../controllers/umkmController");
 const businessController = require("../controllers/businessController");
 const grieconomicController = require("../controllers/grieconomicController");
 const grisocialController = require("../controllers/grisocialController");
+const environmentController = require("../controllers/environmentController");
 
 router.get("/dashboard", middlewareValidation, isUMKM, getDashboardUmkm, function (req, res, next) {});
 
@@ -245,16 +246,16 @@ router.get("/gri-4", async function (req, res, next) {
 });
 
 // Bagian 1: Basic Infor
-router.post("/social-2", grisocialController.saveBasicInfo);
+router.post("/social-1", middlewareValidation, grisocialController.saveBasicInfo);
 // Bagian 2: K3
-router.post("/social-2", grisocialController.saveK3Data);
+router.post("/social-2", middlewareValidation, grisocialController.saveK3Data);
 // Bagian 3: Penyakit Akibat Kerja
-router.post("/social-3", grisocialController.saveDiseaseData);
+router.post("/social-3", middlewareValidation, grisocialController.saveDiseaseData);
 
 router.get("/social-1", function (req, res, next) {
   res.render("umkm/gri-social/social-1", {
     title: "GRI Social - K3",
-    layout: "umkm",
+    layout: "umkm", 
     currentPath: req.path,
     gri_id: req.query.gri_id || null,
     reporting_period: req.query.period || null,
@@ -262,11 +263,11 @@ router.get("/social-1", function (req, res, next) {
 });
 
 router.get("/social-2", function (req, res, next) {
-  res.render("umkm/gri-social/gri-2", {
+  res.render("umkm/gri-social/social-2", {
     title: "GRI Social - Penyakit Akibat Kerja",
     layout: "umkm",
     currentPath: req.path,
-    gri_id: req.query.gri_id || null,
+    social_id: req.query.social_id || null,
     reporting_period: req.query.period || null,
   });
 });
@@ -310,6 +311,8 @@ router.get("/env-1", function (req, res, next) {
     currentPath: req.path,
   });
 });
+
+router.post("/environment-basic", environmentController.saveEnvironmentBasicInfo);
 
 router.get("/env-2", function (req, res, next) {
   res.render("umkm/gri-env/env-2", {
