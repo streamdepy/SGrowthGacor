@@ -1,168 +1,179 @@
 <main class="flex flex-col items-start self-center ml-48 mt-16 w-full max-w-[1168px] max-md:mt-10 max-md:max-w-full">
-    <header class="flex gap-3.5 self-start">
-        <img
-            src="https://api.builder.io/api/v1/image/assets/TEMP/a2c214fc5ad90d019c67cc350eaa8b5e4005560c?placeholderIfAbsent=true&apiKey=ac04cd396e1f47f18955cd19640f183d"
-            alt="GRI Economic icon"
-            class="object-contain shrink-0 my-auto rounded-full aspect-[1.04] w-[58px]"
-        />
-        <div class="flex flex-col">
-            <h2 class="text-4xl font-semibold text-black">
-                GRI Economic
-            </h2>
-            <p class="self-center text-xl font-medium leading-none text-center text-gray-500">
-                Economic Performance - Rekapan
+  <header class="flex gap-3.5 self-start">
+    <img
+      src="https://api.builder.io/api/v1/image/assets/TEMP/a2c214fc5ad90d019c67cc350eaa8b5e4005560c?placeholderIfAbsent=true&apiKey=ac04cd396e1f47f18955cd19640f183d"
+      alt="GRI Economic icon"
+      class="object-contain shrink-0 my-auto rounded-full aspect-[1.04] w-[58px]"
+    />
+    <div class="flex flex-col">
+      <h2 class="text-4xl font-semibold text-black">
+        GRI Economic
+      </h2>
+      <p class="self-center text-xl font-medium leading-none text-center text-gray-500">
+        Economic Performance - Rekapan
+      </p>
+    </div>
+  </header>
+
+  <section class="self-stretch pt-12 pb-20 pl-16 mb-16 mt-10 bg-white rounded-2xl shadow-2xl max-md:pl-5 max-md:max-w-full">
+    <div class="flex gap-5 max-md:flex-col">
+      <aside class="w-[31%] max-md:ml-0 max-md:w-full">
+        <div class="flex flex-col items-start text-xl font-semibold leading-none text-gray-500 max-md:mt-10">
+          <h2 class="self-stretch text-3xl text-teal-700">
+            Ringkasan Otomatis
+          </h2>
+
+          <div class="mt-16 font-medium text-gray-500 max-md:mt-10">
+            Total Pendapatan
+          </div>
+          <div class="mt-7 text-4xl leading-none text-teal-700">
+            Rp.
+            {{#if summary}}{{summary.revenue}}{{else}}{{record.revenue}}{{/if}}
+          </div>
+
+          <div class="mt-8 font-medium text-gray-500">
+            Total Biaya Operasional
+          </div>
+          <div class="mt-7 text-4xl leading-none text-teal-700">
+            Rp.
+            {{#if summary}}{{summary.operational}}{{else}}{{totalOps}}{{/if}}
+          </div>
+
+          <div class="mt-6 font-medium text-gray-500">
+            Total Biaya Non Operasional
+          </div>
+          <div class="mt-7 text-4xl leading-none text-teal-700">
+            Rp.
+            {{#if summary}}{{summary.non_operating_expenses}}{{else}}{{record.non_operating_expenses}}{{/if}}
+          </div>
+        </div>
+      </aside>
+
+      <article class="ml-5 w-[59%] max-md:ml-0 max-md:w-full">
+        <!-- Summary Table -->
+        <div class="overflow-x-auto mt-10 max-md:max-w-full">
+          <table class="min-w-full table-auto">
+            <thead class="bg-teal-700 text-white">
+              <tr>
+                <th class="px-4 py-2">Kategori</th>
+                <th class="px-4 py-2">Nominal (Rp)</th>
+                <th class="px-4 py-2">Catatan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border px-4 py-2">Revenue</td>
+                <td class="border px-4 py-2">Rp. {{#if summary}}{{summary.revenue}}{{else}}{{record.revenue}}{{/if}}</td>
+                <td class="border px-4 py-2">-</td>
+              </tr>
+              <tr>
+                <td class="border px-4 py-2">General & Administrative</td>
+                <td class="border px-4 py-2">Rp. {{#if summary}}{{summary.general_admin_expenses}}{{else}}{{record.general_admin_expenses}}{{/if}}</td>
+                <td class="border px-4 py-2">{{record.general_admin_notes}}</td>
+              </tr>
+              <tr>
+                <td class="border px-4 py-2">Salary</td>
+                <td class="border px-4 py-2">Rp. {{#if summary}}{{summary.salary_expenses}}{{else}}{{record.salary_expenses}}{{/if}}</td>
+                <td class="border px-4 py-2">{{record.salary_employee_notes}}</td>
+              </tr>
+              <tr>
+                <td class="border px-4 py-2">Transportation</td>
+                <td class="border px-4 py-2">Rp. {{#if summary}}{{summary.transport_expenses}}{{else}}{{record.transport_expenses}}{{/if}}</td>
+                <td class="border px-4 py-2">{{record.transport_notes}}</td>
+              </tr>
+              <tr>
+                <td class="border px-4 py-2">Fuel</td>
+                <td class="border px-4 py-2">Rp. {{#if summary}}{{summary.fuel_expenses}}{{else}}{{record.fuel_expenses}}{{/if}}</td>
+                <td class="border px-4 py-2">-</td>
+              </tr>
+              <tr>
+                <td class="border px-4 py-2">Electricity</td>
+                <td class="border px-4 py-2">Rp. {{#if summary}}{{summary.electricity_expenses}}{{else}}{{record.electricity_expenses}}{{/if}}</td>
+                <td class="border px-4 py-2">-</td>
+              </tr>
+              <tr>
+                <td class="border px-4 py-2">Internet</td>
+                <td class="border px-4 py-2">Rp. {{#if summary}}{{summary.internet_expenses}}{{else}}{{record.internet_expenses}}{{/if}}</td>
+                <td class="border px-4 py-2">-</td>
+              </tr>
+              <tr>
+                <td class="border px-4 py-2">Telephone</td>
+                <td class="border px-4 py-2">Rp. {{#if summary}}{{summary.telephone_expenses}}{{else}}{{record.telephone_expenses}}{{/if}}</td>
+                <td class="border px-4 py-2">-</td>
+              </tr>
+              <tr>
+                <td class="border px-4 py-2">Water</td>
+                <td class="border px-4 py-2">Rp. {{#if summary}}{{summary.water_expenses}}{{else}}{{record.water_expenses}}{{/if}}</td>
+                <td class="border px-4 py-2">-</td>
+              </tr>
+              <tr>
+                <td class="border px-4 py-2">Other Operating</td>
+                <td class="border px-4 py-2">Rp. {{#if summary}}{{summary.other_operating_expenses}}{{else}}{{record.other_operating_expenses}}{{/if}}</td>
+                <td class="border px-4 py-2">{{record.other_operating_notes}}</td>
+              </tr>
+              <tr>
+                <td class="border px-4 py-2">Non-Operating</td>
+                <td class="border px-4 py-2">Rp. {{#if summary}}{{summary.non_operating_expenses}}{{else}}{{record.non_operating_expenses}}{{/if}}</td>
+                <td class="border px-4 py-2">{{record.non_operating_notes}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Persentase Biaya Terbesar -->
+        <div class="mt-10">
+          <h3 class="text-2xl font-semibold text-teal-700">Persentase Biaya Terbesar</h3>
+          {{#if biggestExpense.category}}
+            <p class="text-lg text-gray-500 mt-4">
+              {{biggestExpense.category}}
+              merupakan pengeluaran terbesar, mencapai
+              {{biggestExpense.percentage}}% dari total biaya operasional.
             </p>
+          {{else}}
+            <p class="text-lg text-gray-500 mt-4">Belum ada data biaya operasional yang dimasukkan.</p>
+          {{/if}}
         </div>
-    </header>
 
-    <section class="self-stretch pt-12 pb-20 pl-16 mb-16 mt-10 bg-white rounded-2xl shadow-2xl max-md:pl-5 max-md:max-w-full">
-        <div class="flex gap-5 max-md:flex-col">
-            <aside class="w-[31%] max-md:ml-0 max-md:w-full">
-                <div class="flex flex-col items-start text-xl font-semibold leading-none text-gray-500 max-md:mt-10">
-                    <h2 class="self-stretch text-3xl text-teal-700">
-                        Ringkasan Otomatis
-                    </h2>
-
-                    <div class="mt-16 font-medium text-gray-500 max-md:mt-10">
-                        Total Pendapatan
-                    </div>
-                    <div class="mt-7 text-4xl leading-none text-teal-700">
-                        Rp. 0
-                    </div>
-
-                    <div class="mt-8 font-medium text-gray-500">
-                        Total Biaya Operasional
-                    </div>
-                    <div class="mt-7 text-4xl leading-none text-teal-700">
-                        Rp. 0
-                    </div>
-
-                    <div class="mt-6 font-medium text-gray-500">
-                        Total Biaya Non Operasional
-                    </div>
-                    <div class="mt-7 text-4xl leading-none text-teal-700">
-                        Rp. 0
-                    </div>
-                </div>
-            </aside>
-
-            <article class="ml-5 w-[59%] max-md:ml-0 max-md:w-full">
-                <!-- Summary Table -->
-                <div class="overflow-x-auto mt-10 max-md:max-w-full">
-                    <table class="min-w-full table-auto">
-                        <thead class="bg-teal-700 text-white">
-                            <tr>
-                                <th class="px-4 py-2">Kategori</th>
-                                <th class="px-4 py-2">Nominal (Rp)</th>
-                                <th class="px-4 py-2">Catatan</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="border px-4 py-2">Revenue</td>
-                                <td class="border px-4 py-2">Rp. 0</td>
-                                <td class="border px-4 py-2">-</td>
-                            </tr>
-                            <tr>
-                                <td class="border px-4 py-2">General & Administrative</td>
-                                <td class="border px-4 py-2">Rp. 0</td>
-                                <td class="border px-4 py-2">-</td>
-                            </tr>
-                            <tr>
-                                <td class="border px-4 py-2">Salary</td>
-                                <td class="border px-4 py-2">Rp. 0</td>
-                                <td class="border px-4 py-2">-</td>
-                            </tr>
-                            <tr>
-                                <td class="border px-4 py-2">Transportation</td>
-                                <td class="border px-4 py-2">Rp. 0</td>
-                                <td class="border px-4 py-2">-</td>
-                            </tr>
-                            <tr>
-                                <td class="border px-4 py-2">Fuel</td>
-                                <td class="border px-4 py-2">Rp. 0</td>
-                                <td class="border px-4 py-2">-</td>
-                            </tr>
-                            <tr>
-                                <td class="border px-4 py-2">Electricity</td>
-                                <td class="border px-4 py-2">Rp. 0</td>
-                                <td class="border px-4 py-2">-</td>
-                            </tr>
-                            <tr>
-                                <td class="border px-4 py-2">Internet</td>
-                                <td class="border px-4 py-2">Rp. 0</td>
-                                <td class="border px-4 py-2">-</td>
-                            </tr>
-                            <tr>
-                                <td class="border px-4 py-2">Telephone</td>
-                                <td class="border px-4 py-2">Rp. 0</td>
-                                <td class="border px-4 py-2">-</td>
-                            </tr>
-                            <tr>
-                                <td class="border px-4 py-2">Water</td>
-                                <td class="border px-4 py-2">Rp. 0</td>
-                                <td class="border px-4 py-2">-</td>
-                            </tr>
-                            <tr>
-                                <td class="border px-4 py-2">Other Operating</td>
-                                <td class="border px-4 py-2">Rp. 0</td>
-                                <td class="border px-4 py-2">-</td>
-                            </tr>
-                            <tr>
-                                <td class="border px-4 py-2">Non-Operating</td>
-                                <td class="border px-4 py-2">Rp. 0</td>
-                                <td class="border px-4 py-2">-</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-                <!-- Additional Info Section -->
-                <div class="mt-10">
-                    <h3 class="text-2xl font-semibold text-teal-700">Persentase Biaya Terbesar</h3>
-                    <p class="text-lg text-gray-500 mt-4">
-                        Biaya bahan baku merupakan pengeluaran terbesar, mencapai 40% dari total biaya operasional.
-                    </p>
-                </div>
-
-                <div class="mt-10">
-                    <h3 class="text-2xl font-semibold text-teal-700">Kelengkapan Dokumen</h3>
-                    <div class="flex gap-3 items-start py-3 mt-5">
-                        <img
-                            src="https://api.builder.io/api/v1/image/assets/TEMP/07f51810f5a8ec72f99a964de708e535be5afefe?placeholderIfAbsent=true&apiKey=ac04cd396e1f47f18955cd19640f183d"
-                            alt="Checkmark"
-                            class="object-contain shrink-0 w-5 rounded aspect-square"
-                        />
-                        <span>Laporan Keuangan</span>
-                    </div>
-                    <div class="flex gap-3 items-start py-3 mt-2">
-                        <img
-                            src="https://api.builder.io/api/v1/image/assets/TEMP/887a221a718e07029faaf64255641f813cfbf431?placeholderIfAbsent=true&apiKey=ac04cd396e1f47f18955cd19640f183d"
-                            alt="Checkmark"
-                            class="object-contain shrink-0 w-5 rounded aspect-square"
-                        />
-                        <span>Catatan Penjualan</span>
-                    </div>
-                    <div class="flex gap-3 items-start py-3 mt-2">
-                        <img
-                            src="https://api.builder.io/api/v1/image/assets/TEMP/4809160e8bf8862d1b2b4c7165060c1229b7004f?placeholderIfAbsent=true&apiKey=ac04cd396e1f47f18955cd19640f183d"
-                            alt="Checkmark"
-                            class="object-contain shrink-0 w-5 rounded aspect-square"
-                        />
-                        <span>Catatan Pengeluaran</span>
-                    </div>
-                </div>
-
-                <!-- Navigation Buttons -->
-                <nav class="flex gap-5 justify-between self-center mt-20 ml-72 max-w-full text-base font-medium text-center whitespace-nowrap w-[323px] max-md:mt-10">
-                    <button class="flex overflow-hidden gap-2.5 items-start px-10 py-3 text-teal-700 bg-white rounded-xl border border-teal-700 border-solid max-md:px-5 hover:bg-teal-50 transition-colors">
-                        <span>Sebelumnya</span>
-                    </button>
-                    <button class="flex overflow-hidden gap-2.5 items-start px-10 py-3 text-white bg-lime-500 rounded-xl max-md:px-5 hover:bg-lime-600 transition-colors">
-                        <span>Selesai</span>
-                    </button>
-                </nav>
-            </article>
+        <!-- Kelengkapan Dokumen -->
+        <div class="mt-10">
+          <h3 class="text-2xl font-semibold text-teal-700">Kelengkapan Dokumen</h3>
+          <div class="flex gap-3 items-start py-3 mt-5">
+            <img
+              src="https://api.builder.io/api/v1/image/assets/TEMP/07f51810f5a8ec72f99a964de708e535be5afefe?placeholderIfAbsent=true&apiKey=ac04cd396e1f47f18955cd19640f183d"
+              alt="Checkmark"
+              class="object-contain shrink-0 w-5 rounded aspect-square"
+            />
+            <span>Laporan Keuangan</span>
+          </div>
+          <div class="flex gap-3 items-start py-3 mt-2">
+            <img
+              src="https://api.builder.io/api/v1/image/assets/TEMP/887a221a718e07029faaf64255641f813cfbf431?placeholderIfAbsent=true&apiKey=ac04cd396e1f47f18955cd19640f183d"
+              alt="Checkmark"
+              class="object-contain shrink-0 w-5 rounded aspect-square"
+            />
+            <span>Catatan Penjualan</span>
+          </div>
+          <div class="flex gap-3 items-start py-3 mt-2">
+            <img
+              src="https://api.builder.io/api/v1/image/assets/TEMP/4809160e8bf8862d1b2b4c7165060c1229b7004f?placeholderIfAbsent=true&apiKey=ac04cd396e1f47f18955cd19640f183d"
+              alt="Checkmark"
+              class="object-contain shrink-0 w-5 rounded aspect-square"
+            />
+            <span>Catatan Pengeluaran</span>
+          </div>
         </div>
-    </section>
+
+        <!-- Navigation -->
+        <nav class="flex gap-5 justify-between self-center mt-20 ml-72 max-w-full text-base font-medium text-center w-[323px]">
+          <a href="/umkm/gri-3?gri_id={{gri_id}}&period={{reporting_period}}" class="px-10 py-3 text-teal-700 bg-white rounded-xl border border-teal-700 hover:bg-teal-50 transition">
+            Sebelumnya
+          </a>
+          <a href="/umkm/dashboard" class="px-10 py-3 text-white bg-lime-500 rounded-xl hover:bg-lime-600 transition">
+            Selesai
+          </a>
+        </nav>
+
+      </article>
+    </div>
+  </section>
 </main>
