@@ -77,18 +77,9 @@ exports.saveBasicInfo = async (req, res) => {
 exports.saveK3Data = async (req, res) => {
   try {
     const userId = req.user.id;
-    const {
-      social_id,
-      has_incident,
-      total_injuries = [],
-      total_fatalities = [],
-      main_incident_type = [],
-      incident_location = [],
-      incident_cause = [],
-      lost_workdays = [],
-      corrective_actions = [],
-      reporting_period,
-    } = req.body;
+    const { social_id, has_incident, k3 = [], reporting_period } = req.body;
+
+    console.log("📥 Req Body:", req.body);
 
     // 🔹 Cari business profile
     const business = await BusinessProfile.findOne({ where: { user_id: userId } });
@@ -105,29 +96,22 @@ exports.saveK3Data = async (req, res) => {
       has_incident: has_incident === "ya",
     });
 
-    // 🔹 Hapus insiden lama → biar clean saat update
+    // 🔹 Hapus insiden lama
     await GRISocialK3Incident.destroy({ where: { social_id: socialRecord.id } });
 
-    // 🔹 Pastikan array (jaga-jaga kalau hanya 1 input)
-    const toArray = (val) => (Array.isArray(val) ? val : val ? [val] : []);
-    const injuriesArr = toArray(total_injuries);
-    const fatalitiesArr = toArray(total_fatalities);
-    const typesArr = toArray(main_incident_type);
-    const locArr = toArray(incident_location);
-    const causeArr = toArray(incident_cause);
-    const lostArr = toArray(lost_workdays);
-    const actionsArr = toArray(corrective_actions);
+    // 🔹 Pastikan k3 dalam bentuk array objek
+    const k3Array = Array.isArray(k3) ? k3 : [k3];
 
     // 🔹 Bentuk data insiden
-    const incidents = injuriesArr.map((inj, i) => ({
+    const incidents = k3Array.map((item) => ({
       social_id: socialRecord.id,
-      total_injuries: inj || 0,
-      total_fatalities: fatalitiesArr[i] || 0,
-      main_incident_type: typesArr[i] || null,
-      incident_location: locArr[i] || null,
-      incident_cause: causeArr[i] || null,
-      lost_workdays: lostArr[i] || 0,
-      corrective_actions: actionsArr[i] || null,
+      total_injuries: parseInt(item.injuries || 0, 10),
+      total_fatalities: parseInt(item.fatalities || 0, 10),
+      main_incident_type: item.type || null,
+      incident_location: item.location || null,
+      incident_cause: item.cause || null,
+      lost_workdays: parseInt(item.lost_workdays || 0, 10),
+      corrective_actions: item.actions || null,
     }));
 
     // 🔹 Simpan batch
@@ -145,6 +129,8 @@ exports.saveK3Data = async (req, res) => {
     res.status(500).json({ error: "Failed to save K3 Data" });
   }
 };
+
+
 
 
 
