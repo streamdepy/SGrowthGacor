@@ -130,43 +130,55 @@ exports.saveK3Data = async (req, res) => {
   }
 };
 
+// controllers/griSocialController.js
 
+// 🔹 Simpan data sementara di memori (bisa juga gunakan req.session kalau session aktif)
+let socialDataStore = {};
 
-
-
-// =======================
-// BAGIAN 2: Penyakit Akibat Kerja
-// =======================
-exports.saveDiseaseData = async (req, res) => {
+exports.saveSocialBasicInfo = async (req, res) => {
   try {
-    const userId = req.user.id;
+    const userId = req.user ? req.user.id : "guest"; // kalau ada auth pakai user.id
+
     const {
-      gri_id,
-      has_disease,
-      total_disease_cases,
-      disease_type,
-      affected_unit,
-      prevention_actions,
+      total_employees,
+      human_rights_policy,
+      employee_training,
+      incident_reports,
+      corrective_actions,
     } = req.body;
 
-    // Cek Business Profile
-    const business = await BusinessProfile.findOne({ where: { user_id: userId } });
-    if (!business) return res.status(400).json({ error: "Business profile not found" });
+    // Validasi input
+    if (!total_employees || !human_rights_policy) {
+      return res.status(400).json({ error: "Field wajib diisi minimal: total_employees & human_rights_policy" });
+    }
 
-    const record = await GRISocial.findOne({ where: { id: gri_id, business_id: business.id } });
-    if (!record) return res.status(404).json({ error: "GRI Social record not found" });
+    // 🔹 Simpan ke store
+    socialDataStore[userId] = {
+      total_employees,
+      human_rights_policy,
+      employee_training,
+      incident_reports,
+      corrective_actions,
+    };
 
-    await record.update({
-      has_disease,
-      total_disease_cases,
-      disease_type,
-      affected_unit,
-      prevention_actions,
-    });
+    console.log("✅ Data Social tersimpan sementara:", socialDataStore[userId]);
 
-    res.redirect(`gri-social-3?gri_id=${record.id}&period=${encodeURIComponent(record.reporting_period)}`);
+    // Redirect ke halaman lap dengan parameter user
+    res.redirect(`/umkm/lap?user=${userId}`);
+
   } catch (error) {
-    console.error("🔥 Error saving Disease Data:", error);
-    res.status(500).json({ error: "Failed to save Disease Data" });
+    console.error("🔥 Error saving Social Basic Info:", error);
+    res.status(500).json({ error: "Failed to save Social Basic Info" });
   }
+};
+
+// 🔹 Controller untuk ambil data social dan lempar ke halaman lap
+exports.getSocialReport = (req, res) => {
+  const userId = req.query.user || "guest";
+  const socialData = socialDataStore[userId] || {};
+
+  res.render("umkm/lap", {
+    social: socialData,
+    // bisa sekalian lempar data economic/env/gov jika disimpan juga
+  });
 };
