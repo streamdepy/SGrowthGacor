@@ -32,17 +32,44 @@
   </h4>
 
   <div class="flex gap-4 items-center px-4 py-3 mt-6">
-    <label for="revenue" class="block pb-2 w-full font-medium text-neutral-900 max-md:max-w-full">
-      Total pendapatan/revenue selama periode ini
-    </label>
-    <input
-      type="number"
+    <div class="w-3/4">
+            <label class="block pb-2 w-full font-medium text-neutral-900 max-md:max-w-full">
+              Total pendapatan/revenue selama periode ini
+            </label>
+            <input
+              type="number"
       id="revenue"
       name="revenue"
-      placeholder="{{#if record}}{{record.revenue}}{{/if}}"
-      {{!-- placeholder="Masukkan jumlah pendapatan" --}}
-      class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
-    />
+      value="{{#if record}}{{record.revenue}}{{/if}}"
+              placeholder="Masukkan jumlah biaya umum"
+              class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
+            />
+          </div>
+          <div class="w-1/4">
+            <label class="block pb-2 w-full font-medium text-neutral-900 max-md:max-w-full">
+              Keterangan (opsional)
+            </label>
+            <input
+              type="text"
+              id="revenue_notes"
+              name="revenue_notes"
+              value="{{#if record}}{{record.revenue_notes}}{{/if}}"
+              placeholder="Keterangan"
+              class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
+            />
+          </div>
+          <div class="w-4/4">
+            <label class="block pb-2 w-full font-medium text-neutral-900 max-md:max-w-full">
+              Masukkan Dokumen
+            </label>
+            <input
+              type="file"
+              id="revenue_files"
+              name="revenue_files"
+              placeholder="Keterangan"
+              class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
+            />
+          </div>
   </div>
 </div>
 
@@ -157,6 +184,15 @@
               placeholder="Masukkan biaya bahan bakar"
               class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
             />
+          
+            <input
+              type="text"
+              id="fuel_notes"
+              name="fuel_notes"
+              value="{{#if record}}{{record.fuel_notes}}{{/if}}"
+              placeholder="Masukkan Keterangan bahan bakar"
+              class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
+            />
           </div>
           <div class="w-1/2 mt-8">
             <input
@@ -165,6 +201,15 @@
               name="electricity_expenses"
               value="{{#if record}}{{record.electricity_expenses}}{{/if}}"
               placeholder="Masukkan biaya listrik"
+              class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
+            />
+           
+            <input
+              type="text"
+              id="electricity_notes"
+              name="electricity_notes"
+              value="{{#if record}}{{record.electricity_notes}}{{/if}}"
+              placeholder="Masukkan Keterangan listrik"
               class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
             />
           </div>
@@ -185,6 +230,14 @@
               placeholder="Masukkan biaya internet"
               class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
             />
+            <input
+              type="text"
+              id="internet_notes"
+              name="internet_notes"
+              value="{{#if record}}{{record.internet_notes}}{{/if}}"
+              placeholder="Masukkan Keterangan internet"
+              class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
+            />
           </div>
           <!-- Telephone Expense -->
           <div class="flex-1 mt-6">
@@ -192,11 +245,19 @@
               (Telepon)
             </label>
             <input
-              type="number"
+              type="text"
               id="telephone_expenses"
               name="telephone_expenses"
               value="{{#if record}}{{record.telephone_expenses}}{{/if}}"
               placeholder="Masukkan biaya telepon"
+              class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
+            />
+            <input
+              type="text"
+              id="telephone_notes"
+              name="telephone_notes"
+              value="{{#if record}}{{record.telephone_notes}}{{/if}}"
+              placeholder="Masukkan Keterangan telepon"
               class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
             />
           </div>
@@ -211,6 +272,14 @@
               name="water_expenses"
               value="{{#if record}}{{record.water_expenses}}{{/if}}"
               placeholder="Masukkan biaya air"
+              class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
+            />
+            <input
+              type="text"
+              id="water_notes"
+              name="water_notes"
+              value="{{#if record}}{{record.water_notes}}{{/if}}"
+              placeholder="Masukkan Keterangan air"
               class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
             />
           </div>
@@ -275,6 +344,21 @@
             />
           </div>
         </div>
+        <div class="flex gap-4 items-center px-4 py-3 mt-2">
+          <div class="w-4/4">
+            <label class="block pb-2 w-full font-medium text-neutral-900 max-md:max-w-full">
+              8. Masukkan Dokumen Pengeluaran
+            </label>
+            <input
+              type="file"
+              id="expenses_files"
+              name="expenses_files"
+              placeholder="Keterangan"
+              class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border-gray-300 border border-solid bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition"
+            />
+          </div>
+        </div>
+        
       </div>
 
       <!-- Button Section -->

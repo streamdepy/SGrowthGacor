@@ -151,6 +151,19 @@ router.get("/gri-4", async function (req, res, next) {
             summary.water_expenses +
             summary.other_operating_expenses;
 
+            untung =
+            summary.revenue -
+            summary.general_admin_expenses -
+            summary.salary_expenses -
+            summary.transport_expenses -
+            summary.fuel_expenses -
+            summary.electricity_expenses -
+            summary.internet_expenses -
+            summary.telephone_expenses -
+            summary.water_expenses -
+            summary.other_operating_expenses -
+            summary.non_operating_expenses;
+
           // Cari biaya terbesar dari summary
           const categories = [
             { key: "general_admin_expenses", label: "General & Administrative", value: summary.general_admin_expenses },
@@ -185,6 +198,19 @@ router.get("/gri-4", async function (req, res, next) {
             (record.telephone_expenses * 1 || 0) +
             (record.water_expenses * 1 || 0) +
             (record.other_operating_expenses * 1 || 0);
+
+            untung =
+            (record.revenue * 1 || 0) -
+            (record.general_admin_expenses * 1 || 0) -
+            (record.salary_expenses * 1 || 0) -
+            (record.transport_expenses * 1 || 0) -
+            (record.fuel_expenses * 1 || 0) -
+            (record.electricity_expenses * 1 || 0) -
+            (record.internet_expenses * 1 || 0) -
+            (record.telephone_expenses * 1 || 0) -
+            (record.water_expenses * 1 || 0) -
+            (record.other_operating_expenses * 1 || 0) -
+            (record.non_operating_expenses * 1 || 0) ;
 
           const categories = [
             { key: "general_admin_expenses", label: "General & Administrative", value: record.general_admin_expenses || 0 },
@@ -227,6 +253,7 @@ router.get("/gri-4", async function (req, res, next) {
       summary, // kalau triwulan, ini berisi total tahunan
       biggestExpense,
       totalOps,
+      untung,
       title: "Laporan GRI Economic",
       layout: "umkm",
       currentPath: req.path,
