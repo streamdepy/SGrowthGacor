@@ -61,3 +61,46 @@ exports.saveEnvironmentBasicInfo = async (req, res) => {
     res.status(500).json({ error: "Failed to save Environment Basic Info" });
   }
 };
+
+// 🔹 Simpan data environment di memori (per user)
+let envDataStore = {};
+
+// POST /umkm/env-2 → simpan data scope 1
+exports.saveEnvScope1 = (req, res) => {
+  try {
+    const userId = req.user ? req.user.id : "guest";
+
+    const { scope1_has, s1 } = req.body;
+
+    if (!scope1_has) {
+      return res.status(400).json({ error: "Mohon pilih apakah ada Scope 1" });
+    }
+
+    // Simpan data di memory
+    if (!envDataStore[userId]) envDataStore[userId] = {};
+    envDataStore[userId].scope1 = {
+      has: scope1_has,
+      entries: s1 || [] // s1 bisa array dari dynamic form
+    };
+
+    console.log("✅ Scope 1 data saved:", envDataStore[userId]);
+
+    // Lanjut ke env-3
+    res.redirect(`/umkm/env-3?user=${userId}`);
+
+  } catch (err) {
+    console.error("🔥 Error saving Scope 1:", err);
+    res.status(500).json({ error: "Failed to save Scope 1 data" });
+  }
+};
+
+// GET /umkm/lap → ambil semua data untuk laporan
+exports.getEnvReport = (req, res) => {
+  const userId = req.query.user || "guest";
+  const envData = envDataStore[userId] || {};
+
+  res.render("umkm/lap", {
+    env: envData,
+    // bisa ditambah economic/social/gov data
+  });
+};

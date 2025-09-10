@@ -313,6 +313,7 @@ router.get("/env-1", function (req, res, next) {
 });
 
 router.post("/env-1", middlewareValidation, environmentController.saveEnvironmentBasicInfo);
+router.post("/env-2", middlewareValidation, environmentController.saveEnvScope1);
 
 router.get("/env-2", function (req, res, next) {
   res.render("umkm/gri-env/env-2", {
