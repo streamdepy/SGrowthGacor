@@ -416,12 +416,16 @@
       </details>
     </section>
 
-    <!-- ENVIRONMENTAL -->
+    <!-- ENVIRONMENTAL (1 Section) -->
     <section class="bg-white rounded-2xl shadow-xl p-6 mb-8">
-      <div class="flex items-center justify-between">
-        <h2 class="text-2xl font-semibold text-teal-700">Environmental (GRI Environmental)</h2>
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+        <div>
+          <h2 class="text-2xl font-semibold text-teal-700">Environmental (GRI Environmental)</h2>
+          <p class="text-sm text-gray-500 mt-1">Emission</p>
+        </div>
         <span class="text-xs px-2 py-1 rounded-full bg-orange-100 text-orange-700">Status: Parsial</span>
       </div>
+
 
       <!-- Scope 1 -->
       <details class="group mt-4 rounded-xl border">
@@ -430,177 +434,528 @@
           <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
         </summary>
         <div class="px-4 pb-4 text-sm space-y-2">
-          <div class="flex items-center gap-2"><span class="text-emerald-600">✅</span> Total emisi Scope 1 (tCO₂e)</div>
-          <div class="flex items-center gap-2"><span class="text-rose-600">❌</span> Jenis inisiatif reduksi</div>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-600" id="scope1_emission"></span>
+            Total emisi Scope 1 (tCO₂e)
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-600" id="scope1_source"></span>
+            Jenis sumber emisi utama
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-600" id="scope1_reduction"></span>
+            Inisiatif pengurangan Scope 1
+          </div>
           <div class="rounded-lg bg-amber-50 border border-amber-200 p-3 text-amber-800">
-            Kesimpulan: Data dasar ada, reduksi belum → <span class="font-semibold">incomplete</span>.
+            Kesimpulan: <span id="scope1_status" class="font-semibold">incomplete</span>.
           </div>
         </div>
       </details>
 
+      <!-- Validasi Isi untuk Scope 1 -->
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const scope1Emission = "100";  // Misal ini diambil dari inputan pengguna
+          const scope1Source = "Kendaraan Operasional";  // Dapatkan ini dari dropdown atau inputan
+          const scope1Reduction = "";  // Jika ini kosong, akan menjadi ❌
+
+          // Periksa apakah data diisi untuk Scope 1
+          document.getElementById('scope1_emission').textContent = scope1Emission ? "✅" : "❌";
+          document.getElementById('scope1_source').textContent = scope1Source ? "✅" : "❌";
+          document.getElementById('scope1_reduction').textContent = scope1Reduction ? "✅" : "❌";
+          
+          // Set status akhir
+          const status = (scope1Emission && scope1Source && scope1Reduction) ? "complete" : "incomplete";
+          document.getElementById('scope1_status').textContent = status;
+        });
+      </script>
+
       <!-- Scope 2 -->
-      <details class="group mt-3 rounded-xl border">
+      <details class="group mt-4 rounded-xl border">
         <summary class="flex items-center justify-between cursor-pointer gap-4 p-4">
           <div class="font-semibold">Scope 2</div>
           <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
         </summary>
         <div class="px-4 pb-4 text-sm space-y-2">
-          <div class="flex items-center gap-2"><span class="text-emerald-600">✅</span> Jenis energi utama</div>
-          <div class="flex items-center gap-2"><span class="text-rose-600">❌</span> Emisi yang dikurangi (tCO₂e)</div>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-600" id="scope2_energy"></span>
+            Jenis energi utama yang digunakan
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-600" id="scope2_reduction"></span>
+            Inisiatif pengurangan Scope 2
+          </div>
           <div class="rounded-lg bg-amber-50 border border-amber-200 p-3 text-amber-800">
-            Kesimpulan: Energi teridentifikasi, reduksi belum terisi.
+            Kesimpulan: <span id="scope2_status" class="font-semibold">incomplete</span>.
           </div>
         </div>
       </details>
 
+      <!-- Validasi Isi untuk Scope 2 -->
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const scope2Energy = "Listrik PLN";  // Misal ini diambil dari dropdown
+          const scope2Reduction = "Ya";  // Jika ada pengurangan, ini menjadi 'Ya', jika tidak 'Tidak'
+
+          // Validasi untuk Scope 2
+          document.getElementById('scope2_energy').textContent = scope2Energy ? "✅" : "❌";
+          document.getElementById('scope2_reduction').textContent = scope2Reduction ? "✅" : "❌";
+          
+          // Set status akhir
+          const status = (scope2Energy && scope2Reduction) ? "complete" : "incomplete";
+          document.getElementById('scope2_status').textContent = status;
+        });
+      </script>
+
       <!-- Scope 3 -->
-      <details class="group mt-3 rounded-xl border">
+      <details class="group mt-4 rounded-xl border">
         <summary class="flex items-center justify-between cursor-pointer gap-4 p-4">
           <div class="font-semibold">Scope 3</div>
           <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
         </summary>
         <div class="px-4 pb-4 text-sm space-y-2">
-          <div class="flex items-center gap-2"><span class="text-emerald-600">✅</span> Apakah menghitung Scope 3?</div>
-          <div class="flex items-center gap-2"><span class="text-rose-600">❌</span> Sumber utama emisi</div>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-600" id="scope3_calculation"></span>
+            Apakah perusahaan menghitung emisi Scope 3?
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-600" id="scope3_source"></span>
+            Sumber utama emisi Scope 3
+          </div>
           <div class="rounded-lg bg-amber-50 border border-amber-200 p-3 text-amber-800">
-            Kesimpulan: Hanya deklarasi awal, detail masih kosong.
+            Kesimpulan: <span id="scope3_status" class="font-semibold">incomplete</span>.
           </div>
         </div>
       </details>
 
+      <!-- Validasi Isi untuk Scope 3 -->
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const scope3Calculation = "Ya";  // Misal ini diambil dari dropdown
+          const scope3Source = "Transportasi Pihak Ketiga";  // Misal ini diambil dari dropdown
+
+          // Validasi untuk Scope 3
+          document.getElementById('scope3_calculation').textContent = scope3Calculation ? "✅" : "❌";
+          document.getElementById('scope3_source').textContent = scope3Source ? "✅" : "❌";
+          
+          // Set status akhir
+          const status = (scope3Calculation && scope3Source) ? "complete" : "incomplete";
+          document.getElementById('scope3_status').textContent = status;
+        });
+      </script>
+
       <!-- Intensitas Emisi -->
-      <details class="group mt-3 rounded-xl border">
+      <details class="group mt-4 rounded-xl border">
         <summary class="flex items-center justify-between cursor-pointer gap-4 p-4">
           <div class="font-semibold">Intensitas Emisi</div>
           <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
         </summary>
         <div class="px-4 pb-4 text-sm space-y-2">
-          <div class="flex items-center gap-2"><span class="text-emerald-600">✅</span> Jenis indikator intensitas</div>
-          <div class="flex items-center gap-2"><span class="text-rose-600">❌</span> Total emisi per indikator</div>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-600" id="intensity_indicator"></span>
+            Jenis indikator intensitas yang digunakan
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-600" id="intensity_value"></span>
+            Total emisi per indikator
+          </div>
           <div class="rounded-lg bg-amber-50 border border-amber-200 p-3 text-amber-800">
-            Kesimpulan: Indikator ada, angka belum → <span class="font-semibold">incomplete</span>.
+            Kesimpulan: <span id="intensity_status" class="font-semibold">incomplete</span>.
           </div>
         </div>
       </details>
 
+      <!-- Validasi Isi untuk Intensitas Emisi -->
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const intensityIndicator = "tCO₂e per unit produk";  // Misal ini diambil dari dropdown
+          const intensityValue = "100";  // Misal ini diambil dari input angka
+
+          // Validasi untuk Intensitas Emisi
+          document.getElementById('intensity_indicator').textContent = intensityIndicator ? "✅" : "❌";
+          document.getElementById('intensity_value').textContent = intensityValue ? "✅" : "❌";
+          
+          // Set status akhir
+          const status = (intensityIndicator && intensityValue) ? "complete" : "incomplete";
+          document.getElementById('intensity_status').textContent = status;
+        });
+      </script>
+
       <!-- Catatan Tambahan -->
-      <details class="group mt-3 rounded-xl border">
+      <details class="group mt-4 rounded-xl border">
         <summary class="flex items-center justify-between cursor-pointer gap-4 p-4">
           <div class="font-semibold">Catatan Tambahan</div>
           <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
         </summary>
         <div class="px-4 pb-4 text-sm space-y-2">
-          <div class="flex items-center gap-2"><span class="text-rose-600">❌</span> Kendala pengumpulan data</div>
-          <div class="flex items-center gap-2"><span class="text-emerald-600">✅</span> Rencana perbaikan</div>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-600" id="data_challenges"></span>
+            Kendala dalam pengumpulan data
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-600" id="improvement_plan"></span>
+            Rencana peningkatan pengelolaan emisi
+          </div>
           <div class="rounded-lg bg-amber-50 border border-amber-200 p-3 text-amber-800">
-            Kesimpulan: Parsial; lengkapi kendala untuk konteks yang jelas.
+            Kesimpulan: <span id="data_status" class="font-semibold">incomplete</span>.
           </div>
         </div>
       </details>
+
+      <!-- Validasi Isi untuk Catatan Tambahan -->
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const dataChallenges = "Tantangan pengumpulan data";  // Dapatkan ini dari input
+          const improvementPlan = "Rencana perbaikan pengelolaan emisi";  // Dapatkan ini dari input
+
+          // Validasi untuk Catatan Tambahan
+          document.getElementById('data_challenges').textContent = dataChallenges ? "✅" : "❌";
+          document.getElementById('improvement_plan').textContent = improvementPlan ? "✅" : "❌";
+          
+          // Set status akhir
+          const status = (dataChallenges && improvementPlan) ? "complete" : "incomplete";
+          document.getElementById('data_status').textContent = status;
+        });
+      </script>
+
     </section>
 
-    <!-- SOCIAL -->
+
+    <!-- SOCIAL (1 Section) -->
     <section class="bg-white rounded-2xl shadow-xl p-6 mb-8">
-      <div class="flex items-center justify-between">
-        <h2 class="text-2xl font-semibold text-teal-700">Social (GRI Social)</h2>
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+        <div>
+          <h2 class="text-2xl font-semibold text-teal-700">Social (GRI Social)</h2>
+          <p class="text-sm text-gray-500 mt-1">Kesehatan & Keselamatan Kerja (K3)</p>
+        </div>
         <span class="text-xs px-2 py-1 rounded-full bg-orange-100 text-orange-700">Status: Parsial</span>
       </div>
 
-      <!-- Kecelakaan Kerja -->
+      <!-- Bagian 1: Informasi Umum K3 -->
+      <details class="group mt-4 rounded-xl border">
+        <summary class="flex items-center justify-between cursor-pointer gap-4 p-4">
+          <div class="font-semibold">Informasi Umum K3</div>
+          <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
+        </summary>
+        <div class="px-4 pb-4 text-sm space-y-2">
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-600" id="k3_policy"></span>
+            Apakah perusahaan memiliki kebijakan K3?
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-600" id="k3_committee"></span>
+            Apakah ada komite/penanggung jawab K3?
+          </div>
+          <div class="rounded-lg bg-amber-50 border border-amber-200 p-3 text-amber-800">
+            Kesimpulan: <span id="k3_info_status" class="font-semibold">incomplete</span>.
+          </div>
+        </div>
+      </details>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const k3Policy = "Ya";  
+          const k3Committee = "Ya";  
+
+          document.getElementById('k3_policy').textContent = k3Policy ? "✅" : "❌";
+          document.getElementById('k3_committee').textContent = k3Committee ? "✅" : "❌";
+
+          const status = (k3Policy && k3Committee) ? "complete" : "incomplete";
+          document.getElementById('k3_info_status').textContent = status;
+        });
+      </script>
+
+      <!-- Bagian 2: Kecelakaan Kerja -->
       <details class="group mt-4 rounded-xl border">
         <summary class="flex items-center justify-between cursor-pointer gap-4 p-4">
           <div class="font-semibold">Kecelakaan Kerja</div>
           <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
         </summary>
         <div class="px-4 pb-4 text-sm space-y-2">
-          <div class="flex items-center gap-2"><span class="text-emerald-600">✅</span> Jumlah kecelakaan fatal</div>
-          <div class="flex items-center gap-2"><span class="text-rose-600">❌</span> Lost workdays</div>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-600" id="work_accidents"></span>
+            Jumlah kecelakaan kerja
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-600" id="fatalities"></span>
+            Jumlah kecelakaan fatal
+          </div>
           <div class="rounded-lg bg-amber-50 border border-amber-200 p-3 text-amber-800">
-            Kesimpulan: Data parsial → incomplete.
+            Kesimpulan: <span id="work_accident_status" class="font-semibold">incomplete</span>.
           </div>
         </div>
       </details>
 
-      <!-- Penyakit Akibat Kerja -->
-      <details class="group mt-3 rounded-xl border">
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const workAccidents = "5";  
+          const fatalities = "0";  
+
+          document.getElementById('work_accidents').textContent = workAccidents ? "✅" : "❌";
+          document.getElementById('fatalities').textContent = fatalities ? "✅" : "❌";
+
+          const status = (workAccidents && fatalities) ? "complete" : "incomplete";
+          document.getElementById('work_accident_status').textContent = status;
+        });
+      </script>
+
+      <!-- Bagian 3: Penyakit Akibat Kerja -->
+      <details class="group mt-4 rounded-xl border">
         <summary class="flex items-center justify-between cursor-pointer gap-4 p-4">
           <div class="font-semibold">Penyakit Akibat Kerja</div>
           <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
         </summary>
         <div class="px-4 pb-4 text-sm space-y-2">
-          <div class="flex items-center gap-2"><span class="text-emerald-600">✅</span> Pertanyaan dasar</div>
-          <div class="flex items-center gap-2"><span class="text-rose-600">❌</span> Jenis penyakit</div>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-600" id="occupational_disease"></span>
+            Jumlah kasus penyakit akibat kerja
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-600" id="disease_type"></span>
+            Jenis penyakit dominan
+          </div>
           <div class="rounded-lg bg-amber-50 border border-amber-200 p-3 text-amber-800">
-            Kesimpulan: Belum lengkap.
+            Kesimpulan: <span id="disease_status" class="font-semibold">incomplete</span>.
           </div>
         </div>
       </details>
 
-      <!-- Pelatihan K3 -->
-      <details class="group mt-3 rounded-xl border">
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const occupationalDisease = "3";  
+          const diseaseType = "Gangguan pernapasan";  
+
+          document.getElementById('occupational_disease').textContent = occupationalDisease ? "✅" : "❌";
+          document.getElementById('disease_type').textContent = diseaseType ? "✅" : "❌";
+
+          const status = (occupationalDisease && diseaseType) ? "complete" : "incomplete";
+          document.getElementById('disease_status').textContent = status;
+        });
+      </script>
+
+      <!-- Bagian 4: Pelatihan K3 -->
+      <details class="group mt-4 rounded-xl border">
         <summary class="flex items-center justify-between cursor-pointer gap-4 p-4">
           <div class="font-semibold">Pelatihan K3</div>
           <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
         </summary>
         <div class="px-4 pb-4 text-sm space-y-2">
-          <div class="flex items-center gap-2"><span class="text-emerald-600">✅</span> Jumlah pelatihan</div>
-          <div class="flex items-center gap-2"><span class="text-rose-600">❌</span> Bukti dokumentasi</div>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-600" id="training_program"></span>
+            Apakah ada program pelatihan K3?
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-600" id="training_participants"></span>
+            Jumlah peserta pelatihan
+          </div>
           <div class="rounded-lg bg-amber-50 border border-amber-200 p-3 text-amber-800">
-            Kesimpulan: Kuantitatif ada, dokumen hilang.
+            Kesimpulan: <span id="training_status" class="font-semibold">incomplete</span>.
           </div>
         </div>
       </details>
-    </section>
 
-    <!-- GOVERNANCE -->
-    <section class="bg-white rounded-2xl shadow-xl p-6 mb-8">
-      <div class="flex items-center justify-between">
-        <h2 class="text-2xl font-semibold text-teal-700">Governance (GRI Governance)</h2>
-        <span class="text-xs px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">Status: Baik</span>
-      </div>
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const trainingProgram = "Ya";  
+          const trainingParticipants = "50";  
 
-      <!-- Struktur & Kebijakan -->
+          document.getElementById('training_program').textContent = trainingProgram ? "✅" : "❌";
+          document.getElementById('training_participants').textContent = trainingParticipants ? "✅" : "❌";
+
+          const status = (trainingProgram && trainingParticipants) ? "complete" : "incomplete";
+          document.getElementById('training_status').textContent = status;
+        });
+      </script>
+
+      <!-- Bagian 5: Catatan & Konteks -->
       <details class="group mt-4 rounded-xl border">
         <summary class="flex items-center justify-between cursor-pointer gap-4 p-4">
-          <div class="font-semibold">Struktur & Kebijakan</div>
+          <div class="font-semibold">Catatan & Konteks</div>
           <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
         </summary>
         <div class="px-4 pb-4 text-sm space-y-2">
-          <div class="flex items-center gap-2"><span class="text-emerald-600">✅</span> Governance structure</div>
-          <div class="flex items-center gap-2"><span class="text-emerald-600">✅</span> Policy commitments</div>
-          <div class="rounded-lg bg-sky-50 border border-sky-200 p-3 text-sky-800">
-            Kesimpulan: Relatif lengkap, selanjutnya fokus audit.
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-600" id="k3_challenges"></span>
+            Kendala penerapan K3
           </div>
-        </div>
-      </details>
-
-      <!-- Risk & Anti-Corruption -->
-      <details class="group mt-3 rounded-xl border">
-        <summary class="flex items-center justify-between cursor-pointer gap-4 p-4">
-          <div class="font-semibold">Risk & Anti-Corruption</div>
-          <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
-        </summary>
-        <div class="px-4 pb-4 text-sm space-y-2">
-          <div class="flex items-center gap-2"><span class="text-rose-600">❌</span> Risk management</div>
-          <div class="flex items-center gap-2"><span class="text-emerald-600">✅</span> Anti-corruption policy</div>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-600" id="k3_improvement"></span>
+            Rencana peningkatan K3
+          </div>
           <div class="rounded-lg bg-amber-50 border border-amber-200 p-3 text-amber-800">
-            Kesimpulan: Partial; perlukan rencana & pelaporan risiko.
+            Kesimpulan: <span id="notes_status" class="font-semibold">incomplete</span>.
           </div>
         </div>
       </details>
 
-      <!-- Bukti & Dokumentasi -->
-      <details class="group mt-3 rounded-xl border">
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const k3Challenges = "Kurangnya APD lengkap";  
+          const k3Improvement = "Rencana pembelian APD baru";  
+
+          document.getElementById('k3_challenges').textContent = k3Challenges ? "✅" : "❌";
+          document.getElementById('k3_improvement').textContent = k3Improvement ? "✅" : "❌";
+
+          const status = (k3Challenges && k3Improvement) ? "complete" : "incomplete";
+          document.getElementById('notes_status').textContent = status;
+        });
+      </script>
+
+    </section>
+
+
+    <!-- GOVERNANCE (1 Section) -->
+    <section class="bg-white rounded-2xl shadow-xl p-6 mb-8">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+        <div>
+          <h2 class="text-2xl font-semibold text-teal-700">Governance (GRI Governance)</h2>
+          <p class="text-sm text-gray-500 mt-1">Struktur, Kebijakan & Implementasi</p>
+        </div>
+        <span class="text-xs px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">Status: Parsial</span>
+      </div>
+
+      <!-- Bagian 1: Informasi Umum -->
+      <details class="group mt-4 rounded-xl border">
+        <summary class="flex items-center justify-between cursor-pointer gap-4 p-4">
+          <div class="font-semibold">Informasi Umum</div>
+          <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
+        </summary>
+        <div class="px-4 pb-4 text-sm space-y-2">
+          <div class="flex items-center gap-2"><span id="gov_entity" class="text-emerald-600"></span> Nama entitas / unit bisnis</div>
+          <div class="flex items-center gap-2"><span id="gov_location" class="text-emerald-600"></span> Lokasi operasional</div>
+          <div class="flex items-center gap-2"><span id="gov_period" class="text-emerald-600"></span> Periode pelaporan</div>
+          <div class="rounded-lg bg-amber-50 border border-amber-200 p-3 text-amber-800">Kesimpulan: <span id="gov_info_status" class="font-semibold">incomplete</span>.</div>
+        </div>
+      </details>
+
+      <!-- Bagian 2: Daftar Kebijakan Perusahaan -->
+      <details class="group mt-4 rounded-xl border">
+        <summary class="flex items-center justify-between cursor-pointer gap-4 p-4">
+          <div class="font-semibold">Daftar Kebijakan Perusahaan</div>
+          <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
+        </summary>
+        <div class="px-4 pb-4 text-sm space-y-2">
+          <div class="flex items-center gap-2"><span id="gov_code" class="text-emerald-600"></span> Code of Conduct</div>
+          <div class="flex items-center gap-2"><span id="gov_anti" class="text-emerald-600"></span> Anti-Corruption Policy</div>
+          <div class="flex items-center gap-2"><span id="gov_whistle" class="text-emerald-600"></span> Whistleblowing Policy</div>
+          <div class="flex items-center gap-2"><span id="gov_hs" class="text-emerald-600"></span> Health & Safety Policy</div>
+          <div class="flex items-center gap-2"><span id="gov_other" class="text-emerald-600"></span> Kebijakan lain (Diversity, Data Privacy, dll)</div>
+          <div class="flex items-center gap-2"><span id="gov_year" class="text-emerald-600"></span> Tahun penerapan terakhir</div>
+          <div class="flex items-center gap-2"><span id="gov_link" class="text-emerald-600"></span> Link / Dokumen kebijakan</div>
+          <div class="rounded-lg bg-amber-50 border border-amber-200 p-3 text-amber-800">Kesimpulan: <span id="gov_policy_status" class="font-semibold">incomplete</span>.</div>
+        </div>
+      </details>
+
+      <!-- Bagian 3: Penerapan & Implementasi -->
+      <details class="group mt-4 rounded-xl border">
+        <summary class="flex items-center justify-between cursor-pointer gap-4 p-4">
+          <div class="font-semibold">Penerapan & Implementasi</div>
+          <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
+        </summary>
+        <div class="px-4 pb-4 text-sm space-y-2">
+          <div class="flex items-center gap-2"><span id="gov_socialized" class="text-emerald-600"></span> Apakah kebijakan disosialisasikan?</div>
+          <div class="flex items-center gap-2"><span id="gov_method" class="text-emerald-600"></span> Metode sosialisasi</div>
+          <div class="flex items-center gap-2"><span id="gov_training_count" class="text-emerald-600"></span> Jumlah pelatihan terkait kebijakan</div>
+          <div class="flex items-center gap-2"><span id="gov_training_percent" class="text-emerald-600"></span> % karyawan ikut pelatihan</div>
+          <div class="flex items-center gap-2"><span id="gov_supervision" class="text-emerald-600"></span> Ada mekanisme pengawasan?</div>
+          <div class="flex items-center gap-2"><span id="gov_supervision_form" class="text-emerald-600"></span> Bentuk mekanisme pengawasan</div>
+          <div class="flex items-center gap-2"><span id="gov_eval" class="text-emerald-600"></span> Evaluasi kebijakan?</div>
+          <div class="flex items-center gap-2"><span id="gov_eval_freq" class="text-emerald-600"></span> Frekuensi evaluasi</div>
+          <div class="flex items-center gap-2"><span id="gov_notes" class="text-emerald-600"></span> Catatan / kendala</div>
+          <div class="rounded-lg bg-amber-50 border border-amber-200 p-3 text-amber-800">Kesimpulan: <span id="gov_impl_status" class="font-semibold">incomplete</span>.</div>
+        </div>
+      </details>
+
+      <!-- Bagian 4: Bukti & Dokumentasi -->
+      <details class="group mt-4 rounded-xl border">
         <summary class="flex items-center justify-between cursor-pointer gap-4 p-4">
           <div class="font-semibold">Bukti & Dokumentasi</div>
           <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
         </summary>
         <div class="px-4 pb-4 text-sm space-y-2">
-          <div class="flex items-center gap-2"><span class="text-rose-600">❌</span> Laporan audit</div>
-          <div class="flex items-center gap-2"><span class="text-rose-600">❌</span> Dokumen kebijakan (lengkapi)</div>
+          <div class="flex items-center gap-2"><span id="gov_doc1" class="text-emerald-600"></span> Dokumen kebijakan / bukti sosialisasi</div>
+          <div class="flex items-center gap-2"><span id="gov_doc2" class="text-emerald-600"></span> Laporan audit / evaluasi kebijakan</div>
+          <div class="rounded-lg bg-amber-50 border border-amber-200 p-3 text-amber-800">Kesimpulan: <span id="gov_doc_status" class="font-semibold">incomplete</span>.</div>
+        </div>
+      </details>
+
+      <!-- Opsional: Skor Kepatuhan Internal -->
+      <details class="group mt-4 rounded-xl border">
+        <summary class="flex items-center justify-between cursor-pointer gap-4 p-4">
+          <div class="font-semibold">Skor Kepatuhan Internal</div>
+          <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
+        </summary>
+        <div class="px-4 pb-4 text-sm space-y-2">
+          <p>Level <span id="gov_score"></span> – <span id="gov_score_desc"></span></p>
         </div>
       </details>
     </section>
+
+    <!-- Script Dummy Governance -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        // Bagian 1
+        const entity = "PT Contoh Sejahtera";
+        const location = "Kantor Pusat";
+        const period = "Tahunan";
+        document.getElementById('gov_entity').textContent = entity ? "✅" : "❌";
+        document.getElementById('gov_location').textContent = location ? "✅" : "❌";
+        document.getElementById('gov_period').textContent = period ? "✅" : "❌";
+        document.getElementById('gov_info_status').textContent = (entity && location && period) ? "complete" : "incomplete";
+
+        // Bagian 2
+        const code = "Ya";
+        const anti = "Ya";
+        const whistle = "Sedang disusun";
+        const hs = "Ya";
+        const other = "Diversity Policy";
+        const year = "2023";
+        const link = "https://example.com/policy";
+        document.getElementById('gov_code').textContent = code ? "✅" : "❌";
+        document.getElementById('gov_anti').textContent = anti ? "✅" : "❌";
+        document.getElementById('gov_whistle').textContent = whistle ? "✅" : "❌";
+        document.getElementById('gov_hs').textContent = hs ? "✅" : "❌";
+        document.getElementById('gov_other').textContent = other ? "✅" : "❌";
+        document.getElementById('gov_year').textContent = year ? "✅" : "❌";
+        document.getElementById('gov_link').textContent = link ? "✅" : "❌";
+        document.getElementById('gov_policy_status').textContent = (code && anti && whistle && hs && other && year && link) ? "complete" : "incomplete";
+
+        // Bagian 3
+        const socialized = "Ya";
+        const method = "Workshop";
+        const trainingCount = "3";
+        const trainingPercent = "80";
+        const supervision = "Ya";
+        const supervisionForm = "Audit internal";
+        const evalPolicy = "Ya";
+        const evalFreq = "Tahunan";
+        const notes = "Kurangnya partisipasi cabang";
+        document.getElementById('gov_socialized').textContent = socialized ? "✅" : "❌";
+        document.getElementById('gov_method').textContent = method ? "✅" : "❌";
+        document.getElementById('gov_training_count').textContent = trainingCount ? "✅" : "❌";
+        document.getElementById('gov_training_percent').textContent = trainingPercent ? "✅" : "❌";
+        document.getElementById('gov_supervision').textContent = supervision ? "✅" : "❌";
+        document.getElementById('gov_supervision_form').textContent = supervisionForm ? "✅" : "❌";
+        document.getElementById('gov_eval').textContent = evalPolicy ? "✅" : "❌";
+        document.getElementById('gov_eval_freq').textContent = evalFreq ? "✅" : "❌";
+        document.getElementById('gov_notes').textContent = notes ? "✅" : "❌";
+        document.getElementById('gov_impl_status').textContent = (socialized && method && trainingCount && trainingPercent && supervision && supervisionForm && evalPolicy && evalFreq && notes) ? "complete" : "incomplete";
+
+        // Bagian 4
+        const doc1 = "https://example.com/bukti.pdf";
+        const doc2 = "";
+        document.getElementById('gov_doc1').textContent = doc1 ? "✅" : "❌";
+        document.getElementById('gov_doc2').textContent = doc2 ? "✅" : "❌";
+        document.getElementById('gov_doc_status').textContent = (doc1 && doc2) ? "complete" : "incomplete";
+
+        // Skor Opsional
+        const score = 2;
+        const scoreDesc = score === 1 ? "Awal (Basic)" : score === 2 ? "Berkembang (Intermediate)" : "Matang (Advanced)";
+        document.getElementById('gov_score').textContent = score;
+        document.getElementById('gov_score_desc').textContent = scoreDesc;
+      });
+    </script>
+
 
     <!-- Rekomendasi Akhir (Auto) -->
     <section id="reco_section"
