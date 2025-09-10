@@ -29,10 +29,6 @@ const GRIEnvironment = sequelize.define("GRIEnvironment", {
     type: DataTypes.STRING(50),
     allowNull: false,
   },
-  period_year: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
   calculation_method: {
     type: DataTypes.STRING(255),
     allowNull: false,

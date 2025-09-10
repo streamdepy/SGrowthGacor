@@ -2,47 +2,55 @@ const { User, BusinessProfile, EsgScore } = require("../models");
 
 const getDashboardUmkm = async (req, res, next) => {
   try {
-    const user = req.user;
+    const userId = req.user.id; // user login diverifikasi middlewareValidation
 
-    // Cari profil bisnis berdasarkan user_id
-    const business = await BusinessProfile.findOne({
-      where: { user_id: user.id },
+    // 🔹 Ambil user info
+    const user = await User.findByPk(userId, {
+      attributes: ["id", "name", "email", "role"]
     });
 
-    if (!business) {
-      console.error(`❌ Tidak ditemukan BusinessProfile untuk user_id: ${user.id}`);
-      return res.render("umkm/dashboard", {
-        title: "Dashboard UMKM",
-        layout: "umkm.hbs",
-        user,
-        business: null,
-        esgScores: [],
-        error: "Business profile tidak ditemukan",
-      });
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
     }
 
-    // Cari ESG Score secara manual
-    // const esgScores = await EsgScore.findAll({
-    //   where: { business_id: business.id },
-    // });
-
-    // if (!esgScores || esgScores.length === 0) {
-    //   console.warn(`⚠️ ESG Score kosong untuk business_id: ${business.id}`);
-    // }
-
-    console.log(user.name)
-    // Kirim ke view
-    res.render("umkm/dashboard", {
-      title: "Dashboard UMKM",
-      layout: "umkm.hbs",
-      user,
-      business,
-      // esgScores,
+    // 🔹 Ambil Business Profile terkait user
+    const business = await BusinessProfile.findOne({
+      where: { user_id: userId },
+      attributes: [
+        "id",
+        "business_name",
+        "established_year",
+        "headquarters",
+        "legal_form",
+        "industry_type",
+        "city",
+        "province"
+      ]
     });
 
+    // Default kalau belum ada business profile
+    const businessData = business
+      ? business.get({ plain: true })
+      : {
+          business_name: "Belum diisi",
+          established_year: "-",
+          headquarters: "-",
+          legal_form: "-",
+          industry_type: "-",
+          city: "-",
+          province: "-"
+        };
+
+    res.render("umkm/dashboard", {
+      title: "Dashboard UMKM",
+      layout: "umkm",
+      currentPath: req.path,
+      user: user.get({ plain: true }),
+      business: businessData,
+    });
   } catch (error) {
-    console.error("🔥 Error getDashboardUmkm:", error);
-    next(error);
+    console.error("🔥 Error loading dashboard:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 

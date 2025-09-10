@@ -250,7 +250,7 @@ router.post("/social-1", middlewareValidation, grisocialController.saveBasicInfo
 // Bagian 2: K3
 router.post("/social-2", middlewareValidation, grisocialController.saveK3Data);
 // Bagian 3: Penyakit Akibat Kerja
-router.post("/social-3", middlewareValidation, grisocialController.saveDiseaseData);
+router.post("/social-3", middlewareValidation, grisocialController.saveSocialBasicInfo);
 
 router.get("/social-1", function (req, res, next) {
   res.render("umkm/gri-social/social-1", {
@@ -312,7 +312,8 @@ router.get("/env-1", function (req, res, next) {
   });
 });
 
-router.post("/environment-basic", environmentController.saveEnvironmentBasicInfo);
+router.post("/env-1", middlewareValidation, environmentController.saveEnvironmentBasicInfo);
+router.post("/env-2", middlewareValidation, environmentController.saveEnvScope1);
 
 router.get("/env-2", function (req, res, next) {
   res.render("umkm/gri-env/env-2", {

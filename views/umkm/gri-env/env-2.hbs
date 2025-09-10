@@ -13,7 +13,8 @@
     </div>
   </header>
 
-<!-- Scope 1 (Langsung) -->
+<form action="/umkm/env-2" method="POST">
+  <!-- Scope 1 (Langsung) -->
 <section class="flex flex-col items-start py-14 px-16 mt-10 w-full bg-white rounded-2xl shadow-2xl max-w-[981px] max-md:px-5">
   <h3 class="text-3xl font-semibold text-teal-700">Emisi Scope 1 (Langsung)</h3>
   <p class="mt-3 text-gray-500">Isi data emisi langsung (Scope 1) untuk periode pelaporan ini.</p>
@@ -120,10 +121,12 @@
       class="px-8 py-2 text-base font-medium text-center text-teal-700 border-teal-700 border border-solid whitespace-nowrap bg-white rounded-xl hover:bg-teal-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors">
       Sebelumnya
     </button>
-    <button type="submit"
-      class="px-8 py-2 text-base font-medium text-center text-white whitespace-nowrap bg-lime-500 rounded-xl hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-offset-2 transition-colors">
-      Simpan
-    </button>
+    <button
+          type="submit"
+          class="px-8 py-2 text-base font-medium text-center text-white whitespace-nowrap bg-lime-500 rounded-xl hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-offset-2 transition-colors"
+        >
+          Simpan
+        </button>
   </div>
 </section>
 
@@ -190,113 +193,42 @@
   </div>
 </template>
 
+</form>
 </main>
 
 <script>
-  // Helper (pakai kalau belum ada)
-  function toggleEl(el, show, disable = true) {
-    if (!el) return;
-    el.classList.toggle('hidden', !show);
-    if (disable) el.disabled = !show;
-    if (!show && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA')) el.value = '';
-    if (!show && el.tagName === 'SELECT') el.value = '';
-  }
+  // Toggle detail Scope 1
+  const scope1Select = document.getElementById("scope1_has");
+  const scope1Details = document.getElementById("scope1_details");
 
-  document.addEventListener('DOMContentLoaded', function () {
-    const hasSel   = document.getElementById('scope1_has');
-    const details  = document.getElementById('scope1_details');
-    const list     = document.getElementById('scope1_list');
-    const addBtn   = document.getElementById('scope1_add_item');
-    const tpl      = document.getElementById('scope1_item_tpl');
+  scope1Select.addEventListener("change", () => {
+    scope1Details.classList.toggle("hidden", scope1Select.value !== "ya");
+  });
 
-    function syncHas() {
-      const yes = hasSel && hasSel.value === 'ya';
-      toggleEl(details, yes, false);
-      if (details) {
-        details.querySelectorAll('input, select, textarea, button').forEach(el => {
-          // tombol add tetap aktif saat ya; nonaktifkan saat tidak
-          if (el.id === 'scope1_add_item') { el.disabled = !yes; return; }
-          el.disabled = !yes;
-        });
-      }
-    }
+  // Tambah item Scope 1
+  document.getElementById("scope1_add_item").addEventListener("click", () => {
+    const list = document.getElementById("scope1_list");
+    const index = list.children.length;
 
-    if (hasSel) {
-      hasSel.addEventListener('change', syncHas);
-      syncHas();
-    }
-
-    if (!list || !addBtn || !tpl) return;
-
-    function reindex() {
-      const items = list.querySelectorAll('.s1-item');
-      items.forEach((item, idx) => {
-        item.querySelectorAll('input, select, textarea').forEach(el => {
-          if (el.classList.contains('s1-total'))               el.name = `s1[${idx}][total]`;
-          else if (el.classList.contains('s1-source'))         el.name = `s1[${idx}][source]`;
-          else if (el.classList.contains('s1-source-other'))   el.name = `s1[${idx}][source_other]`;
-          else if (el.classList.contains('s1-has-reduction'))  el.name = `s1[${idx}][has_reduction]`;
-          else if (el.classList.contains('s1-reduced'))        el.name = `s1[${idx}][reduced]`;
-          else if (el.classList.contains('s1-reduction-type')) el.name = `s1[${idx}][reduction_type]`;
-          else if (el.classList.contains('s1-reduction-type-other')) el.name = `s1[${idx}][reduction_type_other]`;
-        });
-
-        const rm = item.querySelector('.s1-remove');
-        if (rm) rm.classList.toggle('hidden', items.length <= 1);
-      });
-    }
-
-    function attachLogic(item) {
-      const srcSel   = item.querySelector('.s1-source');
-      const srcOther = item.querySelector('.s1-source-other');
-      const hasRed   = item.querySelector('.s1-has-reduction');
-      const reduced  = item.querySelector('.s1-reduced');
-      const redType  = item.querySelector('.s1-reduction-type');
-      const redOther = item.querySelector('.s1-reduction-type-other');
-
-      function syncSource() {
-        const isOther = srcSel && srcSel.value === 'lainnya';
-        toggleEl(srcOther, isOther);
-      }
-      function syncReduction() {
-        const yes = hasRed && hasRed.value === 'ya';
-        toggleEl(reduced, yes);
-        toggleEl(redType, yes);
-        if (!yes) toggleEl(redOther, false); // sekaligus sembunyikan "lainnya" jika sebelumnya aktif
-      }
-      function syncRedType() {
-        const isOther = redType && redType.value === 'lainnya';
-        toggleEl(redOther, isOther);
-      }
-
-      if (srcSel)  { srcSel.addEventListener('change', syncSource);  syncSource(); }
-      if (hasRed)  { hasRed.addEventListener('change', syncReduction); syncReduction(); }
-      if (redType) { redType.addEventListener('change', syncRedType); syncRedType(); }
-
-      // Hapus item
-      const rmBtn = item.querySelector('.s1-remove');
-      if (rmBtn) {
-        rmBtn.addEventListener('click', () => {
-          const items = list.querySelectorAll('.s1-item');
-          if (items.length > 1) {
-            item.remove();
-            reindex();
-          }
-        });
-      }
-    }
-
-    // item awal
-    const first = list.querySelector('.s1-item');
-    if (first) attachLogic(first);
-    reindex();
-
-    // tombol tambah
-    addBtn.addEventListener('click', () => {
-      const clone = tpl.content.firstElementChild.cloneNode(true);
-      list.appendChild(clone);
-      attachLogic(clone);
-      reindex();
+    const template = list.children[0].cloneNode(true);
+    template.querySelectorAll("input, select").forEach(el => {
+      // Reset value
+      el.value = "";
+      // Update name sesuai index baru
+      const name = el.getAttribute("name");
+      if (name) el.setAttribute("name", name.replace(/\d+/, index));
     });
+
+    // Enable tombol hapus
+    template.querySelector(".s1-remove").classList.remove("hidden");
+    list.appendChild(template);
+  });
+
+  // Delegasi tombol hapus
+  document.getElementById("scope1_list").addEventListener("click", e => {
+    if (e.target.classList.contains("s1-remove")) {
+      e.target.closest(".s1-item").remove();
+    }
   });
 </script>
+
