@@ -71,7 +71,7 @@
               <tr>
                 <td class="border px-4 py-2">Revenue</td>
                 <td class="border px-4 py-2">Rp. {{#if summary}}{{summary.revenue}}{{else}}{{record.revenue}}{{/if}}</td>
-                <td class="border px-4 py-2">-</td>
+                <td class="border px-4 py-2">{{record.revenue_notes}}</td>
               </tr>
               <tr>
                 <td class="border px-4 py-2">General & Administrative</td>
@@ -91,27 +91,27 @@
               <tr>
                 <td class="border px-4 py-2">Fuel</td>
                 <td class="border px-4 py-2">Rp. {{#if summary}}{{summary.fuel_expenses}}{{else}}{{record.fuel_expenses}}{{/if}}</td>
-                <td class="border px-4 py-2">-</td>
+                <td class="border px-4 py-2">{{record.fuel_notes}}</td>
               </tr>
               <tr>
                 <td class="border px-4 py-2">Electricity</td>
                 <td class="border px-4 py-2">Rp. {{#if summary}}{{summary.electricity_expenses}}{{else}}{{record.electricity_expenses}}{{/if}}</td>
-                <td class="border px-4 py-2">-</td>
+                <td class="border px-4 py-2">{{record.electricity_notes}}</td>
               </tr>
               <tr>
                 <td class="border px-4 py-2">Internet</td>
                 <td class="border px-4 py-2">Rp. {{#if summary}}{{summary.internet_expenses}}{{else}}{{record.internet_expenses}}{{/if}}</td>
-                <td class="border px-4 py-2">-</td>
+                <td class="border px-4 py-2">{{record.internet_notes}}</td>
               </tr>
               <tr>
                 <td class="border px-4 py-2">Telephone</td>
                 <td class="border px-4 py-2">Rp. {{#if summary}}{{summary.telephone_expenses}}{{else}}{{record.telephone_expenses}}{{/if}}</td>
-                <td class="border px-4 py-2">-</td>
+                <td class="border px-4 py-2">{{record.telephone_notes}}</td>
               </tr>
               <tr>
                 <td class="border px-4 py-2">Water</td>
                 <td class="border px-4 py-2">Rp. {{#if summary}}{{summary.water_expenses}}{{else}}{{record.water_expenses}}{{/if}}</td>
-                <td class="border px-4 py-2">-</td>
+                <td class="border px-4 py-2">{{record.water_notes}}</td>
               </tr>
               <tr>
                 <td class="border px-4 py-2">Other Operating</td>

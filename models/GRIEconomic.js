@@ -25,6 +25,8 @@ const GRIEconomic = sequelize.define(
 
     // 📌 Bagian 2: Data Pendapatan & Pengeluaran
     revenue: { type: DataTypes.DECIMAL(15, 2), defaultValue: 0 },
+    revenue_notes: { type: DataTypes.TEXT },
+    revenue_files: { type: DataTypes.TEXT },
 
     general_admin_expenses: { type: DataTypes.DECIMAL(15, 2), defaultValue: 0 },
     general_admin_notes: { type: DataTypes.TEXT },
@@ -36,17 +38,23 @@ const GRIEconomic = sequelize.define(
     transport_notes: { type: DataTypes.TEXT },
 
     fuel_expenses: { type: DataTypes.DECIMAL(15, 2), defaultValue: 0 },
+    fuel_notes: { type: DataTypes.TEXT },
     electricity_expenses: { type: DataTypes.DECIMAL(15, 2), defaultValue: 0 },
+    electricity_notes: { type: DataTypes.TEXT },
 
     internet_expenses: { type: DataTypes.DECIMAL(15, 2), defaultValue: 0 },
+    internet_notes: { type: DataTypes.TEXT },
     telephone_expenses: { type: DataTypes.DECIMAL(15, 2), defaultValue: 0 },
+    telephone_notes: { type: DataTypes.TEXT },
     water_expenses: { type: DataTypes.DECIMAL(15, 2), defaultValue: 0 },
+    water_notes: { type: DataTypes.TEXT },
 
     other_operating_expenses: { type: DataTypes.DECIMAL(15, 2), defaultValue: 0 },
     other_operating_notes: { type: DataTypes.TEXT },
 
     non_operating_expenses: { type: DataTypes.DECIMAL(15, 2), defaultValue: 0 },
     non_operating_notes: { type: DataTypes.TEXT },
+    expenses_files: { type: DataTypes.TEXT },
 
     // 📌 Bagian 3: Catatan Tambahan
     unusual_expenses_flag: { type: DataTypes.BOOLEAN, defaultValue: false },

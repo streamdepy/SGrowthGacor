@@ -73,6 +73,8 @@ exports.saveFinanceData = async (req, res) => {
     const {
       gri_id, // id record GRIEconomic yang akan diupdate
       revenue,
+      revenue_notes,
+      revenue_files,
       general_admin_expenses,
       general_admin_notes,
       salary_expenses,
@@ -80,14 +82,20 @@ exports.saveFinanceData = async (req, res) => {
       transport_expenses,
       transport_notes,
       fuel_expenses,
+      fuel_notes,
       electricity_expenses,
+      electricity_notes,
       internet_expenses,
+      internet_notes,
       telephone_expenses,
+      telephone_notes,
       water_expenses,
+      water_notes,
       other_operating_expenses,
       other_operating_notes,
       non_operating_expenses,
       non_operating_notes,
+      expenses_files
     } = req.body;
 
     console.log("📥 saveFinanceData req.body:", req.body);
@@ -110,6 +118,8 @@ exports.saveFinanceData = async (req, res) => {
     // 3. Update data
     await griRecord.update({
       revenue,
+      revenue_notes,
+      revenue_files,
       general_admin_expenses,
       general_admin_notes,
       salary_expenses,
@@ -117,14 +127,20 @@ exports.saveFinanceData = async (req, res) => {
       transport_expenses,
       transport_notes,
       fuel_expenses,
+      fuel_notes,
       electricity_expenses,
+      electricity_notes,
       internet_expenses,
+      internet_notes,
       telephone_expenses,
+      telephone_notes,
       water_expenses,
+      water_notes,
       other_operating_expenses,
       other_operating_notes,
       non_operating_expenses,
       non_operating_notes,
+      expenses_files
     });
 
     // 4. Redirect ke Bagian 3 sambil kirim id & periode

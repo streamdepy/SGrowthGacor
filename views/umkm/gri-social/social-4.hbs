@@ -119,10 +119,10 @@
       class="px-8 py-2 text-base font-medium text-center text-teal-700 border-teal-700 border border-solid whitespace-nowrap bg-white rounded-xl hover:bg-teal-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors">
       Sebelumnya
     </button>
-    <button type="submit"
+    <a href="/umkm/social-5"
       class="px-8 py-2 text-base font-medium text-center text-white whitespace-nowrap bg-lime-500 rounded-xl hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-offset-2 transition-colors">
       Simpan
-    </button>
+    </a>
   </div>
 </section>
 
@@ -132,11 +132,11 @@
     <div class="flex gap-5 max-md:flex-col">
       <div class="w-6/12 max-md:w-full">
         <label class="block pb-2 text-base font-medium">Jumlah karyawan mengikuti</label>
-        <input type="number" min="0" class="train-attended w-full px-8 py-4 mt-2 border rounded-2xl bg-slate-50">
+        <input type="number" min="0" value="80" class="train-attended w-full px-8 py-4 mt-2 border rounded-2xl bg-slate-50">
       </div>
       <div class="w-6/12 max-md:w-full">
         <label class="block pb-2 text-base font-medium">Total karyawan seharusnya</label>
-        <input type="number" min="0" class="train-required w-full px-8 py-4 mt-2 border rounded-2xl bg-slate-50">
+        <input type="number" min="0" value="120" class="train-required w-full px-8 py-4 mt-2 border rounded-2xl bg-slate-50">
       </div>
     </div>
 
@@ -154,9 +154,8 @@
       <div class="w-6/12 max-md:w-full">
         <label class="block pb-2 text-base font-medium">Jenis pelatihan</label>
         <select class="train-type w-full px-8 py-4 mt-2 border rounded-2xl bg-slate-50">
-          <option value="Dasar K3">Pilih</option>
+          <option value="Tanggap Darurat">Tanggap Darurat</option>
           <option>Dasar K3</option>
-          <option>Tanggap Darurat</option>
           <option>Penanganan Bahan Berbahaya</option>
           <option>Ergonomi</option>
           <option value="lainnya">Lainnya</option>
@@ -167,9 +166,8 @@
       <div class="w-6/12 max-md:w-full">
         <label class="block pb-2 text-base font-medium">Frekuensi pelatihan</label>
         <select class="train-freq w-full px-8 py-4 mt-2 border rounded-2xl bg-slate-50">
-          <option value="">Pilih</option>
+          <option value="Triwulanan">Triwulanan</option>
           <option>Bulanan</option>
-          <option>Triwulanan</option>
           <option>Tahunan</option>
           <option value="lainnya">Lainnya</option>
         </select>
@@ -185,7 +183,7 @@
           <input type="file" class="train-proof-file w-full px-4 py-3 border rounded-2xl bg-slate-50">
         </div>
         <div class="w-6/12 max-md:w-full">
-          <input type="url" class="train-proof-link w-full px-8 py-4 border rounded-2xl bg-slate-50" placeholder="Atau tautan dokumen">
+          <input type="url" value="http://umkm/pelatihan_12_Maret_2025" class="train-proof-link w-full px-8 py-4 border rounded-2xl bg-slate-50" placeholder="Atau tautan dokumen">
         </div>
       </div>
     </div>
