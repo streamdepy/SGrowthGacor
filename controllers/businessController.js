@@ -2,11 +2,14 @@ const { BusinessProfile, BusinessShareholder, BusinessDepartment, BusinessCertif
 
 exports.cekformgi = async (req, res) => {
   try {
-    const user = req.user;
-
+    const userId = req.user.id; // user login diverifikasi middlewareValidation
+    // 🔹 Ambil user info
+    const user = await User.findByPk(userId, {
+      attributes: ["id", "name", "email", "role"]
+    });
     // Cari profil bisnis berdasarkan user_id
     const business = await BusinessProfile.findOne({
-      where: { user_id: user.id },
+      where: { user_id: userId.id },
     });
     console.log(business);
 
@@ -14,6 +17,7 @@ exports.cekformgi = async (req, res) => {
       res.render("umkm/form-gi", {
         title: "Form GI",
         layout: "umkm",
+        user: user.get({ plain: true }),
         currentPath: req.path
       });
     } else {

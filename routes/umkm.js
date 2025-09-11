@@ -12,6 +12,10 @@ const grieconomicController = require("../controllers/grieconomicController");
 const grisocialController = require("../controllers/grisocialController");
 const environmentController = require("../controllers/environmentController");
 const reportController = require("../controllers/reportController");
+const userMiddleware = require('../middlewares/userMiddleware'); // Impor middleware
+
+// Terapkan middleware pada semua rute di bawah ini
+router.use(middlewareValidation, userMiddleware);
 
 router.get("/dashboard", middlewareValidation, isUMKM, getDashboardUmkm, function (req, res, next) {});
 
