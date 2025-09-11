@@ -8,6 +8,7 @@ const businessController = require("../controllers/businessController");
 const grieconomicController = require("../controllers/grieconomicController");
 const grisocialController = require("../controllers/grisocialController");
 const environmentController = require("../controllers/environmentController");
+const reportController = require("../controllers/reportController");
 
 router.get("/dashboard", middlewareValidation, isUMKM, getDashboardUmkm, function (req, res, next) {});
 
@@ -430,12 +431,7 @@ router.get("/laporan", function (req, res, next) {
   });
 });
 
-router.get("/lap", function (req, res, next) {
-  res.render("umkm/lap", {
-    title: "Form GRI",
-    layout: "umkm",
-    currentPath: req.path
-  });
+router.get("/lap", middlewareValidation, reportController.getReport, function (req, res, next) {
 });
 
 
