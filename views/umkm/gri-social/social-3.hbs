@@ -54,36 +54,40 @@
         </div>
 
         <div class="flex gap-5 mt-6 max-md:flex-col">
-            <div class="w-6/12 max-md:w-full">
-                <label class="block pb-2 text-base font-medium">Jenis penyakit yang teridentifikasi</label>
-                <select class="od-disease w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
-                    <option value="Gangguan pernapasan">Gangguan pernapasan</option>
-                    <option>Gangguan pendengaran</option>
-                    <option>Musculoskeletal</option>
-                    <option>Stres kerja</option>
-                    <option value="lainnya">Lainnya</option>
-                </select>
-                <input type="text" placeholder="Sebutkan penyakit lainnya" class="od-disease-other w-full px-4 py-3 mt-3 rounded-lg border border-gray-300 bg-slate-50 hidden">
-            </div>
+          <!-- Jenis penyakit -->
+          <div class="w-6/12 max-md:w-full">
+            <label class="block pb-2 text-base font-medium">Jenis penyakit yang teridentifikasi</label>
+            <select name="od[0][disease]" class="od-disease w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+              <option value="Gangguan pernapasan">Gangguan pernapasan</option>
+              <option>Gangguan pendengaran</option>
+              <option>Musculoskeletal</option>
+              <option>Stres kerja</option>
+              <option value="lainnya">Lainnya</option>
+            </select>
+            <input type="text" name="od[0][disease_other]" placeholder="Sebutkan penyakit lainnya"
+              class="od-disease-other w-full px-4 py-3 mt-3 rounded-lg border border-gray-300 bg-slate-50 hidden">
+          </div>
 
-            <div class="w-6/12 max-md:w-full">
-                <label class="block pb-2 text-base font-medium">Unit/Departemen terdampak</label>
-                <select class="od-unit w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
-                    <option>Lapangan</option>
-                    <option>Produksi</option>
-                    <option>Gudang</option>
-                    <option>Kantor</option>
-                    <option value="lainnya">Lainnya</option>
-                </select>
-                <input type="text" placeholder="Sebutkan unit/departemen lainnya" class="od-unit-other w-full px-4 py-3 mt-3 rounded-lg border border-gray-300 bg-slate-50 hidden">
-            </div>
+          <!-- Unit/Departemen terdampak -->
+          <div class="w-6/12 max-md:w-full">
+            <label class="block pb-2 text-base font-medium">Unit/Departemen terdampak</label>
+            <select name="od[0][unit]" class="od-unit w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
+              <option value="Produksi">Produksi</option>
+              <option>Produksi</option>
+              <option>Gudang</option>
+              <option>Kantor</option>
+              <option value="lainnya">Lainnya</option>
+            </select>
+            <input type="text" name="od[0][unit_other]" placeholder="Sebutkan unit/departemen lainnya"
+              class="od-unit-other w-full px-4 py-3 mt-3 rounded-lg border border-gray-300 bg-slate-50 hidden">
+          </div>
         </div>
 
         <div class="w-full mt-6">
-            <label class="block pb-2 text-base font-medium">Tindakan pencegahan atau program kesehatan yang dilakukan</label>
-            <textarea rows="4" placeholder="Jelaskan program kesehatan, pelatihan, APD, dan pemeriksaan berkala." class="od-actions w-full px-8 py-4 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition resize-y"></textarea>
-        </div>
-
+  <label class="block pb-2 text-base font-medium">Tindakan pencegahan atau program kesehatan yang dilakukan</label>
+  <textarea name="od[0][actions]" rows="5"
+    class="od-actions w-full px-8 py-4 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition resize-y">Pemberian program kesehatan, pelatihan, APD, dan pemeriksaan berkala.</textarea>
+</div>
         <div class="mt-4 flex justify-end">
             <button type="button" class="od-remove hidden px-4 py-2 text-sm rounded-xl border border-gray-300 text-gray-700 hover:bg-gray-50 transition">
                 Hapus

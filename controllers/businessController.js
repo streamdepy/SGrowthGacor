@@ -1,4 +1,4 @@
-const { BusinessProfile, BusinessShareholder, BusinessDepartment, BusinessCertification, BusinessStakeholder } = require("../models");
+const { BusinessProfile, BusinessShareholder, BusinessDepartment, BusinessCertification, BusinessStakeholder, User } = require("../models");
 
 exports.cekformgi = async (req, res) => {
   try {
@@ -9,7 +9,7 @@ exports.cekformgi = async (req, res) => {
     });
     // Cari profil bisnis berdasarkan user_id
     const business = await BusinessProfile.findOne({
-      where: { user_id: userId.id },
+      where: { user_id: user.id },
     });
     console.log(business);
 
@@ -219,7 +219,7 @@ exports.saveGeneralInformation = async (req, res) => {
     // Commit transaksi
     await t.commit();
 
-    res.redirect("umkm/form-gri")
+    res.redirect("/umkm/form-gri")
   } catch (error) {
     await t.rollback();
     console.error("Error saving General Information:", error);

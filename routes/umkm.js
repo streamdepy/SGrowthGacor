@@ -21,7 +21,7 @@ router.get("/dashboard", middlewareValidation, isUMKM, getDashboardUmkm, functio
 
 router.get("/form-gi", middlewareValidation, businessController.cekformgi, function (req, res, next) {});
 
-router.post("/form-gi", middlewareValidation, businessController.saveGeneralInformation);
+router.post("/form-gi", businessController.saveGeneralInformation);
 
 router.get("/form-gri", function (req, res, next) {
   res.render("umkm/form-gri", {

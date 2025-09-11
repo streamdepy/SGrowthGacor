@@ -29,8 +29,8 @@
     <label for="has_incident" class="block pb-2 text-base font-medium">Apakah ada insiden kecelakaan kerja dalam periode ini?</label>
     <select id="has_incident" name="has_incident"
       class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
-      <option value="">Pilih</option>
-      <option value="ya">Ya</option>
+     <option value="ya">Ya</option>
+      
       <option value="tidak">Tidak</option>
     </select>
   </div>
@@ -45,12 +45,12 @@
         <div class="flex gap-5 max-md:flex-col">
             <div class="w-6/12 max-md:w-full">
             <label class="block pb-2 text-base font-medium">Jumlah total cedera kerja (injuries)</label>
-            <input type="number" min="0" name="total_injuries[]" placeholder="0"
+            <input type="number" min="1" name="total_injuries[]" value="1"
                 class="k3-injuries w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
             </div>
             <div class="w-6/12 max-md:w-full">
             <label class="block pb-2 text-base font-medium">Jumlah kecelakaan fatal (fatalities)</label>
-            <input type="number" min="0" name="total_fatalities[]" placeholder="0"
+            <input type="number" min="0" name="total_fatalities[]" value="0"
                 class="k3-fatalities w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
             </div>
         </div>
@@ -61,8 +61,8 @@
             <div class="w-4/12 max-md:w-full">
             <label class="block pb-2 text-base font-medium">Jenis kecelakaan utama</label>
             <select name="main_incident_type[]" class="k3-type w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
-                <option >Pilih</option>
-                <option value="Terjatuh">Terjatuh</option>
+                 <option value="Terjatuh">Terjatuh</option>
+               
                 <option value="Tertimpa">Tertimpa</option>
                 <option value="Tersengat">Tersengat</option>
                 <option value="Paparan bahan kimia">Paparan bahan kimia</option>
@@ -76,9 +76,9 @@
             <div class="w-4/12 max-md:w-full">
             <label class="block pb-2 text-base font-medium">Lokasi kejadian</label>
             <select name="incident_location[]" class="k3-location w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
-                <option value="">Pilih</option>
-                <option value="Pabrik">Pabrik</option>
                 <option value="Gudang">Gudang</option>
+                <option value="Pabrik">Pabrik</option>
+                
                 <option value="Lapangan">Lapangan</option>
                 <option value="Kantor">Kantor</option>
                 <option value="lainnya">Lainnya</option>
@@ -91,10 +91,10 @@
             <div class="w-4/12 max-md:w-full">
             <label class="block pb-2 text-base font-medium">Penyebab utama kecelakaan</label>
             <select name="incident_cause[]" class="k3-cause w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
-                <option >Pilih</option>
+                <option value="Kurangnya SOP">Kurangnya SOP</option>
                 <option value="Human error">Human error</option>
                 <option value="Kegagalan alat">Kegagalan alat</option>
-                <option value="Kurangnya SOP">Kurangnya SOP</option>
+                
                 <option value="lainnya">Lainnya</option>
             </select>
             <input type="text" name="incident_cause[]" placeholder="Sebutkan penyebab lainnya"
@@ -105,15 +105,15 @@
         <!-- Row: Lost workdays -->
         <div class="w-full mt-6">
             <label class="block pb-2 text-base font-medium">Hari kerja yang hilang (lost workdays) akibat kecelakaan</label>
-            <input type="number" min="0" name="lost_workdays[]" placeholder="0"
+            <input type="number" min="0" name="lost_workdays[]" value="0"
             class="k3-lost w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
         </div>
 
         <!-- Row: Tindakan -->
         <div class="w-full mt-6">
             <label class="block pb-2 text-base font-medium">Tindakan korektif dan preventif yang dilakukan</label>
-            <textarea name="corrective_actions[]" rows="5" placeholder="Jelaskan tindakan korektif & preventif…"
-            class="k3-actions w-full px-8 py-4 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition resize-y"></textarea>
+            <input name="corrective_actions[]" rows="5" value="Peningkatan SOP bagi karyawan"
+            class="k3-actions w-full px-8 py-4 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition resize-y"></input>
         </div>
 
         <!-- Tombol hapus untuk item tambahan -->
