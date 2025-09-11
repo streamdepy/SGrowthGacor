@@ -20,14 +20,12 @@
 
     <div class="w-full mt-8 space-y-6">
 
-      <!-- Sosialisasi ke karyawan -->
       <div class="grid grid-cols-2 gap-5 max-md:grid-cols-1">
         <div>
           <label class="block pb-2 text-base font-medium">Apakah kebijakan ini telah disosialisasikan ke karyawan?</label>
           <select id="pol_share" class="w-full px-8 py-4 rounded-2xl border border-gray-300 bg-slate-50">
             <option value="">Pilih</option>
-            <option>Ya</option>
-            <option>Tidak</option>
+            <option selected>Ya</option> <option>Tidak</option>
             <option>Sedang berjalan</option>
           </select>
         </div>
@@ -36,40 +34,34 @@
           <label class="block pb-2 text-base font-medium">Metode sosialisasi yang digunakan</label>
           <select id="pol_method" class="w-full px-8 py-4 rounded-2xl border border-gray-300 bg-slate-50">
             <option value="">Pilih</option>
-            <option>Pelatihan internal</option>
-            <option>Email/Portal</option>
+            <option selected>Pelatihan internal</option> <option>Email/Portal</option>
             <option>Workshop</option>
             <option value="lainnya">Lainnya</option>
           </select>
         </div>
       </div>
 
-      <!-- Angka Pelatihan & Persentase -->
       <div class="grid grid-cols-2 gap-5 max-md:grid-cols-1">
         <div>
           <label class="block pb-2 text-base font-medium">Jumlah pelatihan terkait kebijakan dalam periode pelaporan</label>
-          <input type="number" min="0" placeholder="0"
-                class="w-full px-8 py-4 rounded-2xl border border-gray-300 bg-slate-50 outline-none">
-        </div>
+          <input type="number" min="0" placeholder="0" value="1"
+                 class="w-full px-8 py-4 rounded-2xl border border-gray-300 bg-slate-50 outline-none"> </div>
 
         <div>
           <label class="block pb-2 text-base font-medium">Persentase karyawan yang telah mengikuti pelatihan kebijakan</label>
           <div class="relative">
-            <input type="number" min="0" max="100" step="0.01" placeholder="0"
-                  class="w-full px-8 py-4 pr-12 rounded-2xl border border-gray-300 bg-slate-50 outline-none">
-            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">%</span>
+            <input type="number" min="0" max="100" step="0.01" placeholder="0" value="90"
+                   class="w-full px-8 py-4 pr-12 rounded-2xl border border-gray-300 bg-slate-50 outline-none"> <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">%</span>
           </div>
         </div>
       </div>
 
-      <!-- Mekanisme pengawasan -->
       <div class="grid grid-cols-2 gap-5 max-md:grid-cols-1">
         <div>
           <label class="block pb-2 text-base font-medium">Apakah ada mekanisme pengawasan kepatuhan?</label>
           <select id="pol_monitor" class="w-full px-8 py-4 rounded-2xl border border-gray-300 bg-slate-50">
             <option value="">Pilih</option>
-            <option>Ya</option>
-            <option>Tidak</option>
+            <option selected>Ya</option> <option>Tidak</option>
           </select>
         </div>
 
@@ -77,22 +69,19 @@
           <label class="block pb-2 text-base font-medium">Bentuk mekanisme pengawasan</label>
           <select id="pol_monitor_type" class="w-full px-8 py-4 rounded-2xl border border-gray-300 bg-slate-50">
             <option value="">Pilih</option>
-            <option>Audit internal</option>
-            <option>External audit</option>
+            <option selected>Audit internal</option> <option>External audit</option>
             <option>Laporan tahunan</option>
             <option value="lainnya">Lainnya</option>
           </select>
         </div>
       </div>
 
-      <!-- Evaluasi berkala -->
       <div class="grid grid-cols-2 gap-5 max-md:grid-cols-1">
         <div>
           <label class="block pb-2 text-base font-medium">Apakah kebijakan ini dievaluasi atau diperbarui secara berkala?</label>
           <select id="pol_eval" class="w-full px-8 py-4 rounded-2xl border border-gray-300 bg-slate-50">
             <option value="">Pilih</option>
-            <option value="ya">Ya</option>
-            <option value="tidak">Tidak</option>
+            <option value="ya" selected>Ya</option> <option value="tidak">Tidak</option>
           </select>
         </div>
 
@@ -100,14 +89,12 @@
           <label class="block pb-2 text-base font-medium">Jika Ya, frekuensi evaluasi</label>
           <select id="pol_eval_freq" class="w-full px-8 py-4 rounded-2xl border border-gray-300 bg-slate-50">
             <option value="">Pilih</option>
-            <option>Tahunan</option>
-            <option>2 Tahunan</option>
+            <option selected>Tahunan</option> <option>2 Tahunan</option>
             <option value="lainnya">Lainnya</option>
           </select>
         </div>
       </div>
 
-      <!-- Catatan -->
       <div>
         <label class="block pb-2 text-base font-medium">Catatan atau kendala dalam implementasi</label>
         <textarea rows="5" placeholder="Tuliskan catatan atau kendala…"
@@ -116,15 +103,15 @@
 
       <!-- Buttons -->
       <div class="flex justify-end gap-4 mt-8 w-full">
-        <button type="button"
+        <a href="/umkm/gov-2" type="button"
           onclick="window.history.back()"
           class="px-8 py-2 text-base font-medium text-center text-teal-700 border border-teal-700 bg-white rounded-xl hover:bg-teal-700 hover:text-white transition">
           Sebelumnya
-        </button>
-        <button type="submit"
+        </a>
+        <a href="/umkm/gov-4" type="submit"
           class="px-8 py-2 text-base font-medium text-center text-white bg-lime-500 rounded-xl hover:bg-lime-600 transition">
           Simpan
-        </button>
+        </a>
       </div>
     </div>
   </section>

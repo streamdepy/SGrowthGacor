@@ -13,20 +13,17 @@
     </div>
   </header>
 
-  <!-- Daftar Kebijakan Perusahaan (ASEDG-G2.1 / GRI 2-23) -->
   <section class="flex flex-col items-start py-14 px-16 mt-10 w-full bg-white rounded-2xl shadow-2xl max-w-[981px] max-md:px-5">
-    <h3 class="text-3xl font-semibold text-teal-700">Daftar Kebijakan Perusahaan (ASEDG-G2.1 / GRI 2-23)</h3>
+    <h3 class="text-3xl font-semibold text-teal-700">Daftar Kebijakan Perusahaan </h3>
     <p class="mt-3 text-gray-500">Tujuan: Mengidentifikasi kebijakan yang sudah dimiliki perusahaan.</p>
 
     <div class="w-full mt-8 space-y-6">
-      <!-- Dropdowns kebijakan -->
       <div class="grid grid-cols-2 gap-5 max-md:grid-cols-1">
         <div>
           <label class="block pb-2 text-base font-medium">Code of Conduct (Kode Etik)</label>
           <select class="w-full px-8 py-4 rounded-2xl border border-gray-300 bg-slate-50">
             <option value="">Pilih</option>
-            <option>Ya</option>
-            <option>Tidak</option>
+            <option selected>Ya</option> <option>Tidak</option>
             <option>Sedang disusun</option>
           </select>
         </div>
@@ -34,8 +31,7 @@
           <label class="block pb-2 text-base font-medium">Anti-Corruption Policy</label>
           <select class="w-full px-8 py-4 rounded-2xl border border-gray-300 bg-slate-50">
             <option value="">Pilih</option>
-            <option>Ya</option>
-            <option>Tidak</option>
+            <option selected>Ya</option> <option>Tidak</option>
             <option>Sedang disusun</option>
           </select>
         </div>
@@ -43,8 +39,7 @@
           <label class="block pb-2 text-base font-medium">Whistleblowing Policy</label>
           <select class="w-full px-8 py-4 rounded-2xl border border-gray-300 bg-slate-50">
             <option value="">Pilih</option>
-            <option>Ya</option>
-            <option>Tidak</option>
+            <option selected>Ya</option> <option>Tidak</option>
             <option>Sedang disusun</option>
           </select>
         </div>
@@ -52,55 +47,49 @@
           <label class="block pb-2 text-base font-medium">Health and Safety Policy (K3)</label>
           <select class="w-full px-8 py-4 rounded-2xl border border-gray-300 bg-slate-50">
             <option value="">Pilih</option>
-            <option>Ya</option>
-            <option>Tidak</option>
+            <option selected>Ya</option> <option>Tidak</option>
             <option>Sedang disusun</option>
           </select>
         </div>
       </div>
 
-      <!-- Kebijakan lain -->
       <div>
         <label class="block pb-2 text-base font-medium">Kebijakan lain terkait keberlanjutan</label>
         <textarea rows="4" placeholder="Contoh: Diversity, Data Privacy, Human Rights"
-          class="w-full px-8 py-4 rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none"></textarea>
+          class="w-full px-8 py-4 rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none">Human Rights</textarea>
       </div>
 
-      <!-- Tahun update -->
       <div>
         <label class="block pb-2 text-base font-medium">Tahun penerapan / pembaruan terakhir kebijakan</label>
-        <input type="number" placeholder="Misal: 2022"
-          class="w-full px-8 py-4 rounded-2xl border border-gray-300 bg-slate-50 outline-none">
+        <input type="number" placeholder="Misal: 2022" value="2024"
+          class="policy-year w-full px-8 py-4 rounded-2xl border border-gray-300 bg-slate-50 outline-none">
       </div>
 
-      <!-- Upload / Link (disamakan gaya seperti contoh bukti dokumentasi) -->
       <div class="w-full mt-6">
         <label class="block pb-2 text-base font-medium">Link atau dokumen kebijakan (opsional)</label>
         <div class="flex gap-5 max-md:flex-col">
           <div class="w-6/12 max-md:w-full">
-            <input type="file" class="w-full px-4 py-3 border rounded-2xl bg-slate-50">
+            <input type="file" name="policy[file]" class="w-full px-4 py-3 border rounded-2xl bg-slate-50">
           </div>
           <div class="w-6/12 max-md:w-full">
-            <input type="url" placeholder="Atau tautan dokumen" class="w-full px-8 py-4 border rounded-2xl bg-slate-50">
+            <input type="url" name="policy[link]" placeholder="Atau tautan dokumen" class="w-full px-8 py-4 border rounded-2xl bg-slate-50">
           </div>
         </div>
       </div>
 
-      <!-- Buttons -->
       <div class="flex justify-end gap-4 mt-8 w-full">
-        <button type="button"
+        <a href="/umkm/gov-1" type="button"
           onclick="window.history.back()"
           class="px-8 py-2 text-base font-medium text-center text-teal-700 border border-teal-700 bg-white rounded-xl hover:bg-teal-700 hover:text-white transition">
           Sebelumnya
-        </button>
-        <button type="submit"
+        </a>
+        <a href="/umkm/gov-3" type="submit"
           class="px-8 py-2 text-base font-medium text-center text-white bg-lime-500 rounded-xl hover:bg-lime-600 transition">
           Simpan
-        </button>
+        </a>
       </div>
     </div>
   </section>
-
 </main>
 
 <script>
