@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const { GRIEconomic } = require("../models");
+const path = require("path");
+const axios = require('axios');
+require('dotenv').config({ path: path.resolve(__dirname, './.env') });
 
 const { middlewareValidation, isAdmin, isUMKM } = require("../middlewares/authMiddleware");
 const { getDashboardUmkm } = require("../controllers/umkmController");
@@ -443,15 +446,43 @@ router.get("/chatAI", function (req, res, next) {
   });
 });
 
-module.exports = router;
+const API_KEY = process.env.OPENROUTER_API_KEY;
+console.log("API KEY:", process.env.OPENROUTER_API_KEY);
 
-/*
-router.get('/login', function(req, res, next) {
-    res.render('auth/login', { 
-      title: 'Login',
-      layout: 'layouts/layout_login', 
-    });
+router.post('/chatAI', async (req, res) => {
+  const { prompt } = req.body;
+
+  try {
+    const response = await axios.post(
+      'https://openrouter.ai/api/v1/chat/completions',
+      {
+        model: 'nousresearch/hermes-2-pro-llama-3-8b',
+        messages: [
+          {
+            role: 'system',
+            content: 'Kamu adalah asisten pelaporan ESG untuk UMKM berdasarkan standar GRI.',
+          },
+          {
+            role: 'user',
+            content: prompt,
+          },
+        ],
+      },
+      {
+        headers: {
+          'Authorization': `Bearer ${API_KEY}`,
+          'HTTP-Referer': 'http://localhost:3000', // ganti sesuai domainmu jika online
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+
+    res.json({ response: response.data.choices[0].message.content });
+  } catch (error) {
+    console.error(error.response?.data || error.message);
+    res.status(500).json({ response: 'AI gagal menjawab. Coba lagi nanti.' });
+  }
 });
-  
-router.post('/login', login);
-*/
+
+
+module.exports = router;
