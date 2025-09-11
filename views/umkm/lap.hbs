@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Laporan ESG – Ringkasan</title>
+  <title>Laporan ESG - Ringkasan</title>
   <!-- Asumsikan Tailwind sudah terpasang di project -->
 </head>
 <body class="bg-slate-100 text-slate-900">
@@ -41,380 +41,393 @@
 
     </section>
 
-      <!-- Overall Score (ringkas) -->
-  <section class="w-full">
-    <div class="bg-white rounded-2xl shadow-2xl p-6 md:p-8">
-      <h2 class="text-2xl md:text-3xl font-semibold text-teal-700">Overall Score & Disclosure</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 mt-6">
-        <div class="p-4 rounded-xl border border-blue-100 bg-blue-50/40">
-          <div class="text-sm text-gray-600">Economic</div>
-          <div class="text-3xl font-bold text-blue-700">80%</div>
-        </div>
-        <div class="p-4 rounded-xl border border-teal-100 bg-teal-50/40">
-          <div class="text-sm text-gray-600">Environmental</div>
-          <div class="text-3xl font-bold text-teal-700">74%</div>
-        </div>
-        <div class="p-4 rounded-xl border border-orange-100 bg-orange-50/40">
-          <div class="text-sm text-gray-600">Social</div>
-          <div class="text-3xl font-bold text-orange-600">78%</div>
-        </div>
-        <div class="p-4 rounded-xl border border-lime-100 bg-lime-50/40">
-          <div class="text-sm text-gray-600">Governance</div>
-          <div class="text-3xl font-bold text-lime-700">85%</div>
-        </div>
+      <section class="w-full">
+  <div class="bg-white rounded-2xl shadow-2xl p-6 md:p-8">
+    <h2 class="text-2xl md:text-3xl font-semibold text-teal-700">Overall Score & Disclosure</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 mt-6">
+      <div class="p-4 rounded-xl border border-blue-100 bg-blue-50/40">
+        <div class="text-sm text-gray-600">Economic</div>
+        <div class="text-3xl font-bold text-blue-700">{{scores.economic}}%</div>
       </div>
-
-      <div class="mt-6 p-4 rounded-xl bg-slate-50 border border-slate-200">
-        <div class="text-sm text-gray-600">Total ESG Disclosure</div>
-        <div class="text-2xl font-bold text-slate-800">79%</div>
+      <div class="p-4 rounded-xl border border-teal-100 bg-teal-50/40">
+        <div class="text-sm text-gray-600">Environmental</div>
+        <div class="text-3xl font-bold text-teal-700">74%</div>
+      </div>
+      <div class="p-4 rounded-xl border border-orange-100 bg-orange-50/40">
+        <div class="text-sm text-gray-600">Social</div>
+        <div class="text-3xl font-bold text-orange-600">78%</div>
+      </div>
+      <div class="p-4 rounded-xl border border-lime-100 bg-lime-50/40">
+        <div class="text-sm text-gray-600">Governance</div>
+        <div class="text-3xl font-bold text-lime-700">85%</div>
       </div>
     </div>
-  </section>
 
-  <!-- Breakdown per Pilar -->
-  <section class="w-full mt-8 grid grid-cols-1 lg:grid-cols-4 gap-6">
-    <!-- Economic Card -->
-    <article class="bg-white rounded-2xl shadow-2xl p-6">
-      <header class="flex items-center justify-between">
-        <h3 class="text-xl font-semibold text-blue-700">Economic</h3>
-        <span class="text-2xl font-bold text-blue-700">80%</span>
-      </header>
-      <ul class="mt-5 space-y-4">
-        <li>
-          <div class="flex items-center justify-between text-sm mb-1">
-            <span class="text-gray-600">Revenue & Expenses</span>
-            <span class="font-semibold text-slate-800">78%</span>
-          </div>
-          <div class="h-2.5 bg-slate-100 rounded-full">
-            <div class="h-2.5 bg-blue-600 rounded-full" style="width:78%"></div>
-          </div>
-        </li>
-        <li>
-          <div class="flex items-center justify-between text-sm mb-1">
-            <span class="text-gray-600">Additional Notes</span>
-            <span class="font-semibold text-slate-800">82%</span>
-          </div>
-          <div class="h-2.5 bg-slate-100 rounded-full">
-            <div class="h-2.5 bg-blue-600 rounded-full" style="width:82%"></div>
-          </div>
-        </li>
-      </ul>
-    </article>
+    <div class="mt-6 p-4 rounded-xl bg-slate-50 border border-slate-200">
+      <div class="text-sm text-gray-600">Total ESG Disclosure</div>
+      <div class="text-2xl font-bold text-slate-800">{{scores.overall}}%</div>
+    </div>
+  </div>
+</section>
 
-    <!-- Environmental Card -->
-    <article class="bg-white rounded-2xl shadow-2xl p-6">
-      <header class="flex items-center justify-between">
-        <h3 class="text-xl font-semibold text-teal-700">Environmental</h3>
-        <span class="text-2xl font-bold text-teal-700">74%</span>
-      </header>
-      <ul class="mt-5 space-y-4">
-        <li>
-          <div class="flex items-center justify-between text-sm mb-1">
-            <span class="text-gray-600">Emissions</span>
-            <span class="font-semibold text-slate-800">72%</span>
-          </div>
-          <div class="h-2.5 bg-slate-100 rounded-full">
-            <div class="h-2.5 bg-teal-600 rounded-full" style="width:72%"></div>
-          </div>
-        </li>
-        <li>
-          <div class="flex items-center justify-between text-sm mb-1">
-            <span class="text-gray-600">Energy</span>
-            <span class="font-semibold text-slate-800">90%</span>
-          </div>
-          <div class="h-2.5 bg-slate-100 rounded-full">
-            <div class="h-2.5 bg-teal-600 rounded-full" style="width:90%"></div>
-          </div>
-        </li>
-        <li>
-          <div class="flex items-center justify-between text-sm mb-1">
-            <span class="text-gray-600">Water</span>
-            <span class="font-semibold text-slate-800">60%</span>
-          </div>
-          <div class="h-2.5 bg-slate-100 rounded-full">
-            <div class="h-2.5 bg-teal-600 rounded-full" style="width:60%"></div>
-          </div>
-        </li>
-      </ul>
-    </article>
+<section class="w-full mt-8 grid grid-cols-1 lg:grid-cols-4 gap-6">
+  <article class="bg-white rounded-2xl shadow-2xl p-6">
+    <header class="flex items-center justify-between">
+      <h3 class="text-xl font-semibold text-blue-700">Economic</h3>
+      <span class="text-2xl font-bold text-blue-700">{{scores.economic}}%</span>
+    </header>
+    <ul class="mt-5 space-y-4">
+      <li>
+        <div class="flex items-center justify-between text-sm mb-1">
+          <span class="text-gray-600">Revenue & Expenses</span>
+          <span class="font-semibold text-slate-800">
+            {{#if scores}}
+              {{#if scores.revenue}}
+                lengkap
+              {{else}}
+                Belum Lengkap
+              {{/if}}
+            {{else}}
+              Belum Lengkap
+            {{/if}}
+          </span>
+        </div>
+      </li>
+    </ul>
+  </article>
 
-    <!-- Social Card -->
-    <article class="bg-white rounded-2xl shadow-2xl p-6">
-      <header class="flex items-center justify-between">
-        <h3 class="text-xl font-semibold text-orange-600">Social</h3>
-        <span class="text-2xl font-bold text-orange-600">78%</span>
-      </header>
-      <ul class="mt-5 space-y-4">
-        <li>
-          <div class="flex items-center justify-between text-sm mb-1">
-            <span class="text-gray-600">Human Rights</span>
-            <span class="font-semibold text-slate-800">75%</span>
-          </div>
-          <div class="h-2.5 bg-slate-100 rounded-full">
-            <div class="h-2.5 bg-orange-500 rounded-full" style="width:75%"></div>
-          </div>
-        </li>
-        <li>
-          <div class="flex items-center justify-between text-sm mb-1">
-            <span class="text-gray-600">Employee Management</span>
-            <span class="font-semibold text-slate-800">80%</span>
-          </div>
-          <div class="h-2.5 bg-slate-100 rounded-full">
-            <div class="h-2.5 bg-orange-500 rounded-full" style="width:80%"></div>
-          </div>
-        </li>
-      </ul>
-    </article>
+  <article class="bg-white rounded-2xl shadow-2xl p-6">
+    <header class="flex items-center justify-between">
+      <h3 class="text-xl font-semibold text-teal-700">Environmental</h3>
+      <span class="text-2xl font-bold text-teal-700">74%</span>
+    </header>
+    <div class="p-4 text-center text-gray-500">
+      <p>Data belum tersedia.</p>
+    </div>
+  </article>
 
-    <!-- Governance Card -->
-    <article class="bg-white rounded-2xl shadow-2xl p-6">
-      <header class="flex items-center justify-between">
-        <h3 class="text-xl font-semibold text-lime-700">Governance</h3>
-        <span class="text-2xl font-bold text-lime-700">85%</span>
-      </header>
-      <ul class="mt-5 space-y-4">
-        <li>
-          <div class="flex items-center justify-between text-sm mb-1">
-            <span class="text-gray-600">Governance Structure</span>
-            <span class="font-semibold text-slate-800">80%</span>
-          </div>
-          <div class="h-2.5 bg-slate-100 rounded-full">
-            <div class="h-2.5 bg-lime-600 rounded-full" style="width:80%"></div>
-          </div>
-        </li>
-        <li>
-          <div class="flex items-center justify-between text-sm mb-1">
-            <span class="text-gray-600">Policy Commitments</span>
-            <span class="font-semibold text-slate-800">90%</span>
-          </div>
-          <div class="h-2.5 bg-slate-100 rounded-full">
-            <div class="h-2.5 bg-lime-600 rounded-full" style="width:90%"></div>
-          </div>
-        </li>
-      </ul>
-    </article>
-  </section>
+  <article class="bg-white rounded-2xl shadow-2xl p-6">
+    <header class="flex items-center justify-between">
+      <h3 class="text-xl font-semibold text-orange-600">Social</h3>
+      <span class="text-2xl font-bold text-orange-600">78%</span>
+    </header>
+    <div class="p-4 text-center text-gray-500">
+      <p>Data belum tersedia.</p>
+    </div>
+  </article>
+
+  <article class="bg-white rounded-2xl shadow-2xl p-6">
+    <header class="flex items-center justify-between">
+      <h3 class="text-xl font-semibold text-lime-700">Governance</h3>
+      <span class="text-2xl font-bold text-lime-700">85%</span>
+    </header>
+    <div class="p-4 text-center text-gray-500">
+      <p>Data belum tersedia.</p>
+    </div>
+  </article>
+</section>
 
 
     <!-- 1) Informasi Umum Perusahaan -->
     <section class="bg-white rounded-2xl shadow-xl p-6 mt-8 mb-8">
-    <h2 class="text-2xl font-semibold text-teal-700">Informasi Umum Perusahaan</h2>
-    <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
-        <div>
-        <div class="text-slate-500">Nama Organisasi/Perusahaan</div>
-        <div class="font-medium">……………………</div>
-        </div>
-        <div>
-        <div class="text-slate-500">Tahun Berdiri</div>
-        <div class="font-medium">……………………</div>
-        </div>
-        <div class="md:col-span-2">
-        <div class="text-slate-500">Legal Form/Status Kepemilikan</div>
-        <div class="font-medium">PT / CV / Koperasi / UMKM / Yayasan / Lainnya</div>
-        </div>
-        <div>
-        <div class="text-slate-500">Lokasi Kantor Pusat (HQ)</div>
-        <div class="font-medium">……………………</div>
-        </div>
-        <div>
-        <div class="text-slate-500">Lokasi Operasional (Kota/Provinsi/Region)</div>
-        <div class="font-medium">……………………</div>
-        </div>
+  <h2 class="text-2xl font-semibold text-teal-700">Informasi Umum Perusahaan</h2>
+  <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+    <div>
+      <div class="text-slate-500">Nama Organisasi/Perusahaan</div>
+      <div class="font-medium">{{business.business_name}}</div>
     </div>
-    </section>
-
-    <!-- 2) Aktivitas & Operasional -->
-    <section class="bg-white rounded-2xl shadow-xl p-6 mb-8">
-    <h2 class="text-2xl font-semibold text-teal-700">Aktivitas & Operasional</h2>
-    <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
-        <div class="md:col-span-2">
-        <div class="text-slate-500">Jenis Kegiatan/Industri Utama</div>
-        <div class="font-medium">Manufaktur / Jasa / Perdagangan / Pertanian-Perikanan / Teknologi / Lainnya</div>
-        </div>
-        <div class="md:col-span-2">
-        <div class="text-slate-500">Daftar Merek/Brand yang Dimiliki</div>
-        <div class="font-medium">……………………</div>
-        </div>
-        <div class="md:col-span-2">
-        <div class="text-slate-500">Produk/Jasa yang Ditawarkan</div>
-        <div class="font-medium">……………………</div>
-        </div>
+    <div>
+      <div class="text-slate-500">Tahun Berdiri</div>
+      <div class="font-medium">{{business.established_year}}</div>
     </div>
-    </section>
+    <div class="md:col-span-2">
+      <div class="text-slate-500">Legal Form/Status Kepemilikan</div>
+      <div class="font-medium">{{business.legal_form}}</div>
+    </div>
+    <div>
+      <div class="text-slate-500">Lokasi Kantor Pusat (HQ)</div>
+      <div class="font-medium">{{business.headquarters}}</div>
+    </div>
+    <div>
+      <div class="text-slate-500">Lokasi Operasional (Kota/Provinsi/Region)</div>
+      <div class="font-medium">{{business.city}}, {{business.province}}</div>
+    </div>
+  </div>
+</section>
 
-    <!-- 3) Informasi Kepemilikan -->
-    <section class="bg-white rounded-2xl shadow-xl p-6 mb-8">
-    <h2 class="text-2xl font-semibold text-teal-700">Informasi Kepemilikan</h2>
-    <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
-        <div>
+
+<section class="bg-white rounded-2xl shadow-xl p-6 mb-8">
+  <h2 class="text-2xl font-semibold text-teal-700">Aktivitas & Operasional</h2>
+  <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+    <div class="md:col-span-2">
+      <div class="text-slate-500">Jenis Kegiatan/Industri Utama</div>
+      <div class="font-medium">{{business.industry_type}}</div>
+    </div>
+    <div class="md:col-span-2">
+      <div class="text-slate-500">Daftar Merek/Brand yang Dimiliki</div>
+      <div class="font-medium">{{business.business_name}}</div>
+    </div>
+    <div class="md:col-span-2">
+      <div class="text-slate-500">Produk/Jasa yang Ditawarkan</div>
+      <div class="font-medium">{{business.products_offered}}</div>
+    </div>
+  </div>
+</section>
+
+
+<section class="bg-white rounded-2xl shadow-xl p-6 mb-8">
+  <h2 class="text-2xl font-semibold text-teal-700">Informasi Kepemilikan</h2>
+  <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+    {{#if shareholders.length}}
+      {{#each shareholders}}
+      <div>
         <div class="text-slate-500">Pemilik/Shareholders Utama</div>
-        <div class="font-medium">……………………</div>
-        </div>
-        <div>
-        <div class="text-slate-500">Persentase Kepemilikan</div>
-        <div class="font-medium">…………………… %</div>
-        </div>
-    </div>
-    </section>
-
-    <!-- 4) Pasar yang Dilayani -->
-    <section class="bg-white rounded-2xl shadow-xl p-6 mb-8">
-    <h2 class="text-2xl font-semibold text-teal-700">Pasar yang Dilayani</h2>
-    <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
-        <div>
-        <div class="text-slate-500">Wilayah Operasi</div>
-        <div class="font-medium">Lokal / Nasional / Regional (ASEAN) / Global</div>
-        </div>
-        <div>
-        <div class="text-slate-500">Target Market</div>
-        <div class="font-medium">B2B / B2C / Pemerintah / Lainnya</div>
-        </div>
-    </div>
-    </section>
-
-    <!-- 5) Informasi Karyawan & Pekerja -->
-    <section class="bg-white rounded-2xl shadow-xl p-6 mb-8">
-    <h2 class="text-2xl font-semibold text-teal-700">Informasi Karyawan & Pekerja</h2>
-    <div class="mt-4 grid md:grid-cols-3 gap-4 text-sm">
-        <div>
-        <div class="text-slate-500">Total Karyawan (Full-Time)</div>
-        <div class="font-medium">……………………</div>
-        </div>
-        <div>
-        <div class="text-slate-500">Pekerja Paruh Waktu/Outsourcing</div>
-        <div class="font-medium">……………………</div>
-        </div>
-        <div>
-        <div class="text-slate-500">Komposisi Gender (opsional)</div>
-        <div class="font-medium">% Laki-laki: ………… | % Perempuan: …………</div>
-        </div>
-        <div class="md:col-span-3">
-        <div class="text-slate-500">Jumlah Karyawan per Departemen</div>
-        <div class="font-medium">……………………</div>
-        </div>
-    </div>
-    </section>
-
-    <!-- 6) Nilai, Prinsip, dan Standar -->
-    <section class="bg-white rounded-2xl shadow-xl p-6 mb-8">
-    <h2 class="text-2xl font-semibold text-teal-700">Nilai, Prinsip, dan Standar</h2>
-    <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
-        <div class="md:col-span-2">
-        <div class="text-slate-500">Core Values Perusahaan</div>
-        <div class="font-medium">……………………</div>
-        </div>
-        <div class="md:col-span-2">
-        <div class="text-slate-500">Prinsip/Kode Etik yang Diterapkan</div>
-        <div class="font-medium">……………………</div>
-        </div>
-        <div class="md:col-span-2">
-        <div class="text-slate-500">Sertifikasi/Standar yang Dimiliki</div>
-        <div class="font-medium">ISO 9001 / ISO 14001 / ISO 45001 / Lainnya</div>
-        </div>
-    </div>
-    </section>
-
-    <!-- 7) Pemangku Kepentingan (Stakeholders) -->
-    <section class="bg-white rounded-2xl shadow-xl p-6 mb-8">
-    <h2 class="text-2xl font-semibold text-teal-700">Pemangku Kepentingan (Stakeholders)</h2>
-    <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
-        <div class="md:col-span-2">
-        <div class="text-slate-500">Kelompok Pemangku Kepentingan</div>
-        <div class="font-medium">Pelanggan, Karyawan, Pemasok, Pemerintah/Regulator, Investor, Masyarakat Lokal, LSM/Komunitas, Lainnya</div>
-        </div>
-        <div class="md:col-span-2">
-        <div class="text-slate-500">Hubungan & Frekuensi Komunikasi</div>
-        <div class="font-medium">……………………</div>
-        </div>
-    </div>
-    </section>
-
-    <!-- 8) Kontak & Dokumen Pendukung -->
-    <section class="bg-white rounded-2xl shadow-xl p-6 mb-8">
-    <h2 class="text-2xl font-semibold text-teal-700">Kontak & Dokumen Pendukung</h2>
-    <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
-        <div>
-        <div class="text-slate-500">Nama Kontak Utama</div>
-        <div class="font-medium">……………………</div>
-        </div>
-        <div>
-        <div class="text-slate-500">Posisi/Jabatan</div>
-        <div class="font-medium">……………………</div>
-        </div>
-        <div class="md:col-span-2">
-        <div class="text-slate-500">Email & Nomor Telepon</div>
-        <div class="font-medium">……………………</div>
-        </div>
-        <div class="md:col-span-2">
-        <div class="text-slate-500">Dokumen Pendukung (opsional)</div>
-        <div class="font-medium">Link/arsip: ……………………</div>
-        </div>
-    </div>
-    </section>
-
-
-    <!-- ECONOMIC -->
-    <section class="bg-white rounded-2xl shadow-xl p-6 mb-8">
-      <div class="flex items-center justify-between">
-        <h2 class="text-2xl font-semibold text-teal-700">Economic (GRI Economic)</h2>
-        <span class="text-xs px-2 py-1 rounded-full bg-orange-100 text-orange-700">Status: Parsial</span>
+        <div class="font-medium">{{this.shareholder_name}}</div>
       </div>
+      <div>
+        <div class="text-slate-500">Persentase Kepemilikan</div>
+        <div class="font-medium">{{this.ownership_percentage}}%</div>
+      </div>
+      {{/each}}
+    {{else}}
+      <div class="md:col-span-2">
+        <p class="text-slate-500">Data kepemilikan belum tersedia.</p>
+      </div>
+    {{/if}}
+  </div>
+</section>
 
-      <!-- Accordion: Informasi Dasar -->
-      <details class="group mt-4 rounded-xl border">
-        <summary class="flex items-center justify-between cursor-pointer gap-4 p-4">
-          <div class="font-semibold">Bagian 1 – Informasi Dasar</div>
-          <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
-        </summary>
-        <div class="px-4 pb-4 text-sm grid md:grid-cols-3 gap-4">
-          <div><div class="text-slate-500">Nama Unit/Departemen</div><div class="font-medium">……………………</div></div>
-          <div><div class="text-slate-500">Periode Pelaporan</div><div class="font-medium">……………………</div></div>
-          <div><div class="text-slate-500">Penanggung Jawab</div><div class="font-medium">……………………</div></div>
-        </div>
-      </details>
 
-      <!-- Accordion: Pendapatan & Pengeluaran -->
-      <details class="group mt-3 rounded-xl border">
-        <summary class="flex items-center justify-between cursor-pointer gap-4 p-4">
-          <div class="font-semibold">Bagian 2 – Pendapatan & Pengeluaran</div>
-          <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
-        </summary>
-        <div class="px-4 pb-4 text-sm grid md:grid-cols-2 gap-4">
-          <div>
-            <div class="text-slate-500">Pendapatan</div>
-            <div class="font-medium">Rp …………………</div>
-          </div>
-          <div class="rounded-lg border border-red-300 bg-red-50 p-3">
-            <div class="text-slate-500">General & Administrative</div>
-            <div class="font-medium">Rp ………………… <span class="ml-2 text-red-600 text-xs">Perlu diisi</span></div>
-          </div>
-          <div><div class="text-slate-500">Gaji & Upah</div><div class="font-medium">Rp ………………… (Karyawan: ………)</div></div>
-          <div><div class="text-slate-500">Transportasi</div><div class="font-medium">Rp …………………</div></div>
-          <div><div class="text-slate-500">Bahan Bakar | Listrik</div><div class="font-medium">Rp ………………… | Rp …………………</div></div>
-          <div><div class="text-slate-500">Internet | Telepon | Air</div><div class="font-medium">Rp ………………… | Rp ………………… | Rp …………………</div></div>
-          <div><div class="text-slate-500">Operasional Lainnya</div><div class="font-medium">Rp …………………</div></div>
-          <div><div class="text-slate-500">Non-Operasional</div><div class="font-medium">Rp …………………</div></div>
-        </div>
-      </details>
+<section class="bg-white rounded-2xl shadow-xl p-6 mb-8">
+  <h2 class="text-2xl font-semibold text-teal-700">Pasar yang Dilayani</h2>
+  <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+    <div>
+      <div class="text-slate-500">Wilayah Operasi</div>
+      <div class="font-medium">{{business.market_scope}}</div>
+    </div>
+    <div>
+      <div class="text-slate-500">Target Market</div>
+      <div class="font-medium">{{business.target_market}}</div>
+    </div>
+  </div>
+</section>
 
-      <!-- Accordion: Catatan Tambahan -->
-      <details class="group mt-3 rounded-xl border">
-        <summary class="flex items-center justify-between cursor-pointer gap-4 p-4">
-          <div class="font-semibold">Bagian 3 – Catatan Tambahan</div>
-          <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
-        </summary>
-        <div class="px-4 pb-4 text-sm grid md:grid-cols-2 gap-4">
-          <div>
-            <div class="text-slate-500">Pengeluaran besar/tidak biasa</div>
-            <div class="font-medium">Ya/Tidak → …………………</div>
-          </div>
-          <div>
-            <div class="text-slate-500">Koreksi akuntansi</div>
-            <div class="font-medium">Ya/Tidak → …………………</div>
-          </div>
+
+<section class="bg-white rounded-2xl shadow-xl p-6 mb-8">
+  <h2 class="text-2xl font-semibold text-teal-700">Informasi Karyawan & Pekerja</h2>
+  <div class="mt-4 grid md:grid-cols-3 gap-4 text-sm">
+    <div>
+      <div class="text-slate-500">Total Karyawan (Full-Time)</div>
+      <div class="font-medium">{{business.total_employees_fulltime}}</div>
+    </div>
+    <div>
+      <div class="text-slate-500">Pekerja Paruh Waktu/Outsourcing</div>
+      <div class="font-medium">{{business.total_employees_parttime}}</div>
+    </div>
+    <div>
+      <div class="text-slate-500">Komposisi Gender (opsional)</div>
+      <div class="font-medium">% Laki-laki: {{business.male_percentage}} | % Perempuan: {{business.female_percentage}}</div>
+    </div>
+    <div class="md:col-span-3">
+      <div class="text-slate-500">Jumlah Karyawan per Departemen</div>
+      <div class="font-medium">
+        {{#if departments.length}}
+          <ul class="list-disc pl-5 mt-1">
+            {{#each departments}}
+              <li>{{this.department_name}}: {{this.employee_count}} orang</li>
+            {{/each}}
+          </ul>
+        {{else}}
+          Data belum tersedia.
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white rounded-2xl shadow-xl p-6 mb-8">
+  <h2 class="text-2xl font-semibold text-teal-700">Nilai, Prinsip, dan Standar</h2>
+  <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+    <div class="md:col-span-2">
+      <div class="text-slate-500">Core Values Perusahaan</div>
+      <div class="font-medium">{{business.core_values}}</div>
+    </div>
+    <div class="md:col-span-2">
+      <div class="text-slate-500">Prinsip/Kode Etik yang Diterapkan</div>
+      <div class="font-medium">{{business.ethics_principles}}</div>
+    </div>
+    <div class="md:col-span-2">
+      <div class="text-slate-500">Sertifikasi/Standar yang Dimiliki</div>
+      <div class="font-medium">
+        {{#if certifications.length}}
+          <ul class="list-disc pl-5 mt-1">
+            {{#each certifications}}
+              <li>{{this.certification_name}}</li>
+            {{/each}}
+          </ul>
+        {{else}}
+          Data belum tersedia.
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white rounded-2xl shadow-xl p-6 mb-8">
+  <h2 class="text-2xl font-semibold text-teal-700">Pemangku Kepentingan (Stakeholders)</h2>
+  <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+    <div class="md:col-span-2">
+      <div class="text-slate-500">Kelompok Pemangku Kepentingan</div>
+      <div class="font-medium">
+        {{#if stakeholders.length}}
+          <ul class="list-disc pl-5 mt-1">
+            {{#each stakeholders}}
+              <li>
+                {{this.stakeholder_type}}
+                {{#if this.stakeholder_other}}
+                  ({{this.stakeholder_other}})
+                {{/if}}
+                {{#if this.relationship}}
+                  (Hubungan: {{this.relationship}})
+                {{/if}}
+              </li>
+            {{/each}}
+          </ul>
+        {{else}}
+          Data belum tersedia.
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white rounded-2xl shadow-xl p-6 mb-8">
+  <h2 class="text-2xl font-semibold text-teal-700">Kontak & Dokumen Pendukung</h2>
+  <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+    <div>
+      <div class="text-slate-500">Nama Kontak Utama</div>
+      <div class="font-medium">{{business.pic_name}}</div>
+    </div>
+    <div>
+      <div class="text-slate-500">Posisi/Jabatan</div>
+      <div class="font-medium">{{business.pic_position}}</div>
+    </div>
+    <div class="md:col-span-2">
+      <div class="text-slate-500">Email & Nomor Telepon</div>
+      <div class="font-medium">{{business.pic_email}} / {{business.pic_phone}}</div>
+    </div>
+    <div class="md:col-span-2">
+      <div class="text-slate-500">Dokumen Pendukung (opsional)</div>
+      <div class="font-medium">Link/arsip: {{business.supporting_documents}}</div>
+    </div>
+  </div>
+</section>
+
+
+    <section class="bg-white rounded-2xl shadow-xl p-6 mb-8">
+  <div class="flex items-center justify-between">
+    <h2 class="text-2xl font-semibold text-teal-700">Economic (GRI Economic)</h2>
+    {{#if economic}}
+      {{#if economic.revenue}}
+        <span class="text-xs px-2 py-1 rounded-full bg-green-100 text-green-700">Status: Terisi</span>
+      {{else}}
+        <span class="text-xs px-2 py-1 rounded-full bg-orange-100 text-orange-700">Status: Parsial</span>
+      {{/if}}
+    {{else}}
+      <span class="text-xs px-2 py-1 rounded-full bg-red-100 text-red-700">Status: Belum Terisi</span>
+    {{/if}}
+  </div>
+
+  <details class="group mt-4 rounded-xl border" {{#if economic}}open{{/if}}>
+    <summary class="flex items-center justify-between cursor-pointer gap-4 p-4">
+      <div class="font-semibold">Bagian 1 – Informasi Dasar</div>
+      <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
+    </summary>
+    <div class="px-4 pb-4 text-sm grid md:grid-cols-3 gap-4">
+      <div>
+        <div class="text-slate-500">Nama Unit/Departemen</div>
+        <div class="font-medium">{{economic.unit_name}}</div>
+      </div>
+      <div>
+        <div class="text-slate-500">Periode Pelaporan</div>
+        <div class="font-medium">{{economic.reporting_period}}</div>
+      </div>
+      <div>
+        <div class="text-slate-500">Penanggung Jawab</div>
+        <div class="font-medium">{{economic.responsible_person}}</div>
+      </div>
+    </div>
+  </details>
+
+  <details class="group mt-3 rounded-xl border">
+    <summary class="flex items-center justify-between cursor-pointer gap-4 p-4">
+      <div class="font-semibold">Bagian 2 – Pendapatan & Pengeluaran</div>
+      <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
+    </summary>
+    <div class="px-4 pb-4 text-sm grid md:grid-cols-2 gap-4">
+      <div>
+        <div class="text-slate-500">Pendapatan</div>
+        <div class="font-medium">Rp {{economic.revenue}}</div>
+      </div>
+      <div class="p-3 rounded-lg border {{#if economic.general_admin_expenses}}border-green-300 bg-green-50{{else}}border-red-300 bg-red-50{{/if}}">
+        <div class="text-slate-500">General & Administrative</div>
+        <div class="font-medium">
+          Rp {{economic.general_admin_expenses}}
+          {{#unless economic.general_admin_expenses}}
+            <span class="ml-2 text-red-600 text-xs">Perlu diisi</span>
+          {{/unless}}
         </div>
-      </details>
-    </section>
+      </div>
+      <div>
+        <div class="text-slate-500">Gaji & Upah</div>
+        <div class="font-medium">
+          Rp {{economic.salary_expenses}} (Karyawan: {{economic.total_employees}})
+        </div>
+      </div>
+      <div>
+        <div class="text-slate-500">Transportasi</div>
+        <div class="font-medium">Rp {{economic.transport_expenses}}</div>
+      </div>
+      <div>
+        <div class="text-slate-500">Bahan Bakar | Listrik</div>
+        <div class="font-medium">Rp {{economic.fuel_expenses}} | Rp {{economic.electricity_expenses}}</div>
+      </div>
+      <div>
+        <div class="text-slate-500">Internet | Telepon | Air</div>
+        <div class="font-medium">Rp {{economic.internet_expenses}} | Rp {{economic.telephone_expenses}} | Rp {{economic.water_expenses}}</div>
+      </div>
+      <div>
+        <div class="text-slate-500">Operasional Lainnya</div>
+        <div class="font-medium">Rp {{economic.other_operating_expenses}}</div>
+      </div>
+      <div>
+        <div class="text-slate-500">Non-Operasional</div>
+        <div class="font-medium">Rp {{economic.non_operating_expenses}}</div>
+      </div>
+    </div>
+  </details>
+
+  <details class="group mt-3 rounded-xl border">
+    <summary class="flex items-center justify-between cursor-pointer gap-4 p-4">
+      <div class="font-semibold">Bagian 3 – Catatan Tambahan</div>
+      <span class="text-slate-400 group-open:rotate-180 transition">▼</span>
+    </summary>
+    <div class="px-4 pb-4 text-sm grid md:grid-cols-2 gap-4">
+      <div>
+        <div class="text-slate-500">Pengeluaran besar/tidak biasa</div>
+        <div class="font-medium">
+          {{#if economic.unusual_expenses}}Ya → {{economic.unusual_expenses}}{{else}}Tidak{{/if}}
+        </div>
+      </div>
+      <div>
+        <div class="text-slate-500">Koreksi akuntansi</div>
+        <div class="font-medium">
+          {{#if economic.accounting_corrections}}Ya → {{economic.accounting_corrections}}{{else}}Tidak{{/if}}
+        </div>
+      </div>
+    </div>
+  </details>
+</section>
 
     <!-- ENVIRONMENTAL (1 Section) -->
     <section class="bg-white rounded-2xl shadow-xl p-6 mb-8">
@@ -957,36 +970,87 @@
     </script>
 
 
-    <!-- Rekomendasi Akhir (Auto) -->
-    <section id="reco_section"
-    class="bg-white rounded-2xl shadow-xl p-6 mb-8"
-    data-score-economic="62"
-    data-score-environmental="74"
-    data-score-social="78"
-    data-score-governance="85">
-    <h2 class="text-2xl font-semibold text-teal-700">Rekomendasi Akhir</h2>
+    <section
+  id="reco_section"
+  class="bg-white rounded-2xl shadow-xl p-6 mb-8"
+  data-score-economic="{{scores.economic}}"
+  data-score-environmental="74"
+  data-score-social="78"
+  data-score-governance="85"
+>
+  <h2 class="text-2xl font-semibold text-teal-700">Rekomendasi Akhir</h2>
 
-    <!-- Ringkasan skor singkat -->
-    <div id="reco_badges" class="flex flex-wrap gap-2 mt-3 text-sm"></div>
+  <div id="reco_badges" class="flex flex-wrap gap-2 mt-3 text-sm"></div>
 
-    <!-- List rekomendasi terperinci -->
-    <ul id="reco_list" class="list-disc pl-6 mt-4 text-slate-700 space-y-2"></ul>
-    </section>
+  <ul id="reco_list" class="list-disc pl-6 mt-4 text-slate-700 space-y-2"></ul>
+</section>
 
-  </main>
+</main>
 
 <script>
   (function () {
     // --- Config ambang & template rekomendasi per pilar ---
     const BUCKETS = [
-      { key: 'very_low', range: s => s < 33,  label: '<33%',  color: 'bg-rose-100 text-rose-700 border-rose-200' },
-      { key: 'low',      range: s => s >= 33 && s <= 65, label: '33–65%', color: 'bg-amber-100 text-amber-700 border-amber-200' },
-      { key: 'mid',      range: s => s >= 66 && s <= 89, label: '66–89%', color: 'bg-lime-100 text-lime-700 border-lime-200' },
-      { key: 'high',     range: s => s >= 90 && s < 100, label: '≥90%',  color: 'bg-teal-100 text-teal-700 border-teal-200' },
-      { key: 'full',     range: s => s === 100, label: '100%', color: 'bg-sky-100 text-sky-700 border-sky-200' },
+      { key: 'very_low', range: s => s < 33, label: '<33%', color: 'bg-rose-100 text-rose-700 border-rose-200' },
+      { key: 'low', range: s => s >= 33 && s <= 65, label: '33–65%', color: 'bg-amber-100 text-amber-700 border-amber-200' },
+      { key: 'mid', range: s => s >= 66 && s <= 89, label: '66–89%', color: 'bg-lime-100 text-lime-700 border-lime-200' },
+      { key: 'high', range: s => s >= 90 && s < 100, label: '≥90%', color: 'bg-teal-100 text-teal-700 border-teal-200' },
+      { key: 'full', range: s => s === 100, label: '100%', color: 'bg-sky-100 text-sky-700 border-sky-200' },
     ];
+    function getEconomicSuggestions(economicData, score) {
+        if (score === 100) {
+            return ['Data ekonomi komprehensif. Pertahankan konsistensi & tambahkan insight margin/efisiensi.'];
+        }
 
-    // Saran per pilar per bucket
+        const suggestions = [];
+
+        // Bagian 1: Informasi Dasar
+        if (!economicData.responsible_person || !economicData.reporting_period) {
+            suggestions.push('Lengkapi Bagian 1: Nama Unit, Periode Pelaporan, dan Penanggung Jawab.');
+        }
+
+        // Bagian 2: Pendapatan & Pengeluaran
+        if (!economicData.revenue) {
+            suggestions.push('Isi data Pendapatan agar laporan keuangan Anda dapat dianalisis.');
+        }
+        if (!economicData.general_admin_expenses) {
+            suggestions.push('Lengkapi data General & Administrative expenses.');
+        }
+        if (!economicData.salary_expenses) {
+            suggestions.push('Isi data Gaji & Upah.');
+        }
+        if (!economicData.transport_expenses) {
+            suggestions.push('Lengkapi data biaya Transportasi.');
+        }
+        if (!economicData.fuel_expenses || !economicData.electricity_expenses) {
+            suggestions.push('Isi data Bahan Bakar dan Listrik.');
+        }
+        if (!economicData.internet_expenses || !economicData.telephone_expenses || !economicData.water_expenses) {
+            suggestions.push('Lengkapi data biaya Internet, Telepon, dan Air.');
+        }
+        if (!economicData.other_operating_expenses) {
+            suggestions.push('Isi data Operasional Lainnya.');
+        }
+        if (!economicData.non_operating_expenses) {
+            suggestions.push('Lengkapi data Non-Operasional.');
+        }
+
+        // Bagian 3: Catatan Tambahan
+        if (!economicData.unusual_expenses) {
+            suggestions.push('Berikan catatan jika ada Pengeluaran besar/tidak biasa.');
+        }
+        if (!economicData.accounting_corrections) {
+            suggestions.push('Berikan catatan jika ada Koreksi akuntansi.');
+        }
+
+        if (suggestions.length === 0 && score < 100) {
+            suggestions.push('Ada data yang terlewat, silakan periksa kembali formulir.');
+        }
+
+        return suggestions;
+    }
+
+    // Saran per pilar per bucket (Dummies for other pillars)
     const SUGGESTIONS = {
       economic: {
         very_low: [
@@ -1002,75 +1066,33 @@
           'Lampirkan ringkasan pengeluaran per akun untuk transparansi.'
         ],
         high: [
-          'Tambahkan pembanding periodik (QoQ/YoY) untuk analisis tren.',
-          'Sertakan penjelasan deviasi jika ada lompatan biaya.'
+          'Data economic belum lengkap.',
+          'Lengkapi bagian economic yang masing kosog'
         ],
         full: [
           'Data ekonomi komprehensif. Pertahankan konsistensi & tambahkan insight margin/efisiensi.'
         ]
       },
       environmental: {
-        very_low: [
-          'Isi minimal data Scope 1 & 2 (tCO₂e, sumber/jenis energi).',
-          'Tetapkan metode perhitungan emisi (IPCC/GHG Protocol).'
-        ],
-        low: [
-          'Lengkapi inisiatif reduksi dan angka emisi berkurang untuk Scope 1/2.',
-          'Mulai inventaris Scope 3 pada kategori material (rantai pasok/transportasi).'
-        ],
-        mid: [
-          'Tambahkan intensitas emisi (tCO₂e per unit/omzet/m²) dan catatan metode.',
-          'Lampirkan bukti faktor emisi/fungsi perhitungan untuk audit trail.'
-        ],
-        high: [
-          'Perkuat cakupan Scope 3 & verifikasi metodologi (sampling/QA) untuk kredibilitas.',
-          'Siapkan target reduksi tahunan & progress tracking.'
-        ],
-        full: [
-          'Pelaporan lingkungan matang. Pertahankan verifikasi berkala & publikasi roadmap dekarbonisasi.'
-        ]
+        very_low: ['Isi minimal data Scope 1 & 2.', 'Tetapkan metode perhitungan emisi.'],
+        low: ['Lengkapi inisiatif reduksi dan angka emisi.', 'Mulai inventaris Scope 3.'],
+        mid: ['Tambahkan intensitas emisi.', 'Lampirkan bukti faktor emisi.'],
+        high: ['Perkuat cakupan Scope 3 & verifikasi.', 'Siapkan target reduksi tahunan.'],
+        full: ['Pelaporan lingkungan matang.', 'Pertahankan verifikasi & publikasi roadmap dekarbonisasi.']
       },
       social: {
-        very_low: [
-          'Isi status insiden K3 dan data dasar (injuries, fatalities, lost workdays).',
-          'Masukkan program pelatihan K3 dan peserta.'
-        ],
-        low: [
-          'Lengkapi penyebab/lokasi insiden & tindak lanjut korektif.',
-          'Unggah bukti pelatihan (absensi/materi) untuk validasi.'
-        ],
-        mid: [
-          'Tambahkan data penyakit akibat kerja & program pencegahan.',
-          'Hitung LTIFR dan persentase karyawan terlatih.'
-        ],
-        high: [
-          'Kuatkan tren K3 kuartalan + tindakan preventif berbasis risiko.',
-          'Lakukan drill/emergency response review terjadwal.'
-        ],
-        full: [
-          'Kinerja sosial solid. Pertahankan budaya keselamatan & continuous improvement.'
-        ]
+        very_low: ['Isi status insiden K3 dan data dasar.', 'Masukkan program pelatihan K3 dan peserta.'],
+        low: ['Lengkapi penyebab/lokasi insiden.', 'Unggah bukti pelatihan untuk validasi.'],
+        mid: ['Tambahkan data penyakit akibat kerja.', 'Hitung LTIFR dan persentase karyawan terlatih.'],
+        high: ['Kuatkan tren K3 kuartalan.', 'Lakukan drill/emergency response review terjadwal.'],
+        full: ['Kinerja sosial solid.', 'Pertahankan budaya keselamatan.']
       },
       governance: {
-        very_low: [
-          'Tetapkan kebijakan inti: Code of Conduct, Anti-Corruption, Whistleblowing, K3.',
-          'Terbitkan komitmen kebijakan & tahun penerapan.'
-        ],
-        low: [
-          'Sosialisasikan kebijakan ke karyawan (pelatihan/email/portal) dan catat coverage.',
-          'Tetapkan mekanisme pengawasan (audit internal/eksternal).'
-        ],
-        mid: [
-          'Tambahkan frekuensi evaluasi kebijakan & dokumentasi hasil audit.',
-          'Ukur kepatuhan dan tindak lanjut temuan.'
-        ],
-        high: [
-          'Perkuat risk management reporting dan integrasi dengan strategi.',
-          'Publikasikan ringkasan hasil audit tahunan.'
-        ],
-        full: [
-          'Kerangka tata kelola unggul. Pertahankan transparansi & review berkala.'
-        ]
+        very_low: ['Tetapkan kebijakan inti.', 'Terbitkan komitmen kebijakan.'],
+        low: ['Sosialisasikan kebijakan ke karyawan.', 'Tetapkan mekanisme pengawasan.'],
+        mid: ['Tambahkan frekuensi evaluasi kebijakan.', 'Ukur kepatuhan dan tindak lanjut temuan.'],
+        high: ['Perkuat risk management reporting.', 'Publikasikan ringkasan hasil audit tahunan.'],
+        full: ['Kerangka tata kelola unggul.', 'Pertahankan transparansi & review berkala.']
       }
     };
 
@@ -1101,7 +1123,9 @@
         const ul = document.createElement('ul');
         ul.className = 'list-disc pl-5 mt-1 space-y-1';
         (SUGGESTIONS[pillar][b.key] || ['Lengkapi data dasar.']).forEach(txt => {
-          const i = document.createElement('li'); i.textContent = txt; ul.appendChild(i);
+          const i = document.createElement('li');
+          i.textContent = txt;
+          ul.appendChild(i);
         });
         li.appendChild(ul);
         listEl.appendChild(li);
@@ -1112,11 +1136,12 @@
     const sec = document.getElementById('reco_section');
     if (!sec) return;
 
+    // Ambil skor nyata untuk Economic, dan dummy untuk pilar lainnya
     const scores = {
-      economic:      Number(sec.dataset.scoreEconomic || 0),
+      economic: Number(sec.dataset.scoreEconomic || 0),
       environmental: Number(sec.dataset.scoreEnvironmental || 0),
-      social:        Number(sec.dataset.scoreSocial || 0),
-      governance:    Number(sec.dataset.scoreGovernance || 0),
+      social: Number(sec.dataset.scoreSocial || 0),
+      governance: Number(sec.dataset.scoreGovernance || 0),
     };
 
     renderBadges(document.getElementById('reco_badges'), scores);
