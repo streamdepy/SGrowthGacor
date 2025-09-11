@@ -1,13 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <title>{{title}}</title>
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Styling untuk tautan aktif */
+    .link-active {
+      font-weight: 600;
+      color: #ea580c; /* Warna oranye dari Tailwind */
+      position: relative;
+    }
+    .link-active::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      height: 2px;
+      width: 100%;
+      background-color: #ea580c;
+      border-radius: 9999px;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const links = document.querySelectorAll('div.text-lg a');
+      const currentPath = window.location.pathname;
+
+      links.forEach(link => {
+        const href = link.getAttribute('href');
+        // Menambahkan '/' di awal untuk perbandingan yang konsisten
+        const linkPath = href.startsWith('/') ? href : `/${href}`;
+
+        if (linkPath === currentPath || (linkPath === '/dashboard' && currentPath === '/') || (linkPath === '/form-gi' && currentPath === '/form-gri')) {
+          link.classList.add('link-active');
+        } else {
+          // Menghapus kelas 'link-active' jika tidak cocok
+          link.classList.remove('link-active');
+          // Menambahkan kelas hover yang sebelumnya
+          link.classList.add('hover:text-teal-700', 'transition-colors', 'duration-300');
+        }
+      });
+    });
+  </script>
 </head>
 <body class="bg-gray-50 text-gray-800">
-  <div class=" sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70 flex flex-wrap items-center justify-between gap-5 px-20 py-3 text-black max-md:px-5">
+  <div class="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70 flex flex-wrap items-center justify-between gap-5 px-20 py-3 text-black max-md:px-5">
 
     <!-- Brand -->
     <a href="/" class="flex items-center text-5xl font-bold whitespace-nowrap max-md:text-3xl group transition-transform duration-200 group-hover:scale-105">
@@ -21,28 +60,38 @@
 
     <!-- Links -->
     <div class="flex items-center gap-8 text-lg font-medium tracking-wide text-slate-800 max-md:gap-6">
-      <!-- Tambahkan aria-current="page" pada link yang aktif -->
-      <a href="dashboard"
-         aria-current="page"
-         class="relative px-1 font-semibold text-orange-600 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 rounded">
+      <a href="/umkm/dashboard"
+         class="relative px-1 text-neutral-900 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 rounded hover:after:w-full">
         Dashboard
       </a>
 
-      <a href="/umkm/form-gi"
-         class="relative px-1 text-neutral-900 hover:text-teal-700 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300 rounded
-                after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-teal-600 after:rounded-full after:transition-all after:duration-300 hover:after:w-full">
+      <a href="/umkm/form-gri"
+         class="relative px-1 text-neutral-900 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300 rounded hover:after:w-full">
         Form
       </a>
 
-      <a href="/umkm/lap"
-         class="relative px-1 text-neutral-900 hover:text-teal-700 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300 rounded
-                after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-teal-600 after:rounded-full after:transition-all after:duration-300 hover:after:w-full">
+      <a href="/umkm/chatAI"
+         class="relative px-1 text-neutral-900 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300 rounded hover:after:w-full">
+        Chat AI
+      </a>
+
+      <a href="/umkm/cari-konsultan"
+         class="relative px-1 text-neutral-900 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300 rounded hover:after:w-full">
+        Konsultan
+      </a>
+
+      <a href="/umkm/Komunitas"
+         class="relative px-1 text-neutral-900 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300 rounded hover:after:w-full">
+        Komunitas
+      </a>
+
+      <a href="/umkm/laporan"
+         class="relative px-1 text-neutral-900 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300 rounded hover:after:w-full">
         Laporan
       </a>
 
       <a href="/about"
-         class="relative px-1 text-neutral-900 hover:text-teal-700 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300 rounded
-                after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-teal-600 after:rounded-full after:transition-all after:duration-300 hover:after:w-full">
+         class="relative px-1 text-neutral-900 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300 rounded hover:after:w-full">
         About Us
       </a>
     </div>
@@ -69,5 +118,3 @@
   {{{body}}}
 </body>
 </html>
-
-  
