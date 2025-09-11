@@ -26,8 +26,7 @@
       <p class="text-slate-500 mt-1">Economic, Environmental, Social, and Governance – Chat Support</p>
     </header>
 
-<form action="/umkm/chatAI" method="POST">
-<!-- Chat Interface Section -->
+    <!-- Chat Interface Section -->
     <section class="w-full bg-white rounded-2xl shadow-2xl">
       <div class="flex flex-col h-[600px] md:h-[700px]">
         <!-- Chat Header -->
@@ -49,56 +48,104 @@
 
         <!-- Message Input Area -->
         <div class="flex gap-3 items-center px-4 py-3 md:px-6 md:py-4 bg-gray-100 rounded-b-2xl">
-            <input type="text" id="questionInput" placeholder="Tulis pertanyaan Anda..." class="w-full border p-2 rounded" />
-        <button onclick="askDynamicAI()" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm">Kirim</button>
+          <input
+            id="user-input"
+            type="text"
+            placeholder="Tulis pesan Anda..."
+            class="flex-1 p-3 text-sm bg-white rounded-lg border border-slate-300 outline-none focus:ring-2 focus:ring-teal-500 transition-colors"
+          />
+          <button
+            id="send-button"
+            class="p-2 md:p-3 bg-teal-500 text-white rounded-full hover:bg-teal-600 transition-colors"
+            aria-label="Send message"
+          >
             <!-- Ikon Panah ke Kanan -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6">
                 <path d="M10 17l5-5-5-5v10z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="white"/>
             </svg>
           </button>
         </div>
-        <div id="aiResponse" class="mt-4 text-sm text-gray-700 bg-gray-100 p-3 rounded hidden"></div>
       </div>
     </section>
-</form>
-
-    
   </main>
 <script>
-  async function askAI(question) {
-  const response = await fetch("/ask-ai", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ prompt: question }),
+  document.addEventListener('DOMContentLoaded', () => {
+    const chatMessagesEl = document.getElementById('chat-messages');
+    const userInputEl = document.getElementById('user-input');
+    const sendButtonEl = document.getElementById('send-button');
+
+    const scrollToBottom = () => {
+      chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
+    };
+
+    const addMessage = (text, sender) => {
+      const messageContainer = document.createElement('div');
+      messageContainer.className = sender === 'user' ? 'flex justify-end animate-fade-in' : 'flex items-start animate-fade-in';
+      
+      const messageBubble = document.createElement('div');
+      messageBubble.className = sender === 'user'
+        ? 'bg-orange-100 text-orange-900 rounded-lg p-3 md:p-4 max-w-xs md:max-w-sm'
+        : 'bg-teal-100 text-teal-900 rounded-lg p-3 md:p-4 max-w-xs md:max-w-sm';
+      
+      const messageText = document.createElement('p');
+      messageText.className = 'text-sm';
+      
+      // Menggunakan innerHTML agar tag HTML dapat di-render
+      messageText.innerHTML = text.replace(/\n/g, '<br>'); // Mengganti baris baru dengan <br>
+      
+      messageBubble.appendChild(messageText);
+      messageContainer.appendChild(messageBubble);
+      chatMessagesEl.appendChild(messageContainer);
+      scrollToBottom();
+    };
+
+    const sendUserMessage = async () => {
+      const prompt = userInputEl.value.trim();
+      if (!prompt) return;
+
+      // Tambahkan pesan pengguna ke chat
+      addMessage(prompt, 'user');
+      userInputEl.value = '';
+
+      // Tampilkan pesan "Sedang memproses..." dari AI
+      addMessage('Sedang memproses...', 'ai-loading');
+      
+      sendButtonEl.disabled = true;
+
+      try {
+        const response = await fetch('/umkm/chatAI', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ prompt }),
+        });
+        const data = await response.json();
+
+        // Ganti pesan "Sedang memproses..." dengan respons AI
+        const loadingMessageEl = chatMessagesEl.querySelector('.flex:last-child');
+        if (loadingMessageEl) {
+          chatMessagesEl.removeChild(loadingMessageEl);
+        }
+        addMessage(data.response, 'ai');
+
+      } catch (error) {
+        console.error('Error:', error);
+        addMessage('AI gagal menjawab. Coba lagi nanti.', 'ai');
+      } finally {
+        sendButtonEl.disabled = false;
+        scrollToBottom();
+      }
+    };
+
+    sendButtonEl.addEventListener('click', sendUserMessage);
+
+    userInputEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        sendUserMessage();
+      }
+    });
+
+    scrollToBottom();
   });
-
-  const data = await response.json();
-  const box = document.getElementById("aiResponse");
-  box.innerText = data.response;
-  box.classList.remove("hidden");
-}
-
-async function askDynamicAI() {
-  const question = document.getElementById("questionInput").value.trim();
-  if (question === "") {
-    alert("Pertanyaan tidak boleh kosong.");
-    return;
-  }
-
-  // Tampilkan loading
-  const aiBox = document.getElementById("aiResponse");
-  aiBox.innerText = "Sedang memproses...";
-  aiBox.classList.remove("hidden");
-
-  // Kirim ke server
-  const response = await fetch("/ask-ai", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ prompt: question }),
-  });
-
-  const data = await response.json();
-  aiBox.innerText = data.response;
-}
-
 </script>

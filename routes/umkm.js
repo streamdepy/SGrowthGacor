@@ -1,9 +1,9 @@
+require('dotenv').config();
 const express = require("express");
 const router = express.Router();
 const { GRIEconomic } = require("../models");
 const path = require("path");
 const axios = require('axios');
-require('dotenv').config({ path: path.resolve(__dirname, './.env') });
 
 const { middlewareValidation, isAdmin, isUMKM } = require("../middlewares/authMiddleware");
 const { getDashboardUmkm } = require("../controllers/umkmController");
@@ -447,8 +447,9 @@ router.get("/chatAI", function (req, res, next) {
 });
 
 const API_KEY = process.env.OPENROUTER_API_KEY;
-console.log("API KEY:", process.env.OPENROUTER_API_KEY);
+console.log("API KEY:", API_KEY); // Pastikan kunci API terbaca di sini
 
+// Definisikan rute chat Anda di dalam router
 router.post('/chatAI', async (req, res) => {
   const { prompt } = req.body;
 
@@ -458,31 +459,23 @@ router.post('/chatAI', async (req, res) => {
       {
         model: 'nousresearch/hermes-2-pro-llama-3-8b',
         messages: [
-          {
-            role: 'system',
-            content: 'Kamu adalah asisten pelaporan ESG untuk UMKM berdasarkan standar GRI.',
-          },
-          {
-            role: 'user',
-            content: prompt,
-          },
-        ],
+          { role: 'system', content: 'Kamu adalah asisten pelaporan ESG untuk UMKM berdasarkan standar GRI.' },
+          { role: 'user', content: prompt }
+        ]
       },
       {
         headers: {
           'Authorization': `Bearer ${API_KEY}`,
-          'HTTP-Referer': 'http://localhost:3000', // ganti sesuai domainmu jika online
-          'Content-Type': 'application/json',
-        },
+          'HTTP-Referer': 'http://localhost:3000',
+          'Content-Type': 'application/json'
+        }
       }
     );
-
     res.json({ response: response.data.choices[0].message.content });
   } catch (error) {
     console.error(error.response?.data || error.message);
     res.status(500).json({ response: 'AI gagal menjawab. Coba lagi nanti.' });
   }
 });
-
 
 module.exports = router;
