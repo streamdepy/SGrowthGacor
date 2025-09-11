@@ -554,6 +554,23 @@ router.get("/bookingSummary", function (req, res, next) {
   });
 });
 
+router.get("/pembayaran", function (req, res, next) {
+  res.render("umkm/konsultan/pembayaran", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path,
+  });
+});
+
+router.get("/history", function (req, res, next) {
+  res.render("umkm/konsultan/history", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path,
+  });
+});
+
+
 router.get("/komunitas", function (req, res, next) {
   res.render("umkm/komunitas/komunitas", {
     title: "Form GRI",
