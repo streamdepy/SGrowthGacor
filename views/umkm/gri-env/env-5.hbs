@@ -26,8 +26,8 @@
         <label class="block pb-2 text-base font-medium">Jenis indikator intensitas yang digunakan</label>
         <select name="intensity[0][indicator]"
           class="intensity-indicator w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
-          <option value="">Pilih indikator</option>
           <option value="per_unit">tCO₂e per unit produk</option>
+         
           <option value="per_omzet">tCO₂e per Rp omzet</option>
           <option value="per_luas">tCO₂e per m² gedung</option>
           <option value="lainnya">Lainnya</option>
@@ -40,13 +40,13 @@
         <div class="flex gap-5 mt-6 max-md:flex-col">
           <div class="w-6/12 max-md:w-full">
             <label class="block pb-2 text-base font-medium">Total emisi (Scope 1+2) per indikator</label>
-            <input type="number" min="0" step="0.0001" name="intensity[0][total]"
+            <input type="number" value="1" step="1" name="intensity[0][total]"
               placeholder="Masukkan nilai (tCO₂e)"
               class="intensity-total w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50" />
           </div>
           <div class="w-6/12 max-md:w-full">
             <label class="block pb-2 text-base font-medium">Jumlah output bisnis terkait</label>
-            <input type="number" min="0" step="0.0001" name="intensity[0][output]"
+            <input type="number" value="500" step="1" name="intensity[0][output]"
               placeholder="Masukkan jumlah output"
               class="intensity-output w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50" />
           </div>
@@ -88,10 +88,10 @@
         class="px-8 py-2 text-base font-medium text-center text-teal-700 border-teal-700 border border-solid whitespace-nowrap bg-white rounded-xl hover:bg-teal-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors">
         Sebelumnya
       </button>
-      <button type="submit"
+      <a href="/umkm/env-6"
         class="px-8 py-2 text-base font-medium text-center text-white whitespace-nowrap bg-lime-500 rounded-xl hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-offset-2 transition-colors">
         Simpan
-      </button>
+      </a>
     </div>
   </section>
 
