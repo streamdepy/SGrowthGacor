@@ -20,7 +20,8 @@ exports.saveBasicInfo = async (req, res) => {
       reporting_period,
       period_year,
       period_year_quarter,
-      period_quarter
+      period_quarter,
+      responsible_person
     } = req.body;
 
     console.log("📥 saveBasicInfo req.body:", req.body);
@@ -60,6 +61,7 @@ exports.saveBasicInfo = async (req, res) => {
       unit_name,
       operational_location,
       reporting_period: reporting_period_full,
+      responsible_person,
     });
 
     console.log("✅ Record baru dibuat:", record.id);

@@ -25,7 +25,6 @@
     <label for="od_report" class="block pb-2 text-base font-medium">Apakah ada penyakit akibat kerja yang dilaporkan?</label>
     <select id="od_report" name="od_report"
       class="w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
-      <option value="">Pilih</option>
       <option value="ya">Ya</option>
       <option value="tidak">Tidak</option>
     </select>
@@ -40,7 +39,7 @@
         <!-- Row: jumlah kasus -->
         <div class="w-full">
           <label class="block pb-2 text-base font-medium">Jumlah kasus penyakit akibat kerja</label>
-          <input type="number" min="0" name="od[0][cases]" placeholder="0"
+          <input type="number" min="0" name="od[0][cases]" value="10"
             class="od-cases w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
         </div>
 
@@ -50,8 +49,7 @@
           <div class="w-6/12 max-md:w-full">
             <label class="block pb-2 text-base font-medium">Jenis penyakit yang teridentifikasi</label>
             <select name="od[0][disease]" class="od-disease w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
-              <option value="">Pilih</option>
-              <option>Gangguan pernapasan</option>
+              <option value="Gangguan pernapasan">Gangguan pernapasan</option>
               <option>Gangguan pendengaran</option>
               <option>Musculoskeletal</option>
               <option>Stres kerja</option>
@@ -65,10 +63,9 @@
           <div class="w-6/12 max-md:w-full">
             <label class="block pb-2 text-base font-medium">Unit/Departemen terdampak</label>
             <select name="od[0][unit]" class="od-unit w-full px-8 py-4 mt-2 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition">
-              <option value="">Pilih</option>
+              <option value="Lapangan">Lapangan</option>
               <option>Produksi</option>
               <option>Gudang</option>
-              <option>Lapangan</option>
               <option>Kantor</option>
               <option value="lainnya">Lainnya</option>
             </select>
@@ -79,10 +76,10 @@
 
         <!-- Row: Tindakan -->
         <div class="w-full mt-6">
-          <label class="block pb-2 text-base font-medium">Tindakan pencegahan atau program kesehatan yang dilakukan</label>
-          <textarea name="od[0][actions]" rows="5" placeholder="Jelaskan program kesehatan, pelatihan, APD, pemeriksaan berkala, dsb."
-            class="od-actions w-full px-8 py-4 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition resize-y"></textarea>
-        </div>
+  <label class="block pb-2 text-base font-medium">Tindakan pencegahan atau program kesehatan yang dilakukan</label>
+  <textarea name="od[0][actions]" rows="5"
+    class="od-actions w-full px-8 py-4 text-base text-black rounded-2xl border border-gray-300 bg-slate-50 placeholder-black/50 outline-none hover:ring focus:ring-2 focus:ring-teal-600 transition resize-y">Jelaskan program kesehatan, pelatihan, APD, dan pemeriksaan berkala.</textarea>
+</div>
 
         <!-- Hapus item -->
         <div class="mt-4 flex justify-end">

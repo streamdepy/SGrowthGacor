@@ -1,5 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const cors = require('cors');
 const { engine } = require("express-handlebars");
 const path = require("path");
 const sequelize = require("./config/database");
@@ -7,6 +8,7 @@ const cookieParser = require("cookie-parser");
 
 dotenv.config();
 const app = express();
+app.use(cors());
 const PORT = process.env.PORT || 3000;
 
 // Middleware

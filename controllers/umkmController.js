@@ -24,6 +24,8 @@ const getDashboardUmkm = async (req, res, next) => {
         "legal_form",
         "industry_type",
         "city",
+        "market_scope",
+        "target_market",
         "province"
       ]
     });

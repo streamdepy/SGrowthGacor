@@ -52,28 +52,28 @@
           <div class="flex flex-col w-6/12 max-md:w-full">
             <div class="flex flex-col text-lg text-gray-800">
               <div>Nama Usaha</div>
-              <div class="mt-2">NIB</div>
+              <div class="mt-2">ID usaha</div>
               <div class="mt-2">Kantor Pusat</div>
               <div class="mt-2">Tahun Berdiri</div>
               <div class="mt-2">Skala Usaha</div>
-              <div class="mt-2">Sumber Pendapatan</div>
+              <div class="mt-2">Target Pasar</div>
             </div>
           </div>
           <div class="flex flex-col ml-4 w-6/12 max-md:w-full">
             <div class="flex flex-col text-lg font-semibold text-teal-700">
-              <div>: Green Steel</div>
-              <div class="mt-2">: 123456789045678</div>
-              <div class="mt-2">: Jalan jalan</div>
-              <div class="mt-2">: 2016</div>
-              <div class="mt-2">: Makro</div>
-              <div class="mt-2">: Online</div>
+              <div>: {{business.business_name}} </div>
+              <div class="mt-2">: {{business.id}} </div>
+              <div class="mt-2">: {{business.headquarters}} </div>
+              <div class="mt-2">: {{business.established_year}} </div>
+              <div class="mt-2">: {{business.market_scope}} </div>
+              <div class="mt-2">: {{business.target_market}} </div>
             </div>
           </div>
         </div>
       </div>
-      <button type="button" class="flex items-center self-start px-10 py-3 text-base font-medium text-center text-white whitespace-nowrap bg-orange-500 rounded-xl hover:bg-orange-600 transition-colors max-md:px-5">
+      <a href="/umkm/form-gi" class="flex items-center self-start px-10 py-3 text-base font-medium text-center text-white whitespace-nowrap bg-orange-500 rounded-xl hover:bg-orange-600 transition-colors max-md:px-5">
         Lengkapi
-      </button>
+      </a>
 
     </div>
 
@@ -102,13 +102,13 @@
                 <div class="text-sm text-gray-500">Hasil status ESG</div>
             </a>
 
-            <!-- ISI GRI -->
-            <a href="/umkm/form-gri" class="flex flex-col w-3/12 max-md:w-full bg-white rounded-xl p-6 text-center shadow hover:bg-teal-50 hover:shadow-xl hover:scale-105 cursor-pointer transition duration-300">
-                <img src="https://api.builder.io/api/v1/image/assets/TEMP/05808ca298f3565cc120745302c8076d602aa93c?apiKey=ac04cd396e1f47f18955cd19640f183d&" class="object-contain w-[140px] mx-auto" />
-                <div class="mt-4 text-xl font-semibold text-teal-700">ISI GRI</div>
-                <div class="text-sm text-gray-500">Mengisi GRI untuk penilaian</div>
-            </a>
-        </div>
+        <!-- ISI GRI -->
+        <a href="/umkm/form-gi" class="flex flex-col w-3/12 max-md:w-full bg-white rounded-xl p-6 text-center shadow hover:bg-teal-50 hover:shadow-xl hover:scale-105 cursor-pointer transition duration-300">
+          <img src="https://api.builder.io/api/v1/image/assets/TEMP/05808ca298f3565cc120745302c8076d602aa93c?apiKey=ac04cd396e1f47f18955cd19640f183d&" class="object-contain w-[140px] mx-auto" />
+          <div class="mt-4 text-xl font-semibold text-teal-700">ISI GRI</div>
+          <div class="text-sm text-gray-500">Mengisi GRI untuk penilaian</div>
+        </a>
+      </div>
     </div>
 
 

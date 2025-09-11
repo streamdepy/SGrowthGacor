@@ -1,6 +1,9 @@
+require('dotenv').config();
 const express = require("express");
 const router = express.Router();
 const { GRIEconomic } = require("../models");
+const path = require("path");
+const axios = require('axios');
 
 const { middlewareValidation, isAdmin, isUMKM } = require("../middlewares/authMiddleware");
 const { getDashboardUmkm } = require("../controllers/umkmController");
@@ -8,6 +11,7 @@ const businessController = require("../controllers/businessController");
 const grieconomicController = require("../controllers/grieconomicController");
 const grisocialController = require("../controllers/grisocialController");
 const environmentController = require("../controllers/environmentController");
+const reportController = require("../controllers/reportController");
 
 router.get("/dashboard", middlewareValidation, isUMKM, getDashboardUmkm, function (req, res, next) {});
 
@@ -151,6 +155,19 @@ router.get("/gri-4", async function (req, res, next) {
             summary.water_expenses +
             summary.other_operating_expenses;
 
+            untung =
+            summary.revenue -
+            summary.general_admin_expenses -
+            summary.salary_expenses -
+            summary.transport_expenses -
+            summary.fuel_expenses -
+            summary.electricity_expenses -
+            summary.internet_expenses -
+            summary.telephone_expenses -
+            summary.water_expenses -
+            summary.other_operating_expenses -
+            summary.non_operating_expenses;
+
           // Cari biaya terbesar dari summary
           const categories = [
             { key: "general_admin_expenses", label: "General & Administrative", value: summary.general_admin_expenses },
@@ -185,6 +202,19 @@ router.get("/gri-4", async function (req, res, next) {
             (record.telephone_expenses * 1 || 0) +
             (record.water_expenses * 1 || 0) +
             (record.other_operating_expenses * 1 || 0);
+
+            untung =
+            (record.revenue * 1 || 0) -
+            (record.general_admin_expenses * 1 || 0) -
+            (record.salary_expenses * 1 || 0) -
+            (record.transport_expenses * 1 || 0) -
+            (record.fuel_expenses * 1 || 0) -
+            (record.electricity_expenses * 1 || 0) -
+            (record.internet_expenses * 1 || 0) -
+            (record.telephone_expenses * 1 || 0) -
+            (record.water_expenses * 1 || 0) -
+            (record.other_operating_expenses * 1 || 0) -
+            (record.non_operating_expenses * 1 || 0) ;
 
           const categories = [
             { key: "general_admin_expenses", label: "General & Administrative", value: record.general_admin_expenses || 0 },
@@ -227,6 +257,7 @@ router.get("/gri-4", async function (req, res, next) {
       summary, // kalau triwulan, ini berisi total tahunan
       biggestExpense,
       totalOps,
+      untung,
       title: "Laporan GRI Economic",
       layout: "umkm",
       currentPath: req.path,
@@ -403,12 +434,7 @@ router.get("/laporan", function (req, res, next) {
   });
 });
 
-router.get("/lap", function (req, res, next) {
-  res.render("umkm/lap", {
-    title: "Form GRI",
-    layout: "umkm",
-    currentPath: req.path
-  });
+router.get("/lap", middlewareValidation, reportController.getReport, function (req, res, next) {
 });
 
 
@@ -476,15 +502,124 @@ router.get("/komunitas", function (req, res, next) {
   });
 });
 
-module.exports = router;
-
-/*
-router.get('/login', function(req, res, next) {
-    res.render('auth/login', { 
-      title: 'Login',
-      layout: 'layouts/layout_login', 
-    });
+router.get("/cari-konsultan", function (req, res, next) {
+  res.render("umkm/konsultan/cari-konsultan", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path,
+  });
 });
-  
-router.post('/login', login);
-*/
+
+router.get("/chatKonsultan", function (req, res, next) {
+  res.render("umkm/konsultan/chatKonsultan", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path,
+  });
+});
+
+router.get("/profilKonsultan", function (req, res, next) {
+  res.render("umkm/konsultan/profilKonsultan", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path,
+  });
+});
+
+router.get("/bookingTransaksi", function (req, res, next) {
+  res.render("umkm/konsultan/bookingTransaksi", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path,
+  });
+});
+
+router.get("/bookingSesiKonsultan", function (req, res, next) {
+  res.render("umkm/konsultan/bookingSesiKonsultan", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path,
+  });
+});
+
+router.get("/bookingSummary", function (req, res, next) {
+  res.render("umkm/konsultan/bookingSummary", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path,
+  });
+});
+
+router.get("/komunitas", function (req, res, next) {
+  res.render("umkm/komunitas/komunitas", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path,
+  });
+});
+
+const API_KEY = process.env.OPENROUTER_API_KEY;
+console.log("API KEY:", API_KEY); // Pastikan kunci API terbaca di sini
+
+// Definisikan rute chat Anda di dalam router
+router.post('/chatAI', async (req, res) => {
+  const { prompt } = req.body;
+
+  try {
+    const response = await axios.post(
+      'https://openrouter.ai/api/v1/chat/completions',
+      {
+        model: 'nousresearch/hermes-2-pro-llama-3-8b',
+        messages: [
+          { role: 'system', content: 'Kamu adalah asisten pelaporan ESG untuk UMKM berdasarkan standar GRI.' },
+          { role: 'user', content: prompt }
+        ]
+      },
+      {
+        headers: {
+          'Authorization': `Bearer ${API_KEY}`,
+          'HTTP-Referer': 'http://localhost:3000',
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+    res.json({ response: response.data.choices[0].message.content });
+  } catch (error) {
+    console.error(error.response?.data || error.message);
+    res.status(500).json({ response: 'AI gagal menjawab. Coba lagi nanti.' });
+  }
+});
+
+const API_KEY = process.env.OPENROUTER_API_KEY;
+console.log("API KEY:", API_KEY); // Pastikan kunci API terbaca di sini
+
+// Definisikan rute chat Anda di dalam router
+router.post('/chatAI', async (req, res) => {
+  const { prompt } = req.body;
+
+  try {
+    const response = await axios.post(
+      'https://openrouter.ai/api/v1/chat/completions',
+      {
+        model: 'nousresearch/hermes-2-pro-llama-3-8b',
+        messages: [
+          { role: 'system', content: 'Kamu adalah asisten pelaporan ESG untuk UMKM berdasarkan standar GRI.' },
+          { role: 'user', content: prompt }
+        ]
+      },
+      {
+        headers: {
+          'Authorization': `Bearer ${API_KEY}`,
+          'HTTP-Referer': 'http://localhost:3000',
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+    res.json({ response: response.data.choices[0].message.content });
+  } catch (error) {
+    console.error(error.response?.data || error.message);
+    res.status(500).json({ response: 'AI gagal menjawab. Coba lagi nanti.' });
+  }
+});
+
+module.exports = router;

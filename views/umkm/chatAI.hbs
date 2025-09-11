@@ -5,20 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chat AI – ESG Laporan</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Mengatur scrollbar agar tidak terlihat */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
 </head>
-<body class="bg-slate-100 text-slate-900">
+<body class="bg-slate-100 text-slate-900 font-sans">
 
-  <main class="max-w-6xl mx-auto px-6 py-10">
+  <main class="max-w-6xl mx-auto px-4 py-8 md:px-6 md:py-10">
 
     <!-- Header -->
-    <header class="mb-6">
-      <h1 class="text-3xl md:text-4xl font-bold">Chat AI – Laporan ESG</h1>
+    <header class="mb-6 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold text-teal-700">Chat AI – Laporan ESG</h1>
       <p class="text-slate-500 mt-1">Economic, Environmental, Social, and Governance – Chat Support</p>
     </header>
 
     <!-- Chat Interface Section -->
     <section class="w-full bg-white rounded-2xl shadow-2xl">
-      <div class="flex flex-col h-[500px]">
+      <div class="flex flex-col h-[600px] md:h-[700px]">
         <!-- Chat Header -->
         <header class="px-6 py-3 bg-teal-500 text-white rounded-t-2xl">
           <div class="flex justify-between items-center">
@@ -27,67 +37,115 @@
         </header>
 
         <!-- Chat Messages Area -->
-        <div class="overflow-auto p-4 space-y-4 flex-grow">
-          <!-- AI Message -->
-          <div class="flex items-start">
-            <div class="bg-teal-100 text-teal-900 rounded-lg p-4 max-w-xs">
+        <div id="chat-messages" class="overflow-y-auto p-4 space-y-4 flex-grow no-scrollbar">
+          <!-- Pesan awal dari AI -->
+          <div class="flex items-start animate-fade-in">
+            <div class="bg-teal-100 text-teal-900 rounded-lg p-3 md:p-4 max-w-xs md:max-w-sm">
               <p class="text-sm">Halo! Ada yang bisa saya bantu dengan laporan ESG?</p>
-            </div>
-          </div>
-
-          <!-- User Message -->
-          <div class="flex justify-end">
-            <div class="bg-orange-100 text-orange-900 rounded-lg p-4 max-w-xs">
-              <p class="text-sm">Saya ingin mengetahui lebih lanjut mengenai skor ESG di bagian Governance.</p>
-            </div>
-          </div>
-
-          <!-- AI Reply -->
-          <div class="flex items-start">
-            <div class="bg-teal-100 text-teal-900 rounded-lg p-4 max-w-xs">
-              <p class="text-sm">Skor Governance Anda adalah 85%, yang menunjukkan komitmen tinggi terhadap struktur tata kelola perusahaan yang baik.</p>
-            </div>
-          </div>
-
-          <!-- User Message -->
-          <div class="flex justify-end">
-            <div class="bg-orange-100 text-orange-900 rounded-lg p-4 max-w-xs">
-              <p class="text-sm">Bagaimana dengan bagian Sosial? Apakah ada ruang untuk perbaikan?</p>
-            </div>
-          </div>
-
-          <!-- AI Reply -->
-          <div class="flex items-start">
-            <div class="bg-teal-100 text-teal-900 rounded-lg p-4 max-w-xs">
-              <p class="text-sm">Skor Sosial Anda adalah 78%. Anda dapat meningkatkan dengan lebih fokus pada manajemen hak asasi manusia dan pelatihan K3 di perusahaan.</p>
             </div>
           </div>
         </div>
 
         <!-- Message Input Area -->
-        <div class="flex gap-3 items-center px-6 py-4 bg-gray-100 rounded-b-2xl">
+        <div class="flex gap-3 items-center px-4 py-3 md:px-6 md:py-4 bg-gray-100 rounded-b-2xl">
           <input
+            id="user-input"
             type="text"
             placeholder="Tulis pesan Anda..."
-            class="flex-1 p-3 text-sm bg-white rounded-lg border border-slate-300 outline-none"
-                />
-        <button
-        class="px-6 py-3 bg-teal-500 text-white rounded-full hover:bg-teal-600 transition-colors"
-        aria-label="Send message"
-        >
-        <!-- Ikon Panah ke Kanan dalam Lingkaran -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-6 h-6">
-            <path d="M10 17l5-5-5-5v10z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="white"/>
-        </svg>
-        </button>
-
-
-
-
+            class="flex-1 p-3 text-sm bg-white rounded-lg border border-slate-300 outline-none focus:ring-2 focus:ring-teal-500 transition-colors"
+          />
+          <button
+            id="send-button"
+            class="p-2 md:p-3 bg-teal-500 text-white rounded-full hover:bg-teal-600 transition-colors"
+            aria-label="Send message"
+          >
+            <!-- Ikon Panah ke Kanan -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6">
+                <path d="M10 17l5-5-5-5v10z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="white"/>
+            </svg>
+          </button>
         </div>
       </div>
     </section>
   </main>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const chatMessagesEl = document.getElementById('chat-messages');
+    const userInputEl = document.getElementById('user-input');
+    const sendButtonEl = document.getElementById('send-button');
 
-</body>
-</html>
+    const scrollToBottom = () => {
+      chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
+    };
+
+    const addMessage = (text, sender) => {
+      const messageContainer = document.createElement('div');
+      messageContainer.className = sender === 'user' ? 'flex justify-end animate-fade-in' : 'flex items-start animate-fade-in';
+      
+      const messageBubble = document.createElement('div');
+      messageBubble.className = sender === 'user'
+        ? 'bg-orange-100 text-orange-900 rounded-lg p-3 md:p-4 max-w-xs md:max-w-sm'
+        : 'bg-teal-100 text-teal-900 rounded-lg p-3 md:p-4 max-w-xs md:max-w-sm';
+      
+      const messageText = document.createElement('p');
+      messageText.className = 'text-sm';
+      
+      // Menggunakan innerHTML agar tag HTML dapat di-render
+      messageText.innerHTML = text.replace(/\n/g, '<br>'); // Mengganti baris baru dengan <br>
+      
+      messageBubble.appendChild(messageText);
+      messageContainer.appendChild(messageBubble);
+      chatMessagesEl.appendChild(messageContainer);
+      scrollToBottom();
+    };
+
+    const sendUserMessage = async () => {
+      const prompt = userInputEl.value.trim();
+      if (!prompt) return;
+
+      // Tambahkan pesan pengguna ke chat
+      addMessage(prompt, 'user');
+      userInputEl.value = '';
+
+      // Tampilkan pesan "Sedang memproses..." dari AI
+      addMessage('Sedang memproses...', 'ai-loading');
+      
+      sendButtonEl.disabled = true;
+
+      try {
+        const response = await fetch('/umkm/chatAI', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ prompt }),
+        });
+        const data = await response.json();
+
+        // Ganti pesan "Sedang memproses..." dengan respons AI
+        const loadingMessageEl = chatMessagesEl.querySelector('.flex:last-child');
+        if (loadingMessageEl) {
+          chatMessagesEl.removeChild(loadingMessageEl);
+        }
+        addMessage(data.response, 'ai');
+
+      } catch (error) {
+        console.error('Error:', error);
+        addMessage('AI gagal menjawab. Coba lagi nanti.', 'ai');
+      } finally {
+        sendButtonEl.disabled = false;
+        scrollToBottom();
+      }
+    };
+
+    sendButtonEl.addEventListener('click', sendUserMessage);
+
+    userInputEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        sendUserMessage();
+      }
+    });
+
+    scrollToBottom();
+  });
+</script>
