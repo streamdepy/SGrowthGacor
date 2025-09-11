@@ -420,6 +420,62 @@ router.get("/chatAI", function (req, res, next) {
   });
 });
 
+router.get("/cari-konsultan", function (req, res, next) {
+  res.render("umkm/konsultan/cari-konsultan", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path,
+  });
+});
+
+router.get("/chatKonsultan", function (req, res, next) {
+  res.render("umkm/konsultan/chatKonsultan", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path,
+  });
+});
+
+router.get("/profilKonsultan", function (req, res, next) {
+  res.render("umkm/konsultan/profilKonsultan", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path,
+  });
+});
+
+router.get("/bookingTransaksi", function (req, res, next) {
+  res.render("umkm/konsultan/bookingTransaksi", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path,
+  });
+});
+
+router.get("/bookingSesiKonsultan", function (req, res, next) {
+  res.render("umkm/konsultan/bookingSesiKonsultan", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path,
+  });
+});
+
+router.get("/bookingSummary", function (req, res, next) {
+  res.render("umkm/konsultan/bookingSummary", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path,
+  });
+});
+
+router.get("/komunitas", function (req, res, next) {
+  res.render("umkm/komunitas/komunitas", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path,
+  });
+});
+
 module.exports = router;
 
 /*
