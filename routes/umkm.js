@@ -579,6 +579,14 @@ router.get("/komunitas", function (req, res, next) {
   });
 });
 
+router.get("/market", function (req, res, next) {
+  res.render("umkm/marketplace/market", {
+    title: "Form GRI",
+    layout: "umkm",
+    currentPath: req.path,
+  });
+});
+
 const API_KEY = process.env.OPENROUTER_API_KEY;
 console.log("API KEY:", API_KEY); // Pastikan kunci API terbaca di sini
 
