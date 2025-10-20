@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 10, 2025 at 03:54 PM
+-- Generation Time: Oct 20, 2025 at 10:52 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -117,9 +117,8 @@ CREATE TABLE `business_certifications` (
 --
 
 INSERT INTO `business_certifications` (`id`, `business_id`, `certification_name`) VALUES
-(1, 'Universitas Andalas', 'ISO 9001'),
-(2, 'Universitas Andalas', 'ISO 14001'),
-(3, 'Universitas Andalas', 'ISO 45001');
+(4, '1234567890123', 'ISO 9001'),
+(5, '1234567890123', 'ISO 45001');
 
 -- --------------------------------------------------------
 
@@ -139,10 +138,10 @@ CREATE TABLE `business_departments` (
 --
 
 INSERT INTO `business_departments` (`id`, `business_id`, `department_name`, `employee_count`) VALUES
-(1, 'Universitas Andalas', 'HR', 2),
-(2, 'Universitas Andalas', 'Marketing', 3),
-(3, 'Universitas Andalas', 'IT', 4),
-(4, 'Universitas Andalas', 'Finance', 3);
+(5, '1234567890123', 'HR', 30),
+(6, '1234567890123', 'Marketing', 20),
+(7, '1234567890123', 'IT', 30),
+(8, '1234567890123', 'Finance', 40);
 
 -- --------------------------------------------------------
 
@@ -184,7 +183,8 @@ CREATE TABLE `business_profiles` (
 --
 
 INSERT INTO `business_profiles` (`id`, `user_id`, `business_name`, `established_year`, `legal_form`, `industry_type`, `headquarters`, `city`, `province`, `products_offered`, `ownership_percentage`, `market_scope`, `target_market`, `target_market_other`, `total_employees_fulltime`, `total_employees_parttime`, `male_percentage`, `female_percentage`, `core_values`, `ethics_principles`, `pic_name`, `pic_position`, `pic_phone`, `pic_email`, `supporting_documents`, `created_at`) VALUES
-('Universitas Andalas', 2, 'Universitas Andalas', '2025', 'CV', 'Teknologi', 'jauh', 'padang', 'Sumatera Barat', 'Banyakk', 100.00, 'nasional, global', 'b2b, b2c', NULL, 12, 7, 40.00, 59.00, 'Tetap jadi orang baik', 'mahal kingg', 'agif', 'ceo', '081298076037', 'malghifari2096@gmail.com', 'Gemini_Generated_Image_sefxt0sefxt0sefx.png', '2025-09-07 06:07:17');
+('', 5, '', '0000', '', NULL, '', '', '', '', 0.00, NULL, NULL, NULL, 0, 0, 0.00, 0.00, '', '', '', '', '', '', '', '2025-10-09 12:15:50'),
+('1234567890123', 2, 'Surya Kencana CV', '2021', '', 'Manufaktur', 'JL. MERDEKA NO. 45, JAKARTA', 'Kutai Timur', 'lainnya', 'Batu Bara', 100.00, 'nasional, regional, global', 'b2b, b2c, pemerintah', NULL, 500, 100, 90.00, 10.00, 'Excellence with Collaboration', 'Tanggung jawab sosial, keselamatan dan kesehatan kerja, integritas dan kepatuhan hukun, dan anti diskriminasi', 'Putri Kusnandi', 'Public Relations Manager', '0813567821', '@suryakencanacoal', 'All (2).png', '2025-09-11 19:44:00');
 
 -- --------------------------------------------------------
 
@@ -204,9 +204,9 @@ CREATE TABLE `business_shareholders` (
 --
 
 INSERT INTO `business_shareholders` (`id`, `business_id`, `shareholder_name`, `ownership_percentage`) VALUES
-(25, 'Universitas Andalas', 'alghifari', 60.00),
-(26, 'Universitas Andalas', 'jokowi', 30.00),
-(27, 'Universitas Andalas', 'badang', 10.00);
+(28, '1234567890123', 'Surya Kusuma', 70.00),
+(29, '1234567890123', 'Indra Subakti', 30.00),
+(30, '', '', 0.00);
 
 -- --------------------------------------------------------
 
@@ -227,10 +227,12 @@ CREATE TABLE `business_stakeholders` (
 --
 
 INSERT INTO `business_stakeholders` (`id`, `business_id`, `stakeholder_type`, `stakeholder_other`, `relationship`) VALUES
-(65, 'Universitas Andalas', 'Pelanggan', NULL, 'pembelinya'),
-(66, 'Universitas Andalas', 'Karyawan', NULL, 'staff nya'),
-(67, 'Universitas Andalas', 'Pemasok', NULL, NULL),
-(68, 'Universitas Andalas', 'Investor/Shareholder', NULL, 'tuan');
+(69, '1234567890123', 'Pelanggan', NULL, 'Business'),
+(70, '1234567890123', 'Karyawan', NULL, 'Professional'),
+(71, '1234567890123', 'Pemasok', NULL, 'Professional'),
+(72, '1234567890123', 'Pemerintah/Regulator', NULL, 'Partner'),
+(73, '1234567890123', 'Investor/Shareholder', NULL, 'Partner'),
+(74, '1234567890123', 'Masyarakat Lokal', NULL, 'Partner');
 
 -- --------------------------------------------------------
 
@@ -335,17 +337,25 @@ CREATE TABLE `gri_economics` (
   `accounting_adjustment_flag` tinyint(1) DEFAULT 0,
   `accounting_adjustment_notes` text DEFAULT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `revenue_notes` varchar(255) DEFAULT NULL,
+  `revenue_files` varchar(255) DEFAULT NULL,
+  `fuel_notes` varchar(255) DEFAULT NULL,
+  `electricity_notes` varchar(255) DEFAULT NULL,
+  `internet_notes` varchar(255) DEFAULT NULL,
+  `telephone_notes` varchar(255) DEFAULT NULL,
+  `water_notes` varchar(255) DEFAULT NULL,
+  `expenses_files` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `gri_economics`
 --
 
-INSERT INTO `gri_economics` (`id`, `business_id`, `unit_name`, `reporting_period`, `responsible_person`, `revenue`, `general_admin_expenses`, `general_admin_notes`, `salary_expenses`, `salary_employee_notes`, `transport_expenses`, `transport_notes`, `fuel_expenses`, `electricity_expenses`, `internet_expenses`, `telephone_expenses`, `water_expenses`, `other_operating_expenses`, `other_operating_notes`, `non_operating_expenses`, `non_operating_notes`, `unusual_expenses_flag`, `unusual_expenses_notes`, `accounting_adjustment_flag`, `accounting_adjustment_notes`, `created_at`, `updated_at`) VALUES
-(11, 'Universitas Andalas', 'keuangan', 'Tahun 2024', 'rehann', 200000000.00, 50000000.00, 'untuk 5 kar', 60000000.00, 'rawrrr', 30000000.00, 'dinas papah', 10000000.00, 11000000.00, 3000000.00, 30000001.00, 3000000.00, 2000000.00, 'dua juta', 1000000.00, 'sejuta', 1, '', 1, '', '2025-09-07 06:08:46', '2025-09-08 13:23:48'),
-(12, 'Universitas Andalas', 'keuangan', 'Triwulan 2025-Q1', 'rehann', 0.00, 0.00, NULL, 0.00, NULL, 0.00, NULL, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, 0.00, NULL, 0, NULL, 0, NULL, '2025-09-07 06:12:27', '2025-09-07 06:12:27'),
-(13, 'Universitas Andalas', 'keuangan', 'Triwulan 2025-Q2', 'ibnu', 0.00, 0.00, NULL, 0.00, NULL, 0.00, NULL, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, 0.00, NULL, 0, NULL, 0, NULL, '2025-09-08 13:19:37', '2025-09-08 13:19:37');
+INSERT INTO `gri_economics` (`id`, `business_id`, `unit_name`, `reporting_period`, `responsible_person`, `revenue`, `general_admin_expenses`, `general_admin_notes`, `salary_expenses`, `salary_employee_notes`, `transport_expenses`, `transport_notes`, `fuel_expenses`, `electricity_expenses`, `internet_expenses`, `telephone_expenses`, `water_expenses`, `other_operating_expenses`, `other_operating_notes`, `non_operating_expenses`, `non_operating_notes`, `unusual_expenses_flag`, `unusual_expenses_notes`, `accounting_adjustment_flag`, `accounting_adjustment_notes`, `created_at`, `updated_at`, `revenue_notes`, `revenue_files`, `fuel_notes`, `electricity_notes`, `internet_notes`, `telephone_notes`, `water_notes`, `expenses_files`) VALUES
+(16, '1234567890123', 'Produksi', 'Tahun 2024', 'rehan', 0.00, 0.00, '', 0.00, '', 0.00, '', 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '', 0.00, '', 0, '', 0, '', '2025-09-12 05:48:22', '2025-09-12 14:20:14', '', '', '', '', '', '', '', ''),
+(17, '', 'knbl', 'Triwulan 2025-Q1', 'vhvkh', 0.00, 0.00, '', 0.00, '', 0.00, '', 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '', 0.00, '', 0, '', 0, '', '2025-10-09 12:16:45', '2025-10-09 12:23:02', '', '', '', '', '', '', '', ''),
+(18, '', 'knbl', 'Tahun 2022', 'vhvkh', 0.00, 0.00, '', 0.00, '', 0.00, '', 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '', 0.00, '', 0, '', 0, '', '2025-10-09 12:24:59', '2025-10-09 12:25:06', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -363,13 +373,6 @@ CREATE TABLE `gri_environment` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `gri_environment`
---
-
-INSERT INTO `gri_environment` (`id`, `business_id`, `unit_name`, `operational_location`, `reporting_period`, `calculation_method`, `created_at`, `updated_at`) VALUES
-(4, 'Universitas Andalas', 'emisi1', 'kantor_pusat', 'tahun', 'ipcc', '2025-09-10 10:35:16', '2025-09-10 10:35:16');
 
 -- --------------------------------------------------------
 
@@ -390,16 +393,16 @@ CREATE TABLE `gri_social` (
   `ltifr` decimal(10,2) DEFAULT 0.00,
   `trained_percentage_summary` decimal(5,2) DEFAULT 0.00,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `responsible_person` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `gri_social`
 --
 
-INSERT INTO `gri_social` (`id`, `business_id`, `operational_location`, `reporting_period`, `has_incident`, `has_disease`, `has_training`, `challenges`, `improvement_plan`, `ltifr`, `trained_percentage_summary`, `created_at`, `updated_at`) VALUES
-(1, 'Universitas Andalas', 'jalan jauh bgt', 'Tahun 2024', 1, 0, 0, NULL, NULL, 0.00, 0.00, '2025-09-08 12:00:15', '2025-09-08 12:03:45'),
-(2, 'Universitas Andalas', 'jalan jauh bgt', 'Triwulan undefined', 1, 0, 0, NULL, NULL, 0.00, 0.00, '2025-09-09 04:52:58', '2025-09-09 04:53:19');
+INSERT INTO `gri_social` (`id`, `business_id`, `operational_location`, `reporting_period`, `has_incident`, `has_disease`, `has_training`, `challenges`, `improvement_plan`, `ltifr`, `trained_percentage_summary`, `created_at`, `updated_at`, `responsible_person`) VALUES
+(4, '1234567890123', 'Jl. Piai Tangah, Cupak Tangah, Kec. Pauh, Kota Padang, Sumatera Barat 25158', 'Tahun ', 0, 0, 0, NULL, NULL, 0.00, 0.00, '2025-10-09 11:53:17', '2025-10-09 11:53:17', '');
 
 -- --------------------------------------------------------
 
@@ -435,15 +438,6 @@ CREATE TABLE `gri_social_k3_incidents` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `gri_social_k3_incidents`
---
-
-INSERT INTO `gri_social_k3_incidents` (`id`, `social_id`, `total_injuries`, `total_fatalities`, `main_incident_type`, `incident_location`, `incident_cause`, `lost_workdays`, `corrective_actions`, `created_at`, `updated_at`) VALUES
-(2, 1, 20, 15, 'Terjatuh', 'Pabrik', 'Human error', 2, 'awas jatoh', '2025-09-09 18:29:11', '2025-09-09 18:29:11'),
-(3, 1, 15, 8, 'Tertimpa', 'Gudang', 'Kegagalan alat', 3, 'awas ketimpa', '2025-09-09 18:29:11', '2025-09-09 18:29:11'),
-(4, 1, 10, 5, 'Tersengat', 'Lapangan', 'Kurangnya SOP', 6, 'awas kesengat', '2025-09-09 18:29:11', '2025-09-09 18:29:11');
 
 -- --------------------------------------------------------
 
@@ -529,7 +523,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `created_at`) VALUES
-(2, 'Muhammad Raihan Alghifari', 'umkmn@example.com', '$2b$10$bDpV3maXIfz1wSH4KomkEeq4.8ykNbauMuzp568jOr9VKd8GIBQUm', 'umkm', '2025-09-07 05:59:09');
+(2, 'Muhammad Raihan Alghifari', 'umkmn@example.com', '$2b$10$bDpV3maXIfz1wSH4KomkEeq4.8ykNbauMuzp568jOr9VKd8GIBQUm', 'umkm', '2025-09-07 05:59:09'),
+(3, 'Madan', 'umkmo@example.com', '$2b$10$uccW9ZRWiTHUmpPiiLIQNepr9nN6c7duif02mP63LcreCdGH/D6j.', 'umkm', '2025-09-11 19:30:08'),
+(4, 'Mut', 'umkmp@example.com', '$2b$10$oXNycwd9D395VPIT0NikWulO1frCRYAhXnx.qz819oAxSOClQ30tG', 'umkm', '2025-09-12 05:46:22'),
+(5, 'madan', 'madan@gmail.com', '$2b$10$2sfla8J9EoikPEr0oIa1K.nbPdWhlMfgunt6v8adxdxJEOvOJWtVG', 'umkm', '2025-10-09 12:07:36');
 
 -- --------------------------------------------------------
 
@@ -773,25 +770,25 @@ ALTER TABLE `booking_messages`
 -- AUTO_INCREMENT for table `business_certifications`
 --
 ALTER TABLE `business_certifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `business_departments`
 --
 ALTER TABLE `business_departments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `business_shareholders`
 --
 ALTER TABLE `business_shareholders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `business_stakeholders`
 --
 ALTER TABLE `business_stakeholders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `certificates`
@@ -827,19 +824,19 @@ ALTER TABLE `esg_scores`
 -- AUTO_INCREMENT for table `gri_economics`
 --
 ALTER TABLE `gri_economics`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `gri_environment`
 --
 ALTER TABLE `gri_environment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `gri_social`
 --
 ALTER TABLE `gri_social`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `gri_social_diseases`
@@ -851,7 +848,7 @@ ALTER TABLE `gri_social_diseases`
 -- AUTO_INCREMENT for table `gri_social_k3_incidents`
 --
 ALTER TABLE `gri_social_k3_incidents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `gri_social_trainings`
@@ -881,7 +878,7 @@ ALTER TABLE `supporting_documents`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `validation_results`
